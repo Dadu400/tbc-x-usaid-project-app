@@ -4,7 +4,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
     return (
-      <footer className="bg-[#201D48] w-full">
+      <footer className="bg-[#201D48] w-full mt-auto">
         <div className="flex flex-col px-[40px] py-[20px] gap-[28px]">
           <div className="flex justify-between">
           <div className="flex flex-col gap-[20px]">
