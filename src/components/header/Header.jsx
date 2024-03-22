@@ -22,7 +22,7 @@ function Header() {
                             <a href="/">discover</a>
                         </li>
                         <li className="uppercase font-bold text-base">
-                            <a href="/">help center</a>
+                            <a href="/Contacts">contact us</a>
                         </li>
                     </ul>
                 </nav>
