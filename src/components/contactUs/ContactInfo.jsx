@@ -9,18 +9,18 @@ function ContactInfo() {
           <h2 className="text-[22px] font-bold">Call us</h2>
           <div className="flex flex-col gap-[6px]">
             <h6 className="text-[18px]">LEGO® Customer Service in English</h6>
-            <a href="/">1-844-903-5346</a>
+            <p className="underline text-cyan-600 cursor-pointer">1-844-903-5346</p>
             <p className="text-[18px]">Monday to Friday 8am - 10pm ET</p>
             <p className="text-[18px]">Saturday to Sunday 10am - 6pm ET</p>
           </div>
           <div className="flex flex-col gap-[6px]">
             <h6 className="text-[18px]">LEGO® Customer Service in Spanish</h6>
-            <a href="/">1-833-692-5346</a>
+            <p className="underline text-cyan-600 cursor-pointer">1-833-692-5346</p>
             <p className="text-[18px]">Monday to Friday 8am - 10pm ET</p>
           </div>
           <div className="flex flex-col gap-[6px]">
             <h6 className="text-[18px]">LEGO® Education Tech Support</h6>
-            <a href="/">1-866-349-5346</a>
+            <p className="underline text-cyan-600 cursor-pointer">1-866-349-5346</p>
             <p className="text-[18px]">Monday to Friday 8am - 10pm ET</p>
           </div>
           <p className="text-[18px] w-4/5">

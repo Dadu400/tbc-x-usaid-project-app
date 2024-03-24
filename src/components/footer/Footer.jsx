@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
       <footer className="bg-[#201D48] w-full mt-auto">
-        <div className="flex flex-col px-[40px] py-[20px] gap-[28px]">
+        <div className="flex flex-col px-[40px] py-[30px] gap-[28px]">
           <div className="flex justify-between">
           <div className="flex flex-col gap-[20px]">
             <h3 className="text-white font-bold uppercase">
@@ -32,27 +33,27 @@ function Footer() {
           <div className="flex flex-col gap-[20px] mr-4">
             <h3 className="text-white font-bold uppercase">follow us</h3>
             <div class="flex space-x-4">
-              <a href="/" class="text-white hover:text-gray-400">
+              <Link to="https://www.facebook.com/LEGO/" class="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faFacebook} className="w-8 h-8" />
-              </a>
-              <a href="/" class="text-white hover:text-gray-400">
+              </Link>
+              <Link to="https://twitter.com/LEGO_Group" class="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faTwitter} className="w-8 h-8" />
-              </a>
-              <a href="/" class="text-white hover:text-gray-400">
+              </Link>
+              <Link to="https://www.instagram.com/lego" class="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faInstagram} className="w-8 h-8" />
-              </a>
-              <a href="/" class="text-white hover:text-gray-400">
+              </Link>
+              <Link href="https://www.youtube.com/user/LEGO?app=desktop" class="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faYoutube} className="w-8 h-8" />
-              </a>
+              </Link>
             </div>
           </div>
           </div>
           <div className="flex">
               <ul className="flex gap-4">
-                  <li className="text-white text-xs"><a href="/">Privacy Policy</a></li>
-                  <li className="text-white text-xs"><a href="/">Cookies</a></li>
-                  <li className="text-white text-xs"><a href="/">Cookies Settings</a></li>
-                  <li className="text-white text-xs"><a href="/">Terms of Use</a></li>
+                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/legal/notices-and-policies/privacy-policy">Privacy Policy</Link></li>
+                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/cookie-policy">Cookies</Link></li>
+                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/legal/notices-and-policies/legal-notice">Terms of Use</Link></li>
+                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/page/accessibility">Accessibility</Link></li>
               </ul>
           </div>
           <div>

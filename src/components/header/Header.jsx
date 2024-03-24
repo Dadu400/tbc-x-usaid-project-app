@@ -1,28 +1,29 @@
 import React from "react";
 import LegoLogo from "../icons/LEGO_logo.svg.png";
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
         <header className="bg-yellow-400 w-full px-8 py-2">
             <div className="flex items-center justify-between">
                 <div>
-                    <a href="###">
+                    <Link to="/">
                         <img src={LegoLogo} alt="LEGO logo" className="w-14 h-14" />
-                    </a>
+                    </Link>
                 </div>
                 <nav>
                     <ul className="flex items-center gap-8">
                     <li className="uppercase font-bold text-base">
-                            <a href="/">home</a>
+                            <Link to="/">home</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
-                            <a href="/">shop</a>
+                            <Link to="/">shop</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
-                            <a href="/">discover</a>
+                            <Link to="/">discover</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
-                            <a href="/Contacts">contact us</a>
+                            <Link to="/Contacts">contact us</Link>
                         </li>
                     </ul>
                 </nav>
