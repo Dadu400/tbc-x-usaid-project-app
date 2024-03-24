@@ -1,16 +1,21 @@
-import Banner from "./components/banner/Banner";
-import Footer from "./components/footer/Footer";
+import "./index.css";
+import Home from "./pages/Home";
 import Header from "./components/header/Header";
-import ProductList from "./components/products/ProductList";
-import "./index.css"
+import Footer from "./components/footer/Footer";
+import Contacts from "./pages/Contacts";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App flex flex-col h-screen">
-      <Header />
-      {/* <Banner /> */}
-      <ProductList />
-      <Footer />
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contacts" element={<Contacts />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
