@@ -1,5 +1,5 @@
 import React from "react";
-import LegoLogo from "../icons/LEGO_logo.svg.png";
+import LegoLogo from "../icons/LEGO_logo.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -20,7 +20,7 @@ function Header() {
                             <Link to="/">shop</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
-                            <Link to="/">discover</Link>
+                            <Link to="/profile">profile</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
                             <Link to="/Contacts">contact us</Link>
