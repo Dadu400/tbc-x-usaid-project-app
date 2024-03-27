@@ -17,6 +17,9 @@ function Header() {
                             <Link to="/">home</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
+                            <Link to="/Blogs">blogs</Link>
+                        </li>
+                        <li className="uppercase font-bold text-base">
                             <Link to="/">shop</Link>
                         </li>
                         <li className="uppercase font-bold text-base">
