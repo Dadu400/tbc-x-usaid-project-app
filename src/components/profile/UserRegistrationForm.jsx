@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 const UserRegistrationForm = () => {
   const [userData, setUserData] = useState({
-    userName: '',
-    surname: '',
-    email: '',
+    userName: 'User',
+    surname: 'User Surname',
+    email: 'user@example.com',
     password: '',
     confirmPassword: '',
   });
@@ -43,25 +43,28 @@ const UserRegistrationForm = () => {
   };
 
   return (
-    <div className='flex'>
-    <form onSubmit={handleSubmit} className='flex flex-col'>
-      <label htmlFor="userName">User Name:</label>
+    <div className='flex w-[60%] justify-center m-auto align-center p-4 shadow-md'>
+    <form onSubmit={handleSubmit} className='flex flex-col w-[50%] gap-2'>
+      <label htmlFor="userName">Current Username:</label>
       <input
         type="text"
         name="userName"
         id="userName"
+        className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.userName}
         onChange={handleChange}
+        readOnly={true}
         required
       />
 
-      <label htmlFor="surname">Surname:</label>
+      <label htmlFor="surname">Current Surname:</label>
       <input
         type="text"
         name="surname"
         id="surname"
+        className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.surname}
-        onChange={handleChange}
+        readOnly={true}
         required
       />
 
@@ -70,32 +73,34 @@ const UserRegistrationForm = () => {
         type="email"
         name="email"
         id="email"
+        className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.email}
-        onChange={handleChange}
+        readOnly={true}
         required
       />
 
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password">Create new password:</label>
       <input
         type="password"
         name="password"
         id="password"
+        className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.password}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="confirmPassword">Confirm Password:</label>
+      <label htmlFor="confirmPassword">Confirm new Password:</label>
       <input
         type="password"
         name="confirmPassword"
         id="confirmPassword"
+        className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.confirmPassword}
         onChange={handleChange}
         required
       />
-
-      <button type="submit">Register</button>
+      <button type="submit" className="my-6 w-[60%] py-2 bg-[#FD8024] self-center text-white font-large hover:bg-white hover:border-[#FD8024] hover:text-black rounded transition-colors duration-300 ease-in-out ">Save Changes</button>
     </form>
     </div>
   );
