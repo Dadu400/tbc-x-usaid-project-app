@@ -38,7 +38,7 @@ const legoBlogData = [
     id: 6,
     title: "Build Your Own LEGO Creator Expert Modular Building",
     description: "Create your own bustling cityscape with the LEGO Creator Expert Modular Building series! From charming cafes to grand palaces, these sets offer endless possibilities for creative builders.",
-    image: "https://www.lego.com/cdn/cs/set/assets/blt06e3a6c0ba3ae1ed/Town_Hall.jpg?format=jpg&quality=80&width=700&dpr=1?format=webply&fit=crop&quality=75&width=700&dpr=1",
+    image: "https://www.lego.com/cdn/cs/set/assets/blt08ba1f2bb5e8f2fb/10326.png?format=webply&fit=bounds&quality=70&width=800&height=800&dpr=1.5",
     releaseDate: "2024-02-28",
   },
   {
@@ -66,7 +66,7 @@ const legoBlogData = [
     id: 10,
     title: "Unleash Your Inner Superhero with LEGO Marvel",
     description: "Team up with your favorite Marvel superheroes and save the day with LEGO Marvel sets! From iconic characters to epic battles, these sets bring the excitement of the Marvel universe to life.",
-    image: "https://i5.walmartimages.com/seo/LEGO-Marvel-Spider-Man-76226-Fully-Articulated-Action-Figure-Super-Hero-Movie-Set-Web-Elements-Gift-Idea-Grandchildren-Collectible-Model-Toy-Boys-Gir_19114dfd-5d83-428e-a639-70ebd3f8cd3c.f40f569e8091fb017bf0ecaf04966d9d.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF",
+    image: "https://www.lego.com/cdn/cs/set/assets/bltecb17ae9a35d77f7/76155_alt3.png?format=webply&fit=bounds&quality=70&width=800&height=800&dpr=1.5",
     releaseDate: "2024-02-10",
   },
   {
@@ -136,7 +136,7 @@ const legoBlogData = [
     id: 20,
     title: "Create Your Own Superhero Adventures with LEGO DC Comics",
     description: "Join forces with your favorite superheroes and save the day with LEGO DC Comics! From Batman to Wonder Woman, these sets let you build and battle alongside iconic characters.",
-    image: "https://www.lego.com/cdn/cs/set/assets/blt9855429dd82d411a/76271_alt1.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1",
+    image: "https://www.lego.com/cdn/cs/set/assets/blt9855429dd82d411a/76271_alt1.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1 ",
     releaseDate: "2024-01-15",
   },
 ];
