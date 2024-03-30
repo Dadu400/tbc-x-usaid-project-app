@@ -34,9 +34,9 @@ const UserRegistrationForm = () => {
     console.log('Form submitted:', userData);
   
     setUserData({
-      userName: '',
-      surname: '',
-      email: '',
+      userName: 'User',
+      surname: 'User Surname',
+      email: 'user@example.com',
       password: '',
       confirmPassword: '',
     });
@@ -53,7 +53,6 @@ const UserRegistrationForm = () => {
         className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.userName}
         onChange={handleChange}
-        readOnly={true}
         required
       />
 
@@ -64,7 +63,7 @@ const UserRegistrationForm = () => {
         id="surname"
         className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.surname}
-        readOnly={true}
+        onChange={handleChange}
         required
       />
 
@@ -75,7 +74,7 @@ const UserRegistrationForm = () => {
         id="email"
         className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
         value={userData.email}
-        readOnly={true}
+        onChange={handleChange}
         required
       />
 
