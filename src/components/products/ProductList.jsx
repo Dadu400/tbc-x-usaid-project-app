@@ -37,7 +37,7 @@ function ProductList() {
   };
 
   return (
-    <section className="w-full px-16 py-10 overflow-x-auto overflow-y-auto min-h-[400px]">
+    <section className="w-full px-16 py-16 min-h-[400px]">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl leading-relaxed text-gray-700">
           Featured sets
