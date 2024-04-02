@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import LegoLogo from "../icons/LEGO_logo.png";
 import { Link } from "react-router-dom";
 
@@ -8,7 +9,7 @@ function Header() {
             <div className="flex items-center justify-between">
                 <div>
                     <Link to="/">
-                        <img src={LegoLogo} alt="LEGO logo" className="w-14 h-14" />
+                    <Image src={LegoLogo} alt="LEGO logo" width={50} height={50} />
                     </Link>
                 </div>
                 <nav>

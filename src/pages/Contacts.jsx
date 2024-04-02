@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ContactForm from "../components/contactUs/ContactForm";
 import ContactInfo from "../components/contactUs/ContactInfo";
 import LegoEcho from "../components/icons/LegoEcho.png";
@@ -14,14 +15,14 @@ function Contacts() {
             <p className="text-[28px]">Sophia can help with lots of topics</p>
           </div>
           <div className="flex flex-1 items-center justify-center">
-            <img src={LegoEcho} alt="Sophia" />
+            <Image src={LegoEcho} alt="Sophia" />
           </div>
         </div>
       </section>
       <section className="w-full bg-[#00AF4D] min-h-[400px] py-6">
         <div className="flex">
           <div className="flex flex-1 items-center justify-center">
-            <img src={LegoEchoSophia} alt="Sophia" />
+            <Image src={LegoEchoSophia} alt="Sophia" />
           </div>
           <ContactForm />
         </div>
