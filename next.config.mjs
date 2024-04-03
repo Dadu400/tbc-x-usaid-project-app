@@ -5,11 +5,14 @@ const nextConfig = {
 
 const imageConfig = {
   images: {
-    domains: ['www.lego.com'],
+    remotePatterns: [
+      {
+        hostname: 'www.lego.com',
+      }
+    ],
   },
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   ...nextConfig,
   ...imageConfig,
