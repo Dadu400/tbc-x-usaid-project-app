@@ -4,12 +4,12 @@ function Blog({ blog }) {
   return (
     <article className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between items-start w-[350px] cursor-pointer">
       <div className="flex flex-col items-start gap-1">
-      <div className="w-full h-[240px] mb-4 relative rounded-md overflow-hidden">
+      <div className="w-full h-[200px] mb-4 relative rounded-md overflow-hidden">
           <Image
             src={blog.image}
             alt="LOGO_IMG"
             layout="fill"
-            objectFit="full"
+            objectFit="contain"
             className="rounded-md"
           />
         </div>
