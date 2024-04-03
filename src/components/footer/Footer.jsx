@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 function Footer() {
     return (
@@ -32,17 +32,17 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-[20px] mr-4">
             <h3 className="text-white font-bold uppercase">follow us</h3>
-            <div class="flex space-x-4">
-              <Link to="https://www.facebook.com/LEGO/" class="text-white hover:text-gray-400">
+            <div className="flex space-x-4">
+              <Link href="https://www.facebook.com/LEGO/" className="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faFacebook} className="w-8 h-8" />
               </Link>
-              <Link to="https://twitter.com/LEGO_Group" class="text-white hover:text-gray-400">
+              <Link href="https://twitter.com/LEGO_Group" className="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faTwitter} className="w-8 h-8" />
               </Link>
-              <Link to="https://www.instagram.com/lego" class="text-white hover:text-gray-400">
+              <Link href="https://www.instagram.com/lego" className="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faInstagram} className="w-8 h-8" />
               </Link>
-              <Link href="https://www.youtube.com/user/LEGO?app=desktop" class="text-white hover:text-gray-400">
+              <Link href="https://www.youtube.com/user/LEGO?app=desktop" className="text-white hover:text-gray-400">
                 <FontAwesomeIcon icon={faYoutube} className="w-8 h-8" />
               </Link>
             </div>
@@ -50,10 +50,10 @@ function Footer() {
           </div>
           <div className="flex">
               <ul className="flex gap-4">
-                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/legal/notices-and-policies/privacy-policy">Privacy Policy</Link></li>
-                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/cookie-policy">Cookies</Link></li>
-                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/legal/notices-and-policies/legal-notice">Terms of Use</Link></li>
-                  <li className="text-white text-xs"><Link to="https://www.lego.com/en-us/page/accessibility">Accessibility</Link></li>
+                  <li className="text-white text-xs"><Link href="https://www.lego.com/en-us/legal/notices-and-policies/privacy-policy">Privacy Policy</Link></li>
+                  <li className="text-white text-xs"><Link href="https://www.lego.com/en-us/cookie-policy">Cookies</Link></li>
+                  <li className="text-white text-xs"><Link href="https://www.lego.com/en-us/legal/notices-and-policies/legal-notice">Terms of Use</Link></li>
+                  <li className="text-white text-xs"><Link href="https://www.lego.com/en-us/page/accessibility">Accessibility</Link></li>
               </ul>
           </div>
           <div>

@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import Products from "../../data/ProductsData";
 import Card from "./Card";
