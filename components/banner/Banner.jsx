@@ -16,7 +16,7 @@ function Banner() {
     <section className="w-full h-[500px]" style={sectionStyle}>
       <div className="p-[120px] flex flex-col gap-[22px]">
       <Image src={SuperMarioLogo} alt="superMario" width={100} height={100} />
-        <h1 className="text-[32px] font-semibold">March 10th is "MAR10 Day"</h1>
+        <h1 className="text-[32px] font-semibold">March 10th is MAR10 Day</h1>
         <div className="w-[380px] text-[18px] font-medium">
           Check out our offers and get Double Points on LEGO® Super Mario™ sets,
           3/4-3/11.*

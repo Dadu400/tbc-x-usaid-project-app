@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 function Card({ imageSrc, productName, price }) {
     return (
         <div className="flex flex-col gap-5 rounded-lg shadow-md p-2">
             <div className="p-3 flex items-center justify-center">
-                <img src={imageSrc} alt="product" className="w-54 h-48" />
+                <Image width={200} height={200} src={imageSrc} alt="product" className="w-54 h-48" />
             </div>
             <div className="flex flex-col items-start gap-4">
                 <h3 className="text-black cursor-pointer font-medium text-base leading-6">{productName}</h3>
