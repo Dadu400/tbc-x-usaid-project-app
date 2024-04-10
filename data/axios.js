@@ -10,10 +10,10 @@ export const fetchProducts = async () => {
     }
 }
 
-export const fetchRecipes = async () => {
+export const fetchBlogs = async () => {
     try {
-        const response = await axios.get(requests.fetchRecipes);
-        return response.data.products;
+        const response = await axios.get(requests.fetchPosts);
+        return response.data.posts;
     } catch (error) {
         console.error("Error fetching data:", error)
     }
