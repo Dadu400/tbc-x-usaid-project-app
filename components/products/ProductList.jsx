@@ -1,15 +1,30 @@
 "use client"
 
-import { useState } from "react";
-import Products from "../../data/ProductsData";
+import { useState, useEffect } from "react";
 import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import SearchInput from "./SearchInput";
+import { fetchProducts } from "@/data/axios";
 
 function ProductList() {
-  const [sortedProducts, setSortedProducts] = useState([...Products]);
+  const [originalProducts, setOriginalProducts] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState([]);
   const [ascendingOrder, setAscendingOrder] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchProducts(); 
+        setOriginalProducts(response);
+        setSortedProducts(response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const debounce = (cb, delay) => {
     let timeout;
@@ -21,8 +36,8 @@ function ProductList() {
   };
 
   const handleSearch = (value) => {
-    const filteredProducts = Products.filter((product) =>
-      product.name.toLowerCase().includes(value.toLowerCase())
+    const filteredProducts = originalProducts.filter((product) =>
+      product.title.toLowerCase().includes(value.toLowerCase())
     );
     setSortedProducts(filteredProducts);
   };
@@ -59,14 +74,15 @@ function ProductList() {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-6 mt-10">
-        {sortedProducts.map((product) => (
+        {sortedProducts?.map((product) => {
+          return(
           <Card
             key={product.id}
-            imageSrc={product.imageSrc}
-            productName={product.name}
+            imageSrc={product.images[0]} 
+            productName={product.title}
             price={product.price}
           />
-        ))}
+        )})}
       </div>
     </section>
   );
