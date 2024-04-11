@@ -1,0 +1,53 @@
+import { getSingleProduct } from "@/app/helpers/axiosProduct";
+import Image from "next/image";
+
+export default async function singleProduct({ params }) {
+  const idString = params?.id;
+  const id = Number(idString);
+  const product = await getSingleProduct(id);
+
+  return (
+    <section className="w-full ">
+      <div className="w-full min-h-[440px] flex items-center justify-center gap-6 py-10 px-8 shadow-xl rounded-xl">
+        <div className="flex justify-center w-2/4">
+          <Image
+            src={product.images[0]}
+            alt="product image"
+            width={48}
+            height={48}
+            className="h-48 w-48 object-cover rounded-lg shadow-lg"
+          />
+        </div>
+        <div className="w-2/4">
+          <p className="text-xl md:text-2xl font-bold text-gray-900">
+            {product.title}
+          </p>
+          <p className="text-lg text-gray-700">
+            <span className="font-semibold">Brand:</span> {product.brand}
+          </p>
+          <p className="text-md text-gray-600 mt-4">
+            <span className="font-semibold">Description:</span>{" "}
+            {product.description}
+          </p>
+          <p className="text-md text-gray-600">
+            <span className="font-semibold">Category:</span> {product.category}
+          </p>
+          <p className="text-md text-gray-600">
+            <span className="font-semibold">Stock:</span>{" "}
+            {product.stock > 0 ? "In stock" : "Out of stock"}
+          </p>
+          <p className="text-2xl text-gray-900 font-semibold mt-4">
+            <span className="font-semibold">Price:</span> ${product.price}
+          </p>
+          <p className="text-md text-yellow-500 mt-2">
+            {" "}
+            <span className="font-semibold">Rating:</span>
+            {Array(Math.max(0, Math.min(5, Math.floor(product.rating || 0))))
+              .fill()
+              .map((_, i) => "⭐")}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

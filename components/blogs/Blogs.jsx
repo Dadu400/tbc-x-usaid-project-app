@@ -1,33 +1,28 @@
-"use client"
-
-import { useState, useEffect } from "react";
-import { fetchBlogs } from "@/data/axios";
 import Blog from "./Blog";
+import axios from "axios";
 
-function Blogs() {
-  const [fetchedBlogs, setfetchedBlogs] = useState([]);
+const getData = async () => {
+  try {
+    const res = await axios.get("https://dummyjson.com/posts");
+    return res.data.posts;
+  } catch (error) {
+    throw new Error("Failed to fetch data: ", error.message);
+  }
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchBlogs(); 
-        setfetchedBlogs(response);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+export default async function Blogs() {
+  const fetchedBlogs = await getData();
 
   return (
     <main>
       <section className="w-full px-4 md:px-12 py-12 flex justify-center mb-4">
         <div className="max-w-8xl">
-          <h1 className="text-xl md:text-2xl lg:text-3xl text-start mb-8">Bringing LEGO Dreams to Life: Explore Our Latest Posts</h1>
+          <h1 className="text-xl md:text-2xl lg:text-3xl text-start mb-8">
+            Bringing LEGO Dreams to Life: Explore Our Latest Posts
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {fetchedBlogs.map((blog, id) => (
-              <Blog key={id} blog={blog} />
+            {fetchedBlogs.map((blog) => (
+              <Blog key={blog.id} blog={blog} />
             ))}
           </div>
         </div>
@@ -35,5 +30,3 @@ function Blogs() {
     </main>
   );
 }
-
-export default Blogs;
