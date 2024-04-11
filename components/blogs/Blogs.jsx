@@ -2,6 +2,9 @@ import Blog from "./Blog";
 import axios from "axios";
 
 const getData = async () => {
+  // imitate delay 
+  await new Promise(resolve => setTimeout(resolve, 3000));
+  
   try {
     const res = await axios.get("https://dummyjson.com/posts");
     return res.data.posts;
