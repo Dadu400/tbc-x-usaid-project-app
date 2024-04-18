@@ -1,12 +1,13 @@
+import DashboardLayout from "@/app/(dashboard)/DashboardLayout";
 import Image from "next/image";
-import ContactForm from "../../components/contactUs/ContactForm";
-import ContactInfo from "../../components/contactUs/ContactInfo";
-import LegoEcho from "../../components/icons/LegoEcho.png";
-import LegoEchoSophia from "../../components/icons/LegoEchoSophia.png";
+import ContactForm from "../../../components/contactUs/ContactForm";
+import ContactInfo from "../../../components/contactUs/ContactInfo";
+import LegoEcho from "@/components/icons/LegoEcho.png";
+import LegoEchoSophia from "@/components/icons/LegoEchoSophia.png";
 
 function Contacts() {
   return (
-    <>
+    <DashboardLayout>
       <ContactInfo />
       <section className="w-full bg-[#78BFEA] min-h-[400px]">
         <div className="flex justify-center items-center">
@@ -27,7 +28,7 @@ function Contacts() {
           <ContactForm />
         </div>
       </section>
-    </>
+    </DashboardLayout>
   );
 }
 
