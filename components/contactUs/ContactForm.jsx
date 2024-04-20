@@ -27,18 +27,22 @@ function ContactForm() {
             />
           </div>
           <div className="mb-3">
-            <input
-              onkeydown="return false"
-              onwheel="return false"
-              type="number"
-              placeholder="Mobile"
-              className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none appearance-none"
-              style={{
-                WebkitAppearance: "none",
-                MozAppearance: "textfield",
-              }}
-              required
-            />
+          <input
+  onKeyDown={(e) => {
+ e.preventDefault();
+  }}
+  onWheel={(e) => {
+    e.preventDefault();
+  }}
+  type="number"
+  placeholder="Mobile"
+  className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none appearance-none"
+  style={{
+    WebkitAppearance: "none",
+    MozAppearance: "textfield",
+  }}
+  required
+/>
           </div>
           <div className="mb-6">
             <textarea
