@@ -2,7 +2,7 @@ import DashboardLayout from "@/app/(dashboard)/DashboardLayout";
 import Banner from "@/components/banner/Banner";
 import ProductList from "@/components/products/ProductList";
 
-const IndexPage = () => {
+const HomePage = () => {
   return (
     <DashboardLayout>
       <Banner />
@@ -11,4 +11,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default HomePage;

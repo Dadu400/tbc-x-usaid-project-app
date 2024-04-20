@@ -27,7 +27,7 @@ async function Header() {
         <nav>
           <ul className="flex items-center gap-4">
             <li className="uppercase font-bold text-base">
-              <Link href="/home">home</Link>
+              <Link href="/">home</Link>
             </li>
             <li className="uppercase font-bold text-base">
               <Link href="/blogs">blogs</Link>

@@ -12,11 +12,10 @@ function LoginForm({ handleLogin }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-8 bg-white rounded shadow-md">
+      <div className="p-8 bg-white rounded shadow-md dark:bg-black">
         <form autoComplete='off' className="flex flex-col space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-white">
               Email
             </label>
             <input
@@ -30,7 +29,7 @@ function LoginForm({ handleLogin }) {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-white">
               Password
             </label>
             <input
@@ -51,7 +50,6 @@ function LoginForm({ handleLogin }) {
           </button>
         </form>
       </div>
-    </div>
   );
 }
 
