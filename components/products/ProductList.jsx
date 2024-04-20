@@ -64,9 +64,9 @@ function ProductList() {
   }
 
   return (
-    <section className="w-full px-16 py-16 min-h-[400px]">
+    <section className="w-full px-16 py-16 min-h-[400px] dark:bg-black">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl leading-relaxed text-gray-700">
+        <h2 className="text-2xl leading-relaxed text-gray-700 dark:text-white">
           Featured sets
         </h2>
         <div className="flex gap-2">

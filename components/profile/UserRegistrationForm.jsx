@@ -50,12 +50,12 @@ const UserRegistrationForm = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col w-[40%] p-8 bg-white shadow-lg rounded-lg gap-2"
+        className="flex flex-col w-[40%] p-8 bg-white dark:bg-stone-900 shadow-lg rounded-lg gap-2"
       >
-        <label htmlFor="userName">Current Username:</label>
+        <label htmlFor="userName" className="dark:text-white">Current Username:</label>
         <input
           type="text"
           name="userName"
@@ -66,7 +66,7 @@ const UserRegistrationForm = () => {
           required
         />
 
-        <label htmlFor="surname">Current Surname:</label>
+        <label htmlFor="surname" className="dark:text-white">Current Surname:</label>
         <input
           type="text"
           name="surname"
@@ -77,7 +77,7 @@ const UserRegistrationForm = () => {
           required
         />
 
-        <label htmlFor="password">Email:</label>
+        <label htmlFor="password" className="dark:text-white">Email:</label>
         <input
           type="email"
           name="email"
@@ -90,7 +90,7 @@ const UserRegistrationForm = () => {
 
         {errors.email && <p className="text-red-500">{errors.email}</p>}
 
-        <label htmlFor="password">Create new password:</label>
+        <label htmlFor="password" className="dark:text-white">Create new password:</label>
         <input
           type="password"
           name="password"
@@ -101,7 +101,7 @@ const UserRegistrationForm = () => {
           required
         />
 
-        <label htmlFor="confirmPassword">Confirm new Password:</label>
+        <label htmlFor="confirmPassword" className="dark:text-white">Confirm new Password:</label>
         <input
           type="password"
           name="confirmPassword"
@@ -117,12 +117,11 @@ const UserRegistrationForm = () => {
 
         <button
           type="submit"
-          className="mt-4 inline-flex justify-center py-3 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white bg-[#FD8024] hover:bg-transparent hover:text-[#FD8024] focus:outline-none transition duration-150 ease-in-out"
+          className="mt-4 inline-flex justify-center py-3 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white bg-[#FD8024] dark:hover:bg-yellow-200 hover:bg-transparent hover:text-[#FD8024] focus:outline-none transition duration-150 ease-in-out"
         >
           Register
         </button>
       </form>
-    </div>
   );
 };
 
