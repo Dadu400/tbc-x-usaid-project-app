@@ -18,7 +18,7 @@ function Card({ id, imageSrc, productName, price }) {
           {productName}
         </h3>
         <p className="font-bold text-lg leading-7">$ {price}</p>
-        <Link href={`/singleproduct/${id}`}>
+        <Link href={`/home/singleproduct/${id}`}>
           <button className="w-full inline-flex items-center justify-center bg-[#FD8024] border border-solid border-[#FD8024] rounded-sm px-4 py-3 font-medium text-lg leading-6 hover:bg-white transition-colors duration-300 ease-in-out">
             Add to Bag
           </button>
