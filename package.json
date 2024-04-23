@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.6.8",
+    "negotiator": "^0.6.3",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"
