@@ -5,7 +5,7 @@ import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import SearchInput from "./SearchInput";
-import Loading from "@/app/loading"; 
+import Loading from "@/app/[lang]/loading";
 
 const getData = async () => {
   await new Promise((resolve) => setTimeout(resolve, 3000)); // Imitate delay
