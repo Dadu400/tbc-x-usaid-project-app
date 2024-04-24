@@ -1,0 +1,52 @@
+{
+    "navigation": {
+        "home": "home",
+        "blogs": "blogs",
+        "profile": "profile",
+        "contactus": "contact Us"
+    },
+    "ContactInfo": {
+        "header": "Get in touch with a LEGO expert",
+        "callUs": "Call us",
+        "customerServiceEnglish": "LEGO® Customer Service in English",
+        "numberEnglish": "1-844-903-5346",
+        "hoursWeekdaysEnglish": "Monday to Friday 8am - 10pm ET",
+        "hoursWeekendEnglish": "Saturday to Sunday 10am - 6pm ET",
+        "customerServiceSpanish": "LEGO® Customer Service in Spanish",
+        "numberSpanish": "1-833-692-5346",
+        "hoursWeekdaysSpanish": "Monday to Friday 8am - 10pm ET",
+        "techSupport": "LEGO® Education Tech Support",
+        "numberTechSupport": "1-866-349-5346",
+        "hoursWeekdaysTechSupport": "Monday to Friday 8am - 10pm ET",
+        "note": "Our free number might be blocked by some providers. You may be charged when calling from a mobile phone. Please contact your provider for more details.",
+        "WriteUs": "Write to us",
+        "customerServiceHeader": "LEGO® Customer Service",
+        "addressLine1": "PO Box 1138",
+        "addressCity": "Enfield",
+        "addressStateZip": "CT 06083-1138",
+        "addressCountry": "USA",
+        "contactus": "Contact Us",
+        "aboutSophia": "Sophia can help you with lots of topics"
+    },
+    "ContactForm": {
+        "namePlaceholder": "Name",
+        "surnamePlaceholder": "Surname",
+        "emailPlaceholder": "Email",
+        "mobilePlaceholder": "Mobile",
+        "problemPlaceholder": "Write your problem",
+        "sendButton": "Send"
+    },
+    "Footer": {
+        "subscribeHeader": "Subscribe to LEGO shop emails",
+        "emailPlaceholder": "Your email address",
+        "followUsHeader": "Follow us",
+        "privacyPolicy": "Privacy Policy",
+        "cookies": "Cookies",
+        "termsOfUse": "Terms of Use",
+        "accessibility": "Accessibility",
+        "legalDisclaimer": "LEGO System A/S, DK-7190 Billund, Denmark. Must be 18 years or older to purchase online. LEGO and the LEGO logo are trademarks of the LEGO Group. ©2024 The LEGO Group. All rights reserved. Use of this site signifies your agreement to the terms of use."
+    },
+        "Blogs": {
+          "header": "Bringing LEGO Dreams to Life: Explore Our Latest Posts"
+        } 
+}

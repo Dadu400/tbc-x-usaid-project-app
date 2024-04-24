@@ -1,0 +1,52 @@
+{
+    "navigation": {
+        "home": "მთავარი",
+        "blogs": "ბლოგები",
+        "profile": "პროფილი",
+        "contactus": "დაგვიკავშირდით"
+    },
+    "ContactInfo": {
+        "header": "დაუკავშირდით ლეგოს ექსპერტს",
+        "callUs": "დაგვირეკეთ",
+        "customerServiceEnglish": "LEGO® მომსახურების სერვისი ინგლისურ ენაზე",
+        "numberEnglish": "1-844-903-5346",
+        "hoursWeekdaysEnglish": "ორშაბათი-პარასკევი 8am - 10pm",
+        "hoursWeekendEnglish": "შაბათ-კვირა 10am - 6pm",
+        "customerServiceSpanish": "LEGO® მომსახურების სერვისი ქართულ ენაზე",
+        "numberSpanish": "1-833-692-5346",
+        "hoursWeekdaysSpanish": "ორშაბათი-პარასკევი 8am - 10pm",
+        "techSupport": "LEGO® ტექნიკური მხარდაჟერა",
+        "numberTechSupport": "1-866-349-5346",
+        "hoursWeekdaysTechSupport": "ორშაბათი-პარასკევი 8am - 10pm",
+        "note": "ჩვენი უფასო ნომერი შესაძლოა დაბლოკოს ზოგიერთმა პროვაიდერმა. შესაძლოა გადასახადი ჩამოგეჭრათ მობილური ტელეფონიდან დარეკვისას. გთხოვთ, დაუკავშირდეთ თქვენს პროვაიდერს დამატებითი ინფორმაციისთვის",
+        "WriteUs": "მოგვწერეთ",
+        "customerServiceHeader": "LEGO® მომსახურების სერვისი",
+        "addressLine1": "PO Box 1138",
+        "addressCity": "Enfield",
+        "addressStateZip": "CT 06083-1138",
+        "addressCountry": "USA",
+        "contactus": "დაგვიკავშირდით",
+        "aboutSophia": "სოფიას შეუძლია დაგეხმაროთ ბევრ საკითხში"
+    },
+    "ContactForm": {
+        "namePlaceholder": "სახელი",
+        "surnamePlaceholder": "გვარი",
+        "emailPlaceholder": "მეილი",
+        "mobilePlaceholder": "მობილურის ნომერი",
+        "problemPlaceholder": "გაგვიზიარეთ თქვენი პრობლემა",
+        "sendButton": "გაგზავნა"
+    },
+    "Footer": {
+        "subscribeHeader": "გამოიწერეთ LEGO მაღაზიის მეილი",
+        "emailPlaceholder": "ჩაწერეთ თქვენი მეილი",
+        "followUsHeader": "გამოგვყევით",
+        "privacyPolicy": "უსაფრთხოების პოლიტიკა",
+        "cookies": "ქუქიები",
+        "termsOfUse": "წესები და პირობები",
+        "accessibility": "ხელმისაწვდომობა",
+        "legalDisclaimer": "LEGO სისტემა A/S, DK-7190 ბილუნდი, დანია. ონლაინ შეძენისთვის აუცილებელია იყოთ 18 წელზე მეტის. LEGO და LEGO ლოგო არის ლეგო ჯგუფის სავაჭრო ნიშანი. ©2024 ლეგო ჯგუფი. ყველა უფლება დაცულია. საიტის გამოყენებისას აუცილებელია დაეთანხმოთ გარკვეულ წესებს."
+    },
+    "Blogs": {
+        "header": "LEGO ოცნებების ასრულება: გაეცანით ლოგოს უახლოეს ბლოგ-პოსტებს"
+      } 
+}

@@ -5,10 +5,8 @@ import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import SearchInput from "./SearchInput";
-import Loading from "@/app/[lang]/loading";
 
 const getData = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 3000)); // Imitate delay
   try {
     const res = await axios.get("https://dummyjson.com/products/category/groceries");
     return res.data.products;
@@ -25,11 +23,9 @@ function ProductList() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true); // Start loading
       const products = await getData();
       setOriginalProducts(products);
       setSortedProducts(products);
-      setLoading(false); // Finish loading
     };
     fetchProducts();
   }, []);
@@ -58,10 +54,6 @@ function ProductList() {
     setSortedProducts(sorted);
     setAscendingOrder(!ascendingOrder);
   };
-
-  if (loading) {
-    return <Loading />
-  }
 
   return (
     <section className="w-full px-16 py-16 min-h-[400px] dark:bg-black">

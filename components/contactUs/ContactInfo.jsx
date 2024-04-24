@@ -1,42 +1,56 @@
+import { useTranslations } from "next-intl";
+
 function ContactInfo() {
+  const t = useTranslations("ContactInfo");
+
   return (
     <section className="flex flex-col gap-[20px] w-full px-16 py-10 dark:bg-black">
       <h1 className="text-[32px] font-bold self-center mb-10 dark:text-white">
-        Get in touch with a LEGO expert
+        {t("header")}
       </h1>
       <div className="flex">
         <div className="flex flex-1 flex-col gap-[10px] border-r-2 pl-16">
-          <h2 className="text-[22px] font-bold dark:text-white">Call us</h2>
+          <h2 className="text-[22px] font-bold dark:text-white">
+            {t("callUs")}
+          </h2>
           <div className="flex flex-col gap-[6px]">
-            <h6 className="text-[18px] dark:text-white">LEGO® Customer Service in English</h6>
-            <p className="underline text-cyan-600 cursor-pointer dark:text-white">1-844-903-5346</p>
-            <p className="text-[18px] dark:text-white">Monday to Friday 8am - 10pm ET</p>
-            <p className="text-[18px] dark:text-white">Saturday to Sunday 10am - 6pm ET</p>
+            <h6 className="text-[18px] dark:text-white">
+              {t("customerServiceEnglish")}
+            </h6>
+            <p className="underline text-cyan-600 cursor-pointer dark:text-white">
+              {t("numberEnglish")}
+            </p>
+            <p className="text-[18px] dark:text-white">{t("hoursWeekdaysEnglish")}</p>
+            <p className="text-[18px] dark:text-white">{t("hoursWeekendEnglish")}</p>
           </div>
           <div className="flex flex-col gap-[6px]">
-            <h6 className="text-[18px] dark:text-white">LEGO® Customer Service in Spanish</h6>
-            <p className="underline text-cyan-600 cursor-pointer">1-833-692-5346</p>
-            <p className="text-[18px] dark:text-white">Monday to Friday 8am - 10pm ET</p>
+            <h6 className="text-[18px] dark:text-white">
+              {t("customerServiceSpanish")}
+            </h6>
+            <p className="underline text-cyan-600 cursor-pointer">
+              {t("numberSpanish")}
+            </p>
+            <p className="text-[18px] dark:text-white">{t("hoursWeekdaysSpanish")}</p>
           </div>
           <div className="flex flex-col gap-[6px]">
-            <h6 className="text-[18px] dark:text-white">LEGO® Education Tech Support</h6>
-            <p className="underline text-cyan-600 cursor-pointer">1-866-349-5346</p>
-            <p className="text-[18px] dark:text-white">Monday to Friday 8am - 10pm ET</p>
+            <h6 className="text-[18px] dark:text-white">{t("techSupport")}</h6>
+            <p className="underline text-cyan-600 cursor-pointer">
+              {t("numberTechSupport")}
+            </p>
+            <p className="text-[18px] dark:text-white">{t("hoursWeekdaysTechSupport")}</p>
           </div>
           <p className="text-[18px] w-4/5 dark:text-white">
-            Our free number might be blocked by some providers. You may be
-            charged when calling from a mobile phone. Please contact your
-            provider for more details.
+          {t("note")}
           </p>
         </div>
         <div className="flex flex-1 flex-col gap-[6px] pl-16">
-          <h2 className="text-[22px] font-bold dark:text-white">Write to us</h2>
+        <h2 className="text-[22px] font-bold dark:text-white">{t('WriteUs')}</h2>
           <div className="flex flex-col gap-[4px]">
-            <h6 className="text-[18px] dark:text-white">LEGO® Customer Service</h6>
-            <p className="text-[18px] dark:text-white">PO Box 1138</p>
-            <p className="text-[18px] dark:text-white">Enfield</p>
-            <p className="text-[18px] dark:text-white">CT 06083-1138</p>
-            <p className="text-[18px] dark:text-white">USA</p>
+          <h6 className="text-[18px] dark:text-white">{t('customerServiceHeader')}</h6>
+            <p className="text-[18px] dark:text-white">{t('addressLine1')}</p>
+            <p className="text-[18px] dark:text-white">{t('addressCity')}</p>
+            <p className="text-[18px] dark:text-white">{t('addressStateZip')}</p>
+            <p className="text-[18px] dark:text-white">{t('addressCountry')}</p>
           </div>
         </div>
       </div>
