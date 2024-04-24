@@ -18,7 +18,6 @@ function ThemeSwitcher() {
             window.localStorage.setItem("theme", "light")
             setDarkMode(false); 
         }
-        console.log("theme:", theme);
     }, []);
 
     const toggleDarkMode = () => {

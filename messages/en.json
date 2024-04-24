@@ -46,7 +46,32 @@
         "accessibility": "Accessibility",
         "legalDisclaimer": "LEGO System A/S, DK-7190 Billund, Denmark. Must be 18 years or older to purchase online. LEGO and the LEGO logo are trademarks of the LEGO Group. ©2024 The LEGO Group. All rights reserved. Use of this site signifies your agreement to the terms of use."
     },
-        "Blogs": {
-          "header": "Bringing LEGO Dreams to Life: Explore Our Latest Posts"
-        } 
+    "Blogs": {
+        "header": "Bringing LEGO Dreams to Life: Explore Our Latest Posts"
+    },
+    "Register": {
+        "formLabelUserName": "Current Username:",
+        "formLabelSurname": "Current Surname:",
+        "formLabelEmail": "Email:",
+        "formLabelCreatePassword": "Create new password:",
+        "formLabelConfirmPassword": "Confirm new Password:",
+        "inputPlaceholderUserName": "Enter your username",
+        "inputPlaceholderSurname": "Enter your surname",
+        "inputPlaceholderEmail": "Enter your email",
+        "inputPlaceholderPassword": "Create a password",
+        "inputPlaceholderConfirmPassword": "Confirm your password",
+        "buttonRegister": "Register",
+        "errorEmail": "Invalid email address",
+        "errorConfirmPassword": "Passwords do not match"
+    },
+    "Blog": {
+        "releaseDate": "Release Date",
+        "readMore": "Read More"
+    },
+    "Banner": {
+        "title": "Mario International Day",
+        "offerDetails": "Check out our offers and get Double Points on LEGO® Super Mario™ sets.*",
+        "shopNow": "Shop Now",
+        "becomeMember": "Become Member"
+    }
 }

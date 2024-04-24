@@ -4,11 +4,10 @@ import Link from "next/link";
 import LogoutButton from "./LogoutButton";
 import { Logout } from "@/app/actions";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 async function Header() {
-  const locale = useLocale();
   const t = await getTranslations("navigation")
   const handleLogout = async () => {
     "use server";
@@ -19,23 +18,26 @@ async function Header() {
     <header className="bg-yellow-400 w-full px-8 py-2">
       <div className="flex items-center justify-between">
         <div>
-          <Link href={`${locale}/home`}>
+          <Link href="/home">
             <Image src={LegoLogo} alt="LEGO logo" width={50} height={50} />
           </Link>
         </div>
         <nav>
           <ul className="flex items-center gap-4">
             <li className="uppercase font-bold text-base">
-              <Link href={`${locale}/home`}>{t("home")}</Link>
+              <Link href="/home">{t("home")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <Link href={`${locale}/blogs`}>{t("blogs")}</Link>
+              <Link href="/blogs">{t("blogs")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <Link href={`${locale}/profile`}>{t("profile")}</Link>
+              <Link href="/profile">{t("profile")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <Link href={`${locale}/contactUs`}>{t("contactus")}</Link>
+              <Link href="/contactUs">{t("contactus")}</Link>
+            </li>
+            <li className="uppercase font-bold text-base">
+              <LocaleSwitcher />
             </li>
             <li className="uppercase font-bold text-base">
              <ThemeSwitcher />

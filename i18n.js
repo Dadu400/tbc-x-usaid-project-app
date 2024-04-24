@@ -1,12 +1,12 @@
-const { notFound } = require('next/navigation');
-const { getRequestConfig } = require('next-intl/server');
+import { notFound } from "next/navigation";
+import { getRequestConfig } from "next-intl/server";
 
-const locales = ['en', 'ka'];
+const locales = ["en", "ka"];
 
-module.exports = getRequestConfig(async ({ locale }) => {
+export default getRequestConfig(async ({ locale }) => {
   if (!locales.includes(locale)) notFound();
 
   return {
-    messages: (await require(`./messages/${locale}.json`))
+    messages: await require(`./messages/${locale}.json`),
   };
 });

@@ -48,5 +48,30 @@
     },
     "Blogs": {
         "header": "LEGO ოცნებების ასრულება: გაეცანით ლოგოს უახლოეს ბლოგ-პოსტებს"
-      } 
+      },
+      "Register": {
+        "formLabelUserName": "არსებული სახელი:",
+        "formLabelSurname": "არსებული გვარი:",
+        "formLabelEmail": "მეილი:",
+        "formLabelCreatePassword": "ახალი პაროლი:",
+        "formLabelConfirmPassword": "დაადასტურეთ პაროლი:",
+        "inputPlaceholderUserName": "ჩაწერეთ სახელი",
+        "inputPlaceholderSurname": "ჩაწერეთ გვარი",
+        "inputPlaceholderEmail": "ჩაწერეთ მეილი",
+        "inputPlaceholderPassword": "შექმენით პაროლი",
+        "inputPlaceholderConfirmPassword": "დაადასტურეთ პაროლი",
+        "buttonRegister": "დარეგისტრირება",
+        "errorEmail": "არასწორი პაროლი",
+        "errorConfirmPassword": "პაროლი არ ემთხვევა ერთმანეთს"
+    },
+    "Blog": {
+        "releaseDate": "გამოშვების თარიღი",
+        "readMore": "წაიკითხე მეტი"
+    },
+    "Banner": {
+        "title": "მარიოს საერთაშორისო დღე",
+        "offerDetails": "შეამოწმეთ ჩვენი შეთავაზებები და მიიღეთ ორმაგი ქულები LEGO® Super Mario™ კომპლექტებზე*",
+        "shopNow": "იშოპინგე",
+        "becomeMember": "გახდი კლუბის წევრი"
+    }
 }
