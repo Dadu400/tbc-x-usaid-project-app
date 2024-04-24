@@ -1,7 +1,7 @@
 import { getSingleProduct } from "@/app/helpers/axiosProduct";
 import Image from "next/image";
 import axios from "axios";
-import DashboardLayout from "@/app/(dashboard)/DashboardLayout";
+import DashboardLayout from "../../../DashboardLayout";
 
 export async function generateStaticParams() {
   const res = await axios.get("https://dummyjson.com/products/category/groceries");
