@@ -73,5 +73,10 @@
         "offerDetails": "შეამოწმეთ ჩვენი შეთავაზებები და მიიღეთ ორმაგი ქულები LEGO® Super Mario™ კომპლექტებზე*",
         "shopNow": "იშოპინგე",
         "becomeMember": "გახდი კლუბის წევრი"
+    },
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, ka {🇬🇪} en {🇺🇸} other {Unknown}}"
     }
+    
 }
