@@ -1,26 +1,18 @@
-"use client"
-import { useRouter } from "next/navigation";
-import { useTransition } from "react";
-import { useLocale } from "next-intl";
+import {useLocale, useTranslations} from 'next-intl';
+import LocaleSwitcherSelect from './LocaleSwitcherSelect';
+import {locales} from '@/config';
 
 export default function LocaleSwitcher() {
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
-  const localActive = useLocale();
-
-  const onSelectChange = (e) => {
-    const nextLocal = e.target.value;
-    startTransition(() => {
-      router.replace(`/${nextLocal}`)
-    })
-  };
+  const t = useTranslations('LocaleSwitcher');
+  const locale = useLocale();
 
   return (
-    <label className="border-2 rounded">
-        <select defaultValue={localActive} onChange={onSelectChange} disabled={isPending}>
-            <option value="en">ENG</option>
-            <option value="ka">GEO</option>
-        </select>
-    </label>
+    <LocaleSwitcherSelect defaultValue={locale} label={t('label')}>
+      {locales.map((cur) => (
+        <option key={cur} value={cur}>
+          {t('locale', {locale: cur})}
+        </option>
+      ))}
+    </LocaleSwitcherSelect>
   );
 }

@@ -37,10 +37,10 @@ async function Header() {
               <Link href="/contactUs">{t("contactus")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <LocaleSwitcher />
+             <ThemeSwitcher />
             </li>
             <li className="uppercase font-bold text-base">
-             <ThemeSwitcher />
+              <LocaleSwitcher />
             </li>
             <li className="uppercase font-bold text-base">
              <LogoutButton handleLogout={handleLogout} />

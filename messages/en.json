@@ -73,5 +73,9 @@
         "offerDetails": "Check out our offers and get Double Points on LEGO® Super Mario™ sets.*",
         "shopNow": "Shop Now",
         "becomeMember": "Become Member"
+    },
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, ka {🇬🇪} en {🇺🇸} other {Unknown}}"
     }
 }
