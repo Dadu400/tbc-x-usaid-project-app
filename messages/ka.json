@@ -78,5 +78,4 @@
         "label": "Change language",
         "locale": "{locale, select, ka {🇬🇪} en {🇺🇸} other {Unknown}}"
     }
-    
 }
