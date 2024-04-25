@@ -1,20 +1,18 @@
-import React from "react";
 import Image from "next/image";
 import LegoLogo from "../icons/LEGO_logo.png";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
 import { Logout } from "@/app/actions";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { getTranslations } from "next-intl/server";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 async function Header() {
+  const t = await getTranslations("navigation")
   const handleLogout = async () => {
     "use server";
     await Logout()
   }
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-}
 
   return (
     <header className="bg-yellow-400 w-full px-8 py-2">
@@ -27,16 +25,19 @@ async function Header() {
         <nav>
           <ul className="flex items-center gap-4">
             <li className="uppercase font-bold text-base">
-              <Link href="/">home</Link>
+              <Link href="/home">{t("home")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <Link href="/blogs">blogs</Link>
+              <Link href="/blogs">{t("blogs")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <Link href="/profile">profile</Link>
+              <Link href="/profile">{t("profile")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
-              <Link href="/contactUs">contact us</Link>
+              <Link href="/contactUs">{t("contactus")}</Link>
+            </li>
+            <li className="uppercase font-bold text-base">
+              <LocaleSwitcher />
             </li>
             <li className="uppercase font-bold text-base">
              <ThemeSwitcher />

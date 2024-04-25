@@ -1,4 +1,4 @@
-import DashboardLayout from "@/app/(dashboard)/DashboardLayout";
+import DashboardLayout from "../DashboardLayout";
 import Banner from "@/components/banner/Banner";
 import ProductList from "@/components/products/ProductList";
 

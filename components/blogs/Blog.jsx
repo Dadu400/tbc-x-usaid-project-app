@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import LegoEcho from "@/components/icons/LegoEcho.png";
+import { useTranslations } from 'next-intl';
 
 function Blog({ blog }) {
+  const t = useTranslations("Blog");
   return (
     <article className="bg-white dark:bg-blue-950 rounded-lg shadow-md p-4 flex flex-col justify-between items-start w-[350px] cursor-pointer">
       <div className="flex flex-col items-start gap-1">
@@ -26,11 +28,11 @@ function Blog({ blog }) {
       </div>
       <div className="flex flex-col">
         <span className="text-gray-500 dark:text-gray-300 mb-4 text-sm">
-          Release date: 15/06/2021{" "}
+        {t('releaseDate')} 15/06/2021{" "}
         </span>
         <Link href={`/blogs/${blog.id}`}>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-auto">
-            Read More
+          {t('readMore')}
           </button>
         </Link>
       </div>
