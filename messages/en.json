@@ -77,5 +77,13 @@
     "LocaleSwitcher": {
         "label": "Change language",
         "locale": "{locale, select, ka {🇬🇪} en {🇺🇸} other {Unknown}}"
+    },
+    "singleProduct": {
+        "brand": "Brand",
+        "description": "Description",
+        "category": "Category",
+        "stock": "Stock",
+        "price": "Price",
+        "rating": "Rating"
     }
 }

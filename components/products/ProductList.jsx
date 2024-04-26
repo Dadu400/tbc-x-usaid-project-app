@@ -5,6 +5,7 @@ import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import SearchInput from "./SearchInput";
+import { useLocale } from "next-intl";
 
 const getData = async () => {
   try {
@@ -19,7 +20,7 @@ function ProductList() {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [ascendingOrder, setAscendingOrder] = useState(true);
-  const [loading, setLoading] = useState(true); // New loading state
+  const locale = useLocale();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -59,7 +60,7 @@ function ProductList() {
     <section className="w-full px-16 py-16 min-h-[400px] dark:bg-black">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl leading-relaxed text-gray-700 dark:text-white">
-          Featured sets
+          {locale == "en" ? "Featured sets" : "გამორჩეული კოლექცია"}
         </h2>
         <div className="flex gap-2">
           <SearchInput onChange={handleSearchChange} />
@@ -70,7 +71,7 @@ function ProductList() {
             aria-label="Sort products by Price"
           >
             <FontAwesomeIcon icon={faSort} />
-            sort
+            {locale == "en" ? "sort" : "სორტირება"}
           </button>
         </div>
       </div>

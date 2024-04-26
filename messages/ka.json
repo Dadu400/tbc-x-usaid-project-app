@@ -77,6 +77,13 @@
     "LocaleSwitcher": {
         "label": "Change language",
         "locale": "{locale, select, ka {🇬🇪} en {🇺🇸} other {Unknown}}"
+    },
+    "singleProduct": {
+        "brand": "ბრენდი",
+        "description": "აღწერა",
+        "category": "კატეგორია",
+        "stock": "მარაგშია",
+        "price": "ფასი",
+        "rating": "რეიტინგი"
     }
-    
 }
