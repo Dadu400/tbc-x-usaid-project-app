@@ -3,6 +3,7 @@ import Image from "next/image";
 import axios from "axios";
 import DashboardLayout from "../../../DashboardLayout";
 import { getTranslations } from "next-intl/server";
+import {unstable_setRequestLocale} from 'next-intl/server';
 
 export async function generateStaticParams() {
   const res = await axios.get("https://dummyjson.com/products/category/groceries");
@@ -12,6 +13,7 @@ export async function generateStaticParams() {
 }
 
 export default async function singleProduct({ params }) {
+  unstable_setRequestLocale(params.locale);
   const t = await getTranslations("singleProduct")
   const idString = params?.id;
   const id = Number(idString);
