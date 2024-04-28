@@ -8,6 +8,13 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 interface Product {
   id: number;
   locale: string;
+  title: string;
+  description: string;
+  brand: string;
+  category: string;
+  price: number;
+  stock: number;
+  rating: number;
 }
 
 export async function generateStaticParams() {

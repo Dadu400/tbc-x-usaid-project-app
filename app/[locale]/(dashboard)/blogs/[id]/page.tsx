@@ -8,6 +8,7 @@ interface Post {
   title: string;
   tags: string[];
   id: string | number;
+  body: string;
 }
 
 interface Params {
@@ -48,7 +49,7 @@ export default async function BlogsIdPage({ params }: { params: Params }) {
           <div className="pt-4">
             <h2 className="text-gray-800 font-semibold text-xl mb-3">Tags</h2>
             <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.map((tag: string, key: string) => (
+              {post.tags.map((tag: string, key: number) => (
                 <span
                   className="bg-gray-200 text-gray-700 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full cursor-pointer dark:text-black"
                   key={key}
