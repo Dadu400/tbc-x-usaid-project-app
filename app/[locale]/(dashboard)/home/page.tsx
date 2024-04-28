@@ -1,6 +1,6 @@
 import DashboardLayout from "../DashboardLayout";
-import Banner from "@/components/banner/Banner";
-import ProductList from "@/components/products/ProductList";
+import Banner from "../../../../components/banner/Banner";
+import ProductList from "../../../../components/products/ProductList";
 
 const HomePage = () => {
   return (

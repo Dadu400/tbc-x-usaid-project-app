@@ -1,9 +1,9 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "@/contants";
+import { AUTH_COOKIE_KEY } from "../contants";
 
-export async function Login(username, password) {
+export async function Login(username: string, password: string) {
   "use server";
 
   const response = await fetch("https://dummyjson.com/auth/login", {

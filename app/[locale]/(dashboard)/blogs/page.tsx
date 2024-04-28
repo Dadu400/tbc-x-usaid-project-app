@@ -1,5 +1,5 @@
 import DashboardLayout from "../DashboardLayout";
-import Blogs from "@/components/blogs/Blogs";
+import Blogs from "../../../../components/blogs/Blogs";
 
 const BlogPage = () => {
   return (

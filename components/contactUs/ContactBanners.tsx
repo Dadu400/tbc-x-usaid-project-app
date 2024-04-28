@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ContactForm from "./ContactForm";
-import LegoEcho from "@/components/icons/LegoEcho.png";
-import LegoEchoSophia from "@/components/icons/LegoEchoSophia.png";
+import LegoEcho from "../../public/LegoEcho.png";
+import LegoEchoSophia from "../../public/LegoEchoSophia.png";
 import { useTranslations } from "next-intl";
 
 function ContactBanners() {

@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card";
@@ -11,14 +12,24 @@ const getData = async () => {
   try {
     const res = await axios.get("https://dummyjson.com/products/category/groceries");
     return res.data.products;
-  } catch (error) {
-    throw new Error(`Failed to fetch data: ${error.message}`);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to fetch data: ${error.message}`);
+    }
+    throw new Error("Failed to fetch data");
   }
-};
+}
+
+interface Product {
+  id: string | number;
+  images: string[];
+  title: string;
+  price: number;
+}
 
 function ProductList() {
-  const [originalProducts, setOriginalProducts] = useState([]);
-  const [sortedProducts, setSortedProducts] = useState([]);
+  const [originalProducts, setOriginalProducts] = useState<Product[]>([]);
+  const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [ascendingOrder, setAscendingOrder] = useState(true);
   const locale = useLocale();
 
@@ -31,15 +42,16 @@ function ProductList() {
     fetchProducts();
   }, []);
 
-  const debounce = (cb, delay) => {
-    let timeout;
-    return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => cb.apply(this, args), delay);
+  const debounce = (cb: (...args: any[]) => void, delay: number) => {
+    let timeout: NodeJS.Timeout | null;
+    return function (...args: any[]) {
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(() => cb(...args), delay);
     };
   };
 
-  const handleSearch = (value) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
     const filteredProducts = originalProducts.filter((product) =>
       product.title.toLowerCase().includes(value.toLowerCase())
     );

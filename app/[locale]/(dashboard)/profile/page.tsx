@@ -1,5 +1,5 @@
 import DashboardLayout from "../DashboardLayout";
-import UserInfo from "@/components/profile/UserInfo";
+import UserInfo from "../../../../components/profile/UserInfo";
 
 function Profile() {
   return (

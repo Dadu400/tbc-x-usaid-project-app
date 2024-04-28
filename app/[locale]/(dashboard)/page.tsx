@@ -1,10 +1,10 @@
 import DashboardLayout from "./DashboardLayout";
-import ProductList from "@/components/products/ProductList";
+import ProductList from "../../../components/products/ProductList";
 
-function IndexPage () {
+function IndexPage() {
     return (
         <DashboardLayout>
-              <ProductList />
+            <ProductList />
         </DashboardLayout>
     )
 }
