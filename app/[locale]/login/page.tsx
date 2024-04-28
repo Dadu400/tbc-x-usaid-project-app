@@ -1,8 +1,8 @@
 "use server";
 
-import LoginForm from "@/components/auth/LoginForm";
-import { AUTH_COOKIE_KEY } from "@/contants";
-import { Login } from "@/app/actions";
+import LoginForm from "../../../components/auth/LoginForm";
+import { AUTH_COOKIE_KEY } from "../../../contants";
+import { Login } from "../../actions";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
@@ -14,7 +14,7 @@ export default async function LoginPage() {
     redirect("/");
   }
 
-  const handleLogin = async (username, password) => {
+  const handleLogin = async (username: string, password: string) => {
     "use server";
     await Login(username, password);
   };

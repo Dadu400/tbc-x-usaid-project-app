@@ -1,7 +1,7 @@
 import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 
-const georgian = Noto_Sans_Georgian({ subsets: ["georgian"]})
+const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] })
 
 export const metadata = {
   title: "unOfficial Lego",
@@ -10,10 +10,17 @@ export const metadata = {
 
 const locales = ['en', 'ka'];
 export function generateStaticParams() {
-  return locales.map((locale) => ({locale}))
+  return locales.map((locale) => ({ locale }))
 }
 
-export default function RootLayout({ children, params: {locale} }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
+export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   return (
     <html lang={locale} >
       <body className={georgian.className}>{children}</body>

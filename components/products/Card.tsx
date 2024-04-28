@@ -2,7 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 
-function Card({ id, imageSrc, productName, price }) {
+interface CardProps {
+  id: string | number;
+  imageSrc: string;
+  productName: string;
+  price: number;
+}
+
+function Card({ id, imageSrc, productName, price }: CardProps) {
   const locale = useLocale();
   return (
     <div className="flex flex-col justify-between rounded-lg shadow-md p-2 dark:bg-zinc-600">
@@ -22,7 +29,7 @@ function Card({ id, imageSrc, productName, price }) {
         <p className="font-bold text-lg leading-7">$ {price}</p>
         <Link href={`/home/singleproduct/${id}`}>
           <button className="w-full inline-flex items-center justify-center text-white dark:text-black bg-[#FD8024] border border-solid border-[#FD8024] rounded-sm px-4 py-3 font-medium text-lg leading-6 hover:bg-white hover:text-black transition-colors duration-300 ease-in-out">
-          {locale == "en" ? "Add to Card" : "კალათაში დამატება"}
+            {locale == "en" ? "Add to Card" : "კალათაში დამატება"}
           </button>
         </Link>
       </div>

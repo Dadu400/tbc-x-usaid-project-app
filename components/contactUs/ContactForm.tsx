@@ -44,7 +44,7 @@ function ContactForm() {
         </div>
         <div className="mb-6">
           <textarea
-            rows="5"
+            rows={5}
             placeholder={t("problemPlaceholder")}
             className="focus:outline-none focus:ring w-full px-3 py-4 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow resize-none h-40"
             required
@@ -53,7 +53,6 @@ function ContactForm() {
         <button
           type="submit"
           className="w-[40%] py-2 bg-black self-center text-white font-large hover:bg-white hover:text-black rounded"
-          required
         >
           {t("sendButton")}
         </button>
