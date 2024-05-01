@@ -32,7 +32,7 @@ function ThemeSwitcher() {
     };
 
     return (
-        <button className="bg-yellow-400 rounded-md px-2 py-2 w-5"
+        <button className="bg-yellow-400 rounded-md px-2 w-10"
         onClick={toggleDarkMode}>{darkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}</button>
     );
 }

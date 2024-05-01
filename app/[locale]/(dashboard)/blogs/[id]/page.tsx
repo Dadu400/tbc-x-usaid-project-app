@@ -3,6 +3,7 @@ import Dramatic from "../../../../../public/Dramatic.webp";
 import Image from "next/image";
 import axios from "axios";
 import DashboardLayout from "../../DashboardLayout";
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 interface Post {
   title: string;
@@ -13,6 +14,7 @@ interface Post {
 
 interface Params {
   id: string;
+  locale: string;
 }
 
 export async function generateStaticParams() {
@@ -23,6 +25,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogsIdPage({ params }: { params: Params }) {
+  unstable_setRequestLocale(params.locale);
   const idString = params?.id;
   const id = Number(idString);
   const post = await getSingleBlog(id);

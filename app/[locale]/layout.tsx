@@ -1,5 +1,6 @@
 import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] })
 
@@ -21,6 +22,7 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
+  unstable_setRequestLocale(locale);
   return (
     <html lang={locale} >
       <body className={georgian.className}>{children}</body>
