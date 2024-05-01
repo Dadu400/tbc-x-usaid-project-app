@@ -6,6 +6,7 @@ import { Login } from "../../actions";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import LocaleSwitcher from "../../../components/header/LocaleSwitcher";
+import ThemeSwitcher from "../../../components/header/ThemeSwitcher";
 
 export default async function LoginPage() {
   const cookiesStore = cookies();
@@ -22,8 +23,9 @@ export default async function LoginPage() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-[#FD8024] dark:bg-black">
-      <div className="mb-2">
+      <div className="mb-2 flex gap-2">
       <LocaleSwitcher />
+      <ThemeSwitcher />
       </div>
       <LoginForm handleLogin={handleLogin} />
     </div>
