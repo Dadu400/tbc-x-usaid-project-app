@@ -85,5 +85,9 @@
     "stock": "Stock",
     "price": "Price",
     "rating": "Rating"
+  },
+  "Loading": {
+    "loading": "Loading...",
+    "loadText": "Patiently Waiting for Data"
   }
 }
