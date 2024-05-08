@@ -1,4 +1,4 @@
-import { getSingleBlog } from "../../../../helpers/axios";
+import { getSingleBlog } from "../../../../../helpers/axios";
 import Dramatic from "../../../../../public/Dramatic.webp";
 import Image from "next/image";
 import axios from "axios";
