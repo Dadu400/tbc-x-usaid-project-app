@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export interface User {
   id: number;
@@ -14,7 +14,14 @@ export async function getUsers() {
     const response = await axios.get(`${BASE_URL}/api/get-users`);
     return response.data.users.rows;
   } catch (error) {
-    console.error('Error fetching users:', error);
+    console.error("Error fetching users:", error);
     throw error;
   }
+}
+
+export async function createUser(name: string, email: string, age: string) {
+  return await fetch(`${BASE_URL}/api/create-users`, {
+    method: "POST",
+    body: JSON.stringify({ name, email, age }),
+  });
 }
