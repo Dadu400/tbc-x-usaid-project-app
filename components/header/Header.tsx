@@ -2,7 +2,7 @@ import Image from "next/image";
 import LegoLogo from "../icons/LEGO_logo.png";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
-import { Logout } from "../../app/actions";
+import { Logout } from "../../actions";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { getTranslations } from "next-intl/server";
 import LocaleSwitcher from "./LocaleSwitcher";
