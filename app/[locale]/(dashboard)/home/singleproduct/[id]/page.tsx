@@ -1,4 +1,4 @@
-import { getSingleProduct } from "../../../../../helpers/axiosProduct";
+import { getSingleProduct } from "../../../../../../helpers/axiosProduct";
 import Image from "next/image";
 import axios from "axios";
 import DashboardLayout from "../../../DashboardLayout";

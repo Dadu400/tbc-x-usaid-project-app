@@ -3,7 +3,8 @@
     "home": "home",
     "blogs": "blogs",
     "profile": "profile",
-    "contactus": "contact Us"
+    "contactus": "contact Us",
+    "admin": "admin"
   },
   "ContactInfo": {
     "header": "Get in touch with a LEGO expert",

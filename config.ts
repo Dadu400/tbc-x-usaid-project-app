@@ -1,4 +1,4 @@
-import {Pathnames} from 'next-intl/navigation';
+import { Pathnames } from 'next-intl/navigation';
 
 export const port = process.env.PORT || 3000;
 export const host = process.env.VERCEL_URL

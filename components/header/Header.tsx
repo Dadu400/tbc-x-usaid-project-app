@@ -2,7 +2,7 @@ import Image from "next/image";
 import LegoLogo from "../icons/LEGO_logo.png";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";
-import { Logout } from "../../app/actions";
+import { Logout } from "../../actions";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { getTranslations } from "next-intl/server";
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -35,6 +35,9 @@ async function Header() {
             </li>
             <li className="uppercase font-bold text-base">
               <Link href="/contactUs">{t("contactus")}</Link>
+            </li>
+            <li className="uppercase font-bold text-base">
+              <Link href="/admin">{t("admin")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
               <ThemeSwitcher />
