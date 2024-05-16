@@ -36,7 +36,7 @@ async function Header() {
             <li className="uppercase font-bold text-base">
               <Link href="/contactUs">{t("contactus")}</Link>
             </li>
-            <li className="uppercase font-bold text-base">
+            <li className="uppercase font-bold text-base p-1 border border-zinc-950 rounded-md">
               <Link href="/admin">{t("admin")}</Link>
             </li>
             <li className="uppercase font-bold text-base">

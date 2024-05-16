@@ -8,7 +8,7 @@ async function UsersTable() {
   const users = await getUsers();
 
   return (
-<div className="max-w-5xl mx-auto my-14 min-h-[380px]">
+<div className="max-w-5xl mx-auto my-14 min-h-[450px]">
   <AddUserButton />
   <div className="shadow-md">
     <div className="bg-gray-50">
