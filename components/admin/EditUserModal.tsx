@@ -1,4 +1,4 @@
-"use state"
+"use client"
 import { useState } from "react";
 import { User } from "../../helpers/axiosUsers";
 import { updateUserAction } from "../../actions";
@@ -20,6 +20,7 @@ const EditUserModal = ({ setOpenModal, user }: { setOpenModal: (openModal: boole
     }));
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const formData = new FormData(event.currentTarget);
     try {
       await updateUserAction(formData);
@@ -33,7 +34,7 @@ const EditUserModal = ({ setOpenModal, user }: { setOpenModal: (openModal: boole
     <div className="fixed inset-0 z-50 overflow-auto bg-smoke-light flex">
       <div className="relative p-8 bg-white w-full max-w-md m-auto flex-col flex rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" id="name" name="name" value={user.id} onChange={handleChange}
+        <input type="text" id="name" name="id" value={user.id} onChange={handleChange}
               className="hidden mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"/>
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
