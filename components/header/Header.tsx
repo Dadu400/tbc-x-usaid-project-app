@@ -37,6 +37,9 @@ async function Header() {
               <Link href="/contactUs">{t("contactus")}</Link>
             </li>
             <li className="uppercase font-bold text-base">
+              <Link href="/admin">{t("admin")}</Link>
+            </li>
+            <li className="uppercase font-bold text-base">
               <ThemeSwitcher />
             </li>
             <li className="uppercase font-bold text-base">
