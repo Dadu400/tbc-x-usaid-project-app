@@ -1,6 +1,7 @@
 import axios from "axios";
 import { revalidateTag } from "next/cache";
 import { sql } from "@vercel/postgres";
+import { getEnvironment } from "./getEnvironment";
 
 export interface User {
   id?: number;
@@ -9,7 +10,7 @@ export interface User {
   age: string;
 }
 
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = getEnvironment();
 
 export const getUsers = async () => {
   try {
