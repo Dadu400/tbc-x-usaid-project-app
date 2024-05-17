@@ -1,7 +1,6 @@
 import axios from "axios";
 import { revalidateTag } from "next/cache";
 import { sql } from "@vercel/postgres";
-import { getEnvironment } from "./getEnvironment";
 
 export interface User {
   id?: number;
@@ -10,11 +9,9 @@ export interface User {
   age: string;
 }
 
-export const BASE_URL = getEnvironment();
-
 export const getUsers = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/api/get-users`);
+    const response = await axios.get(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/get-users');
     return response.data.users.rows;
   } catch (error) {
     console.error("Error fetching users:", error);
