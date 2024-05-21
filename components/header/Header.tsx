@@ -6,13 +6,15 @@ import { Logout } from "../../actions";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { getTranslations } from "next-intl/server";
 import LocaleSwitcher from "./LocaleSwitcher";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
 async function Header() {
-  const t = await getTranslations("navigation")
+  const t = await getTranslations("navigation");
   const handleLogout = async () => {
     "use server";
     await Logout();
-  }
+  };
 
   return (
     <header className="bg-yellow-400 w-full px-8 py-2">
@@ -39,7 +41,15 @@ async function Header() {
             <li className="uppercase font-bold text-base p-1 border border-zinc-950 rounded-md">
               <Link href="/admin">{t("admin")}</Link>
             </li>
-            <li className="uppercase font-bold text-base">
+            <li className="uppercase font-bold relative">
+              <Link href="/cart">
+                <FontAwesomeIcon icon={faBagShopping} className="h-5" />
+                <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-xs font-bold leading-none text-black rounded-full">
+                   3
+                  </span>
+              </Link>
+            </li>
+            <li className="uppercase font-bold">
               <ThemeSwitcher />
             </li>
             <li className="uppercase font-bold text-base">
