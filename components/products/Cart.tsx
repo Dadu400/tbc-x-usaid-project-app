@@ -1,21 +1,20 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faMinus, faPlus, faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faShieldHalved } from "@fortawesome/free-solid-svg-icons";
 import LegoEcho from "../../public/LegoEcho.png";
 import { getUserCart } from "../../helpers/axios";
 import { getProducts } from "../../helpers/axiosProduct";
+import CounterButton from "./CounterButton";
 
 const id = 1;
-
+export const revalidate = 0;
 async function CartContainer() {
   const cart = await getUserCart(id);
-  const cartProductsArray = Object.entries(cart?.products); 
+  const cartProductsArray = Object.entries(cart?.products);
   const cartProducts = await getProducts();
 
-  // Create a map of cart product IDs and their quantities
   const cartProductMap = new Map(cartProductsArray);
 
-  // Filter and map the products to include the quantity
   const filteredProducts = cartProducts
     .filter((product: any) => cartProductMap.has(product.id.toString()))
     .map((product: any) => ({
@@ -50,15 +49,8 @@ async function CartContainer() {
                   </div>
                   <div className="flex items-center mt-4 gap-16">
                     <p className="text-lg font-regular text-gray-800">${product.price}</p>
-                    <div className="flex items-center border rounded ml-10">
-                      <button className="px-3 py-1">
-                        <FontAwesomeIcon icon={faMinus} className="cursor-pointer" />
-                      </button>
-                      <span className="px-3 py-1 border-x">{product.quantity}</span>
-                      <button className="px-3 py-1">
-                        <FontAwesomeIcon icon={faPlus} className="cursor-pointer" />
-                      </button>
-                    </div>
+                    <CounterButton id={product.id} />
+                    <span className="px-3 py-1 border-x">{product.quantity}</span>
                   </div>
                 </div>
               </div>
