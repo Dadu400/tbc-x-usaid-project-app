@@ -13,7 +13,7 @@ import LegoEcho from "../../../../../../public/LegoEcho.png";
 //   price: number;
 // }
 
-export async function getSingleProduct(id: string) {
+async function getSingleProduct(id: string) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products/${id}`);
     const data = await response.json();
@@ -38,7 +38,7 @@ export async function getSingleProduct(id: string) {
 //   }));
 // }
 
-export default async function singleProduct({
+export async function singleProduct({
   params: { id },
 }: {
   params: { id: string };}) {
