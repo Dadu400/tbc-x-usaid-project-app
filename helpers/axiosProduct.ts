@@ -21,3 +21,9 @@ export const getSingleProduct = async (id: number | string) => {
   const singleProduct = products.find((product: Product) => product.id === id);
   return singleProduct;
 };
+
+export async function getProducts() {
+  const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/get-products');
+  const { products } = await response.json();
+  return products?.rows;
+}
