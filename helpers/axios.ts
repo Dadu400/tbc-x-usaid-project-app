@@ -7,7 +7,6 @@ interface Post {
   body: string;
 }
 
-
 let cachedData: Post[] = [];
 
 const getData = async () => {
@@ -30,5 +29,15 @@ const getData = async () => {
 export const getSingleBlog = async (id: number | string) => {
   const blog = await getData();
   const singleBlog = blog.find((post: Post) => post.id === Number(id));
-  return singleBlog !== undefined ? singleBlog : {} as Post;
+  return singleBlog !== undefined ? singleBlog : ({} as Post);
+};
+
+export async function getUserCart(id: number) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart/${id}`
+  );
+  const carts = await response.json();
+  const [cart] = carts.carts.rows;
+
+  return cart;
 }
