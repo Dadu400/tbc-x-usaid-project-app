@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import LegoEcho from "../../public/LegoEcho.png";
 
 interface CardProps {
   id: string | number;
-  imageSrc: string;
   productName: string;
   price: number;
 }
 
-function Card({ id, imageSrc, productName, price }: CardProps) {
+function Card({ id, productName, price }: CardProps) {
   const locale = useLocale();
   return (
     <div className="flex flex-col justify-between rounded-lg shadow-md p-2 dark:bg-zinc-600">
@@ -17,7 +17,7 @@ function Card({ id, imageSrc, productName, price }: CardProps) {
         <Image
           width={200}
           height={200}
-          src={imageSrc}
+          src={LegoEcho}
           alt="product"
           className="w-54 h-48"
         />
