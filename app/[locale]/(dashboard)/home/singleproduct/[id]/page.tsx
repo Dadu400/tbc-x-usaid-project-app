@@ -19,7 +19,7 @@ async function getSingleProduct(id: string) {
   }
 }
 
-export async function singleProduct({
+async function singleProduct({
   params: { id },
 }: {
   params: { id: string }
