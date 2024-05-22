@@ -5,6 +5,7 @@ import LegoEcho from "../../public/LegoEcho.png";
 import { getUserCart } from "../../helpers/axios";
 import { getProducts } from "../../helpers/axiosProduct";
 import CounterButton from "./CounterButton";
+import EmptyCartButton from "./EmptyCartButton";
 
 const id = 1;
 export const revalidate = 0;
@@ -30,7 +31,7 @@ async function CartContainer() {
           <div className="bg-white shadow-md rounded-lg p-4 mb-4">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl text-green-600 font-regular">Available now</h3>
-              <button className="text-md font-regular text-red-600">Empty Cart</button>
+              <EmptyCartButton />
             </div>
             {filteredProducts.map((product: any) => (
               <div key={product.id} className="flex items-center mb-4">
@@ -62,7 +63,7 @@ async function CartContainer() {
             <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
             <div className="mb-5">
               <div className="flex justify-between">
-                <span className="font-regular text-green-600">Order value </span>
+                <span className="font-regular text-green-600">Order value</span>
               </div>
             </div>
             <div className="flex justify-between font-bold text-lg">

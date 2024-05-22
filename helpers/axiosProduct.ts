@@ -76,3 +76,28 @@ export const handleDecrementCart = async (productId: string) => {
     console.error("Error adding item to cart:", error);
   }
 };
+
+export const handleEmptyCart = async () => {
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/clear-cart",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: 1,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to clear cart");
+    }
+
+    revalidatePath("/cart");
+  } catch (error) {
+    console.error("Error clearing cart:", error);
+  }
+};
