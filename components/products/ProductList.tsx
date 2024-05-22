@@ -32,7 +32,6 @@ async function ProductList() {
   const locale = useLocale();
 
   const Products = await getProducts();
-  console.log(Products);
 
   // useEffect(() => {
   //   const fetchProducts = async () => {
