@@ -1,17 +1,7 @@
 import Image from "next/image";
-// import axios from "axios";
 import DashboardLayout from "../../../DashboardLayout";
 import { getTranslations } from "next-intl/server";
-// import { unstable_setRequestLocale } from 'next-intl/server';
 import LegoEcho from "../../../../../../public/LegoEcho.png";
-
-// interface Product {
-//   id: number | string;
-//   locale: string;
-//   title: string;
-//   description: string;
-//   price: number;
-// }
 
 async function getSingleProduct(id: string) {
   try {
@@ -29,24 +19,23 @@ async function getSingleProduct(id: string) {
   }
 }
 
-
-// export async function generateStaticParams() {
-//   const res = await axios.get(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products`);
-//   console.log(res, "res")
-//   return res.data.products.row.map((product: Product) => ({
-//     id: `${product.id}`,
-//   }));
-// }
-
 export async function singleProduct({
   params: { id },
 }: {
-  params: { id: string };}) {
-  // unstable_setRequestLocale(params.locale);
-  const t = await getTranslations("singleProduct")
-  // const idString = params?.id;
-  // const id = Number(idString);
+  params: { id: string }
+}) {
+  const t = await getTranslations("singleProduct");
   const singlePageProduct = await getSingleProduct(id);
+
+  if (!singlePageProduct) {
+    return (
+      <DashboardLayout>
+        <section className="w-full min-h-[646px] flex items-center justify-center py-10 px-8 shadow-xl dark:bg-black">
+          <p className="text-xl text-gray-900 dark:text-white">Product not found.</p>
+        </section>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>
@@ -56,8 +45,8 @@ export async function singleProduct({
             <Image
               src={LegoEcho}
               alt="product image"
-              width={48}
-              height={48}
+              width={192}
+              height={192}
               className="h-48 w-48 object-cover rounded-lg shadow-lg"
             />
           </div>
@@ -78,3 +67,5 @@ export async function singleProduct({
     </DashboardLayout>
   );
 }
+
+export default singleProduct;
