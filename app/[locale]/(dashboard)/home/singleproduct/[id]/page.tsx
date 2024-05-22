@@ -38,10 +38,11 @@ async function getSingleProduct(id: string) {
 //   }));
 // }
 
-export async function singleProduct({
+async function singleProduct({
   params: { id },
 }: {
-  params: { id: string };}) {
+  params: { id: string };
+}) {
   // unstable_setRequestLocale(params.locale);
   const t = await getTranslations("singleProduct")
   // const idString = params?.id;
@@ -78,3 +79,5 @@ export async function singleProduct({
     </DashboardLayout>
   );
 }
+
+export default singleProduct;
