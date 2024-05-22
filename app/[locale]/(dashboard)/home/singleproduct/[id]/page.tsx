@@ -32,7 +32,7 @@ interface SingleProductProps {
   };
 }
 
-export async function singleProduct({
+async function singleProduct({
   params: { id },
 }: SingleProductProps): Promise<JSX.Element> {
   const t = await getTranslations("singleProduct");
@@ -78,3 +78,5 @@ export async function singleProduct({
     </DashboardLayout>
   );
 }
+
+export default singleProduct;
