@@ -51,3 +51,28 @@ export const handleAddToCart = async (productId: string) => {
     console.error("Error adding item to cart:", error);
   }
 };
+
+export const handleDecrementCart = async (productId: string) => {
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/decrement-product",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: 1,
+          productId: productId,
+          quantity: 1,
+        }),
+      }
+    );
+    revalidatePath("/cart");
+    if (!response.ok) {
+      throw new Error("Failed to add item to cart");
+    }
+  } catch (error) {
+    console.error("Error adding item to cart:", error);
+  }
+};
