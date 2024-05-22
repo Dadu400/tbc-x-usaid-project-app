@@ -6,6 +6,8 @@ type Products = {
   [key: string]: number;
 };
 
+export const revalidate = 0;
+
 export async function PUT(req: NextRequest) {
   try {
     revalidatePath("/cart");
