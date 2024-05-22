@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { faShieldHalved } from "@fortawesome/free-solid-svg-icons";
 import LegoEcho from "../../public/LegoEcho.png";
 import { getUserCart } from "../../helpers/axios";
 import { getProducts } from "../../helpers/axiosProduct";
 import CounterButton from "./CounterButton";
 import EmptyCartButton from "./EmptyCartButton";
+import RemoveProductButton from "./RemoveProductButton";
 
 const id = 1;
 export const revalidate = 0;
@@ -43,10 +44,7 @@ async function CartContainer() {
                 <div className="flex flex-col ml-4 w-full">
                   <div className="flex justify-between items-center">
                     <h4 className="text-lg font-bold">{product.title}</h4>
-                    <FontAwesomeIcon
-                      icon={faTrashCan}
-                      className="w-4 h-6 cursor-pointer text-blue-500"
-                    />
+                    <RemoveProductButton id={product.id} />
                   </div>
                   <div className="flex items-center mt-4 gap-16">
                     <p className="text-lg font-regular text-gray-800">${product.price}</p>

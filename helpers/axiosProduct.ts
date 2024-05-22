@@ -1,5 +1,5 @@
 import axios from "axios";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 interface Product {
   id: number;
@@ -43,7 +43,7 @@ export const handleAddToCart = async (productId: string) => {
         body: JSON.stringify({ userId: 1, productId: productId, quantity: 1 }),
       }
     );
-    revalidatePath("/cart");
+    revalidateTag("cart");
     if (!response.ok) {
       throw new Error("Failed to add item to cart");
     }
@@ -68,7 +68,7 @@ export const handleDecrementCart = async (productId: string) => {
         }),
       }
     );
-    revalidatePath("/cart");
+    revalidateTag("cart");
     if (!response.ok) {
       throw new Error("Failed to add item to cart");
     }
@@ -96,8 +96,34 @@ export const handleEmptyCart = async () => {
       throw new Error("Failed to clear cart");
     }
 
-    revalidatePath("/cart");
+    revalidateTag("cart");
   } catch (error) {
     console.error("Error clearing cart:", error);
+  }
+};
+
+export const handleDeleteProduct = async (productId: string) => {
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: 1,
+          productId: productId,
+        }),
+      }
+    );
+
+    revalidateTag("cart");
+
+    if (!response.ok) {
+      throw new Error("Failed to remove item from cart");
+    }
+  } catch (error) {
+    console.error("Error removing item from cart:", error);
   }
 };
