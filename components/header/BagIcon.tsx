@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Link from "next/link";
-import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { getUserCart } from "../../helpers/axios";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 export interface Cart {
   id: number;
@@ -19,12 +19,11 @@ export default async function BagIcon() {
     return total + quantity;
   }, 0);
 
-  console.log(totalQuantity);
   return (
-    <li className="uppercase font-bold relative">
+    <li className="uppercase relative">
       <Link href="/cart">
-        <FontAwesomeIcon icon={faBagShopping} className="h-5" />
-        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-xs font-bold leading-none text-black rounded-full">
+        <ShoppingCartOutlinedIcon />
+        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none text-black rounded-full bg-red w-[15px] h-[15px] text-white">
           {totalQuantity}
         </span>
       </Link>

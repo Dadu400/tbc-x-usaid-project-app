@@ -1,7 +1,16 @@
+@font-face {
+    font-family: 'mtavruli';
+    src: url('../../public/mtavruli.ttf') format('truetype');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    @apply transition-colors duration-200
+    @apply transition-colors duration-200 !important
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.10);
 }

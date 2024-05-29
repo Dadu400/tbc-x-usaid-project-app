@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 function ThemeSwitcher() {
     const [darkMode, setDarkMode] = useState(false);
@@ -16,7 +15,7 @@ function ThemeSwitcher() {
         } else {
             document.documentElement.classList.remove('dark');
             window.localStorage.setItem("theme", "light")
-            setDarkMode(false); 
+            setDarkMode(false);
         }
     }, []);
 
@@ -32,8 +31,11 @@ function ThemeSwitcher() {
     };
 
     return (
-        <button className="bg-yellow-400 rounded-md pr-2 w-10"
-        onClick={toggleDarkMode}>{darkMode ? <FontAwesomeIcon icon={faSun} className="h-5"/> : <FontAwesomeIcon icon={faMoon} className="h-5"/>}</button>
+        // <button className="bg-yellow-400 rounded-md pr-2 w-10"
+        //     onClick={toggleDarkMode}>{darkMode ? <FontAwesomeIcon icon={faSun} className="h-5" /> : <FontAwesomeIcon icon={faMoon} className="h-5" />}</button>
+        <button>
+            <DarkModeOutlinedIcon></DarkModeOutlinedIcon>
+        </button>
     );
 }
 

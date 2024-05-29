@@ -4,7 +4,10 @@
     "blogs": "blogs",
     "profile": "profile",
     "contactus": "contact Us",
-    "admin": "admin"
+    "admin": "admin",
+    "login": "Login",
+    "superSite": "uper Site",
+    "search": "Search..."
   },
   "ContactInfo": {
     "header": "Get in touch with a LEGO expert",

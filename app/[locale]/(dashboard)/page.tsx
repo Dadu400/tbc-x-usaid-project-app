@@ -1,12 +1,14 @@
-import DashboardLayout from "./DashboardLayout";
+import Banner from "../../../components/banner/Banner";
 import ProductList from "../../../components/products/ProductList";
+import DashboardLayout from "./DashboardLayout";
 
-function IndexPage() {
-    return (
-        <DashboardLayout>
-            <ProductList />
-        </DashboardLayout>
-    )
-}
+const HomePage = () => {
+  return (
+    <DashboardLayout>
+      <Banner />
+      <ProductList />
+    </DashboardLayout>
+  );
+};
 
-export default IndexPage;
+export default HomePage;
