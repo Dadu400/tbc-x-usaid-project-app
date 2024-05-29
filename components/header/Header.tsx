@@ -1,12 +1,13 @@
 import Image from "next/image";
-import LegoLogo from "../icons/LEGO_logo.png";
+import SuperMan from "../../public/superman.svg";
 import Link from "next/link";
-import LogoutButton from "./LogoutButton";
 import { Logout } from "../../actions";
-import ThemeSwitcher from "./ThemeSwitcher";
 import { getTranslations } from "next-intl/server";
-import LocaleSwitcher from "./LocaleSwitcher";
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import BagIcon from "./BagIcon";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
+import LocaleSwitcher from "./LocaleSwitcher";
 
 async function Header() {
   const t = await getTranslations("navigation");
@@ -16,39 +17,43 @@ async function Header() {
   };
 
   return (
-    <header className="bg-yellow-400 w-full px-8 py-2">
-      <div className="flex items-center justify-between">
-        <div>
-          <Link href="/home">
-            <Image src={LegoLogo} alt="LEGO logo" width={50} height={50} />
+    <header className="border-b-2 border-[#00000026] w-full px-8 py-3">
+      <div className="w-[75vw] mx-auto flex items-center justify-between">
+        <div className="flex items-center font-bold text-lg font-['mtavruli'] w-[200px]">
+          <Link href="/">
+            <Image src={SuperMan} alt="Company Logo" width={50} height={50} />
           </Link>
+          {t('superSite')}
+        </div>
+        <div className="w-[30%] flex items-stretch border-[1.5px] border-red rounded-[6px] bg-white">
+          <input placeholder={t('search')} className="border-red outline-none text-black text-sm text-color-[#000000b3] flex-grow rounded-l-[6px] p-[6px] ml-[5px] my-[3px]"></input>
+          <div className="bg-red text-white flex items-center px-[8px] cursor-pointer">
+            <SearchOutlinedIcon />
+          </div>
         </div>
         <nav>
-          <ul className="flex items-center gap-4">
-            <li className="uppercase font-bold text-base">
-              <Link href="/home">{t("home")}</Link>
-            </li>
-            <li className="uppercase font-bold text-base">
-              <Link href="/blogs">{t("blogs")}</Link>
-            </li>
-            <li className="uppercase font-bold text-base">
-              <Link href="/profile">{t("profile")}</Link>
-            </li>
-            <li className="uppercase font-bold text-base">
-              <Link href="/contactUs">{t("contactus")}</Link>
-            </li>
-            <li className="uppercase font-bold text-base p-1 border border-zinc-950 rounded-md">
-              <Link href="/admin">{t("admin")}</Link>
-            </li>
-            <BagIcon />
-            <li className="uppercase font-bold">
-              <ThemeSwitcher />
-            </li>
-            <li className="uppercase font-bold text-base">
+          <ul className="flex items-center gap-10">
+            <li>
               <LocaleSwitcher />
             </li>
-            <li className="uppercase font-bold text-base">
-              <LogoutButton handleLogout={handleLogout} />
+            <li>
+              <ul className="flex items-center gap-5">
+                <li><BagIcon /></li>
+                <li>
+                  <Link href={"/blogs"}>
+                    <FeedOutlinedIcon />
+                  </Link>
+                </li>
+                <li><BagIcon /></li>
+              </ul>
+            </li>
+            <li className="uppercase font-medium text-base">
+              <Link href={"/login"}>
+                <button className="flex w-[125px] items-center justify-center gap-2 border-[1.5px] border-[#0000001a] hover:border-[#00000014] hover:bg-[#00000014] text-sm px-4 py-2 rounded-[10px] rounded-tr-[10px] rounded-br-[10px]">
+                  <PermIdentityIcon style={{}} />
+                  {t('login')}
+                </button>
+              </Link>
             </li>
           </ul>
         </nav>
