@@ -12,7 +12,7 @@ export interface Cart {
   added_on: string;
 }
 
-export default async function BagIcon() {
+export default async function CartIcon() {
   const cart: Cart = await getUserCart(1);
   const num = Object.values(cart.products);
   const totalQuantity = num.reduce((total: number, quantity: number) => {
@@ -23,7 +23,7 @@ export default async function BagIcon() {
     <li className="uppercase relative">
       <Link href="/cart">
         <ShoppingCartOutlinedIcon />
-        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none text-black rounded-full bg-red w-[15px] h-[15px] text-white">
+        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-red w-[15px] h-[15px] text-white">
           {totalQuantity}
         </span>
       </Link>

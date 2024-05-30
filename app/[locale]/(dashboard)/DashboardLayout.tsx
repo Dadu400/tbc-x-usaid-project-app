@@ -11,7 +11,7 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
     <>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

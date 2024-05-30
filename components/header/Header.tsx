@@ -1,24 +1,24 @@
 import Image from "next/image";
 import SuperMan from "../../public/superman.svg";
 import Link from "next/link";
-import { Logout } from "../../actions";
+// import { Logout } from "../../actions";
 import { getTranslations } from "next-intl/server";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import BagIcon from "./BagIcon";
+import CartIcon from "./CartIcon";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LocaleSwitcher from "./LocaleSwitcher";
 
 async function Header() {
   const t = await getTranslations("navigation");
-  const handleLogout = async () => {
-    "use server";
-    await Logout();
-  };
+  // const handleLogout = async () => {
+  //   "use server";
+  //   await Logout();
+  // };
 
   return (
     <header className="border-b-2 border-[#00000026] w-full px-8 py-3">
-      <div className="w-[75vw] mx-auto flex items-center justify-between">
+      <div className="w-[60vw] mx-auto flex items-center justify-between">
         <div className="flex items-center font-bold text-lg font-['mtavruli'] w-[200px]">
           <Link href="/">
             <Image src={SuperMan} alt="Company Logo" width={50} height={50} />
@@ -38,13 +38,13 @@ async function Header() {
             </li>
             <li>
               <ul className="flex items-center gap-5">
-                <li><BagIcon /></li>
+                <CartIcon />
                 <li>
                   <Link href={"/blogs"}>
                     <FeedOutlinedIcon />
                   </Link>
                 </li>
-                <li><BagIcon /></li>
+                <CartIcon />
               </ul>
             </li>
             <li className="uppercase font-medium text-base">

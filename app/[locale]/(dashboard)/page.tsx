@@ -1,12 +1,12 @@
-import Banner from "../../../components/banner/Banner";
-import ProductList from "../../../components/products/ProductList";
+import Categories from "../../../components/categories/Categories";
 import DashboardLayout from "./DashboardLayout";
 
 const HomePage = () => {
   return (
     <DashboardLayout>
-      <Banner />
-      <ProductList />
+      {/* <Banner /> */}
+      <Categories />
+      {/* <ProductList /> */}
     </DashboardLayout>
   );
 };
