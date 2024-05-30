@@ -1,4 +1,5 @@
 import Categories from "../../../components/categories/Categories";
+import ProductList from "../../../components/products/ProductList";
 import DashboardLayout from "./DashboardLayout";
 
 const HomePage = () => {
@@ -6,7 +7,7 @@ const HomePage = () => {
     <DashboardLayout>
       {/* <Banner /> */}
       <Categories />
-      {/* <ProductList /> */}
+      <ProductList />
     </DashboardLayout>
   );
 };
