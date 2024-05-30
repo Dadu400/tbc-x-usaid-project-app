@@ -6,8 +6,10 @@ const HomePage = () => {
   return (
     <DashboardLayout>
       {/* <Banner /> */}
-      <Categories />
-      <ProductList />
+      <div className="w-[62vw] mx-auto bg-[#FEFEFE] px-[1vw] py-[25px]">
+        <Categories />
+        <ProductList />
+      </div>
     </DashboardLayout>
   );
 };

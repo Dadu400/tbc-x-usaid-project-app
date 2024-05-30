@@ -13,7 +13,7 @@ function Categories() {
     ];
 
     return (
-        <div className="w-[60vw] m-auto mt-[25px] flex flex-wrap gap-5">
+        <div className="w-[100%] m-auto flex flex-wrap gap-5">
             <Category icon={<FormatListBulletedIcon fontSize="large" />} name="ყველა კატეგორია" isAllCategory={true} />
             {categories.map((category, index) => (
                 <Category icon={<></>} key={index} name={category.name} />

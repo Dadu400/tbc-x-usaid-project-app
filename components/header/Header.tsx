@@ -17,7 +17,7 @@ async function Header() {
   // };
 
   return (
-    <header className="border-b-2 border-[#00000026] w-full px-8 py-3">
+    <header className="border-b-2 border-[#00000026] bg-[#FEFEFE] w-full px-8 py-3">
       <div className="w-[60vw] mx-auto flex items-center justify-between">
         <div className="flex items-center font-bold text-lg font-['mtavruli'] w-[200px]">
           <Link href="/">
