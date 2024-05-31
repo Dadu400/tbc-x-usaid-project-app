@@ -1,43 +1,21 @@
 import Image from "next/image";
-import MarioImage from "../icons/Mario100.jpeg";
-import SuperMarioLogo from "../icons/SuperMarioLogo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { useTranslations } from "next-intl";
 
 function Banner() {
-  const t = useTranslations("Banner");
-  const sectionStyle = {
-    backgroundImage: `url(${MarioImage.src})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-  };
-
   return (
-    <section className="w-full h-[500px]" style={sectionStyle}>
-      <div className="p-[120px] flex flex-col gap-[22px]">
-        <Image src={SuperMarioLogo} alt="superMario" width={100} height={100} />
-        <h1 className="text-[32px] font-semibold">{t("title")}</h1>
-        <div className="w-[380px] text-[18px] font-medium">
-          {t("offerDetails")}
-        </div>
-        <div className="flex gap-4">
-          <button className="bg-black text-white font-medium hover:bg-white hover:text-black py-2 px-4 rounded flex items-center">
-            {t("shopNow")}
-            <FontAwesomeIcon
-              icon={faAngleRight}
-              className="w-5 h-5 ml-2 pt-1"
-            />
-          </button>
-          <button className="bg-black text-white font-medium hover:bg-white hover:text-black py-3 px-4 rounded flex items-center">
-            {t("becomeMember")}
-            <FontAwesomeIcon
-              icon={faAngleRight}
-              className="w-5 h-5 ml-2 pt-1"
-            />
-          </button>
-        </div>
+    <section className="w-[100%]  flex gap-2 mt-[40px]">
+      <div className="flex-1 rounded-[15px]">
+        <img
+          src="https://sonic.ge/dyn/8X0DNwLHRwrej1rPM6Jceg0nftW36B4KlmDo4YGwcxI/rs:fit:1530:0/plain/images/banner/b00d844a-1c48-4478-8c5c-dd5a80cc93f3.jpg"
+          alt="Banner Image"
+          className="w-full rounded-[15px]"
+        />
+      </div>
+      <div className="flex-1 rounded-[15px]">
+        <img
+          src="https://sonic.ge/dyn/kr9jr_qfObyXeYhFXtsJzWaiaPPJE-hUjhGUtdf6hKg/rs:fit:1530:0/plain/images/banner/3242bc47-70aa-4f41-8730-f1f64970c505.jpg"
+          alt="Banner Image"
+          className="w-full rounded-[15px]"
+        />
       </div>
     </section>
   );
