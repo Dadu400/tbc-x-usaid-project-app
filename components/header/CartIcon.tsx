@@ -14,10 +14,8 @@ export interface Cart {
 
 export default async function CartIcon() {
   const cart: Cart = await getUserCart(1);
-  const num = Object.values(cart.products);
-  const totalQuantity = num.reduce((total: number, quantity: number) => {
-    return total + quantity;
-  }, 0);
+  // const num = Object.values(cart.products);
+  const totalQuantity = 2;
 
   return (
     <li className="uppercase relative">
