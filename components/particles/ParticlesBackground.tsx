@@ -7,7 +7,6 @@ import type { Engine } from 'tsparticles-engine';
 
 const ParticlesBackground: React.FC = () => {
     const particlesInit = async (main: Engine) => {
-        console.log("test");
         await loadFull(main);
     };
 
