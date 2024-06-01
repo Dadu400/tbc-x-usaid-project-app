@@ -5,6 +5,7 @@ import UserProfileMenu from "./UserProfileMenu"
 import { redirect } from "next/navigation";
 import ChangePassword from "./ChangePassword";
 import UserInformation from "./UserInformation";
+import MyProductsList from "./MyProductsList";
 
 function UserInfo() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("profile");
@@ -19,6 +20,7 @@ function UserInfo() {
         profile: <UserInformation />,
         password: <ChangePassword />,
         history: <div>History</div>,
+        products: <MyProductsList />,
         logout: <></>
     }
 

@@ -1,9 +1,11 @@
 import { getSingleBlog } from "../../../../../helpers/axios";
-import Dramatic from "../../../../../public/Dramatic.webp";
-import Image from "next/image";
 import axios from "axios";
 import DashboardLayout from "../../DashboardLayout";
 import { unstable_setRequestLocale } from 'next-intl/server';
+import Dramatic from "../../../../../public/Dramatic.webp";
+import person from "../../../../../public/person.png";
+import Image from 'next/image';
+import ProductList from "../../../../../components/products/ProductList";
 
 interface Post {
   title: string;
@@ -28,43 +30,34 @@ export default async function BlogsIdPage({ params }: { params: Params }) {
   unstable_setRequestLocale(params.locale);
   const idString = params?.id;
   const id = Number(idString);
+
   const post = await getSingleBlog(id);
 
   return (
     <DashboardLayout>
-      <article className="bg-gray-50 min-h-screen py-10 px-4 md:px-10 dark:bg-black">
-        <div className="max-w-3xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow dark:bg-slate-500">
-          <div className="mb-6 md:mb-10">
-            <div className="w-full h-64 md:h-96 relative mb-6">
-              <Image
-                src={Dramatic}
-                layout="fill"
-                objectFit="cover"
-                alt="LOGO_IMG"
-                className="rounded-md"
-              />
+      <div className="w-[60vw] m-auto flex flex-col items-center bg-[#fefefe]">
+        <h1 className="font-bold text-4xl text-gray-800 mb-6 text-center mt-[20px]">
+          {post.title}
+        </h1>
+        <div className="flex items-center gap-2 my-2 self-start ml-12">
+          <Image src={person} alt="author" className="w-12 h-12" />
+          <div className="flex flex-col">
+            <span className="text-gray-700 text-sm">
+              Author Name
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500 text-xs">9 min read</span>
+              <span className="text-gray-500 text-md">·</span>
+              <span className="text-gray-500 text-xs"> Nov 23, 2023</span>
             </div>
-            <h1 className="font-bold text-4xl text-gray-800 mb-4 dark:text-white">
-              {post.title}
-            </h1>
-            <p className="text-gray-600 text-base mb-4 dark:text-white">{post.body}</p>
-          </div>
-          <div className="pt-4">
-            <h2 className="text-gray-800 font-semibold text-xl mb-3">Tags</h2>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.map((tag: string, key: number) => (
-                <span
-                  className="bg-gray-200 text-gray-700 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded-full cursor-pointer dark:text-black"
-                  key={key}
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-            <p className="text-gray-500 dark:text-white">Release Date: 15.06.2021</p>
           </div>
         </div>
-      </article>
+        <Image src={Dramatic} alt="blog_picture" className="w-[80%] h-[560px] my-4 rounded-md" />
+        <div className="mt-10 w-[80%] text-center">
+          <p className="text-gray-700 text-center">{post.body}</p>
+        </div>
+      </div>
+      <ProductList />
     </DashboardLayout>
   );
 }

@@ -11,9 +11,8 @@ interface CardProps {
 }
 
 function Card({ id, productName, price }: CardProps) {
-
   return (
-    <div className="flex flex-col w-[180px] justify-between rounded-lg  py-[10px] px-[15px] cursor-pointer">
+    <div className="flex flex-col w-[190px] h-[265px]  justify-between rounded-lg  py-[10px] px-[15px] cursor-pointer">
       <div className="flex items-center justify-center">
         <Image
           src={TestProduct}

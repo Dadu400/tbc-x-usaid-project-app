@@ -2,6 +2,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import PasswordIcon from '@mui/icons-material/Password';
 import HistoryIcon from '@mui/icons-material/History';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 
 function UserProfileMenu({ selectedItem, setSelectedMenuItem }: { selectedItem: string, setSelectedMenuItem: (id: string) => void }) {
     const menuItems = [
@@ -19,6 +20,11 @@ function UserProfileMenu({ selectedItem, setSelectedMenuItem }: { selectedItem: 
             id: "history",
             icon: <HistoryIcon />,
             title: "შეკვეთების ისტორია"
+        },
+        {
+            id: "products",
+            icon: <Inventory2OutlinedIcon />,
+            title: "ჩემი პროდუქტები"
         },
         {
             id: "logout",
