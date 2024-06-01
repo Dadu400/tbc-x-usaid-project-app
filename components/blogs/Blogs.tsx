@@ -1,6 +1,6 @@
 import Blog from "../blogs/Blog";
 import axios from "axios";
-import { getTranslations } from "next-intl/server";
+
 
 interface Blog {
   id: string | number;
@@ -22,23 +22,15 @@ const getData = async () => {
   }
 }
 export default async function Blogs() {
-  const t = await getTranslations('Blogs');
   const fetchedBlogs = await getData();
 
   return (
-    <main>
-      <section className="w-full px-4 md:px-12 py-12 flex justify-center dark:bg-black">
-        <div className="max-w-8xl">
-          <h1 className="text-xl md:text-2xl lg:text-3xl text-start mb-8 dark:text-white">
-            {t('header')}
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {fetchedBlogs.map((blog: Blog) => (
-              <Blog key={blog.id} blog={blog} />
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
+    <section className="w-[60vw] m-auto flex my-[20px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 bg-[#FEFEFE]">
+        {fetchedBlogs.map((blog: Blog) => (
+          <Blog key={blog.id} blog={blog} />
+        ))}
+      </div>
+    </section>
   );
 }

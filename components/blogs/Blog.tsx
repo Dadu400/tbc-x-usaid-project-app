@@ -1,50 +1,53 @@
 import Image from "next/image";
 import Link from "next/link";
-import LegoEcho from "../../public/LegoEcho.png";
-import { useTranslations } from 'next-intl';
+import test from "../../public/test.webp";
+import person from "../../public/person.png";
 
 interface BlogProps {
   blog: {
     title: string;
-    tags: string[];
     id: string | number;
   };
 }
 
 function Blog({ blog }: BlogProps) {
-  const t = useTranslations("Blog");
   return (
-    <article className="bg-white dark:bg-blue-950 rounded-lg shadow-md p-4 flex flex-col justify-between items-start w-[350px] cursor-pointer">
-      <div className="flex flex-col items-start gap-1">
-        <div className="w-full h-[200px] mb-4 relative rounded-md overflow-hidden">
+    <Link href={`/blogs/${blog.id}`}>
+      <div className="flex flex-col gap-1 bg-[#FEFEFE] shadow-lg rounded-xl">
+        <div className="w-full cor">
           <Image
-            src={LegoEcho}
+            src={test}
             alt="LOGO_IMG"
-            layout="fill"
             objectFit="contain"
-            className="rounded-md"
+            height={60}
+            className="w-full h-[200px] object-cover rounded-t-xl"
           />
         </div>
-        <h4 className="text-xl dark:text-white font-semibold mb-2">{blog.title}</h4>
-        <div className="flex gap-1">
-          {blog.tags.map((tag, key) => (
-            <span className="text-gray-700 dark:text-gray-300 mb-4" key={key}>
-              #{tag}
+        <div className="flex flex-col px-5 py-2">
+          <div className="flex items-center gap-2 my-2">
+            <Image src={person} alt="author" className="w-6 h-6" />
+            <span className="text-gray-700 text-sm pt-1">
+              Author Name
             </span>
-          ))}
+          </div>
+          <div className="w-full h-[40px] mb-5">
+            <h4 className="text-lg font-semibold mb-2">{blog.title}</h4>
+          </div>
+          <div>
+            <p className="text-gray-700 text-sm line-clamp-2 overflow-hidden">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
+              voluptates, quas, nesciunt, quia quod laborum quibusdam
+              reprehenderit quae odio autem doloremque.
+            </p>
+            <div className="flex items-center gap-2 mt-3">
+              <span className="text-gray-500 text-xs">9 min read</span>
+              <span className="text-gray-500 text-md">·</span>
+              <span className="text-gray-500 text-xs"> Nov 23, 2023</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col">
-        <span className="text-gray-500 dark:text-gray-300 mb-4 text-sm">
-          {t('releaseDate')} 15/06/2021{" "}
-        </span>
-        <Link href={`/blogs/${blog.id}`}>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-auto">
-            {t('readMore')}
-          </button>
-        </Link>
-      </div>
-    </article>
+    </Link>
   );
 }
 

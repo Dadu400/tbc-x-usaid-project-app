@@ -8,7 +8,7 @@ const UserRegistrationForm = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Add a null check for event.target.files
+    const file = event.target.files?.[0];
     if (file) {
       setSelectedImage(URL.createObjectURL(file));
     }
@@ -17,7 +17,7 @@ const UserRegistrationForm = () => {
   return (
     <div className="px-8 pt-6 pb-8 bg-white rounded shadow-2xl">
       <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">რეგისტრაცია</h2>
-      <Image src={selectedImage || DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border border-2 cursor-pointer w-[120px] h-[120px]" />
+      <Image src={selectedImage || DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
       <form autoComplete='off' className="flex flex-col space-y-4 mt-[10px]">
         <div className='w-full'>
           <label htmlFor="image" className="block font-medium text-gray-700 dark:text-white">
