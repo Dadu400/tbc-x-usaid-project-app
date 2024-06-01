@@ -7,6 +7,9 @@ module.exports = {
     "./layouts/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    transitionDuration: {
+      DEFAULT: "250ms",
+    },
     extend: {
       colors: {
         red: 'rgba(220, 38, 38, 0.9)'

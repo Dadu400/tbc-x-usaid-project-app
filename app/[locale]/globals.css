@@ -8,7 +8,6 @@
 @tailwind utilities;
 
 * {
-    @apply transition-colors duration-200 !important;
     z-index: 1;
 }
 
