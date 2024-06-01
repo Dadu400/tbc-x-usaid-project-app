@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import UserProfileMenu from "./UserProfileMenu"
 import { redirect } from "next/navigation";
+import ChangePassword from "./ChangePassword";
+import UserInformation from "./UserInformation";
 
 function UserInfo() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("profile");
@@ -14,8 +16,8 @@ function UserInfo() {
     }, [selectedMenuItem])
 
     const menuComponents: { [key: string]: JSX.Element } = {
-        profile: <div className="w-full">Profile</div>,
-        password: <div>Password</div>,
+        profile: <UserInformation />,
+        password: <ChangePassword />,
         history: <div>History</div>,
         logout: <></>
     }
