@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import test from "../../public/test.webp";
 import person from "../../public/person.png";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface BlogProps {
   blog: {
@@ -15,7 +17,7 @@ interface BlogProps {
 function Blog({ blog }: BlogProps) {
   return (
     <Link href={`/blogs/${blog.id}`}>
-      <div className="flex flex-col gap-1 bg-[#FEFEFE] shadow-lg rounded-xl max-w-[300px]">
+      <div className="flex flex-col gap-1 bg-[#FEFEFE] shadow-lg rounded-xl max-w-[300px] group relative">
         <div className="w-full cor">
           <Image
             src={test}
@@ -43,6 +45,10 @@ function Blog({ blog }: BlogProps) {
               <span className="text-gray-500 text-xs">9 min read</span>
               <span className="text-gray-500 text-md">·</span>
               <span className="text-gray-500 text-xs"> Nov 23, 2023</span>
+            </div>
+            <div className="absolute flex justify-center items-center border-[1px] border-[#404978] rounded-md p-1 right-2 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* <DeleteIcon className="w-4 h-4 text-[#404978]" /> */}
+              <EditIcon className="w-4 h-4 text-[#404978]" />
             </div>
           </div>
         </div>
