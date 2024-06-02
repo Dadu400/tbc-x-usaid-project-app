@@ -2,10 +2,11 @@ import Blog from "../blogs/Blog";
 import axios from "axios";
 
 
-interface Blog {
+export interface Blog {
   id: string | number;
   title: string;
-  tags: string[];
+  text: string;
+  imageUrl: string,
 }
 
 const getData = async () => {

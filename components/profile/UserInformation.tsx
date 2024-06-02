@@ -31,7 +31,7 @@ function UserInformation() {
                         onChange={handleImageChange}
                     />
                     <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
-                        <UploadIcon className="text-red mr-2" />
+                        <UploadIcon className="text-[#404978] mr-2" />
                         <span className="block text-md font-medium text-gray-700">შეცვალე სურათი</span>
                     </label>
                 </div>

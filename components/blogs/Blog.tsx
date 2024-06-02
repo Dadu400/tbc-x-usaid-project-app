@@ -7,13 +7,15 @@ interface BlogProps {
   blog: {
     title: string;
     id: string | number;
+    text?: string;
+    imageUrl?: string;
   };
 }
 
 function Blog({ blog }: BlogProps) {
   return (
     <Link href={`/blogs/${blog.id}`}>
-      <div className="flex flex-col gap-1 bg-[#FEFEFE] shadow-lg rounded-xl">
+      <div className="flex flex-col gap-1 bg-[#FEFEFE] shadow-lg rounded-xl max-w-[300px]">
         <div className="w-full cor">
           <Image
             src={test}
@@ -31,13 +33,11 @@ function Blog({ blog }: BlogProps) {
             </span>
           </div>
           <div className="w-full h-[40px] mb-5">
-            <h4 className="text-lg font-semibold mb-2">{blog.title}</h4>
+            <h4 className="text-lg font-semibold mb-2 line-clamp-2 overflow-hidden whitespace-pre-line break-words">{blog.title}</h4>
           </div>
           <div>
-            <p className="text-gray-700 text-sm line-clamp-2 overflow-hidden">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-              voluptates, quas, nesciunt, quia quod laborum quibusdam
-              reprehenderit quae odio autem doloremque.
+            <p className="text-gray-700 text-sm line-clamp-2 overflow-hidden h-[40px] whitespace-pre-line break-words">
+              {blog.text}
             </p>
             <div className="flex items-center gap-2 mt-3">
               <span className="text-gray-500 text-xs">9 min read</span>

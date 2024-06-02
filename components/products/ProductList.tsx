@@ -9,6 +9,7 @@ export interface Product {
   description: string;
   price: number;
 }
+
 async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn: boolean, onAddEditProductClicked: (product: Product) => void }) {
   const products = await getProducts();
 

@@ -9,4 +9,4 @@ function AddNewProductCard({ onClick }: { onClick: () => void }) {
     )
 }
 
-export default AddNewProductCard;
+export default AddNewProductCard

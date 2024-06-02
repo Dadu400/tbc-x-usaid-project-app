@@ -8,11 +8,17 @@ import UserInformation from "./UserInformation";
 import MyProductsList from "./MyProductsList";
 import AddEditProductForm from "../products/AddEditProductForm";
 import { Product } from "../products/ProductList";
+import BlogsList from "../blogs/BlogsList";
+import { Blog } from "../blogs/Blogs";
+import AddEditBlogForm from "../blogs/AddEditBlogForm";
 
 function UserInfo() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("profile");
     const [isNewProductPageOpen, setIsNewProductPageOpen] = useState(false);
+    const [isNewBlogPageOpen, setIsNewBlogPageOpen] = useState(false);
+
     const [product, setProduct] = useState<Product | null>(null);
+    const [blog, setBlog] = useState<Blog | null>(null);
 
     useEffect(() => {
         if (selectedMenuItem === "logout") {
@@ -32,6 +38,12 @@ function UserInfo() {
                 }}
             />
         ),
+        blogs: (
+            <BlogsList onAddEditBlogClicked={(blog: Blog) => {
+                setBlog(blog);
+                setIsNewBlogPageOpen(true);
+            }} />
+        ),
         logout: <></>,
     };
 
@@ -44,16 +56,20 @@ function UserInfo() {
                 />
             </div>
             <div style={{ flex: "3" }}>
-                {isNewProductPageOpen ? (
-                    <AddEditProductForm
-                        product={product}
-                        onBackClicked={() => {
-                            setIsNewProductPageOpen(false);
-                        }}
-                    />
-                ) : (
-                    menuComponents[selectedMenuItem]
-                )}
+                {!isNewProductPageOpen && !isNewBlogPageOpen && menuComponents[selectedMenuItem]}
+                {isNewProductPageOpen && (<AddEditProductForm
+                    product={product}
+                    onBackClicked={() => {
+                        setIsNewProductPageOpen(false);
+                    }}
+                />)}
+                {isNewBlogPageOpen && (<AddEditBlogForm
+                    blog={blog}
+                    onBackClicked={() => {
+                        setIsNewBlogPageOpen(false);
+                    }}
+                />)}
+
             </div>
         </div>
     );
