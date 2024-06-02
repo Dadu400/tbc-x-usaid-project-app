@@ -34,12 +34,12 @@ export default async function BlogsIdPage({ params }: { params: Params }) {
   const post = await getSingleBlog(id);
 
   return (
-    <DashboardLayout>
-      <div className="w-[60vw] m-auto flex flex-col items-center bg-[#fefefe]">
-        <h1 className="font-bold text-4xl text-gray-800 mb-6 text-center mt-[20px]">
+    <DashboardLayout useParticles={false}>
+      <div className="w-[60vw] m-auto mt-[20px] flex flex-col bg-[#fefefe] pl-12">
+        <h1 className="font-bold text-2xl text-gray-800 mt-[20px]">
           {post.title}
         </h1>
-        <div className="flex items-center gap-2 my-2 self-start ml-12">
+        <div className="flex items-center gap-2 my-2 self-start">
           <Image src={person} alt="author" className="w-12 h-12" />
           <div className="flex flex-col">
             <span className="text-gray-700 text-sm">
@@ -52,12 +52,12 @@ export default async function BlogsIdPage({ params }: { params: Params }) {
             </div>
           </div>
         </div>
-        <Image src={Dramatic} alt="blog_picture" className="w-[80%] h-[560px] my-4 rounded-md" />
-        <div className="mt-10 w-[80%] text-center">
-          <p className="text-gray-700 text-center">{post.body}</p>
+        <Image src={Dramatic} alt="blog_picture" className="w-[80%] h-[560px] my-4 rounded-md m-auto" />
+        <div className="mt-5 w-[100%]">
+          <p className="text-gray-700 text-md">{post.body}</p>
         </div>
       </div>
-      <ProductList />
+      {/* <ProductList /> */}
     </DashboardLayout>
   );
 }
