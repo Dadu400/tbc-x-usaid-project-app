@@ -9,8 +9,6 @@ interface Blog {
 }
 
 const getData = async () => {
-  await new Promise(resolve => setTimeout(resolve, 3000));
-
   try {
     const res = await axios.get("https://dummyjson.com/posts");
     return res.data.posts;
@@ -25,7 +23,8 @@ export default async function Blogs() {
   const fetchedBlogs = await getData();
 
   return (
-    <section className="w-[60vw] m-auto flex my-[20px]">
+    <section className="w-[60vw] m-auto flex flex-col my-[20px]">
+      <div className="text-center text-2xl font-semibold font-['mtavruli'] mb-[25px]">სიახლეები</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 bg-[#FEFEFE]">
         {fetchedBlogs.map((blog: Blog) => (
           <Blog key={blog.id} blog={blog} />

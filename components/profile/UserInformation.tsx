@@ -4,6 +4,7 @@ import Image from "next/image";
 import DefaultImage from "../../public/person.png";
 import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
+import UploadIcon from '@mui/icons-material/Upload';
 
 function UserInformation() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -20,18 +21,18 @@ function UserInformation() {
             <h2 className="text-2xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">ჩემი პროფილი</h2>
             <Image src={selectedImage || DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
             <form autoComplete='off' className="flex flex-col space-y-4 mt-[10px]">
-                <div className='w-full'>
-                    <label htmlFor="image" className="block font-medium text-gray-700">
-                        შეცვალე პროფილის სურათი
-                        <input
-                            type="file"
-                            id="image"
-                            name="image"
-                            accept="image/*"
-                            required
-                            className="mt-1 w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red file:border-0 file:bg-red file:text-sm file:font-medium"
-                            onChange={handleImageChange}
-                        />
+                <div className='w-[30%] flex items-center my-2 self-center'>
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleImageChange}
+                    />
+                    <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
+                        <UploadIcon className="text-red mr-2" />
+                        <span className="block text-md font-medium text-gray-700">შეცვალე სურათი</span>
                     </label>
                 </div>
                 <div className="h-[2px] bg-gradient-to-r from-white via-red to-white"> </div>

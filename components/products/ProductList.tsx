@@ -9,8 +9,7 @@ export interface Product {
   description: string;
   price: number;
 }
-
-async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn: boolean }) {
+async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn: boolean, onAddEditProductClicked: (product: Product) => void }) {
   const products = await getProducts();
 
   return (
@@ -43,7 +42,11 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
           />
         ))}
         {addNewBtn ? (
-          <AddNewProductCard />
+          <AddNewProductCard onClick={
+            () => {
+              onAddEditProductClicked({ id: "", title: "", description: "", price: 0 });
+            }}
+          />
         ) : <></>}
       </div>
     </section >

@@ -5,15 +5,16 @@ import ParticlesBackground from "../../../components/particles/ParticlesBackgrou
 
 interface DashboardLayoutProps {
   children: ReactNode;
+  useParticles?: boolean;
 }
 
-function DashboardLayout({ children }: DashboardLayoutProps) {
+function DashboardLayout({ children, useParticles = true }: DashboardLayoutProps) {
   return (
     <>
       <Header />
       {children}
       {/* <Footer /> */}
-      <ParticlesBackground />
+      {useParticles && <ParticlesBackground />}
     </>
   );
 }

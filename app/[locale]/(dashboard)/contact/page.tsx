@@ -1,12 +1,10 @@
 import DashboardLayout from "../DashboardLayout";
 import ContactInfo from "../../../../components/contactUs/ContactInfo";
-import ContactBanners from "../../../../components/contactUs/ContactBanners";
 
 function Contacts() {
   return (
-    <DashboardLayout>
+    <DashboardLayout useParticles={false}>
       <ContactInfo />
-      <ContactBanners />
     </DashboardLayout>
   );
 }
