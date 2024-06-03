@@ -49,6 +49,7 @@ function Categories() {
                 ))}
             </Swiper>
             <div className="swiper-button-custom-prev flex items-center justify-center w-5 h-5 p-4 text-red border-red border-[1px] rounded-full cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowLeftIcon /></div>
+
             <div className="swiper-button-custom-next flex items-center justify-center w-5 h-5 p-4 text-red border-red border-[1px]  rounded-full cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowRightIcon /></div>
         </div>
     );
