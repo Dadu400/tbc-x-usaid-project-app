@@ -12,10 +12,11 @@ export interface Product {
 
 async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn: boolean, onAddEditProductClicked: (product: Product) => void }) {
   const products = await getProducts();
+  const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)` };
 
   return (
     <section className={"w-[100%] mx-auto " + (className ?? "")}>
-      <div className="flex items-center justify-between gap-[15px]" >
+      <div className="flex items-center gap-[15px]" >
         {
           icon != null ? (
             <div className="bg-[#3C74FF] flex items-center text-2xl px-[3px] py-[5px] rounded-[10px] text-white">
@@ -25,7 +26,7 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
         }
         <span className="text-2xl text-black font-bold font-['mtavruli']">{title}</span>
       </div>
-      <div className={`grid grid-cols-${colCount} mt-5 gap-y-[15px]`}>
+      <div className={`grid mt-6 gap-y-[15px]`} style={gridStyle}>
         {products.map((product: Product) => (
           <Card
             key={product.id}

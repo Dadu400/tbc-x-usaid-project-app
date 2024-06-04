@@ -11,6 +11,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import StarIcon from '@mui/icons-material/Star';
 import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined';
 
+import Image from 'next/image';
+
 function ProductPage() {
     // const [productCounter, setProductCounter] = useState(1);
 
@@ -21,7 +23,7 @@ function ProductPage() {
                     <span className="text-sm text-gray-700">ტექნიკა • საოჯახო • ტექნიკა • გათბობა და გაგრილება • კონდიციონერი</span>
                     <div className="flex">
                         <div className="flex-[2]">
-                            <img src="https://sonic.ge/dyn/_WNQu2aFovAIf2mq9dfnxn2EsLZaUwuwSK2B5oJ4uJg/rs:fit:720:0/plain/images/products/original/395bf85b-16c1-444a-946b-8d12dc9f7e49.jpg" alt="product" className="w-[100%] rounded-lg" />
+                            <Image src="https://sonic.ge/dyn/_WNQu2aFovAIf2mq9dfnxn2EsLZaUwuwSK2B5oJ4uJg/rs:fit:720:0/plain/images/products/original/395bf85b-16c1-444a-946b-8d12dc9f7e49.jpg" alt="product" className="w-[100%] rounded-lg" />
                         </div>
                         <div className="flex-[3]">
                             <div className="flex flex-col mx-[20px] mt-[25px]">
@@ -106,6 +108,7 @@ function ProductPage() {
                 <span className="font-['mtavruli'] border-b-[#1e90ff] border-b-[2px] flex items-center gap-[8px] pb-[5px]">
                     <PersonIcon className="text-[#1e90ff]" /> გამყიდველი
                 </span>
+
             </div>
             <div className="bg-[#FEFEFE] mt-[40px] flex w-[60vw] mx-auto shadow-xl p-[25px]">
                 <span className="font-['mtavruli'] border-b-[#1e90ff] border-b-[2px] flex items-center gap-[8px] pb-[5px]">
