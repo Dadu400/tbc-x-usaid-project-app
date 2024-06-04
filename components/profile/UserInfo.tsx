@@ -11,6 +11,7 @@ import { Product } from "../products/ProductList";
 import BlogsList from "../blogs/BlogsList";
 import { Blog } from "../blogs/Blogs";
 import AddEditBlogForm from "../blogs/AddEditBlogForm";
+import OrderHistory from "./OrderHistory";
 
 function UserInfo() {
     const [selectedMenuItem, setSelectedMenuItem] = useState("profile");
@@ -29,7 +30,7 @@ function UserInfo() {
     const menuComponents: { [key: string]: JSX.Element } = {
         profile: <UserInformation />,
         password: <ChangePassword />,
-        history: <div>History</div>,
+        history: <OrderHistory />,
         products: (
             <MyProductsList
                 onAddEditProductClicked={(product: Product) => {
