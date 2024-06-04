@@ -1,15 +1,16 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { handleDeleteProduct } from "../../actions";
 
 export default function RemoveProductButton({ id }: { id: string }) {
   return (
-    <FontAwesomeIcon
+    <button
+      className="text-sm font-regular text-red-600 flex items-center my-5"
       onClick={() => handleDeleteProduct(id)}
-      icon={faTrashCan}
-      className="w-4 h-6 cursor-pointer text-blue-500"
-    />
+    >
+      <DeleteOutlineIcon className="mr-2 text-red text-md" />
+      წაშალე
+    </button>
   );
 }

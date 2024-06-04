@@ -3,8 +3,8 @@ import DashboardLayout from "../DashboardLayout";
 
 function Cart() {
   return (
-    <DashboardLayout>
-        <CartContainer />
+    <DashboardLayout useParticles={false}>
+      <CartContainer />
     </DashboardLayout>
   );
 }
