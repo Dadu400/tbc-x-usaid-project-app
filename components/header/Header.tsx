@@ -8,13 +8,13 @@ import CartIcon from "./CartIcon";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LocaleSwitcher from "./LocaleSwitcher";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { cookies } from "next/headers";
 
 async function Header() {
   const t = await getTranslations("navigation");
-  // const handleLogout = async () => {
-  //   "use server";
-  //   await Logout();
-  // };
+
+  const authCookie = cookies().get("auth");
 
   return (
     <header className="border-b-2 border-[#00000026] bg-[#FEFEFE] w-full px-8 py-3">
@@ -44,14 +44,18 @@ async function Header() {
                     <FeedOutlinedIcon />
                   </Link>
                 </li>
-                <CartIcon />
+                {authCookie && <li>
+                  <Link href={"/profile"}>
+                    <PermIdentityIcon fontSize="medium" />
+                  </Link>
+                </li>}
               </ul>
             </li>
             <li className="uppercase font-medium text-base">
-              <Link href={"/login"}>
+              <Link href={authCookie ? "/logout" : "/login"}>
                 <button className="flex w-[125px] items-center justify-center gap-2 border-[1.5px] border-[#0000001a] hover:border-[#00000014] hover:bg-[#00000014] text-sm px-4 py-2 rounded-[10px] rounded-tr-[10px] rounded-br-[10px]">
-                  <PermIdentityIcon style={{}} />
-                  {t('login')}
+                  {authCookie ? <ExitToAppIcon fontSize="small" /> : <PermIdentityIcon />}
+                  {authCookie ? t('logout') : t('login')}
                 </button>
               </Link>
             </li>
