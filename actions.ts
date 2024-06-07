@@ -2,27 +2,59 @@
 
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./contants";
-import { createUser, deleteUser, updateUser } from "./helpers/axiosUsers";
 import { revalidateTag } from "next/cache";
+import axios from "axios";
+import { createUser } from "./helpers/axiosUsers";
 
-export async function Login(username: string, password: string) {
-  const response = await fetch("https://dummyjson.com/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username,
+export async function Login(email: string, password: string) {
+  console.log("Yes");
+  const response = await axios
+    .post("http://localhost:8080/login", {
+      email,
       password,
-    }),
-  });
+    })
+    .catch((error) => {
+      console.log("Error moxda: " + error);
+    });
 
-  const user = await response.json();
-
-  if (user.token) {
+  if (response !== undefined && response.status === 200) {
     const cookiesStore = cookies();
-    cookiesStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));
-  } else {
-    throw new Error(user.message);
+    cookiesStore.set(AUTH_COOKIE_KEY, response.data.token);
+    return { ok: true };
   }
+
+  return { ok: false };
+}
+
+export async function Register(formData: any) {
+  const { email, password, name, surname, address, phone, image } = formData;
+
+  let response;
+  try {
+    response = await axios.post("http://localhost:8080/register", {
+      email,
+      password,
+    });
+  } catch (error: any) {
+    if (error.response.status === 400) {
+      return { ok: false, message: "User with that email already exists" };
+    }
+    return { ok: false, message: "Failed to register user" };
+  }
+
+  const userId = response.data.userId;
+
+  createUser(
+    userId,
+    name as string,
+    email as string,
+    surname as string,
+    address as string,
+    phone as string,
+    image as string
+  );
+
+  return { ok: true };
 }
 
 export async function Logout() {
@@ -31,23 +63,23 @@ export async function Logout() {
   return { ok: true };
 }
 
-export async function createUserAction(formData: FormData) {
-  const { name, email, age } = Object.fromEntries(formData);
-  createUser(name as string, email as string, age as string);
-  revalidateTag("users_list");
-}
+// export async function createUserAction(formData: FormData) {
+//   const { name, email, age } = Object.fromEntries(formData);
+//   createUser(name as string, email as string, age as string);
+//   revalidateTag("users_list");
+// }
 
-export async function deleteUserAction(id: number) {
-  await deleteUser(id);
-}
+// export async function deleteUserAction(id: number) {
+//   await deleteUser(id);
+// }
 
-export async function updateUserAction(formData: FormData) {
-  const { id, name, email, age } = Object.fromEntries(formData);
-  updateUser(id as string, name as string, email as string, age as string)
-}
+// export async function updateUserAction(formData: FormData) {
+//   const { id, name, email, age } = Object.fromEntries(formData);
+//   updateUser(id as string, name as string, email as string, age as string);
+// }
 
 export const handleAddToCart = async (productId: string) => {
-  "use server"
+  "use server";
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/add-product",
@@ -67,7 +99,7 @@ export const handleAddToCart = async (productId: string) => {
 };
 
 export const handleDecrementCart = async (productId: string) => {
-  "use server"
+  "use server";
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/decrement-product",
@@ -93,7 +125,7 @@ export const handleDecrementCart = async (productId: string) => {
 };
 
 export const handleEmptyCart = async () => {
-  "use server"
+  "use server";
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/clear-cart",
@@ -119,7 +151,7 @@ export const handleEmptyCart = async () => {
 };
 
 export const handleDeleteProduct = async (productId: string) => {
-  "use server"
+  "use server";
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",

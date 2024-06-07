@@ -2,28 +2,35 @@
 
 import React, { useState } from 'react';
 import { useLocale } from "next-intl";
+import { Login } from '../../actions';
+import { redirect } from 'next/navigation';
 
-interface LoginFormProps {
-  handleLogin: (email: string, password: string) => void;
-}
 
-function LoginForm({ handleLogin }: LoginFormProps) {
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [error, setError] = useState('');
+
   const locale = useLocale();
 
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    handleLogin(email, password);
+
+    const response = await Login(email, password);
+    if (!response.ok) {
+      setError("არასწორი მეილი ან პაროლი");
+    }
   };
 
   return (
     <div className="px-8 pt-6 pb-8 bg-white rounded shadow-2xl dark:bg-black">
       <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">ავტორიზაცია</h2>
+      {error && <p className="text-red-500 text-center">{error}</p>}
       <form autoComplete='off' className="flex flex-col space-y-4">
         <div className='w-[350px]'>
           <label htmlFor="email" className="block text-md font-medium text-gray-700 dark:text-white">
-            {locale == "en" ? "Username" : "მომხარებლის სახელი"}
+            {locale == "en" ? "Email" : "მეილი"}
           </label>
           <input
             type="email"

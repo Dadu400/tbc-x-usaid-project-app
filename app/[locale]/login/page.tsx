@@ -20,21 +20,12 @@ export default async function LoginPage() {
     redirect("/");
   }
 
-  const handleLogin = async (username: string, password: string) => {
-    "use server";
-    await Login(username, password);
-  };
-
   return (
     <div className="flex justify-center items-center h-screen dark:bg-black">
       <ParticlesBackground />
       <div className="flex flex-col justify-center items-center mt-[-80px]">
         <Image src={SuperMan} alt="Company Logo" width={80} height={80} className="mb-[25px]" />
-        {/* <div className="mb-2 flex gap-2">
-        <LocaleSwitcher />
-        <ThemeSwitcher />
-      </div> */}
-        <LoginForm handleLogin={handleLogin} />
+        <LoginForm />
         <SignUpSuggestion />
       </div>
     </div>
