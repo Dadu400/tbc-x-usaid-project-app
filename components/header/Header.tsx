@@ -10,6 +10,7 @@ import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LocaleSwitcher from "./LocaleSwitcher";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { cookies } from "next/headers";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 async function Header() {
   const t = await getTranslations("navigation");
@@ -25,25 +26,16 @@ async function Header() {
           </Link>
           {t('superSite')}
         </div>
-        <div className="w-[30%] flex items-stretch border-[1.5px] border-red rounded-[6px] bg-white">
-          <input placeholder={t('search')} className="border-red outline-none text-black text-sm text-color-[#000000b3] flex-grow rounded-l-[6px] p-[6px] ml-[5px] my-[3px]"></input>
-          <div className="bg-red text-white flex items-center px-[8px] cursor-pointer">
-            <SearchOutlinedIcon />
-          </div>
-        </div>
         <nav>
           <ul className="flex items-center gap-10">
             <li>
-              <LocaleSwitcher />
-            </li>
-            <li>
               <ul className="flex items-center gap-5">
+                <LocaleSwitcher />
+                <ThemeSwitcher />
                 <CartIcon />
-                <li>
-                  <Link href={"/blogs"}>
-                    <FeedOutlinedIcon />
-                  </Link>
-                </li>
+                <Link href={"/blogs"}>
+                  <FeedOutlinedIcon />
+                </Link>
                 {authCookie && <li>
                   <Link href={"/profile"}>
                     <PermIdentityIcon fontSize="medium" />
