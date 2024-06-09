@@ -1,7 +1,9 @@
 import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
 import Card from "./Card";
+import localFont from '@next/font/local'
 
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 export interface Product {
   id: string | number;
@@ -21,7 +23,7 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
         {
           icon != null ? icon : <></>
         }
-        <span className="text-2xl text-[#191C20] dark:text-[#E2E2E9] font-bold font-['mtavruli']">{title}</span>
+        <span className={`text-xl text-[#191C20] dark:text-[#E2E2E9] font-bold ${mtavruli.className}`}>{title}</span>
       </div>
       <div className={`grid mt-6 gap-y-[15px]`} style={gridStyle}>
         {products.slice(0, 5).map((product: Product) => (

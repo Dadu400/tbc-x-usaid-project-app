@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { useLocale } from "next-intl";
 import { Login } from '../../actions';
-import { redirect } from 'next/navigation';
+import localFont from '@next/font/local'
 
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ function LoginForm() {
 
   return (
     <div className="px-8 pt-6 pb-8 bg-white rounded shadow-2xl dark:bg-black">
-      <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">ავტორიზაცია</h2>
+      <h2 className={`text-xl font-semibold ${mtavruli.className} mb-[20px] text-center w-full`}>ავტორიზაცია</h2>
       {error && <p className="text-red-500 text-center">{error}</p>}
       <form autoComplete='off' className="flex flex-col space-y-4">
         <div className='w-[350px]'>
