@@ -14,8 +14,8 @@ interface CardProps {
 function Card({ id, productName, price }: CardProps) {
   const formattedPrice = typeof price === "number" ? price.toFixed(2) : parseFloat(price).toFixed(2);
   return (
-    <div className="flex flex-col w-[190px] h-[265px] shadow-lg justify-between rounded-lg py-[10px] px-[15px] cursor-pointer group relative">
-      <div className="flex items-center justify-center">
+    <div className="flex flex-col w-[190px] h-[265px] dark:bg-[#1D2024] shadow-lg justify-between rounded-lg py-[10px] px-[15px] cursor-pointer group relative">
+      <div className="flex items-center justify-center mt-[15px]">
         <Image
           src={TestProduct}
           alt="product"

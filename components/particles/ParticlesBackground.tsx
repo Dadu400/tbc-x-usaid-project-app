@@ -61,10 +61,10 @@ const ParticlesBackground: React.FC = () => {
                     enable: true,
                     area: 800,
                 },
-                value: 24,
+                value: 10,
             },
             opacity: {
-                value: 1,
+                value: 0.5,
             },
             shape: {
                 type: "image",

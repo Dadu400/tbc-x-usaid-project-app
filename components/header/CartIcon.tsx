@@ -21,7 +21,7 @@ export default async function CartIcon() {
     <li className="uppercase relative">
       <Link href="/cart">
         <ShoppingCartOutlinedIcon />
-        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-red w-[15px] h-[15px] text-white">
+        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-[#EC6652] w-[15px] h-[15px] text-white">
           {totalQuantity}
         </span>
       </Link>
