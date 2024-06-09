@@ -17,7 +17,7 @@ async function Header() {
   const authCookie = cookies().get("auth");
 
   return (
-    <header className="border-b-2 border-[#00000026] dark:border-[#ffffff26] bg-[#FEFEFE] dark:bg-[#121B18] dark-[#] w-full px-8 py-3 sticky top-0 z-10">
+    <header className="border-b-2 border-[#00000026] dark:border-[#ffffff26] bg-[#F9F9FF] dark:bg-[#121B18] dark-[#] w-full px-8 py-3 sticky top-0 z-10">
       <div className="w-[60vw] mx-auto flex items-center justify-between">
         <div className="flex items-center font-bold text-lg font-['mtavruli'] w-[200px]">
           <Link href="/">
