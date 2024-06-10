@@ -34,11 +34,10 @@ async function Header() {
                 <Link href={"/blogs"}>
                   <FeedOutlinedIcon />
                 </Link>
-                {authCookie && <li>
+                {authCookie &&
                   <Link href={"/profile"}>
                     <PermIdentityIcon fontSize="medium" />
-                  </Link>
-                </li>}
+                  </Link>}
               </ul>
             </li>
             <li className="uppercase font-medium text-base">
