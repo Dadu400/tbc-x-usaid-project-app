@@ -18,7 +18,7 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
   const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)` };
 
   return (
-    <section className={"w-[100%] mx-auto " + (className ?? "")}>
+    <section className={"w-[100%] " + (className ?? "")}>
       <div className="flex items-center gap-[15px]" >
         {
           icon != null ? icon : <></>
