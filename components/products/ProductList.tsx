@@ -15,17 +15,17 @@ export interface Product {
 async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn: boolean, onAddEditProductClicked: (product: Product) => void }) {
 
   const products = await getProducts();
-  const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)` };
+  const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)`, justifyItems: "center" };
 
   return (
     <section className={"w-[100%] " + (className ?? "")}>
-      <div className="flex items-center gap-[15px]" >
+      {title ? <div className="flex items-center gap-[15px]" >
         {
           icon != null ? icon : <></>
         }
         <span className={`text-xl text-[#191C20] dark:text-[#E2E2E9] font-bold ${mtavruli.className}`}>{title}</span>
-      </div>
-      <div className={`grid mt-6 gap-y-[15px]`} style={gridStyle}>
+      </div> : <></>}
+      <div className={`w-[100%] grid my-3 gap-y-[35px] `} style={gridStyle}>
         {products.slice(0, 5).map((product: Product) => (
           <Card
             key={product.id}

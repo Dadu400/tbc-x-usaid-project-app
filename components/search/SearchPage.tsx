@@ -12,6 +12,7 @@ import PriceFilter from './PriceFilter'
 import RatingFilter from './RatingFilter'
 import CategoryFilter from './CategoryFilter'
 import EmptySearch from './EmptySearch'
+import MyProductsList from '../profile/MyProductsList'
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
@@ -37,7 +38,8 @@ function SearchPage() {
                     <ExpandableFilter title={'შეფასება'} component={<RatingFilter />} className="mt-[15px]" />
                 </div>
                 <div className="w-full flex-[4] justify-center items-center flex border rounded p-[15px]">
-                    <EmptySearch />
+                    {/* <EmptySearch /> */}
+                    <ProductList colCount={4} />
                 </div>
             </div>
 
