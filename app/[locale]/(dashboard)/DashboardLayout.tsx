@@ -1,5 +1,5 @@
 import Header from "../../../components/header/Header";
-// import Footer from "../../../components/footer/Footer";
+import Footer from "../../../components/footer/Footer";
 import { ReactNode } from "react";
 import ParticlesBackground from "../../../components/particles/ParticlesBackground";
 
@@ -13,7 +13,7 @@ function DashboardLayout({ children, useParticles = true }: DashboardLayoutProps
     <>
       <Header />
       {children}
-      {/* <Footer /> */}
+      <Footer />
       {useParticles && <ParticlesBackground />}
     </>
   );

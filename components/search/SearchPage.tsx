@@ -11,8 +11,6 @@ import ExpandableFilter from './ExpandableFilter'
 import PriceFilter from './PriceFilter'
 import RatingFilter from './RatingFilter'
 import CategoryFilter from './CategoryFilter'
-import EmptySearch from './EmptySearch'
-import MyProductsList from '../profile/MyProductsList'
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
