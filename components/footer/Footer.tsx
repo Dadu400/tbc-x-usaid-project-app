@@ -24,9 +24,9 @@ function Footer() {
       <div className="w-full bg-[#EC6652] flex items-center justify-center cursor-pointer text-white" onClick={() => scrollUp()}>
         <KeyboardArrowUpIcon />
       </div>
-      <div className="w-[60vw] mx-auto my-[20px] bg-[#F9F9FF] dark:bg-[#121B18] flex gap-[25px] justify-between">
+      <div className="w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto my-[20px] bg-[#F9F9FF] dark:bg-[#121B18] flex gap-[25px] justify-center lg:justify-between">
         <FooterBrand />
-        <div className="bg-[#F9F9FF] dark:bg-[#121B18]">
+        <div className="hidden lg:block bg-[#F9F9FF] dark:bg-[#121B18]">
           <span className={`font-semibold text-md ${mtavruli.className}`}>სამართლებრივი</span>
           <div className="flex flex-col gap-[10px] mt-[17px] bg-[#F9F9FF] dark:bg-[#121B18]">
             <span className={`cursor-pointer ${mtavruli.className} text-sm`}>წესები და პირობები</span>
@@ -34,7 +34,7 @@ function Footer() {
             <span className={`cursor-pointer ${mtavruli.className} text-sm`}>დაბრუნების პოლიტიკა</span>
           </div>
         </div>
-        <div className="bg-[#F9F9FF] dark:bg-[#121B18]">
+        <div className="hidden lg:block bg-[#F9F9FF] dark:bg-[#121B18]">
           <span className={`font-semibold text-md ${mtavruli.className}`}>დახმარება</span>
           <div className="flex flex-col gap-[10px] mt-[17px] bg-[#F9F9FF] dark:bg-[#121B18]">
             <span className={`cursor-pointer ${mtavruli.className} text-sm`}>ხშირად დასმული კითხვები</span>
@@ -48,7 +48,7 @@ function Footer() {
             </span>
           </div>
         </div>
-        <div className="bg-[#F9F9FF] dark:bg-[#121B18]">
+        <div className="hidden lg:block bg-[#F9F9FF] dark:bg-[#121B18]">
           <span className={`font-semibold text-md ${mtavruli.className}`}>სოციალური ქსელები</span>
           <div className="flex flex-col gap-[10px] mt-[17px] bg-[#F9F9FF] dark:bg-[#121B18]">
             <span className={`cursor-pointer ${mtavruli.className} text-sm flex items-center gap-[5px]`}>

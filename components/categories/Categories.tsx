@@ -16,6 +16,7 @@ import Plushy from '../../public/categories/plushy.png';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 function Categories() {
     const categories: { categoryImg?: JSX.Element; name: string; description?: string }[] = [
@@ -28,8 +29,22 @@ function Categories() {
         { name: 'Plush Toys', description: 'Description 7', categoryImg: <Image src={Plushy} width={58} alt="Plush Toys" className="m-[10px]" /> },
     ];
 
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-4">
             <div>
                 <Category
                     name="ყველა კატეგორია"
@@ -40,13 +55,14 @@ function Categories() {
             <Swiper
                 modules={[Navigation, A11y]}
                 spaceBetween={4}
-                slidesPerView={4}
+                slidesPerView={screenWidth > 1120 ? 4 : screenWidth > 870 ? 3 : screenWidth > 655 ? 2 : 1}
                 navigation={{
                     nextEl: '.swiper-button-custom-next',
                     prevEl: '.swiper-button-custom-prev'
                 }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
+            // centeredSlides={true}
             >
                 {categories.map((category, index) => (
                     <SwiperSlide key={index}>

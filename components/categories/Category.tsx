@@ -12,7 +12,7 @@ interface CategoryProps {
 
 function Category({ name, isAllCategory, categoryImg }: CategoryProps) {
     return (
-        <div className={`w-[140px] h-[160px] flex flex-col font-medium tracking-wider items-center py-[40px] rounded-[10px] cursor-pointer ` + (isAllCategory ? "bg-[#EC6652] justify-center text-white" : "bg-[#EAEAEA] dark:bg-[#1D2024] dark:text-[#E2E2E9] ")} style={{ position: 'relative' }}>
+        <div className={`w-[140px] h-[160px] flex flex-col font-medium tracking-wider items-center py-[40px] mx-auto rounded-[10px] cursor-pointer ` + (isAllCategory ? "bg-[#EC6652] justify-center text-white" : "bg-[#EAEAEA] dark:bg-[#1D2024] dark:text-[#E2E2E9] ")} style={{ position: 'relative' }}>
             {isAllCategory ? <span><FormatListBulletedIcon fontSize="large" /></span> : <></>}
             <span className={`${mtavruli.className} text-center text-[13px] px-[10px]` + (isAllCategory ? " mt-[20px]" : "")}>{name}</span>
             {categoryImg && (

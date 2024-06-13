@@ -38,7 +38,7 @@ function SearchBar({ className }) {
                 <span className={`font-semibold text-[#EC6652]  ${mtavruli.className}`}>მოძებნე </span>
                 <span ref={typedElement} className={`text-[#191C20] dark:text-[#E2E2E9] ${mtavruli.className}`}></span>
             </div>
-            <div className="w-full flex bg-[#F9F9FF] dark:bg-[#121B18] gap-8 h-[60px] mt-[15px]">
+            <div className="w-full flex bg-[#F9F9FF] dark:bg-[#121B18] gap-3 lg:gap-8 h-[60px] mt-[15px]">
                 <input placeholder={'Search...'} className="flex-grow border-[#EC6652] border-[1.5px] outline-none text-[#191C20] text-sm text-color-[#000000b3] rounded-[12px] p-[6px] px-[12px] dark:bg-[#121B18] dark:text-[#E2E2E9]"></input>
                 <div className={`bg-[#EC6652] text-white flex items-center justify-center gap-[5px] cursor-pointer w-[150px] rounded-[12px] ${mtavruli.className}`}>
                     <SearchOutlinedIcon />
