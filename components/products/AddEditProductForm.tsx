@@ -22,7 +22,7 @@ function AddEditProductForm({ product = null, onBackClicked }: { product: any, o
 
             <div className='flex flex-col items-center justify-center mt-[30px]'>
                 <span className="text-md text-center w-full mb-[20px]">ნიმუში:</span>
-                <Card id="1" productName={productName} price={productPrice} />
+                <Card productName={productName} price={productPrice} />
             </div>
 
             <form className='w-[70%] mx-auto mt-[30px] flex flex-col gap-[10px]'>

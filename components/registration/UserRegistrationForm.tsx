@@ -19,7 +19,6 @@ const UserRegistrationForm = () => {
   const [phone, setPhone] = useState('');
   const [selectedImage, setSelectedImage] = useState<File | undefined>(undefined);
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,13 +31,17 @@ const UserRegistrationForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (selectedImage == null) {
+      setErrorMessage('აირჩიეთ პროფილის სურათი');
+      return;
+    }
+
     const response = await fetch(`/api/upload?filename=${selectedImage.name}`, {
       method: 'POST',
       body: selectedImage,
     });
 
     const newBlob = (await response.json()) as PutBlobResult;
-    setBlob(newBlob);
 
     const formData = {
       email,
@@ -54,7 +57,11 @@ const UserRegistrationForm = () => {
     if (registrationStatus.ok) {
       router.push('/login');
     } else {
-      setErrorMessage(registrationStatus.message);
+      if (registrationStatus.message) {
+        setErrorMessage(registrationStatus.message);
+      } else {
+        setErrorMessage('რეგისტრაცია ვერ მოხერხდა, სცადეთ მოგვიანებით');
+      }
     }
   };
 

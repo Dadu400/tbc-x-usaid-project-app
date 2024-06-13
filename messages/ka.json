@@ -94,5 +94,16 @@
   "Loading": {
     "loading": "იტვირთება...",
     "loadText": "გთხოვთ დაელოდოთ მონაცემების ჩატვირთვას"
+  },
+  "SearchPage": {
+    "totalResults": "სულ {total} შედეგი",
+    "dateAsc": "თარიღის მატებით",
+    "dateDesc": "თარიღის კლებით",
+    "priceDesc": "ფასის კლებით",
+    "priceAsc": "ფასის მატებით",
+    "filter": "ფილტრი",
+    "category": "კატეგორია",
+    "price": "ფასი",
+    "rating": "რეიტინგი"
   }
 }

@@ -2,16 +2,15 @@
 import Image from "next/image";
 import TestProduct from "../../public/TestProduct.webp";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+// import DeleteIcon from '@mui/icons-material/Delete';
+// import EditIcon from '@mui/icons-material/Edit';
 
 interface CardProps {
-  id: string | number;
   productName: string;
   price: number;
 }
 
-function Card({ id, productName, price }: CardProps) {
+function Card({ productName, price }: CardProps) {
   const formattedPrice = typeof price === "number" ? price.toFixed(2) : parseFloat(price).toFixed(2);
   return (
     <div className="flex flex-col w-[190px] h-[265px] dark:bg-[#1D2024] shadow-lg justify-between rounded-lg py-[10px] px-[15px] cursor-pointer group relative">

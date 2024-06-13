@@ -12,7 +12,7 @@ export interface Product {
   price: number;
 }
 
-async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn: boolean, onAddEditProductClicked: (product: Product) => void }) {
+async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn?: boolean, onAddEditProductClicked?: (product: Product) => void }) {
 
   const products = await getProducts();
   const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)`, justifyItems: "center" };
@@ -29,7 +29,6 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
         {products.slice(0, 5).map((product: Product) => (
           <Card
             key={product.id}
-            id={product.id}
             productName={product.title}
             price={product.price}
           />
@@ -37,7 +36,9 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
         {addNewBtn ? (
           <AddNewProductCard onClick={
             () => {
-              onAddEditProductClicked({ id: "", title: "", description: "", price: 0 });
+              if (onAddEditProductClicked) {
+                onAddEditProductClicked({ id: "", title: "", description: "", price: 0 });
+              }
             }}
           />
         ) : <></>}

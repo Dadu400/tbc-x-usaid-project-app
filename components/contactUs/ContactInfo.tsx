@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import ContactForm from "./ContactForm";
 import ContactImage from "../../public/contact.jpg";
 import Image from "next/image";
@@ -8,8 +7,6 @@ import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlin
 import ContactData from "./ContactData";
 
 function ContactInfo() {
-  const t = useTranslations("ContactInfo");
-
   return (
     <section className="w-[60vw] m-auto mt-[20px] flex gap-[25px] items-start bg-[#fefefe] shadow-2xl rounded-lg p-[50px]">
       <div className="flex-1 flex flex-col">

@@ -1,8 +1,6 @@
-import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
+import { NextIntlClientProvider } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
-
-const georgian = Noto_Sans_Georgian({ subsets: ["georgian"] })
 
 export const metadata = {
   title: "unOfficial Lego",
@@ -25,7 +23,15 @@ export default function RootLayout({ children, params: { locale } }: RootLayoutP
   unstable_setRequestLocale(locale);
   return (
     <html lang={locale} >
-      <body className={georgian.className}>{children}</body>
+      <body>
+        <NextIntlClientProvider
+          locale={locale}
+        >
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
+
+export const dynamic = "force-dynamic"

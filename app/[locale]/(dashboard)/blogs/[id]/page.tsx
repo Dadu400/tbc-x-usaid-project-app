@@ -5,7 +5,6 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import Dramatic from "../../../../../public/Dramatic.webp";
 import person from "../../../../../public/person.png";
 import Image from 'next/image';
-import ProductList from "../../../../../components/products/ProductList";
 
 interface Post {
   title: string;

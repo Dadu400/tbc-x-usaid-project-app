@@ -4,13 +4,14 @@ import React from 'react';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import type { Engine } from 'tsparticles-engine';
+import type { ISourceOptions } from 'tsparticles-engine';
 
 const ParticlesBackground: React.FC = () => {
     const particlesInit = async (main: Engine) => {
         await loadFull(main);
     };
 
-    const particlesOptions = {
+    const particlesOptions: ISourceOptions = {
         fpsLimit: 60,
         interactivity: {
             events: {
@@ -48,9 +49,7 @@ const ParticlesBackground: React.FC = () => {
             move: {
                 direction: "right",
                 enable: true,
-                outModes: {
-                    right: "out",
-                },
+                outModes: "out",
                 random: false,
                 speed: 2,
                 straight: false,

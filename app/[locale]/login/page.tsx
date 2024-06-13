@@ -2,11 +2,8 @@
 
 import LoginForm from "../../../components/auth/LoginForm";
 import { AUTH_COOKIE_KEY } from "../../../contants";
-import { Login } from "../../../actions";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import LocaleSwitcher from "../../../components/header/LocaleSwitcher";
-import ThemeSwitcher from "../../../components/header/ThemeSwitcher";
 import ParticlesBackground from "../../../components/particles/ParticlesBackground";
 import SuperMan from "../../../public/superman.svg";
 import Image from "next/image";

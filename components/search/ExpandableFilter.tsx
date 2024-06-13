@@ -9,7 +9,7 @@ import localFont from '@next/font/local'
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
-function ExpandableFilter({ title, component, className }) {
+function ExpandableFilter({ title, component, className }: { title: string, component: JSX.Element, className: string }) {
     const [expanded, setExpanded] = useState(false);
 
     const toggleExpand = () => {

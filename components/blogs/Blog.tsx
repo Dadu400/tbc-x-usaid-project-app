@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import test from "../../public/test.webp";
 import person from "../../public/person.png";
-import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 interface BlogProps {

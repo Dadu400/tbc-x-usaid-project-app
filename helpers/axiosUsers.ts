@@ -1,5 +1,4 @@
 import { sql } from "@vercel/postgres";
-import axios from "axios";
 import { revalidateTag } from "next/cache";
 
 export interface User {

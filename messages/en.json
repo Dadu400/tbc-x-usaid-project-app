@@ -94,5 +94,16 @@
   "Loading": {
     "loading": "Loading...",
     "loadText": "Patiently Waiting for Data"
+  },
+  "SearchPage": {
+    "totalResults": "Total {total} results",
+    "dateAsc": "Date Ascending",
+    "dateDesc": "Date Descending",
+    "priceDesc": "Price Descending",
+    "priceAsc": "Price Ascending",
+    "filter": "Filter",
+    "category": "Category",
+    "price": "Price",
+    "rating": "Rating"
   }
 }

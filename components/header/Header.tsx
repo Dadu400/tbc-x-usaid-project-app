@@ -2,7 +2,7 @@ import Image from "next/image";
 import SuperMan from "../../public/superman.svg";
 import Link from "next/link";
 // import { Logout } from "../../actions";
-import { getTranslations } from "next-intl/server";
+// import { getTranslations } from "next-intl/server";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import CartIcon from "./CartIcon";
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
@@ -12,7 +12,7 @@ import { cookies } from "next/headers";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 async function Header() {
-  const t = await getTranslations("navigation");
+  // const t = await getTranslations("navigation");
 
   const authCookie = cookies().get("auth");
 
