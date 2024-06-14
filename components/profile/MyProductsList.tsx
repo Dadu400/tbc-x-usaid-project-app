@@ -1,5 +1,4 @@
-import ProductList, { Product } from "../products/ProductList"
-
+import ProductList from "../products/ProductList"
 
 function MyProductsList() {
     return (
@@ -10,4 +9,4 @@ function MyProductsList() {
     )
 }
 
-export default MyProductsList
+export default MyProductsList;

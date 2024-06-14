@@ -9,8 +9,9 @@ import { SaveProduct } from "../../actions";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import type { PutBlobResult } from '@vercel/blob';
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-function AddEditProductForm({ product = null, onBackClicked }: { product: any, onBackClicked: () => void }) {
+function AddEditProductForm({ product }: { product: any }) {
     const router = useRouter();
 
     const [productImage, setProductImage] = useState<File | undefined>(undefined);
@@ -65,7 +66,9 @@ function AddEditProductForm({ product = null, onBackClicked }: { product: any, o
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
             <div className="flex items-center justify-center">
-                <ArrowBackOutlinedIcon className="text-3xl cursor-pointer" onClick={() => onBackClicked()} />
+                <Link href={"/profile/products"} >
+                    <ArrowBackOutlinedIcon className="text-3xl cursor-pointer" />
+                </Link>
                 <span className="text-xl font-['mtavruli'] font-semibold text-center w-full">
                     პროდუქტის {product ? "რედაქტირება" : "დამატება"}
                 </span>

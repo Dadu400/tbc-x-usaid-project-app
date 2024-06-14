@@ -35,7 +35,7 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
           />
         ))}
         {addNewBtn ? (
-          <Link href={"/profile/product/create"}>
+          <Link href={"/profile/products/create"}>
             <AddNewProductCard />
           </Link>
         ) : <></>}

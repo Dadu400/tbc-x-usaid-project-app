@@ -9,4 +9,4 @@ function AddNewProductCard() {
     )
 }
 
-export default AddNewProductCard
+export default AddNewProductCard;

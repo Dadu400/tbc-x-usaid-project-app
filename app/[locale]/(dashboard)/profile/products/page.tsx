@@ -1,10 +1,10 @@
-import React from 'react'
 import ProfilePageLayout from '../../../../../components/profile/ProfilePageLayout'
+import MyProductsList from '../../../../../components/profile/MyProductsList'
 
 function ProductsPage() {
     return (
-        <ProfilePageLayout component={<div>Products</div>} selectedMenuItem="products" />
+        <ProfilePageLayout component={<MyProductsList />} selectedMenuItem="products" />
     )
 }
 
-export default ProductsPage
+export default ProductsPage;

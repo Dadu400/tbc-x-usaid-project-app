@@ -4,17 +4,18 @@ import { useState } from "react";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import Blog from "./Blog";
 import UploadIcon from '@mui/icons-material/Upload';
+import Link from "next/link";
 
-function AddEditBlogForm({ blog = null, onBackClicked }: { blog: any, onBackClicked: () => void }) {
+function AddEditBlogForm({ blog }: { blog: { id: string, title: string, text: string } }) {
     const [blogTitle, setBlogTitle] = useState("");
     const [blogText, setBlogText] = useState("");
 
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
             <div className="flex items-center justify-center">
-                <ArrowBackOutlinedIcon className="text-3xl cursor-pointer" onClick={() => {
-                    onBackClicked();
-                }} />
+                <Link href={"/profile/blogs"} className="self-start">
+                    <ArrowBackOutlinedIcon className="text-3xl cursor-pointer" />
+                </Link>
                 <span className="text-xl font-['mtavruli'] font-semibold text-center w-full">ბლოგის {blog == null || blog.id == "" ? "დამატება" : "რედაქტირება"}</span>
             </div>
 

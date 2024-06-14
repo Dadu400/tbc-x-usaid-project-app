@@ -7,4 +7,4 @@ function OrderHistoryPage() {
     )
 }
 
-export default OrderHistoryPage
+export default OrderHistoryPage;
