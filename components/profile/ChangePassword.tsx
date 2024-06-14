@@ -1,50 +1,42 @@
-"use client"
 
-import { useState } from "react";
+import { GetSession, HandleChangePassword } from "../../actions";
 
-function ChangePassword() {
-    const [oldPassword, setOldPassword] = useState('')
-    const [newPassword, setNewPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [error, setError] = useState('')
+async function ChangePassword() {
+    const session = await GetSession();
+    const user: any = session !== undefined ? session.user : undefined;
+    const userEmail = user !== undefined ? user.email : undefined;
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setError('');
-
-        if (newPassword !== confirmPassword) {
-            setError('პაროლები არ ემთხვევა');
-            return;
-        }
-    }
 
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
             <div className="flex flex-col items-center justify-center gap-y-8">
-                <h1 className="text-2xl font-['mtavruli'] font-semibold">პაროლის შეცვლა</h1>
-                {error && <p className="text-red">{error}</p>}
-                <form action="" className="flex flex-col w-[40%] gap-y-4" onSubmit={onSubmit}>
-                    <label htmlFor="password" className="block text-md font-medium text-gray-700">ძველი პაროლი</label>
+                <h1 className="text-2xl HandleChangePassword-['mtavruli'] font-semibold">პაროლის შეცვლა</h1>
+                <form action={async (event: FormData) => {
+                    'use server';
+                    const oldPassword = event.get('oldPassword')?.toString();
+                    const newPassword = event.get('newPassword')?.toString();
+                    const confirmPassword = event.get('confirmPassword')?.toString();
+                    const response = await HandleChangePassword(userEmail, oldPassword, newPassword, confirmPassword);
+                }}
+                    className="flex flex-col w-[40%] gap-y-4">
+                    <label htmlFor="oldPassword" className="block text-md font-medium text-gray-700">ძველი პაროლი</label>
                     <input
                         type="password"
-                        name="old_password"
-                        id="old_password"
-                        onChange={(e) => setOldPassword(e.target.value)}
+                        name="oldPassword"
+                        id="oldPassword"
                         className="block w-full px-3 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:red sm:text-sm"
                     />
-                    <label htmlFor="password" className="block text-md font-medium text-gray-700">ახალი პაროლი</label>
+                    <label htmlFor="newPassword" className="block text-md font-medium text-gray-700">ახალი პაროლი</label>
                     <input
                         type="password"
-                        name="new_password"
-                        id="new_password"
-                        onChange={(e) => setNewPassword(e.target.value)}
+                        name="newPassword"
+                        id="newPassword"
                         className="block w-full px-3 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:red sm:text-sm" />
-                    <label htmlFor="password" className="block text-md font-medium text-gray-700">დაადასტურე პაროლი</label>
+                    <label htmlFor="confirmPassword" className="block text-md font-medium text-gray-700">დაადასტურე პაროლი</label>
                     <input
                         type="password"
-                        name="confirm_password"
-                        id="confirm_password"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        name="confirmPassword"
+                        id="confirmPassword"
                         className="block w-full px-3 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:red sm:text-sm" />
                     <button
                         type="submit"
@@ -53,7 +45,7 @@ function ChangePassword() {
                     </button>
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 

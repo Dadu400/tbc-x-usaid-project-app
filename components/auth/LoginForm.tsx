@@ -10,7 +10,6 @@ const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [error, setError] = useState('');
 
   const locale = useLocale();

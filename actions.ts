@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./contants";
 import { revalidateTag } from "next/cache";
 import axios from "axios";
-import { jwtDecrypt, jwtVerify } from "jose";
+import { jwtVerify } from "jose";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
@@ -69,6 +69,28 @@ export async function GetSession() {
   } catch (error) {
     console.error("Error decoding token:", error);
     return undefined;
+  }
+}
+
+export async function HandleChangePassword(
+  email: string | undefined,
+  oldPassword: string | undefined,
+  newPassword: string | undefined,
+  confirmNewPassword: string | undefined
+) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/change-password",
+      {
+        email,
+        oldPassword,
+        newPassword,
+        confirmNewPassword,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to change password" };
   }
 }
 
