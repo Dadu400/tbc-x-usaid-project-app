@@ -1,22 +1,18 @@
 import Image from "next/image";
 import SuperMan from "../../public/superman.svg";
 import Link from "next/link";
-import { Logout } from "../../actions";
+import { GetSession } from "../../actions";
 // import { getTranslations } from "next-intl/server";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import CartIcon from "./CartIcon";
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LocaleSwitcher from "./LocaleSwitcher";
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { cookies } from "next/headers";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LogoutButton from "./LogoutButton";
+import AuthButton from "./AuthButton";
 
 async function Header() {
-  // const t = await getTranslations("navigation");
-
-  const authCookie = cookies().get("auth");
-
+  const session = await GetSession();
+  const isAuthenticated = session !== undefined;
 
   return (
     <header className="border-b-2 border-[#00000026] dark:border-[#ffffff26] bg-[#F9F9FF] dark:bg-[#121B18] dark-[#] w-full px-8 py-3 sticky top-0 z-10">
@@ -36,14 +32,14 @@ async function Header() {
                 <Link href={"/blogs"}>
                   <FeedOutlinedIcon />
                 </Link>
-                {authCookie &&
+                {isAuthenticated &&
                   <Link href={"/profile"}>
                     <PermIdentityIcon fontSize="medium" />
                   </Link>}
               </ul>
             </li>
             <li className="uppercase font-medium text-base">
-              <LogoutButton />
+              <AuthButton session={session} />
             </li>
           </ul>
         </nav>

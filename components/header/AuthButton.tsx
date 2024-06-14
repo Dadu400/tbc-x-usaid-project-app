@@ -1,10 +1,9 @@
-import { GetSession, Logout } from "../../actions";
+import { Logout } from "../../actions";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import { redirect } from "next/navigation";
 
-export default async function LogoutButton() {
-    const session = await GetSession();
+export default async function AuthButton({ session }: { session: any }) {
     const isAuthenticated = session !== undefined;
 
 

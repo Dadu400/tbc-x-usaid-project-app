@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid password" }, { status: 400 });
   }
 
-  const jwtToken = await new SignJWT({ email })
+  const jwtToken = await new SignJWT({ user })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("1w")
