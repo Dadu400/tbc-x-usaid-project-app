@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
 import Card from "./Card";
@@ -12,7 +13,7 @@ export interface Product {
   price: number;
 }
 
-async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false, onAddEditProductClicked }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn?: boolean, onAddEditProductClicked?: (product: Product) => void }) {
+async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn?: boolean }) {
 
   const products = await getProducts();
   const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)`, justifyItems: "center" };
@@ -34,13 +35,9 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
           />
         ))}
         {addNewBtn ? (
-          <AddNewProductCard onClick={
-            () => {
-              if (onAddEditProductClicked) {
-                onAddEditProductClicked({ id: "", title: "", description: "", price: 0 });
-              }
-            }}
-          />
+          <Link href={"/profile/product/create"}>
+            <AddNewProductCard />
+          </Link>
         ) : <></>}
       </div>
     </section >

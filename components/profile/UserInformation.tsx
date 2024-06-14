@@ -1,25 +1,15 @@
-"use client";
-
 import Image from "next/image";
 import DefaultImage from "../../public/person.png";
-import { useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import UploadIcon from '@mui/icons-material/Upload';
 
-function UserInformation() {
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            setSelectedImage(URL.createObjectURL(file));
-        }
-    };
+function UserInformation({ session }) {
+    const user = session.user;
 
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
             <h2 className="text-2xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">ჩემი პროფილი</h2>
-            <Image src={selectedImage || DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
+            <Image src={user.imageurl} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
             <form autoComplete='off' className="flex flex-col space-y-4 mt-[10px]">
                 <div className='w-[30%] flex items-center my-2 self-center'>
                     <input
@@ -28,7 +18,6 @@ function UserInformation() {
                         name="image"
                         accept="image/*"
                         className="hidden"
-                        onChange={handleImageChange}
                     />
                     <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
                         <UploadIcon className="text-[#404978] mr-2" />
@@ -43,6 +32,7 @@ function UserInformation() {
                     name="email"
                     required
                     readOnly
+                    value={user.email}
                     className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                 />
                 <div className="flex items-center justify-between">
@@ -53,6 +43,7 @@ function UserInformation() {
                             id="name"
                             required
                             readOnly
+                            value={user.name}
                             className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                         />
                         <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" />
@@ -64,6 +55,7 @@ function UserInformation() {
                             id="surname"
                             required
                             readOnly
+                            value={user.surname}
                             className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                         />
                         <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" />
@@ -76,6 +68,7 @@ function UserInformation() {
                         id="address"
                         required
                         readOnly
+                        value={user.address}
                         className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                     />
                     <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" />
@@ -87,6 +80,7 @@ function UserInformation() {
                         id="phone"
                         required
                         readOnly
+                        value={user.phone}
                         className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                     />
                     <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" />

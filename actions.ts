@@ -10,7 +10,6 @@ import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export async function Login(email: string, password: string) {
-  console.log("Yes");
   const response = await axios
     .post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/login", {
       email,
@@ -58,7 +57,6 @@ export async function GetSession() {
   const requestToken: RequestCookie | undefined =
     cookiesStore.get(AUTH_COOKIE_KEY);
 
-  console.log(requestToken);
   if (!requestToken || !requestToken.value) {
     return undefined;
   }
