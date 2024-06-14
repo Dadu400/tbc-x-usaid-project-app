@@ -8,6 +8,7 @@ const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 export interface Product {
   id: string | number;
+  image: string | undefined;
   title: string;
   description: string;
   price: number;
@@ -27,9 +28,10 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
         <span className={`text-xl text-[#191C20] dark:text-[#E2E2E9] font-bold ${mtavruli.className}`}>{title}</span>
       </div> : <></>}
       <div className={`w-[100%] grid my-3 gap-y-[35px] `} style={gridStyle}>
-        {products.slice(0, 5).map((product: Product) => (
+        {products.map((product: Product) => (
           <Card
             key={product.id}
+            image={product.image}
             productName={product.title}
             price={product.price}
           />

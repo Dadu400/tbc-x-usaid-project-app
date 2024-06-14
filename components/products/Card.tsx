@@ -6,7 +6,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import EditIcon from '@mui/icons-material/Edit';
 
 interface CardProps {
-  image?: string;
+  image: string | undefined;
   productName: string;
   price: number;
 }

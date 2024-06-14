@@ -1,9 +1,8 @@
 import Image from "next/image";
-import DefaultImage from "../../public/person.png";
 import EditIcon from '@mui/icons-material/Edit';
 import UploadIcon from '@mui/icons-material/Upload';
 
-function UserInformation({ session }) {
+function UserInformation({ session }: { session: any }) {
     const user = session.user;
 
     return (
