@@ -4,12 +4,15 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./contants";
 import { revalidateTag } from "next/cache";
 import axios from "axios";
-import { createUser } from "./helpers/axiosUsers";
+import { jwtDecrypt, jwtVerify } from "jose";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+
+const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export async function Login(email: string, password: string) {
   console.log("Yes");
   const response = await axios
-    .post(process.env.BACKEND_URL + "/login", {
+    .post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/login", {
       email,
       password,
     })
@@ -19,7 +22,7 @@ export async function Login(email: string, password: string) {
 
   if (response !== undefined && response.status === 200) {
     const cookiesStore = cookies();
-    cookiesStore.set(AUTH_COOKIE_KEY, response.data.token);
+    cookiesStore.set(AUTH_COOKIE_KEY, response.data.token, { httpOnly: true });
     return { ok: true };
   }
 
@@ -47,6 +50,28 @@ export async function Logout() {
   const cookiesStore = cookies();
   cookiesStore.delete(AUTH_COOKIE_KEY);
   return { ok: true };
+}
+
+export async function GetSession() {
+  const cookiesStore = cookies();
+
+  const requestToken: RequestCookie | undefined =
+    cookiesStore.get(AUTH_COOKIE_KEY);
+
+  console.log(requestToken);
+  if (!requestToken || !requestToken.value) {
+    return undefined;
+  }
+
+  const token = String(requestToken.value);
+
+  try {
+    const { payload } = await jwtVerify(token, jwtSecret, {});
+    return payload;
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return undefined;
+  }
 }
 
 export async function SaveProduct(formData: any) {
