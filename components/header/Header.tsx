@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SuperMan from "../../public/superman.svg";
 import Link from "next/link";
-// import { Logout } from "../../actions";
+import { Logout } from "../../actions";
 // import { getTranslations } from "next-intl/server";
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import CartIcon from "./CartIcon";
@@ -10,11 +10,13 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { cookies } from "next/headers";
 import ThemeSwitcher from "./ThemeSwitcher";
+import LogoutButton from "./LogoutButton";
 
 async function Header() {
   // const t = await getTranslations("navigation");
 
   const authCookie = cookies().get("auth");
+
 
   return (
     <header className="border-b-2 border-[#00000026] dark:border-[#ffffff26] bg-[#F9F9FF] dark:bg-[#121B18] dark-[#] w-full px-8 py-3 sticky top-0 z-10">
@@ -41,11 +43,7 @@ async function Header() {
               </ul>
             </li>
             <li className="uppercase font-medium text-base">
-              <Link href={authCookie ? "/logout" : "/login"}>
-                <button className="flex w-[50px] items-center justify-center gap-2 border-[1.5px] border-[#0000001a] dark:border-[#ffffff26] hover:bg-[#00000014] text-sm px-4 py-2 rounded-[10px] rounded-tr-[10px] rounded-br-[10px]">
-                  {authCookie ? <ExitToAppIcon fontSize="small" /> : <PermIdentityIcon />}
-                </button>
-              </Link>
+              <LogoutButton />
             </li>
           </ul>
         </nav>

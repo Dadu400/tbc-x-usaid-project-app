@@ -1,23 +1,21 @@
-"use client"
-import { useRouter } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+"use client";
 
-interface LogoutButtonProps {
-    handleLogout: () => void;
-}
+import { Logout } from "../../actions";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
-export default function LogoutButton({ handleLogout }: LogoutButtonProps) {
-    const router = useRouter();
+export default function LogoutButton() {
+    const isAuthenticated = true; // Check wether cookie exists
 
     return (
-        <button className="w-full inline-flex items-center justify-center bg-[#FD8024] border border-solid border-[#FD8024] rounded-md px-2 py-2 font-medium text-lg leading-6 uppercase"
-            onClick={() => {
-                handleLogout();
-                router.push("/login");
-            }}>
-            <FontAwesomeIcon icon={faArrowRightFromBracket} />
+        <button onClick={() => {
+            if (isAuthenticated) {
+                Logout();
+            } else {
+                window.location.href = "/login";
+            }
+        }} className="flex w-[50px] items-center justify-center gap-2 border-[1.5px] border-[#0000001a] dark:border-[#ffffff26] hover:bg-[#00000014] text-sm px-4 py-2 rounded-[10px] rounded-tr-[10px] rounded-br-[10px]">
+            {isAuthenticated ? <ExitToAppIcon fontSize="small" /> : <PermIdentityIcon />}
         </button>
     );
 }
-

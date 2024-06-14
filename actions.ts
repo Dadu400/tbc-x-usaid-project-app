@@ -9,7 +9,7 @@ import { createUser } from "./helpers/axiosUsers";
 export async function Login(email: string, password: string) {
   console.log("Yes");
   const response = await axios
-    .post("http://localhost:8080/login", {
+    .post(process.env.BACKEND_URL + "/login", {
       email,
       password,
     })
@@ -31,7 +31,7 @@ export async function Register(formData: any) {
 
   let response;
   try {
-    response = await axios.post("http://localhost:8080/register", {
+    response = await axios.post(process.env.BACKEND_URL + "/register", {
       email,
       password,
     });
@@ -63,20 +63,25 @@ export async function Logout() {
   return { ok: true };
 }
 
-// export async function createUserAction(formData: FormData) {
-//   const { name, email, age } = Object.fromEntries(formData);
-//   createUser(name as string, email as string, age as string);
-//   revalidateTag("users_list");
-// }
-
-// export async function deleteUserAction(id: number) {
-//   await deleteUser(id);
-// }
-
-// export async function updateUserAction(formData: FormData) {
-//   const { id, name, email, age } = Object.fromEntries(formData);
-//   updateUser(id as string, name as string, email as string, age as string);
-// }
+export async function SaveProduct(formData: any) {
+  const { title, description, price, category, image } = formData;
+  let response;
+  try {
+    response = await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/save-product",
+      {
+        title,
+        description,
+        price,
+        category,
+        image,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to save product" };
+  }
+}
 
 export const handleAddToCart = async (productId: string) => {
   "use server";
