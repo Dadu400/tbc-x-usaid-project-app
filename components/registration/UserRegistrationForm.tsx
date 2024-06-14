@@ -50,7 +50,7 @@ const UserRegistrationForm = () => {
       surname,
       address,
       phone,
-      image: newBlob.url,
+      imageUrl: newBlob.url,
     };
 
     const registrationStatus = await Register(formData);

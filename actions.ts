@@ -27,32 +27,18 @@ export async function Login(email: string, password: string) {
 }
 
 export async function Register(formData: any) {
-  const { email, password, name, surname, address, phone, image } = formData;
-
-  let response;
   try {
-    response = await axios.post(process.env.BACKEND_URL + "/register", {
-      email,
-      password,
-    });
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/create-user",
+      formData
+    );
   } catch (error: any) {
     if (error.response.status === 400) {
+      console.log(error.response.data);
       return { ok: false, message: "User with that email already exists" };
     }
     return { ok: false, message: "Failed to register user" };
   }
-
-  const userId = response.data.userId;
-
-  createUser(
-    userId,
-    name as string,
-    email as string,
-    surname as string,
-    address as string,
-    phone as string,
-    image as string
-  );
 
   return { ok: true };
 }
