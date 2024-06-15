@@ -2,7 +2,7 @@ import React from 'react'
 import UserProfileMenu from './UserProfileMenu'
 import DashboardLayout from '../../app/[locale]/(dashboard)/DashboardLayout'
 
-function ProfilePageLayout({ component, selectedMenuItem }) {
+function ProfilePageLayout({ component, selectedMenuItem }: { component: React.ReactNode; selectedMenuItem: string }) {
     return (
         <DashboardLayout>
             <div className="w-[60vw] m-auto flex justify-between gap-[20px] my-[20px]">

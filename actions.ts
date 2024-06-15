@@ -96,18 +96,14 @@ export async function HandleChangePassword(
 
 export async function SaveProduct(formData: any) {
   const { title, description, price, category, image } = formData;
-  let response;
   try {
-    response = await axios.post(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/save-product",
-      {
-        title,
-        description,
-        price,
-        category,
-        image,
-      }
-    );
+    await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/save-product", {
+      title,
+      description,
+      price,
+      category,
+      image,
+    });
     return { ok: true };
   } catch (error) {
     return { ok: false, message: "Failed to save product" };
