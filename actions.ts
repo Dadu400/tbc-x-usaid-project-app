@@ -88,9 +88,9 @@ export async function HandleChangePassword(
         confirmNewPassword,
       }
     );
-    return { ok: true };
+    return { ok: true, message: "პაროლი წარმატებით შეიცვალა" };
   } catch (error) {
-    return { ok: false, message: "Failed to change password" };
+    return { ok: false, message: "პაროლის ცვლილება ვერ მოხერხდა" };
   }
 }
 

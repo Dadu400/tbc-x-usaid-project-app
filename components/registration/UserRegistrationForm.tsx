@@ -68,10 +68,9 @@ const UserRegistrationForm = () => {
   return (
     <div className="px-8 pt-6 pb-8 bg-white rounded shadow-2xl">
       <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">რეგისტრაცია</h2>
-      {errorMessage && <div className="text-red-500 text-center">{errorMessage}</div>}
       <Image src={selectedImage ? URL.createObjectURL(selectedImage) : DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-[10px]">
-        <div className='w-[80%] flex items-center my-2 self-center'>
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center space-y-4 mt-[10px]">
+        <div className='w-[80%] flex self-center my-2'>
           <input
             type="file"
             id="image"
@@ -81,7 +80,7 @@ const UserRegistrationForm = () => {
             ref={inputFileRef}
             onChange={handleImageChange}
           />
-          <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
+          <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-2">
             <UploadIcon className="text-red mr-2" />
             <span className="block text-md font-medium text-gray-700">ატვირთე პროფილის სურათი</span>
           </label>
@@ -152,10 +151,13 @@ const UserRegistrationForm = () => {
 
         <button
           type="submit"
-          className="w-full px-4 py-2 text-md font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+          className="w-full px-4 py-2 mt-2 text-md font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
           რეგისტრაცია
         </button>
       </form>
+      <div className='h-2'>
+        {errorMessage && <p className="text-red text-center">{errorMessage}</p>}
+      </div>
     </div>
   );
 };
