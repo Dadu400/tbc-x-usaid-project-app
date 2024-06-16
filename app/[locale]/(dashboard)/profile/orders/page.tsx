@@ -1,9 +1,9 @@
-import MyProductsList from "../../../../../components/profile/MyProductsList";
+import OrderHistory from "../../../../../components/profile/OrderHistory";
 import ProfilePageLayout from "../../../../../components/profile/ProfilePageLayout"
 
 function OrderHistoryPage() {
     return (
-        <ProfilePageLayout component={<MyProductsList />} selectedMenuItem="history" />
+        <ProfilePageLayout component={<OrderHistory />} selectedMenuItem="history" />
     )
 }
 

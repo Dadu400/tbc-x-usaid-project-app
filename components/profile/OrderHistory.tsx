@@ -41,7 +41,7 @@ const orders: Order[] = [
 
 function OrderHistory() {
   return (
-    <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
+    <div className="flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
       <h2 className="text-2xl font-['mtavruli'] font-semibold text-start w-full">
         შეკვეთების ისტორია
       </h2>
