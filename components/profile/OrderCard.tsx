@@ -46,7 +46,7 @@ function OrderCard({ order }: OrderCardProps) {
             </div>
           </div>
         </div>
-        <div className="text-right flex flex-col gap-y-2">
+        <div className="hidden lg:flex text-right flex-col gap-y-2">
           <div className="text-sm font-semibold text-gray-700">
             {order.price} ლარი
           </div>

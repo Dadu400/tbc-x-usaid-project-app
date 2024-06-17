@@ -25,12 +25,12 @@ function OrderDetails() {
 
   return (
     <div className="w-full m-auto mt-[50px]">
-      <h2 className={`text-md ${mtavruli.className} font-semibold text-start w-full my-6`}>
+      <h2 className={`text-md ${mtavruli.className} font-semibold text-start w-full my-3`}>
         შეკვეთის დეტალები
       </h2>
       <div className="flex flex-col">
-        <div className="w-full border border-[#F5F6F6] rounded-lg py-6 px-8">
-          <div className="flex justify-between">
+        <div className="w-full border border-[#F5F6F6] rounded-lg py-6 px-0 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-[25px] justify-between">
             <div className="flex flex-col gap-y-2">
               <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
                 შეკვეთის ნომერი
@@ -64,7 +64,7 @@ function OrderDetails() {
             </div>
           </div>
         </div>
-        <div className="w-full rounded-lg py-6 px-8 flex flex-col space-y-6">
+        <div className="w-full rounded-lg py-6 px-0 lg:px-8 flex flex-col space-y-6">
           <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] pb-6">
             <div className="bg-[#F5F6F6] p-2 rounded-md">
               <PersonIcon className="text-[#1e90ff]" />

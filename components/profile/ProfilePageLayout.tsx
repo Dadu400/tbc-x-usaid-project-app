@@ -7,7 +7,7 @@ function ProfilePageLayout({ component, selectedMenuItem }: { component: React.R
     return (
         <DashboardLayout>
             <div className="w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] m-auto flex flex-col md:flex-row justify-between gap-[20px] my-[20px]">
-                <div className="hidden md:flex" style={{ flex: "1" }}>
+                <div className="hidden md:flex h-[100%]" style={{ flex: "1" }}>
                     <UserProfileMenu
                         selectedItem={selectedMenuItem}
                     />
