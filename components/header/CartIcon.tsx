@@ -25,13 +25,11 @@ export default async function CartIcon({ session }) {
   const totalQuantity = session !== undefined ? getUserCartCount(session.user.id) : 0;
 
   return (
-    <li className="uppercase relative">
-      <Link href="/cart">
-        <ShoppingCartOutlinedIcon />
-        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-[#EC6652] w-[15px] h-[15px] text-white">
-          {totalQuantity}
-        </span>
-      </Link>
-    </li>
+    <Link href="/cart" className="relative">
+      <ShoppingCartOutlinedIcon />
+      <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-[#EC6652] w-[15px] h-[15px] text-white">
+        {totalQuantity}
+      </span>
+    </Link>
   );
 }

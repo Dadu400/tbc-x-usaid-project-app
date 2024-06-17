@@ -6,7 +6,6 @@ import LoginIcon from '@mui/icons-material/Login';
 export default async function AuthButton({ session }: { session: any }) {
     const isAuthenticated = session !== undefined;
 
-
     return (
         <form action={async () => {
             'use server';

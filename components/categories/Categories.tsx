@@ -29,7 +29,7 @@ function Categories() {
         { name: 'Plush Toys', description: 'Description 7', categoryImg: <Image src={Plushy} width={58} alt="Plush Toys" className="m-[10px]" /> },
     ];
 
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [screenWidth, setScreenWidth] = useState(window === undefined ? 0 : window.innerWidth);
 
     useEffect(() => {
         const handleResize = () => {

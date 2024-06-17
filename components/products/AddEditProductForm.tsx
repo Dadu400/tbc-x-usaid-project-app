@@ -1,21 +1,43 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import Card from './Card';
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import UploadIcon from '@mui/icons-material/Upload';
-import { SaveProduct } from "../../actions";
+import { SaveProduct, UpdateProduct } from "../../actions";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import type { PutBlobResult } from '@vercel/blob';
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { Product } from "./ProductList";
+import { getProducts } from "../../helpers/axiosProduct";
+import SupermanLoader from "../../public/superman_loading.gif";
+import Image from "next/image";
 
-function AddEditProductForm({ product }: { product: any }) {
+function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any }) {
     const router = useRouter();
 
+    const [product, setProduct] = useState<Product | null>(null);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const products = await getProducts();
+            const data = products.find((p: Product) => p.id === Number(id));
+            console.log(data);
+            setProduct(data);
+            setProductTitle(data.title);
+            setProductDescription(data.description);
+            setProductPrice(data.price);
+            setProductCategory(data.category);
+        };
+
+        fetchProduct();
+    }, []);
+
     const [productImage, setProductImage] = useState<File | undefined>(undefined);
-    const [productTitle, setProductTitle] = useState(product ? product.name : "");
+    const [productTitle, setProductTitle] = useState(product ? product.title : "");
     const [productDescription, setProductDescription] = useState(product ? product.description : "");
     const [productPrice, setProductPrice] = useState(product ? product.price : 0);
     const [productCategory, setProductCategory] = useState(product ? product.category : "");
@@ -30,30 +52,39 @@ function AddEditProductForm({ product }: { product: any }) {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        
+        console.log("Hello World");
 
-        if (productImage == null) {
+        if (productImage == null && isEdit === false) {
             setErrorMessage('აირჩიეთ პროდუქტის სურათი');
             return;
         }
 
-        const response = await fetch(`api/upload?filename=${productImage.name}`, {
-            method: 'POST',
-            body: productImage,
-        });
-
-        const newBlob = (await response.json()) as PutBlobResult;
+        let imageUrl = isEdit && productImage === undefined ? product?.image : undefined;
+        if (imageUrl === undefined) {
+            const response = await fetch(`/api/upload?filename=${productImage.name}`, {
+                method: 'POST',
+                body: productImage,
+            });
+    
+            const newBlob = (await response.json()) as PutBlobResult;
+            imageUrl = newBlob.url;
+        }
+        
 
         const formData = {
+            productId: product?.id,
             title: productTitle,
             description: productDescription,
             price: productPrice,
             category: productCategory,
-            image: newBlob.url,
+            image: imageUrl,
+            userId: session.user.id
         };
 
-        const saveStatus = await SaveProduct(formData);
+        const saveStatus = isEdit ? await UpdateProduct(formData) : await SaveProduct(formData);
         if (saveStatus.ok) {
-            router.push('/search');
+            router.push('/profile/products');
         } else {
             if (saveStatus.message) {
                 setErrorMessage(saveStatus.message);
@@ -62,6 +93,13 @@ function AddEditProductForm({ product }: { product: any }) {
             }
         }
     };
+
+    if (isEdit && product == null) {
+        return <div className="flex justify-center items-center pt-5">
+            <Image src={SupermanLoader} 
+            unoptimized={true} alt="Loading" width={200} height={200} />
+        </div>;
+    }
 
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
@@ -76,7 +114,7 @@ function AddEditProductForm({ product }: { product: any }) {
 
             <div className='flex flex-col items-center justify-center mt-[30px]'>
                 <span className="text-md text-center w-full mb-[20px]">ნიმუში:</span>
-                <Card image={productImage ? URL.createObjectURL(productImage) : undefined} productName={productTitle} price={productPrice} />
+                <Card image={productImage ? URL.createObjectURL(productImage) : product?.image} productName={productTitle} price={productPrice} />
             </div>
 
             <form onSubmit={handleSubmit} className='w-[70%] mx-auto mt-[30px] flex flex-col gap-[10px]'>
@@ -139,7 +177,6 @@ function AddEditProductForm({ product }: { product: any }) {
                         accept="image/*"
                         className="hidden"
                         onChange={handleProductImageUpload}
-                        required
                     />
                     <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
                         <UploadIcon className="text-red mr-2" />

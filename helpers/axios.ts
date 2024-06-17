@@ -38,7 +38,7 @@ export async function getUserCart(id: number) {
   );
   const carts = await response.json();
 
-  if (carts === undefined || carts.carts.rows === undefined) {
+  if (carts === undefined || carts.carts == undefined || carts.carts.rows === undefined) {
     return {};
   }
   

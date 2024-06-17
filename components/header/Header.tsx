@@ -18,7 +18,7 @@ async function Header() {
           </Link>
         </div>
         <HeaderNavbar isAuthencitated={isAuthenticated} session={session} className="hidden lg:flex" />
-        <BurgerMenu className="flex lg:hidden" />
+        <BurgerMenu isLoggedIn={isAuthenticated} session={session} className="flex lg:hidden" />
       </div>
     </header>
   );

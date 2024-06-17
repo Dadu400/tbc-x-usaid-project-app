@@ -12,6 +12,8 @@ export interface Product {
   title: string;
   description: string;
   price: number;
+  category: string;
+  userid: string;
 }
 
 async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn?: boolean }) {

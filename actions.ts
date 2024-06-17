@@ -43,6 +43,24 @@ export async function Register(formData: any) {
   return { ok: true };
 }
 
+export async function UpdateUser(formData: any) {
+  console.log(formData);
+  try {
+    const response = await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-user",
+      formData
+    );
+    
+    const cookiesStore = cookies();
+    console.log(response.data.token);
+    cookiesStore.set(AUTH_COOKIE_KEY, response.data.token, { httpOnly: true });
+  } catch (error) {
+    return { ok: false, message: "Failed to update user" };
+  }
+
+  return { ok: true, };
+}
+
 export async function Logout() {
   const cookiesStore = cookies();
   cookiesStore.delete(AUTH_COOKIE_KEY);
@@ -93,7 +111,7 @@ export async function HandleChangePassword(
 }
 
 export async function SaveProduct(formData: any) {
-  const { title, description, price, category, image } = formData;
+  const { title, description, price, category, image, userId } = formData;
   try {
     await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/save-product", {
       title,
@@ -101,10 +119,29 @@ export async function SaveProduct(formData: any) {
       price,
       category,
       image,
+      userId
     });
     return { ok: true };
   } catch (error) {
     return { ok: false, message: "Failed to save product" };
+  }
+}
+
+export async function UpdateProduct(formData: any) {
+  const { productId, title, description, price, category, image, userId } = formData;
+  try {
+    await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-product", {
+      productId,
+      title,
+      description,
+      price,
+      category,
+      image,
+      userId
+    });
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to update product" };
   }
 }
 
