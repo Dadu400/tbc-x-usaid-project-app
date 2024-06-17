@@ -5,6 +5,7 @@ import { getProducts } from "../../helpers/axiosProduct";
 import CounterButton from "./CounterButton";
 import EmptyCartButton from "./EmptyCartButton";
 import RemoveProductButton from "./RemoveProductButton";
+import Link from "next/link";
 
 interface Product {
   id: string;
@@ -78,11 +79,12 @@ async function CartContainer({ session }) {
                 <span className="font-semibold text-black text-sm mr-8">ჯამური ღირებულება</span>
                 <span className="font-semibold text-black text-sm">{totalAmount.toFixed(2)} ₾</span>
               </div>
-              <button
-                className="w-full px-4 py-2 text-md font-medium mt-2 text-white bg-[#1e90ff] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
-              >
-                გადახდა
-              </button>
+              <Link href="/checkout">
+                <button
+                  className="w-full px-4 py-2 text-md font-medium mt-2 text-white bg-[#1e90ff] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+                  გადახდა
+                </button>
+              </Link>
             </div>
           </div>
         </>
