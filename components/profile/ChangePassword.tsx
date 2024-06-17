@@ -50,7 +50,7 @@ function ChangePassword() {
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
             <div className="flex flex-col items-center justify-center gap-y-8">
                 <h1 className="text-2xl HandleChangePassword-['mtavruli'] font-semibold">პაროლის შეცვლა</h1>
-                <form onSubmit={handleSubmit} className="flex flex-col w-[40%] gap-y-4">
+                <form onSubmit={handleSubmit} className="flex flex-col w-[400px] gap-y-4">
                     <label htmlFor="oldPassword" className="block text-md font-medium text-gray-700">ძველი პაროლი</label>
                     <div className="relative">
                         <input
