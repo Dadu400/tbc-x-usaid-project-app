@@ -35,6 +35,7 @@ export async function POST(request: Request) {
   const hashedPassword = await bcrypt.hash(password, 10);
   try {
     await sql`INSERT INTO users (email, password, name, surname, address, phone, imageUrl) VALUES (${email}, ${hashedPassword}, ${name}, ${surname}, ${address}, ${phone}, ${imageUrl})`;
+    await sql`INSERT INTO carts (user_id) VALUES ((SELECT id FROM users WHERE email = ${email}))`
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

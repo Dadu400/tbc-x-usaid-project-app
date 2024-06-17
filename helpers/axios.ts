@@ -37,7 +37,11 @@ export async function getUserCart(id: number) {
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart/${id}`
   );
   const carts = await response.json();
-  const [cart] = carts.carts.rows;
 
+  if (carts === undefined || carts.carts.rows === undefined) {
+    return {};
+  }
+  
+  const [cart] = carts.carts.rows;
   return cart;
 }

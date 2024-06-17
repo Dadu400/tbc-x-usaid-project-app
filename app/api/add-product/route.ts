@@ -16,7 +16,7 @@ export async function PUT(req: NextRequest) {
       SELECT products FROM carts
       WHERE user_id = ${Number(userId)}
     `;
-
+    
     let products: Products = {};
 
     if (result.rowCount > 0) {

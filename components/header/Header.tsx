@@ -2,13 +2,8 @@ import Image from "next/image";
 import SuperMan from "../../public/superman.svg";
 import Link from "next/link";
 import { GetSession } from "../../actions";
-// import { getTranslations } from "next-intl/server";
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import CartIcon from "./CartIcon";
-import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
-import LocaleSwitcher from "./LocaleSwitcher";
-import ThemeSwitcher from "./ThemeSwitcher";
-import AuthButton from "./AuthButton";
+import HeaderNavbar from "./HeaderNavbar";
+import BurgerMenu from "./BurgerMenu";
 
 async function Header() {
   const session = await GetSession();
@@ -22,27 +17,8 @@ async function Header() {
             <Image src={SuperMan} alt="Company Logo" width={50} height={50} />
           </Link>
         </div>
-        <nav>
-          <ul className="flex items-center gap-3 md:gap-10">
-            <li>
-              <ul className="flex items-center gap-3 md:gap-5">
-                <LocaleSwitcher />
-                <ThemeSwitcher />
-                <CartIcon />
-                <Link href={"/blogs"}>
-                  <FeedOutlinedIcon />
-                </Link>
-                {isAuthenticated &&
-                  <Link href={"/profile"}>
-                    <PermIdentityIcon fontSize="medium" />
-                  </Link>}
-              </ul>
-            </li>
-            <li className="uppercase font-medium text-base">
-              <AuthButton session={session} />
-            </li>
-          </ul>
-        </nav>
+        <HeaderNavbar isAuthencitated={isAuthenticated} session={session} className="hidden lg:flex" />
+        <BurgerMenu className="flex lg:hidden" />
       </div>
     </header>
   );

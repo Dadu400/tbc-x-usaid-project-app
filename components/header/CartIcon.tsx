@@ -12,12 +12,17 @@ export interface Cart {
   added_on: string;
 }
 
-export default async function CartIcon() {
-  const cart: Cart = await getUserCart(1);
-  const num = Object.values(cart.products);
-  const totalQuantity = num.reduce((total: number, quantity: number) => {
+async function getUserCartCount(userId: number) {
+  const cart: Cart = await getUserCart(userId);
+  const num = cart.products === undefined ? [] : Object.values(cart.products);
+
+  return num.reduce((total: number, quantity: number) => {
     return total + quantity;
   }, 0);
+}
+
+export default async function CartIcon({ session }) {
+  const totalQuantity = session !== undefined ? getUserCartCount(session.user.id) : 0;
 
   return (
     <li className="uppercase relative">

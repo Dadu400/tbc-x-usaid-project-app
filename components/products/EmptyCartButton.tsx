@@ -12,7 +12,6 @@ export default function EmptyCartButton() {
     handleEmptyCart();
     setTimeout(() => {
       setIsDeleting(false);
-      console.log("Cart emptied!");
     }, 500);
   };
 

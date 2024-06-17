@@ -1,10 +1,13 @@
+import { GetSession } from "../../../../actions";
 import CartContainer from "../../../../components/products/Cart";
 import DashboardLayout from "../DashboardLayout";
 
-function Cart() {
+async function Cart() {
+  const session = await GetSession();
+
   return (
     <DashboardLayout useParticles={false}>
-      <CartContainer />
+      <CartContainer session={session} />
     </DashboardLayout>
   );
 }

@@ -15,13 +15,19 @@ interface Product {
   totalPrice: number;
 }
 
-const id = 1;
 export const revalidate = 0;
 
-async function CartContainer() {
+async function CartContainer({ session }) {
+  if (session === undefined) {
+    return (
+      <div className="text-center mt-8">
+        <h2 className="text-2xl font-bold mb-4">კალათაში დასამატებლად გთხოვთ გაიაროთ ავტორიზაცია</h2>
+      </div>
+    )
+  }
 
-  const cart = await getUserCart(id);
-  const cartProductsArray = Object.entries(cart?.products as Product);
+  const cart = await getUserCart(session.user.id);
+  const cartProductsArray = cart.products === undefined ? [] : Object.entries(cart.products as Product);
   const cartProducts = await getProducts();
 
   const cartProductMap = new Map(cartProductsArray);

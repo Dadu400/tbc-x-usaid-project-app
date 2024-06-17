@@ -16,7 +16,6 @@ export async function Login(email: string, password: string) {
       password,
     })
     .catch((error) => {
-      console.log("Error moxda: " + error);
     });
 
   if (response !== undefined && response.status === 200) {
@@ -36,7 +35,6 @@ export async function Register(formData: any) {
     );
   } catch (error: any) {
     if (error.response.status === 400) {
-      console.log(error.response.data);
       return { ok: false, message: "User with that email already exists" };
     }
     return { ok: false, message: "Failed to register user" };
@@ -112,13 +110,20 @@ export async function SaveProduct(formData: any) {
 
 export const handleAddToCart = async (productId: string) => {
   "use server";
+  const session = await GetSession();
+  
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/add-product",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: 1, productId: productId, quantity: 1 }),
+        body: JSON.stringify({ userId: session.user.id, productId: productId, quantity: 1 }),
       }
     );
     revalidateTag("cart");
@@ -132,6 +137,12 @@ export const handleAddToCart = async (productId: string) => {
 
 export const handleDecrementCart = async (productId: string) => {
   "use server";
+  const session = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/decrement-product",
@@ -141,7 +152,7 @@ export const handleDecrementCart = async (productId: string) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1,
+          userId: session.user.id,
           productId: productId,
           quantity: 1,
         }),
@@ -158,6 +169,12 @@ export const handleDecrementCart = async (productId: string) => {
 
 export const handleEmptyCart = async () => {
   "use server";
+  const session = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/clear-cart",
@@ -167,7 +184,7 @@ export const handleEmptyCart = async () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1,
+          userId: session.user.id,
         }),
       }
     );
@@ -184,6 +201,12 @@ export const handleEmptyCart = async () => {
 
 export const handleDeleteProduct = async (productId: string) => {
   "use server";
+  const session = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
@@ -193,7 +216,7 @@ export const handleDeleteProduct = async (productId: string) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1,
+          userId: session.user.id,
           productId: productId,
         }),
       }
