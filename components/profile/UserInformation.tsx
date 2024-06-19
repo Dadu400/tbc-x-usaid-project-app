@@ -87,7 +87,7 @@ function UserInformation({ session }: { session: any }) {
 
                 <button
                     type="submit"
-                    className="w-[40%] self-center px-4 py-3 text-md font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+                    className="w-[40%] self-center px-4 py-3 text-md font-medium text-white bg-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
                     შენახვა
                 </button>
             </form>

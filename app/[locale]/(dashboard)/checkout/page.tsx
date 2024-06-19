@@ -1,10 +1,10 @@
 import DashboardLayout from "../DashboardLayout";
-import BillingInfo from "../../../../components/checkout/Separator";
+import CheckoutNavigator from "../../../../components/checkout/CheckoutNavigator";
 
 function Checkout() {
     return (
-        <DashboardLayout useParticles={false}>
-            <BillingInfo />
+        <DashboardLayout useParticles={true}>
+            <CheckoutNavigator />
         </DashboardLayout>
     )
 }
