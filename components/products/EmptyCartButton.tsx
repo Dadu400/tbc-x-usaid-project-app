@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { handleEmptyCart } from "../../actions";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { useLocale } from 'next-intl';
 
 export default function EmptyCartButton() {
+  const locale = useLocale();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = () => {
@@ -22,7 +24,7 @@ export default function EmptyCartButton() {
         }`}
     >
       <DeleteOutlineIcon className="mr-2 h-5 w-5" />
-      წაშალე კალათა
+      {locale == "en" ? "Empty Cart" : "კალათის გასუფთავება"}
     </button>
   );
 }

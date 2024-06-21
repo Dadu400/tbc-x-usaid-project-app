@@ -74,12 +74,21 @@
     "notfound": "პროდუქტი არ მოიძებნა"
   },
   "Categories": {
-     "actionFigures": "აქშენ ფიგურები",
-      "buildingSets": "აშენების ნაკრები",
-      "dolls": "თოჯინები",
-      "educational": "საგანმანათლებლო",
-      "puzzles": "ფაზლები",
-      "outdoorPlay": "გარე თამაშები",
-      "plushToys": "რბილი სათამაშოები"
+    "actionFigures": "აქშენ ფიგურები",
+    "buildingSets": "აშენების ნაკრები",
+    "dolls": "თოჯინები",
+    "educational": "საგანმანათლებლო",
+    "puzzles": "ფაზლები",
+    "outdoorPlay": "გარე თამაშები",
+    "plushToys": "რბილი სათამაშოები"
+  },
+  "Cart": {
+    "message": "კალათაში დასამატებლად გთხოვთ გაიაროთ ავტორიზაცია",
+    "emptyCart": "კალათა ცარიელია",
+    "header": "შენს კალათაში {totalQuantity} ნივთია",
+    "pay": "გადახდა",
+    "products": "პროდუქტები",
+    "total": "ჯამური ღირებულება",
+    "checkout": "გადახდა"
   }
 }

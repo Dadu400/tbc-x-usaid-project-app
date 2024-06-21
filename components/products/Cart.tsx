@@ -6,6 +6,7 @@ import CounterButton from "./CounterButton";
 import EmptyCartButton from "./EmptyCartButton";
 import RemoveProductButton from "./RemoveProductButton";
 import CartComponent from "../checkout/CartComponent";
+import { getTranslations } from "next-intl/server";
 
 interface Product {
   id: string;
@@ -19,10 +20,11 @@ interface Product {
 export const revalidate = 0;
 
 async function CartContainer({ session }: any) {
+  const t = await getTranslations("Cart");
   if (session === undefined) {
     return (
       <div className="text-center mt-8">
-        <h2 className="text-2xl font-bold mb-4">კალათაში დასამატებლად გთხოვთ გაიაროთ ავტორიზაცია</h2>
+        <h2 className="text-2xl font-bold mb-4">{t("message")}</h2>
       </div>
     )
   }
@@ -48,7 +50,7 @@ async function CartContainer({ session }: any) {
     <div className="w-[60vw] m-auto mt-[20px]">
       {totalQuantity > 0 ? (
         <>
-          <h2 className="text-2xl font-bold mt-8 mb-4">შენს კალათაში {totalQuantity} ნივთია</h2>
+          <h2 className="text-2xl font-bold mt-8 mb-4">{t("header", { totalQuantity })}</h2>
           <EmptyCartButton />
           <div className="flex flex-col md:flex-row justify-evenly">
             <div className="flex-1 justify-center border-gray-200 border-[1px] rounded-md p-[24px] flex flex-col gap-4">
@@ -75,7 +77,7 @@ async function CartContainer({ session }: any) {
         </>
       ) : (
         <div className="text-center mt-8">
-          <h2 className="text-2xl font-bold mb-4">კალათა ცარიელია</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("emptyCart")}</h2>
         </div>
       )}
     </div>
