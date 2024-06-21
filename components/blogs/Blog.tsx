@@ -3,6 +3,7 @@ import Link from "next/link";
 import test from "../../public/test.webp";
 import person from "../../public/person.png";
 import EditIcon from '@mui/icons-material/Edit';
+import { useTranslations } from 'next-intl';
 
 interface BlogProps {
   blog: {
@@ -14,6 +15,7 @@ interface BlogProps {
 }
 
 function Blog({ blog }: BlogProps) {
+  const t = useTranslations("Blogs");
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div className="flex flex-col gap-1 bg-[#FEFEFE] shadow-lg rounded-xl max-w-[300px] group relative">
@@ -30,7 +32,7 @@ function Blog({ blog }: BlogProps) {
           <div className="flex items-center gap-2 my-2">
             <Image src={person} alt="author" className="w-6 h-6" />
             <span className="text-gray-700 text-sm pt-1">
-              Author Name
+             {t("name")}
             </span>
           </div>
           <div className="w-full h-[40px] mb-5">

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { GetSession, HandleChangePassword } from "../../actions";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useLocale } from "next-intl";
 
 const useSession = () => {
     const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
@@ -23,6 +24,7 @@ const useSession = () => {
 
 function ChangePassword() {
     const userEmail = useSession();
+    const locale = useLocale();
     const [responseMessage, setResponseMessage] = useState('');
     const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
     const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
@@ -49,9 +51,9 @@ function ChangePassword() {
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
             <div className="flex flex-col items-center justify-center gap-y-8">
-                <h1 className="text-2xl HandleChangePassword-['mtavruli'] font-semibold">პაროლის შეცვლა</h1>
+                <h1 className="text-2xl HandleChangePassword-['mtavruli'] font-semibold">{locale == "en" ? "Change Password" : "პაროლის შეცვლა"}</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col w-[400px] gap-y-4">
-                    <label htmlFor="oldPassword" className="block text-md font-medium text-gray-700">ძველი პაროლი</label>
+                    <label htmlFor="oldPassword" className="block text-md font-medium text-gray-700">{locale == "en" ? "Current Password" : "არსებული პაროლი"}</label>
                     <div className="relative">
                         <input
                             type={isOldPasswordVisible ? "text" : "password"}
@@ -67,7 +69,7 @@ function ChangePassword() {
                             {isOldPasswordVisible ? <VisibilityOffIcon fontSize="small" className="text-gray-400" /> : <VisibilityIcon fontSize="small" className="text-gray-400" />}
                         </button>
                     </div>
-                    <label htmlFor="newPassword" className="block text-md font-medium text-gray-700">ახალი პაროლი</label>
+                    <label htmlFor="newPassword" className="block text-md font-medium text-gray-700">{locale == "en" ? "New Password" : "ახალი პაროლი"}</label>
                     <div className="relative">
                         <input
                             type={isNewPasswordVisible ? "text" : "password"}
@@ -83,7 +85,7 @@ function ChangePassword() {
                             {isNewPasswordVisible ? <VisibilityOffIcon fontSize="small" className="text-gray-400" /> : <VisibilityIcon fontSize="small" className="text-gray-400" />}
                         </button>
                     </div>
-                    <label htmlFor="confirmPassword" className="block text-md font-medium text-gray-700">დაადასტურე პაროლი</label>
+                    <label htmlFor="confirmPassword" className="block text-md font-medium text-gray-700">{locale == "en" ? "Repeat new Password" : "დაადასტურე პაროლი"}</label>
                     <div className="relative">
                         <input
                             type={isConfirmPasswordVisible ? "text" : "password"}
@@ -102,7 +104,7 @@ function ChangePassword() {
                     <button
                         type="submit"
                         className="w-full px-4 py-3 text-md mt-[18px] font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
-                        შენახვა
+                        {locale == "en" ? "Save Changes" : "შენახვა"}
                     </button>
                 </form>
                 <div className='h-5'>

@@ -18,17 +18,48 @@ import 'swiper/css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-function Categories() {
-    const categories: { categoryImg?: JSX.Element; name: string; description?: string }[] = [
-        { name: 'Action Figures', description: 'Description 1', categoryImg: <Image src={ActionFigure} width={70} alt="Action Figure" className="m-[10px]" /> },
-        { name: 'Building Sets', description: 'Description 2', categoryImg: <Image src={BuildingSets} width={70} alt="Building Sets" className="m-[10px]" /> },
-        { name: 'Dolls', description: 'Description 3', categoryImg: <Image src={Dolls} width={40} alt="Dolls" className="m-[10px]" /> },
-        { name: 'Educational', description: 'Description 4', categoryImg: <Image src={Educational} width={55} alt="Educational" className="m-[10px]" /> },
-        { name: 'Puzzles', description: 'Description 5', categoryImg: <Image src={Puzzle} width={70} alt="Puzzle" className="m-[10px]" /> },
-        { name: 'Outdoot Play', description: 'Description 6', categoryImg: <Image src={Outdoor} width={90} alt="Outdoor Play" className="m-[10px]" /> },
-        { name: 'Plush Toys', description: 'Description 7', categoryImg: <Image src={Plushy} width={58} alt="Plush Toys" className="m-[10px]" /> },
-    ];
+import { useLocale } from 'next-intl';
 
+function Categories() {
+    const locale = useLocale();
+
+     const categories = [
+    { 
+      name: locale === 'en' ? 'Action Figures' : 'აქშენ ფიგურები', 
+      description: locale === 'en' ? 'Description 1' : 'აღწერა 1', 
+      categoryImg: <Image src={ActionFigure} width={70} alt="Action Figure" className="m-[10px]" /> 
+    },
+    { 
+      name: locale === 'en' ? 'Building Sets' : 'აშენების ნაკრები', 
+      description: locale === 'en' ? 'Description 2' : 'აღწერა 2', 
+      categoryImg: <Image src={BuildingSets} width={70} alt="Building Sets" className="m-[10px]" /> 
+    },
+    { 
+      name: locale === 'en' ? 'Dolls' : 'თოჯინები', 
+      description: locale === 'en' ? 'Description 3' : 'აღწერა 3', 
+      categoryImg: <Image src={Dolls} width={40} alt="Dolls" className="m-[10px]" /> 
+    },
+    { 
+      name: locale === 'en' ? 'Educational' : 'საგანმანათლებლო', 
+      description: locale === 'en' ? 'Description 4' : 'აღწერა 4', 
+      categoryImg: <Image src={Educational} width={55} alt="Educational" className="m-[10px]" /> 
+    },
+    { 
+      name: locale === 'en' ? 'Puzzles' : 'ფაზლები', 
+      description: locale === 'en' ? 'Description 5' : 'აღწერა 5', 
+      categoryImg: <Image src={Puzzle} width={70} alt="Puzzle" className="m-[10px]" /> 
+    },
+    { 
+      name: locale === 'en' ? 'Outdoor Play' : 'გარე თამაშები', 
+      description: locale === 'en' ? 'Description 6' : 'აღწერა 6', 
+      categoryImg: <Image src={Outdoor} width={90} alt="Outdoor Play" className="m-[10px]" /> 
+    },
+    { 
+      name: locale === 'en' ? 'Plush Toys' : 'რბილი სათამაშოები', 
+      description: locale === 'en' ? 'Description 7' : 'აღწერა 7', 
+      categoryImg: <Image src={Plushy} width={58} alt="Plush Toys" className="m-[10px]" /> 
+    }
+  ];
     const [screenWidth, setScreenWidth] = useState(window === undefined ? 0 : window.innerWidth);
 
     useEffect(() => {
@@ -47,7 +78,7 @@ function Categories() {
         <div className="flex items-center space-x-4">
             <div>
                 <Category
-                    name="ყველა კატეგორია"
+                    name={locale === 'en' ? 'All Categories' : 'ყველა კატეგორია'}
                     isAllCategory={true}
                 />
             </div>

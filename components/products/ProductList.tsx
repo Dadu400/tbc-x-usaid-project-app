@@ -22,7 +22,7 @@ async function ProductList({ icon, title, className, colCount = 5, addNewBtn = f
 
   return (
     <section className={"w-[100%] " + (className ?? "")}>
-      {title ? <div className="flex items-center gap-[15px]" >
+      {title ? <div className="flex items-center gap-[15px] uppercase" >
         {icon != null ? icon : <></>}
         <span className={`text-xl text-[#191C20] dark:text-[#E2E2E9] font-bold ${mtavruli.className}`}>{title}</span>
       </div> : <></>}

@@ -14,9 +14,11 @@ import { Product } from "./ProductList";
 import { getProducts } from "../../helpers/axiosProduct";
 import SupermanLoader from "../../public/superman_loading.gif";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any }) {
     const router = useRouter();
+    const locale = useLocale();
 
     const [product, setProduct] = useState<Product | null>(null);
     const { id } = useParams();
@@ -108,19 +110,19 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     <ArrowBackOutlinedIcon className="text-3xl cursor-pointer" />
                 </Link>
                 <span className="text-xl font-['mtavruli'] font-semibold text-center w-full">
-                    პროდუქტის {product ? "რედაქტირება" : "დამატება"}
+                  {locale == "en" ? "Product" : "პროდუქტის "}  {product ? (locale == "en" ? "Edit" : "რედაქტირება") : (locale == "en" ? "Add" :  "დამატება")}
                 </span>
             </div>
 
             <div className='flex flex-col items-center justify-center mt-[30px]'>
-                <span className="text-md text-center w-full mb-[20px]">ნიმუში:</span>
-                <Card image={productImage ? URL.createObjectURL(productImage) : product?.image} productName={productTitle} price={productPrice} />
+                <span className="text-md text-center w-full mb-[20px]">{locale == "en" ? "Example:" : "ნიმუში:"} </span>
+                <Card image={productImage ? URL.createObjectURL(productImage) : product?.image} productName={productTitle} price={productPrice} id={""} />
             </div>
 
             <form onSubmit={handleSubmit} className='w-[70%] mx-auto mt-[30px] flex flex-col gap-[10px]'>
                 {errorMessage && <div className="text-red-500 text-center">{errorMessage}</div>}
                 <div className="flex flex-col">
-                    <label htmlFor="title" className="text-md">დასახელება</label>
+                    <label htmlFor="title" className="text-md"> {locale == "en" ? "Product Name" : "დასახელება"}</label>
                     <input
                         type="text"
                         id="title"
@@ -131,7 +133,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="description" className="text-md">აღწერა</label>
+                    <label htmlFor="description" className="text-md"> {locale == "en" ? "Description" : "აღწერა"}</label>
                     <input
                         type="text"
                         id="description"
@@ -142,7 +144,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     />
                 </div>
                 <div className="relative">
-                    <label htmlFor="price" className="block text-md font-medium text-gray-700">ფასი</label>
+                    <label htmlFor="price" className="block text-md font-medium text-gray-700"> {locale == "en" ? "Price" : "ფასი"}</label>
                     <input
                         type="number"
                         id="price"
@@ -154,7 +156,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     <AttachMoneyOutlinedIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" />
                 </div>
                 <div className="flex flex-col relative">
-                    <label htmlFor="category" className="text-md">კატეგორია</label>
+                    <label htmlFor="category" className="text-md"> {locale == "en" ? "Category" : "კატეგორია"}</label>
                     <select
                         name="category"
                         id="category"
@@ -163,9 +165,9 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                         className="border border-gray-300 rounded-lg p-2 mt-1 cursor-pointer appearance-none"
                         required
                     >
-                        <option value="" disabled>აირჩიეთ კატეგორია</option>
-                        <option value="საბაჟე">საბაჟე</option>
-                        <option value="სასურველი">სასურველი</option>
+                        <option value="" disabled> {locale == "en" ? "Choose Category" : "აირჩიეთ კატეგორია"}</option>
+                        <option value="საბაჟე"> {locale == "en" ? "Puzzle" : "ფაზლი"}</option>
+                        <option value="სასურველი"> {locale == "en" ? "Example:" : "სასურველი"}</option>
                     </select>
                     <KeyboardArrowDownIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" />
                 </div>
@@ -180,14 +182,14 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     />
                     <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
                         <UploadIcon className="text-red mr-2" />
-                        <span className="block text-md font-medium text-gray-700">ატვირთე პროდუქტის სურათი</span>
+                        <span className="block text-md font-medium text-gray-700"> {locale == "en" ? "Upload Product Image" : "ატვირთე პროდუქტის სურათი"}</span>
                     </label>
                 </div>
                 <button
                     type="submit"
                     className="w-[40%] self-center mt-[25px] px-4 py-3 text-md font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
                 >
-                    შენახვა
+                   {locale == "en" ? "Save" : "შენახვა"}
                 </button>
             </form>
         </div>

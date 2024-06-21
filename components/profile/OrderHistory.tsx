@@ -1,4 +1,5 @@
 import OrderCard from "./OrderCard";
+import { useTranslations } from 'next-intl';
 
 interface Order {
   id: string;
@@ -40,10 +41,11 @@ const orders: Order[] = [
 ];
 
 function OrderHistory() {
+  const t = useTranslations("Orders");
   return (
     <div className="flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
       <h2 className="text-2xl font-['mtavruli'] font-semibold text-start w-full">
-        შეკვეთების ისტორია
+        {t("heading")}
       </h2>
       <div className="flex flex-col">
         {orders.map((order) => (

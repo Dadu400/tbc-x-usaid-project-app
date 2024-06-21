@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale } from "next-intl";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -31,13 +32,15 @@ function ContactForm() {
     });
   };
 
+  const locale = useLocale();
+
   return (
     <form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col space-y-4 mt-[10px]">
       <input
         type="text"
         id="name"
         name="name"
-        placeholder="სახელი"
+        placeholder={locale == "en" ? "Name" : "სახელი"}
         required
         value={formData.name}
         onChange={handleChange}
@@ -47,7 +50,7 @@ function ContactForm() {
         type="email"
         id="email"
         name="email"
-        placeholder="ელ.ფოსტა"
+        placeholder={locale == "en" ? "Email" : "ელ.ფოსტა"}
         required
         value={formData.email}
         onChange={handleChange}
@@ -57,7 +60,7 @@ function ContactForm() {
         type="number"
         id="phone"
         name="phone"
-        placeholder="ტელეფონი"
+        placeholder={locale == "en" ? "Mobile Number" : "ტელეფონი"}
         required
         value={formData.phone}
         onChange={handleChange}
@@ -68,7 +71,7 @@ function ContactForm() {
         id="message"
         rows={5}
         cols={30}
-        placeholder="ჩაწერე ტექსტი"
+        placeholder={locale == "en" ? "Write your problem here" : "ჩაწერე ტექსტი"}
         required
         value={formData.message}
         onChange={handleChange}
@@ -77,7 +80,7 @@ function ContactForm() {
       <button
         type="submit"
         className="w-full px-4 py-2 text-md font-medium text-white bg-[#404978] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
-        გაგზავნა
+        {locale == "en" ? "Send" : "გაგზავნა"}
       </button>
     </form>
   );

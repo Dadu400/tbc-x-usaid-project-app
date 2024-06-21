@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 import ParticlesBackground from "../../../components/particles/ParticlesBackground";
 import SuperMan from "../../../public/superman.svg";
 import Image from "next/image";
-import SignUpSuggestion from "../../../components/auth/SignUpSuggestion";
+import SignUpSuggestion from "../../../components/registration/SignUpSuggestion";
 
 export default async function LoginPage() {
   const cookiesStore = cookies();

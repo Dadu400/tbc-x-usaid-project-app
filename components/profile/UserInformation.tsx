@@ -8,6 +8,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useState } from "react";
 import { UpdateUser } from "../../actions";
 import { PutBlobResult } from "@vercel/blob";
+import { useLocale } from "next-intl";
 
 interface Message {
     ok: boolean;
@@ -16,6 +17,7 @@ interface Message {
 
 function UserInformation({ session }: { session: any }) {
     const user = session.user;
+    const locale = useLocale();
 
     const [message, setMessage] = useState<Message | undefined>(undefined);
 
@@ -33,7 +35,7 @@ function UserInformation({ session }: { session: any }) {
 
     return (
         <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
-            <h2 className="text-2xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">ჩემი პროფილი</h2>
+            <h2 className="text-2xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">{locale == "en" ? "My Profile" : "ჩემი პროფილი"}</h2>
             <Image src={updatedImage !== undefined ? URL.createObjectURL(updatedImage) : user.imageurl} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
             <form autoComplete='off' className="flex flex-col space-y-4 mt-[10px]" onSubmit={async (e) => {
                 e.preventDefault();
@@ -85,14 +87,14 @@ function UserInformation({ session }: { session: any }) {
                     />
                     <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
                         <UploadIcon className="text-[#404978] mr-2" />
-                        <span className="block text-md font-medium text-gray-700">შეცვალე სურათი</span>
+                        <span className="block text-md font-medium text-gray-700">{locale == "en" ? "Change Profile Picture" : "შეცვალე სურათი"}</span>
                     </label>
                 </div>
                 {message ? <div className="w-full flex justify-center items-center">
                     <span className={`rounded px-8 py-1 text-white ${message.ok ? 'bg-[#388E3C]' : 'bg-[#EC6652]'}`}>{message.message}</span>
                 </div> : <></>}
                 <div className="h-[2px] bg-gradient-to-r from-white via-red to-white"> </div>
-                <label htmlFor="email" className="block text-md font-medium text-gray-700">ელ. ფოსტა</label>
+                <label htmlFor="email" className="block text-md font-medium text-gray-700">{locale == "en" ? "Email" : "ელ.ფოსტა"}</label>
                 <input
                     type="email"
                     id="email"
@@ -104,7 +106,7 @@ function UserInformation({ session }: { session: any }) {
                 />
                 <div className="flex items-center justify-between">
                     <div className="relative w-[40%]">
-                        <label htmlFor="name" className="block text-md font-medium text-gray-700">სახელი</label>
+                        <label htmlFor="name" className="block text-md font-medium text-gray-700">{locale == "en" ? "Name" : "სახელი"}</label>
                         <input
                             type="text"
                             id="name"
@@ -124,7 +126,7 @@ function UserInformation({ session }: { session: any }) {
                         }}/> : <></>}
                     </div>
                     <div className="relative w-[56%]">
-                        <label htmlFor="surname" className="block text-md font-medium text-gray-700">გვარი</label>
+                        <label htmlFor="surname" className="block text-md font-medium text-gray-700">{locale == "en" ? "Surname" : "გვარი"}</label>
                         <input
                             type="text"
                             id="surname"
@@ -145,7 +147,7 @@ function UserInformation({ session }: { session: any }) {
                     </div>
                 </div>
                 <div className="relative">
-                    <label htmlFor="address" className="block text-md font-medium text-gray-700">მისამართი</label>
+                    <label htmlFor="address" className="block text-md font-medium text-gray-700">{locale == "en" ? "Address" : "მისამართი"}</label>
                     <input
                         type="text"
                         id="address"
@@ -165,7 +167,7 @@ function UserInformation({ session }: { session: any }) {
                     }}/> : <></>}
                 </div>
                 <div className="relative">
-                    <label htmlFor="phone" className="block text-md font-medium text-gray-700">მობილურის ნომერი</label>
+                    <label htmlFor="phone" className="block text-md font-medium text-gray-700">{locale == "en" ? "Mobile Number" : "მობილურის ნომერი"}</label>
                     <input
                         type="text"
                         id="phone"
@@ -188,7 +190,7 @@ function UserInformation({ session }: { session: any }) {
                 <button
                     type="submit"
                     className="w-[40%] self-center px-4 py-3 text-md font-medium text-white bg-[#EC6652] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
-                    შენახვა
+                    {locale == "en" ? "Save Changes" : "შენახვა"}
                 </button>
             </form>
         </div>

@@ -5,6 +5,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useState } from "react";
 import OrderDetails from "./OrderDetails";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useLocale } from "next-intl";
 
 interface Order {
   id: string;
@@ -20,6 +21,7 @@ export interface OrderCardProps {
 
 function OrderCard({ order }: OrderCardProps) {
   const [isOrderExpanded , setOrderExpanded] = useState(true);
+  const locale = useLocale();
 
   const handleOrderExpand = () => {
     setOrderExpanded(!isOrderExpanded);
@@ -39,21 +41,21 @@ function OrderCard({ order }: OrderCardProps) {
           </div>
           <div className="ml-4 flex flex-col gap-y-2">
             <div className="text-gray-700 font-semibold text-sm">
-              შეკვეთის #{order.id}
+              {locale == "en" ? "Order # " : "შეკვეთის # "}{order.id}
             </div>
             <div className="text-gray-500 text-sm">
-              პროდუქტები: {order.products}
+            {locale == "en" ? "Products: " : "პროდუქტები: "} {order.products}
             </div>
           </div>
         </div>
         <div className="hidden lg:flex text-right flex-col gap-y-2">
           <div className="text-sm font-semibold text-gray-700">
-            {order.price} ლარი
+         {order.price} {locale == "en" ? " GEL" : " ლარი"} 
           </div>
           <div className="text-gray-500 text-sm ">{order.date}</div>
         </div>
         <button className="text-sm font-semibold flex justify-center hover:text-[#8A4E23]" onClick={() => handleOrderExpand()}>
-          {isOrderExpanded ? 'დამალვა' : 'დეტალები'}
+          {isOrderExpanded ? (locale === "en" ? 'Hide' : 'დამალვა') : (locale === "en" ? 'Details' : 'დეტალები')}
           {isOrderExpanded ? <KeyboardArrowUpIcon className="text-[20px]" />  : <NavigateNextIcon className="text-[20px]" />}
         </button>
       </div>

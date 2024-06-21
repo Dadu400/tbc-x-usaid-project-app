@@ -9,9 +9,11 @@ import type { PutBlobResult } from '@vercel/blob';
 import { useRouter } from "next/navigation";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useLocale } from "next-intl";
 
 const UserRegistrationForm = () => {
   const router = useRouter();
+  const locale = useLocale();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -70,7 +72,7 @@ const UserRegistrationForm = () => {
 
   return (
     <div className="px-8 pt-6 pb-8 bg-white rounded shadow-2xl">
-      <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">რეგისტრაცია</h2>
+      <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">{locale == "en" ? "Sign Up" : "რეგისტრაცია"}</h2>
       <Image src={selectedImage ? URL.createObjectURL(selectedImage) : DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
       <form onSubmit={handleSubmit} className="flex flex-col justify-center space-y-4 mt-[10px]">
         <div className='w-[80%] flex self-center my-2'>
@@ -85,15 +87,15 @@ const UserRegistrationForm = () => {
           />
           <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-2">
             <UploadIcon className="text-red mr-2" />
-            <span className="block text-md font-medium text-gray-700">ატვირთე პროფილის სურათი</span>
+            <span className="block text-md font-medium text-gray-700">{locale == "en" ? "Upload Profile Image" : "ატვირთე პროფილის სურათი"}</span>
           </label>
         </div>
-        <div className="h-[2px] bg-gradient-to-r from-white via-red to-white"> </div>
+        <div className="h-[2px] bg-gradient-to-r from-white via-red to-white"></div>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="ელ. ფოსტა"
+          placeholder={locale == "en" ? "Email" : "ელ. ფოსტა"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -104,7 +106,7 @@ const UserRegistrationForm = () => {
             type={isPasswordVisible ? "text" : "password"}
             id="password"
             name="password"
-            placeholder="პაროლი"
+            placeholder={locale == "en" ? "Password" : "პაროლი"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -123,7 +125,7 @@ const UserRegistrationForm = () => {
             type="text"
             id="name"
             name="name"
-            placeholder="სახელი"
+            placeholder={locale == "en" ? "Name" : "სახელი"}
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -133,7 +135,7 @@ const UserRegistrationForm = () => {
             type="text"
             id="surname"
             name="surname"
-            placeholder="გვარი"
+            placeholder={locale == "en" ? "Surname" : "გვარი"}
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
             required
@@ -144,7 +146,7 @@ const UserRegistrationForm = () => {
           type="text"
           id="address"
           name="address"
-          placeholder="მისამართი"
+          placeholder={locale == "en" ? "Address" : "მისამართი"}
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           required
@@ -154,7 +156,7 @@ const UserRegistrationForm = () => {
           type="number"
           id="phone"
           name="phone"
-          placeholder="ტელეფონი"
+          placeholder={locale == "en" ? "Mobile Number" : "მობილური"}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
@@ -165,7 +167,7 @@ const UserRegistrationForm = () => {
         <button
           type="submit"
           className="w-full px-4 py-2 mt-2 text-md font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
-          რეგისტრაცია
+          {locale == "en" ? "Sign Up" : "რეგისტრაცია"}
         </button>
       </form>
       <div className='h-2'>

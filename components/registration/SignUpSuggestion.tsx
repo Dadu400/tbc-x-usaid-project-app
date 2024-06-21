@@ -1,10 +1,11 @@
 import Link from "next/link";
-
+import { useTranslations } from 'next-intl';
 
 function SignUpSuggestion() {
+    const t = useTranslations("SignUp");
     return (
         <div className="px-8 py-4 bg-white text-md rounded shadow-2xl w-full mt-[20px] flex justify-center items-center">
-            არ გაქვს ანგარიში? <Link href="/registration" className="ml-1.5 font-semibold text-red">დარეგისტრირდი</Link>
+           {t("quest")} <Link href="/registration" className="ml-1.5 font-semibold text-red">{t("suggest")}</Link>
         </div>
     );
 }

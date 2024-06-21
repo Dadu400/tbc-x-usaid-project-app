@@ -2,10 +2,14 @@ import PersonIcon from "@mui/icons-material/Person";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import localFont from "@next/font/local";
+import { useLocale } from "next-intl";
+
 
 const mtavruli = localFont({ src: "../../public/fonts/mtavruli.ttf" });
 
 function OrderDetails() {
+  const locale = useLocale();
+
   const orderDetails = {
     id: "ORD-123456",
     products: 3,
@@ -26,20 +30,20 @@ function OrderDetails() {
   return (
     <div className="w-full m-auto mt-[50px]">
       <h2 className={`text-md ${mtavruli.className} font-semibold text-start w-full my-3`}>
-        შეკვეთის დეტალები
+       {locale == "en" ? "Order Details" : "შეკვეთის დეტალები"} 
       </h2>
       <div className="flex flex-col">
         <div className="w-full border border-[#F5F6F6] rounded-lg py-6 px-0 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-[25px] justify-between">
             <div className="flex flex-col gap-y-2">
               <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
-                შეკვეთის ნომერი
+              {locale == "en" ? "Order Details" : "შეკვეთის ნომერი"} 
               </span>
               <span className="text-gray-500 text-sm">{orderDetails.id}</span>
             </div>
             <div className="flex flex-col gap-y-2">
               <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
-                სტატუსი
+              {locale == "en" ? "Order Status" : "სტატუსი"} 
               </span>
               <span
                 className={`text-sm ${
@@ -51,14 +55,14 @@ function OrderDetails() {
                 {orderDetails.status} {orderDetails.status === "მიღებულია" ? "🎉" : ""}
                 {orderDetails.status === "გზაშია" ? "🚚" : ""}
                 {orderDetails.status === "გზაშია" ? (<br />) : ""}
-                {orderDetails.status === "გზაშია" ? (<span className="text-black underline cursor-pointer">
-                    კურიერის ლოკაცია
+                {orderDetails.status === "გზაშია" ? (<span className="text-black underline cursor-pointer text-[12px]">
+                  {locale == "en" ? "See Location" : "კურიერის ლოკაცია"}  
                 </span>) : ""}
               </span>
             </div>
             <div className="flex flex-col gap-y-2">
               <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
-                შეძენის თარიღი
+              {locale == "en" ? "Purchase Date" : "შეძენის თარიღი"}
               </span>
               <span className="text-gray-500 text-sm">{orderDetails.date}</span>
             </div>
@@ -70,7 +74,7 @@ function OrderDetails() {
               <PersonIcon className="text-[#1e90ff]" />
             </div>
             <div className="flex flex-col">
-              <span className="text-gray-700 font-bold text-sm">მიმღები</span>
+              <span className="text-gray-700 font-bold text-sm">{locale == "en" ? "Receiver" : "მიმღები"}</span>
               <div className="flex gap-2 text-center">
                 <span className="text-gray-700 font-medium text-sm">
                   {" "}
@@ -88,7 +92,7 @@ function OrderDetails() {
               <FmdGoodIcon className="text-[#1e90ff]" />
             </div>
             <div className="flex flex-col">
-              <span className="text-gray-700 font-bold text-sm">მისამართი</span>
+              <span className="text-gray-700 font-bold text-sm"> {locale == "en" ? "Address" : "მისამართი"}</span>
               <span className="text-gray-700 font-medium text-sm">
                 {" "}
                 {orderDetails.address}
@@ -101,7 +105,7 @@ function OrderDetails() {
             </div>
             <div className="flex flex-col">
               <span className="text-gray-700 font-bold text-sm">
-                მიტანის სავარაუდო დრო
+              {locale == "en" ? "Estimated time of delivery" : "მიტანის სავარაუდო დრო"} 
               </span>
               <span className="text-gray-700 font-medium text-sm">
                 {" "}
