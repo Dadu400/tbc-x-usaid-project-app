@@ -33,6 +33,22 @@ export async function getProducts() {
   return products?.rows;
 }
 
+export async function QueryProducts(formData: any) {
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_VERCEL_URL + "/api/query-products",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }
+  );
+  const { products } = await response.json();
+  if (products === undefined) {
+    return [];
+  }
+  return products.rows;
+}
+
 export const handleAddToCart = async (productId: string) => {
   try {
     const response = await fetch(

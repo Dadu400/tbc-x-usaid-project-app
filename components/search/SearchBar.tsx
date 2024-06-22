@@ -54,7 +54,8 @@ function SearchBar({ className }: { className: string }) {
                     queryStrings.set(key, value);
                 });
                 queryStrings.set('q', encodeURIComponent(query));
-                router.push(`/search?${queryStrings.toString()}`);
+                console.log("Test");
+                router.replace(`/search?${queryStrings.toString()}`);
             }}>
                 <div className="w-full flex bg-[#F9F9FF] dark:bg-[#121B18] gap-3 lg:gap-8 h-[60px] mt-[15px]">
                     <input placeholder={locale === "en" ? 'Search...' : 'ძებნა...'} 

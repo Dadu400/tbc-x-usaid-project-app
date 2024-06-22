@@ -11,6 +11,7 @@ function CategoryFilter() {
     const hoverStyle = "hover:font-semibold hover:text-[#EC6652]" 
 
     const categories: { [key: string]: string } = {
+        "": "All",
         "actionFigures": "Action Figures",
         "buildingSets": "Building Sets",
         "dolls": "Dolls",

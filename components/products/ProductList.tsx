@@ -16,8 +16,10 @@ export interface Product {
   userid: string;
 }
 
-async function ProductList({ icon, title, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, className?: string, colCount?: number, addNewBtn?: boolean }) {
-  const products = await getProducts();
+async function ProductList({ icon, title, products, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, products?: Product[], className?: string, colCount?: number, addNewBtn?: boolean }) {
+  if (!products) {
+    products = await getProducts();
+  }
   const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)`, justifyItems: "center" };
 
   return (
