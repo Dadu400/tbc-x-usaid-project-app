@@ -25,36 +25,43 @@ function Categories() {
 
      const categories = [
     { 
+      code: 'actionFigures',
       name: locale === 'en' ? 'Action Figures' : 'აქშენ ფიგურები', 
       description: locale === 'en' ? 'Description 1' : 'აღწერა 1', 
       categoryImg: <Image src={ActionFigure} width={70} alt="Action Figure" className="m-[10px]" /> 
     },
     { 
+      code: 'buildingSets',
       name: locale === 'en' ? 'Building Sets' : 'აშენების ნაკრები', 
       description: locale === 'en' ? 'Description 2' : 'აღწერა 2', 
       categoryImg: <Image src={BuildingSets} width={70} alt="Building Sets" className="m-[10px]" /> 
     },
     { 
+      code: 'dolls',
       name: locale === 'en' ? 'Dolls' : 'თოჯინები', 
       description: locale === 'en' ? 'Description 3' : 'აღწერა 3', 
       categoryImg: <Image src={Dolls} width={40} alt="Dolls" className="m-[10px]" /> 
     },
     { 
+      code: 'educational',
       name: locale === 'en' ? 'Educational' : 'საგანმანათლებლო', 
       description: locale === 'en' ? 'Description 4' : 'აღწერა 4', 
       categoryImg: <Image src={Educational} width={55} alt="Educational" className="m-[10px]" /> 
     },
     { 
+      code: 'puzzles',
       name: locale === 'en' ? 'Puzzles' : 'ფაზლები', 
       description: locale === 'en' ? 'Description 5' : 'აღწერა 5', 
       categoryImg: <Image src={Puzzle} width={70} alt="Puzzle" className="m-[10px]" /> 
     },
     { 
+      code: 'outdoorPlay',
       name: locale === 'en' ? 'Outdoor Play' : 'გარე თამაშები', 
       description: locale === 'en' ? 'Description 6' : 'აღწერა 6', 
       categoryImg: <Image src={Outdoor} width={90} alt="Outdoor Play" className="m-[10px]" /> 
     },
     { 
+      code: 'plushToys',
       name: locale === 'en' ? 'Plush Toys' : 'რბილი სათამაშოები', 
       description: locale === 'en' ? 'Description 7' : 'აღწერა 7', 
       categoryImg: <Image src={Plushy} width={58} alt="Plush Toys" className="m-[10px]" /> 
@@ -98,6 +105,7 @@ function Categories() {
                 {categories.map((category, index) => (
                     <SwiperSlide key={index}>
                         <Category
+                            code={category.code}
                             categoryImg={category.categoryImg}
                             name={category.name}
                         />
