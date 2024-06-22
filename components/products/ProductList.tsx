@@ -30,13 +30,14 @@ async function ProductList({ icon, title, products, className, colCount = 5, add
       </div> : <></>}
       <div className={`w-[100%] grid my-3 gap-y-[35px] `} style={gridStyle}>
         {products.map((product: Product) => (
-          <Card
-            key={product.id}
-            id={product.id.toString()}
-            image={product.image}
-            productName={product.title}
-            price={product.price}
-          />
+          <Link href={`/product/${product.id}`} key={product.id}>
+            <Card
+              id={product.id.toString()}
+              image={product.image}
+              productName={product.title}
+              price={product.price}
+            />
+          </Link>
         ))}
         {addNewBtn ? (
           <Link href={"/profile/products/create"}>
