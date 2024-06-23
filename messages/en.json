@@ -85,10 +85,6 @@
   "Cart": {
     "message": "Please sign in to add products to cart",
     "emptyCart": "Your cart is empty",
-    "header": "You have {totalQuantity} items in your cart",
-    "pay": "Order Summary",
-    "products": "Products",
-    "total": "Total Price",
-    "checkout": "Checkout"
+    "header": "You have {totalQuantity} items in your cart"
   }
 }

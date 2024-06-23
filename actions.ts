@@ -15,8 +15,7 @@ export async function Login(email: string, password: string) {
       email,
       password,
     })
-    .catch((error) => {
-    });
+    .catch((error) => {});
 
   if (response !== undefined && response.status === 200) {
     const cookiesStore = cookies();
@@ -50,7 +49,7 @@ export async function UpdateUser(formData: any) {
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-user",
       formData
     );
-    
+
     const cookiesStore = cookies();
     console.log(response.data.token);
     cookiesStore.set(AUTH_COOKIE_KEY, response.data.token, { httpOnly: true });
@@ -58,7 +57,7 @@ export async function UpdateUser(formData: any) {
     return { ok: false, message: "Failed to update user" };
   }
 
-  return { ok: true, };
+  return { ok: true };
 }
 
 export async function Logout() {
@@ -119,7 +118,7 @@ export async function SaveProduct(formData: any) {
       price,
       category,
       image,
-      userId
+      userId,
     });
     return { ok: true };
   } catch (error) {
@@ -128,17 +127,21 @@ export async function SaveProduct(formData: any) {
 }
 
 export async function UpdateProduct(formData: any) {
-  const { productId, title, description, price, category, image, userId } = formData;
+  const { productId, title, description, price, category, image, userId } =
+    formData;
   try {
-    await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-product", {
-      productId,
-      title,
-      description,
-      price,
-      category,
-      image,
-      userId
-    });
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-product",
+      {
+        productId,
+        title,
+        description,
+        price,
+        category,
+        image,
+        userId,
+      }
+    );
     return { ok: true };
   } catch (error) {
     return { ok: false, message: "Failed to update product" };
@@ -148,7 +151,7 @@ export async function UpdateProduct(formData: any) {
 export const handleAddToCart = async (productId: string) => {
   "use server";
   const session = await GetSession();
-  
+
   if (session === undefined) {
     console.error("User is not authenticated");
     return;
@@ -160,7 +163,11 @@ export const handleAddToCart = async (productId: string) => {
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: session.user.id, productId: productId, quantity: 1 }),
+        body: JSON.stringify({
+          userId: session.user.id,
+          productId: productId,
+          quantity: 1,
+        }),
       }
     );
     revalidateTag("cart");

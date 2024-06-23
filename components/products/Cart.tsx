@@ -5,10 +5,10 @@ import { getProducts } from "../../helpers/axiosProduct";
 import CounterButton from "./CounterButton";
 import EmptyCartButton from "./EmptyCartButton";
 import RemoveProductButton from "./RemoveProductButton";
-import CartComponent from "../checkout/CartComponent";
 import { getTranslations } from "next-intl/server";
+import CartComponent from "../checkout/CartComponent";
 
-interface Product {
+export interface Product {
   id: string;
   image: string;
   title: string;
@@ -26,7 +26,7 @@ async function CartContainer({ session }: any) {
       <div className="text-center mt-8">
         <h2 className="text-2xl font-bold mb-4">{t("message")}</h2>
       </div>
-    )
+    );
   }
 
   const cart = await getUserCart(session.user.id);
@@ -72,7 +72,13 @@ async function CartContainer({ session }: any) {
                 </div>
               ))}
             </div>
-            <CartComponent totalQuantity={totalQuantity} totalAmount={totalAmount} />
+            <CartComponent
+              totalQuantity={totalQuantity}
+              totalAmount={totalAmount}
+              showButton={true}
+              filteredProducts={filteredProducts}
+              session={session}
+            />
           </div>
         </>
       ) : (
