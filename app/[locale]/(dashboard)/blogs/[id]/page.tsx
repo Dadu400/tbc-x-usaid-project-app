@@ -1,36 +1,44 @@
 import { getSingleBlog } from "../../../../../helpers/axios";
-import axios from "axios";
 import DashboardLayout from "../../DashboardLayout";
 import { unstable_setRequestLocale } from 'next-intl/server';
 import Dramatic from "../../../../../public/Dramatic.webp";
 import person from "../../../../../public/person.png";
 import Image from 'next/image';
-
-interface Post {
-  title: string;
-  tags: string[];
-  id: string | number;
-  body: string;
-}
+import { Metadata } from "next";
 
 interface Params {
   id: string;
   locale: string;
 }
 
-export async function generateStaticParams() {
-  const res = await axios.get("https://dummyjson.com/posts");
-  return res.data.posts.map((post: Post) => ({
-    id: `${post.id}`,
-  }));
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const id = Number(params.id);
+  const post = await getSingleBlog(id);
+  return {
+    title: post.title,
+    description: post.body,
+  }
 }
 
 export default async function BlogsIdPage({ params }: { params: Params }) {
   unstable_setRequestLocale(params.locale);
-  const idString = params?.id;
-  const id = Number(idString);
+  const id = Number(params.id);
 
-  const post = await getSingleBlog(id);
+  let post;
+  try {
+    post = await getSingleBlog(id);
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    return (
+      <DashboardLayout useParticles={false}>
+        <div className="w-[60vw] m-auto mt-[20px] flex flex-col bg-[#fefefe] pl-12">
+          <h1 className="font-bold text-2xl text-gray-800 mt-[20px]">
+            Error fetching blog post
+          </h1>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout useParticles={false}>
@@ -56,7 +64,6 @@ export default async function BlogsIdPage({ params }: { params: Params }) {
           <p className="text-gray-700 text-md">{post.body}</p>
         </div>
       </div>
-      {/* <ProductList /> */}
     </DashboardLayout>
   );
 }

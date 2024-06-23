@@ -14,6 +14,20 @@ import InsertCommentOutlinedIcon from '@mui/icons-material/InsertCommentOutlined
 import product from '../../../../../public/product.jpg';
 import Image from 'next/image';
 import SocialShareButtons from '../../../../../components/products/SocialShareButtons';
+import { Metadata } from 'next';
+
+interface Params {
+    id: string;
+    locale: string;
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    const post = await getSingleProduct(params.id);
+    return {
+        title: post?.title || 'Product',
+        description: post?.description || 'Product details',
+    }
+}
 
 async function getSingleProduct(id: string) {
     try {
@@ -31,12 +45,8 @@ async function getSingleProduct(id: string) {
     }
 }
 
-async function singleProduct({
-    params: { id },
-}: {
-    params: { id: string }
-}) {
-    const singlePageProduct = await getSingleProduct(id);
+export default async function singleProduct({ params }: { params: Params }) {
+    const singlePageProduct = await getSingleProduct(params.id);
 
     if (!singlePageProduct) {
         return (
@@ -149,7 +159,8 @@ async function singleProduct({
                     <span className="font-['mtavruli'] border-b-[#1e90ff] border-b-[2px] flex items-center gap-[8px] pb-[5px]">
                         <StarIcon className="text-[#FFB200]" /> შეფასებებები
                     </span>
-                </div><div className="bg-[#FEFEFE] mt-[40px] flex w-[60vw] mx-auto shadow-xl p-[25px]">
+                </div>
+                <div className="bg-[#FEFEFE] mt-[40px] flex w-[60vw] mx-auto shadow-xl p-[25px]">
                     <span className="font-['mtavruli'] border-b-[#1e90ff] border-b-[2px] flex items-center gap-[8px] pb-[5px]">
                         <InsertCommentOutlinedIcon className="text-red" /> კომენტარები
                     </span>
@@ -158,5 +169,3 @@ async function singleProduct({
         </>
     );
 }
-
-export default singleProduct;

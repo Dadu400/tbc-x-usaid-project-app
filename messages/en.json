@@ -1,4 +1,37 @@
 {
+  "MetaData": {
+    "title": "SuperWeb | Your one-stop shop for the latest and greatest toys.",
+    "description": "SuperWeb is the best place to find the latest and greatest toys for kids of all ages. From action figures to building sets, we have everything you need to keep your little ones entertained for hours on end. Shop now and discover the magic of SuperWeb!",
+    "keywords": "toys, action figures, building sets, dolls, educational toys, puzzles, outdoor play, plush toys",
+    "blogTitle": "Blogs | News and updates from the world of toys",
+    "blogDescription": "Stay up to date with the latest news and updates from the world of toys.",
+    "cartTitle": "Cart | Your shopping list",
+    "cartDescription": "Your shopping list",
+    "checkoutTitle": "Checkout | Your order is almost complete",
+    "checkoutDescription": "Your order is almost complete",
+    "contactTitle": "Contact Us | Get in touch with the SuperWeb team",
+    "contactDescription": "Get in touch with the SuperWeb team",
+    "profileTitle": "Profile | Manage your account",
+    "profileDescription": "Manage your account",
+    "passwordTitle": "Password | Change your password",
+    "passwordDescription": "Change your password",
+    "ordersTitle": "Orders | Your order history",
+    "ordersDescription": "Your order history",
+    "blogManageTitle": "Blogs | Manage your blog posts",
+    "blogManageDescription": "Manage your blog posts",
+    "blogCreateTitle": "Blogs | Create a new blog post",
+    "blogCreateDescription": "Create a new blog post",
+    "myProductsTitle": "Products | Manage your products",
+    "myProductsDescription": "Manage your products",
+    "addProductTitle": "Products | Add a new product",
+    "addProductDescription": "Add a new product",
+    "editProductTitle": "Products | Edit product",
+    "editProductDescription": "Edit product",
+    "searchTitle": "Search | Find the perfect toy",
+    "searchDescription": "Find the perfect toy",
+    "trackOrderTitle": "Track Order | Track your order",
+    "trackOrderDescription": "Track your order"
+  },
   "HomePage": {
     "newadd": "Recently Added",
     "popular": "Top Selling Items"
@@ -86,5 +119,11 @@
     "message": "Please sign in to add products to cart",
     "emptyCart": "Your cart is empty",
     "header": "You have {totalQuantity} items in your cart"
+  },
+  "Tracking": {
+    "h1": "Track courier by tracking number",
+    "orderNumber": "Order Number",
+    "orderStatus": "Order Status",
+    "orderDate": "Order Date"
   }
 }

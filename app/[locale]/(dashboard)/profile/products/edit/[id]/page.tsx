@@ -1,7 +1,17 @@
 import ProfilePageLayout from "../../../../../../../components/profile/ProfilePageLayout";
 import AddEditProductForm from "../../../../../../../components/products/AddEditProductForm";
 import { GetSession } from "../../../../../../../actions";
-import { useParams } from "next/navigation";
+import { getTranslations } from 'next-intl/server';
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+    const t = await getTranslations("MetaData");
+
+    return {
+        title: t("editProductTitle"),
+        description: t("editProductDescription"),
+    }
+}
 
 async function EditProductPage() {
     const session = await GetSession();

@@ -9,8 +9,19 @@ import SearchBar from "../../../components/search/SearchBar";
 import FirstBanner from "../../../public/firstBanner.png";
 import FirstBannerEn from "../../../public/firstBannerEn.png";
 import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import { Metadata } from "next";
 
-const HomePage = () => {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("MetaData");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  }
+}
+
+function HomePage() {
   const t = useTranslations("HomePage");
   return (
     <DashboardLayout>
