@@ -34,14 +34,18 @@ export const getSingleBlog = async (id: number | string) => {
 
 export async function getUserCart(id: number) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-cart/${id}`
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/cart/get-cart/${id}`
   );
   const carts = await response.json();
 
-  if (carts === undefined || carts.carts == undefined || carts.carts.rows === undefined) {
+  if (
+    carts === undefined ||
+    carts.carts == undefined ||
+    carts.carts.rows === undefined
+  ) {
     return {};
   }
-  
+
   const [cart] = carts.carts.rows;
   return cart;
 }

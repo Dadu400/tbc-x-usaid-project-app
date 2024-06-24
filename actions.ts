@@ -11,7 +11,7 @@ const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export async function Login(email: string, password: string) {
   const response = await axios
-    .post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/login", {
+    .post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/login", {
       email,
       password,
     })
@@ -29,7 +29,7 @@ export async function Login(email: string, password: string) {
 export async function Register(formData: any) {
   try {
     await axios.post(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/create-user",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/create-user",
       formData
     );
   } catch (error: any) {
@@ -45,7 +45,7 @@ export async function Register(formData: any) {
 export async function UpdateUser(formData: any) {
   try {
     const response = await axios.post(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-user",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/update-user",
       formData
     );
 
@@ -93,7 +93,7 @@ export async function HandleChangePassword(
 ) {
   try {
     await axios.post(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/change-password",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/change-password",
       {
         email,
         oldPassword,
@@ -155,7 +155,7 @@ export const handleAddToCart = async (productId: string) => {
 
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/add-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/add-product",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -185,7 +185,7 @@ export const handleDecrementCart = async (productId: string) => {
 
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/decrement-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/decrement-product",
       {
         method: "PUT",
         headers: {
@@ -217,7 +217,7 @@ export const handleEmptyCart = async () => {
 
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/clear-cart",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/clear-cart",
       {
         method: "DELETE",
         headers: {
@@ -249,7 +249,7 @@ export const handleDeleteProduct = async (productId: string) => {
 
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/delete-product",
       {
         method: "DELETE",
         headers: {
