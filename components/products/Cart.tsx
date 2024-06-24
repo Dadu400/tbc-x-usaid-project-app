@@ -16,6 +16,7 @@ export interface Product {
   price: number;
   quantity: number;
   totalPrice: number;
+  added_on: Date;
 }
 
 export const revalidate = 0;

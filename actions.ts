@@ -285,3 +285,34 @@ export const handleDeleteProduct = async (productId: string) => {
     console.error("Error removing item from cart:", error);
   }
 };
+
+export async function getSingleProduct(id: string) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products/${id}`
+    );
+    const data = await response.json();
+    if (data.products?.rows?.length > 0) {
+      return data.products.rows[0];
+    } else {
+      console.error("Product not found or invalid response format", data);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+}
+
+export async function getProductSeller(id: string) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}/seller`
+    );
+    const data = await response.json();
+    console.log(data);
+    return data.user;
+  } catch (error) {
+    return null;
+  }
+}

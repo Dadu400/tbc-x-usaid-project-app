@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import Card from './Card';
+import ProductCard from './Card';
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import UploadIcon from '@mui/icons-material/Upload';
 import { SaveProduct, UpdateProduct } from "../../actions";
@@ -124,7 +124,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
 
             <div className='flex flex-col items-center justify-center mt-[30px]'>
                 <span className="text-md text-center w-full mb-[20px]">{locale == "en" ? "Example:" : "ნიმუში:"} </span>
-                <Card
+                <ProductCard
                     product={{
                         id: 0,
                         image: newUploadedProductImage ? URL.createObjectURL(newUploadedProductImage) : product?.image,

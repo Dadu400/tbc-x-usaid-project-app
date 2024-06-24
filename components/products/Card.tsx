@@ -15,7 +15,7 @@ interface CardProps {
   session: any;
 }
 
-function Card({ product, session }: CardProps) {
+function ProductCard({ product, session }: CardProps) {
   const formattedPrice =
     typeof product.price === "number" ? product.price.toFixed(2) : parseFloat(product.price).toFixed(2);
 
@@ -38,7 +38,7 @@ function Card({ product, session }: CardProps) {
           />
         </div>
         <div className="font-bold mt-[14px] h-7">{formattedPrice} ₾</div>
-        <div className="text-sm h-7">{product.title}</div>
+        <div className="text-sm h-7 overflow-hidden whitespace-nowrap overflow-ellipsis">{product.title}</div>
       </Link>
       <div className="absolute flex flex-col gap-[5px] justify-center items-center right-1 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {isUserAuthorized && !(isUsersProduct || isAdmin) ? (
@@ -72,4 +72,4 @@ function Card({ product, session }: CardProps) {
   );
 }
 
-export default Card;
+export default ProductCard;

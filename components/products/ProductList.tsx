@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
-import Card from "./Card";
+import ProductCard from "./Card";
 import localFont from '@next/font/local'
 import { GetSession } from "../../actions";
 
@@ -33,7 +33,7 @@ async function ProductList({ icon, title, products, className, colCount = 5, add
       </div> : <></>}
       <div className={`w-[100%] grid my-3 gap-y-[35px] `} style={gridStyle}>
         {products?.map((product: Product) => (
-          <Card
+          <ProductCard
             key={product.id.toString()}
             product={product}
             session={session}
