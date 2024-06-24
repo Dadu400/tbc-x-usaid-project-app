@@ -88,6 +88,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
             price: productPrice,
             category: productCategory,
             image: imageUrl,
+            userId: session.user.id
         };
 
         const saveStatus = isEdit ? await UpdateProduct(formData) : await SaveProduct(formData);

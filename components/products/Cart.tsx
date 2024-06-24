@@ -47,7 +47,7 @@ async function CartContainer({ session }: any) {
   const totalAmount = filteredProducts.reduce((sum: number, product: Product) => sum + product.totalPrice, 0);
 
   return (
-    <div className="w-[60vw] m-auto mt-[20px]">
+    <div className="w-[60vw] m-auto mt-[20px] mb-[40px]">
       {totalQuantity > 0 ? (
         <>
           <h2 className="text-2xl font-bold mt-8 mb-4">{t("header", { totalQuantity })}</h2>

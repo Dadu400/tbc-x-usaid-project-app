@@ -16,7 +16,7 @@ const checkout = async (filteredProducts: any[], session: any) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ products: filteredProducts, session }),
+        body: JSON.stringify({ products: filteredProducts, user: session.user }),
     })
         .then((response) => response.json())
         .then((response) => {
