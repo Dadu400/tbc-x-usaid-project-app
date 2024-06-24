@@ -56,7 +56,6 @@ const createOrder = async (products: Product[], user: any) => {
     await client.query("COMMIT");
     return order.id;
   } catch (error) {
-    console.log(error);
     await client.query("ROLLBACK");
     throw error;
   } finally {
