@@ -1,10 +1,31 @@
+"use client";
+
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
-import { Product } from './Cart';
+import { useState } from 'react';
+import { handleAddToCart, handleInstantBuy } from '../../actions';
+import { useRouter } from 'next/navigation';
+import { Product } from './ProductList';
 
-function ProductCheckoutCart({ product }: { product: Product }) {
+function ProductCheckoutCart({ session, product }: { session: any, product: Product }) {
+    const router = useRouter();
+    const [productCount, setProductCount] = useState(1);
+
+    const isUserAuthorized = session && session.user;
+    const isUsersProduct = session && session.user && Number(session.user.id) === Number(product.userid);
+    const isAdmin = session && session.user && session.user.admin === true;
+
+    const canPurchaseOrAddToCart = () => {
+        if (!isUserAuthorized) {
+            router.push("/login");
+            return false;
+        }
+
+        return !isAdmin && !isUsersProduct;
+    }
+
     return (
         <div className="flex-[2]">
             <div className="shadow-lg py-[40px] px-[35px] rounded-lg">
@@ -25,18 +46,48 @@ function ProductCheckoutCart({ product }: { product: Product }) {
                 <div className="flex justify-between items-center mt-[10px]">
                     <span className="text-sm font-['mtavruli']">რაოდენობა</span>
                     <div className="flex gap-3">
-                        <div>
+                        <div onClick={() => {
+                            if (canPurchaseOrAddToCart() === false) {
+                                return;
+                            }
+
+                            if (productCount > 1) {
+                                setProductCount(productCount - 1);
+                            }
+                        }}>
                             <RemoveOutlinedIcon className="text-gray-400 cursor-pointer" />
                         </div>
-                        <div>1</div>
-                        <div>
+                        <div>{productCount}</div>
+                        <div onClick={() => {
+                            if (canPurchaseOrAddToCart() === false) {
+                                return;
+                            }
+
+                            setProductCount(productCount + 1);
+                        }}>
                             <AddOutlinedIcon className="text-gray-400 cursor-pointer" />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-col mt-[20px] gap-[10px]">
-                    <div className="w-[100%] text-center bg-[#1e90ff] text-white rounded-lg p-[10px] cursor-pointer">ყიდვა</div>
-                    <div className="w-[100%] text-center border-[1px] border-[#1e90ff] text-[#1e90ff] font-semibold rounded-lg p-[9px] cursor-pointer">კალათაში დამატება</div>
+                    <div className={`w-[100%] text-center ${canPurchaseOrAddToCart() ? "bg-[#1e90ff] cursor-pointer" : "bg-[#86c2fc]"} text-white rounded-lg p-[10px] `} onClick={async () => {
+                        if (canPurchaseOrAddToCart() === false) {
+                            return;
+                        }
+
+                        const result = await handleInstantBuy(product.id.toString(), productCount);
+                        if (result && result.ok) {
+                            router.push("/cart");
+                        }
+                    }}>ყიდვა</div>
+                    <div className={`w-[100%] text-center border-[1px] ${canPurchaseOrAddToCart() ? "border-[#1e90ff] text-[#1e90ff] cursor-pointer" : "border-[#86c2fc] text-[#86c2fc]"} rounded-lg p-[9px] `}
+                        onClick={() => {
+                            if (canPurchaseOrAddToCart() === false) {
+                                return;
+                            }
+
+                            handleAddToCart(product.id.toString());
+                        }}>კალათაში დამატება</div>
                 </div>
             </div>
         </div>

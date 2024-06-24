@@ -2,7 +2,7 @@ import Head from 'next/head';
 import DashboardLayout from '../../DashboardLayout';
 import { Metadata } from 'next';
 import { Product } from '../../../../../components/products/Cart';
-import { getProductSeller, getSingleProduct } from '../../../../../actions';
+import { GetSession, getProductSeller, getSingleProduct } from '../../../../../actions';
 import ProductDetails from '../../../../../components/products/ProductDetails';
 import ProductSellerDetails from '../../../../../components/products/ProductSellerDetails';
 import ProductReviewDetails from '../../../../../components/products/ProductReviewDetails';
@@ -23,7 +23,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function singleProduct({ params }: { params: Params }) {
     const product: Product = await getSingleProduct(params.id);
-    const user = await getProductSeller(params.id);
+    const seller = await getProductSeller(params.id);
+    const session = await GetSession();
 
     if (!product) {
         return (
@@ -49,8 +50,8 @@ export default async function singleProduct({ params }: { params: Params }) {
                 <meta property="og:type" content="product" />
             </Head>
             <DashboardLayout useParticles={false}>
-                <ProductDetails product={product} shareUrl={shareUrl} title={title} imageUrl={imageUrl} />
-                <ProductSellerDetails user={user} />
+                <ProductDetails session={session} product={product} shareUrl={shareUrl} title={title} imageUrl={imageUrl} />
+                <ProductSellerDetails seller={seller} />
                 <ProductReviewDetails />
             </DashboardLayout>
         </>

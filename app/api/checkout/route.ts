@@ -86,7 +86,7 @@ export const POST = async (request: any) => {
         await stripe.products.create({
           name: product.title,
           default_price_data: {
-            unit_amount: product.price * 100,
+            unit_amount: parseInt((product.price * 100).toFixed(0)),
             currency: "usd",
           },
         });

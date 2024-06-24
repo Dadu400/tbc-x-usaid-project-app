@@ -28,7 +28,7 @@ function HomePage() {
       <div className="xs:bg-[#019] w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto bg-[#F9F9FF] dark:bg-[#121B18] px-[1vw] py-[25px]">
         <SearchBar className={"mb-[35px]"} />
         <Categories />
-        <Banner bannerEn={FirstBannerEn} bannerKa={FirstBanner} />
+        <Banner bannerEn={FirstBannerEn.src} bannerKa={FirstBanner.src} />
         <ProductList colCount={5} icon={<RoundedIcon icon={<FiberNewOutlined />} />} title={t("newadd")} className={"mt-[50px]"} />
         <ProductList colCount={5} icon={<RoundedIcon icon={<StarIcon fontSize="medium" />} bgColor="#F6A330" />} title={t("popular")} className={"mt-[50px]"} />
       </div>

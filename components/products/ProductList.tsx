@@ -1,20 +1,21 @@
 import Link from "next/link";
 import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
-import ProductCard from "./Card";
+import ProductCard from "./ProductCard";
 import localFont from '@next/font/local'
 import { GetSession } from "../../actions";
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 export interface Product {
-  id: string | number;
-  image: string | undefined;
+  id: number;
+  image: string;
   title: string;
   description: string;
   price: number;
   category: string;
   userid: string;
+  added_on: Date;
 }
 
 async function ProductList({ icon, title, products, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, products?: Product[], className?: string, colCount?: number, addNewBtn?: boolean }) {

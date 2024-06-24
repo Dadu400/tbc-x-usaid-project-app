@@ -158,6 +158,27 @@ export async function DeleteProduct(formData: any) {
   }
 }
 
+export const handleInstantBuy = async (productId: string, quantity: number) => {
+  "use server";
+
+  const session = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
+  try {
+    await handleEmptyCart();
+    for (let i = 0; i < quantity; i++) {
+      await handleAddToCart(productId);
+    }
+    return { ok: true };
+  } catch (error) {
+    console.error("Error instant buying product:", error);
+    return { ok: false };
+  }
+};
+
 export const handleAddToCart = async (productId: string) => {
   "use server";
   const session = await GetSession();

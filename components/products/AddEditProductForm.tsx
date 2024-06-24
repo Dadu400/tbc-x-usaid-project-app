@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import ProductCard from './Card';
+import ProductCard from './ProductCard';
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import UploadIcon from '@mui/icons-material/Upload';
 import { SaveProduct, UpdateProduct } from "../../actions";
@@ -28,7 +28,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
             const products = await getProducts();
             const data = products.find((p: Product) => p.id === Number(id));
 
-            if (data.userid !== session.user.id && session.user.admin === false) {
+            if (Number(data.userid) !== Number(session.user.id) && session.user.admin === false) {
                 router.push('/profile/products');
                 return;
             }

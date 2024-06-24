@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     if (!title || !description || !price || !image || !category || !userId) {
       throw new Error("title, description, price and image are required");
     }
-    await sql`INSERT INTO products (title, description, price, image, category, userid) VALUES (${title}, ${description}, ${price}, ${image}, ${category}, ${userId});`;
+    await sql`INSERT INTO products (title, description, price, image, category, userid, hidden) VALUES (${title}, ${description}, ${price}, ${image}, ${category}, ${userId}, false);`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
