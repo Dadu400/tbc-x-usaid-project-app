@@ -6,6 +6,7 @@ import { revalidateTag } from "next/cache";
 import axios from "axios";
 import { jwtVerify } from "jose";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { Review } from "./components/products/ProductReviewDetails";
 
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
 
@@ -334,5 +335,27 @@ export async function getProductSeller(id: string) {
     return data.user;
   } catch (error) {
     return null;
+  }
+}
+
+export async function addReview(
+  productId: number,
+  userId: number,
+  rating: number,
+  comment: string
+) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL +
+        `/api/product/${productId}/add-review`,
+      {
+        userId: userId,
+        rating: rating,
+        comment: comment,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to add review" };
   }
 }

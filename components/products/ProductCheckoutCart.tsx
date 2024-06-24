@@ -18,12 +18,7 @@ function ProductCheckoutCart({ session, product }: { session: any, product: Prod
     const isAdmin = session && session.user && session.user.admin === true;
 
     const canPurchaseOrAddToCart = () => {
-        if (!isUserAuthorized) {
-            router.push("/login");
-            return false;
-        }
-
-        return !isAdmin && !isUsersProduct;
+        return isUserAuthorized && !isAdmin && !isUsersProduct;
     }
 
     return (

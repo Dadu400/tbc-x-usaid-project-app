@@ -19,7 +19,7 @@ function ProductSellerDetails({ seller }: { seller: any }) {
                         <span className={`text-lg font-bold ${mtavruli.className}`}>
                             {seller.name} {seller.surname}
                         </span>
-                        <span className={`text-md ${mtavruli.className}`}>{seller.phone.startsWith('+995') || seller.phone.startsWith('995') ? seller.phone : '+995 ' + seller.phone}</span>
+                        <span className={`text-md text-gray-500 ${mtavruli.className}`}>{seller.phone.startsWith('+995') || seller.phone.startsWith('995') ? seller.phone : '+995 ' + seller.phone}</span>
                     </div>
                 </div>
                 <div>
