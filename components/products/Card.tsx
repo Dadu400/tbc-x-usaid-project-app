@@ -3,7 +3,7 @@
 import Image from "next/image";
 import TestProduct from "../../public/TestProduct.webp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { handleAddToCart } from "../../actions";
+import { DeleteProduct, handleAddToCart } from "../../actions";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useRouter } from "next/navigation";
@@ -58,9 +58,10 @@ function Card({ product, session }: CardProps) {
         )}
         {(isUsersProduct || isAdmin) && (
           <div className="flex justify-center items-center border-[1px] border-red rounded-md p-1 bg-red" onClick={async () => {
-            // await DeleteProduct(id);
-            //   router.reload();
-            // }}>
+            const result = await DeleteProduct({ id: product.id });
+            if (result.ok) {
+              router.refresh();
+            }
           }}>
             <DeleteOutlineIcon fontSize="small" className="text-white" />
           </div>

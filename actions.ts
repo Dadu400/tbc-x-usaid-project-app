@@ -144,6 +144,20 @@ export async function UpdateProduct(formData: any) {
   }
 }
 
+export async function DeleteProduct(formData: any) {
+  try {
+    await axios.delete(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
+      {
+        data: formData,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to delete product" };
+  }
+}
+
 export const handleAddToCart = async (productId: string) => {
   "use server";
   const session = await GetSession();

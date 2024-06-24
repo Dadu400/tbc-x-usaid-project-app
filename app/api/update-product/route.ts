@@ -7,7 +7,6 @@ export async function POST(request: Request) {
 
   try {
     if (!productId || !title || !description || !price || !image || !category) {
-      console.log;
       throw new Error(
         "productId, title, description, price and image are required"
       );
