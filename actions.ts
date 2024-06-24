@@ -310,7 +310,6 @@ export async function getProductSeller(id: string) {
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}/seller`
     );
     const data = await response.json();
-    console.log(data);
     return data.user;
   } catch (error) {
     return null;
