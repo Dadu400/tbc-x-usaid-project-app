@@ -6,60 +6,64 @@ import { useState } from "react";
 import OrderDetails from "./OrderDetails";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useLocale } from "next-intl";
-
-interface Order {
-  id: string;
-  products: number;
-  price: string;
-  date: string;
-  status: string;
-}
+import { Order } from "./OrderHistory";
 
 export interface OrderCardProps {
   order: Order;
 }
 
 function OrderCard({ order }: OrderCardProps) {
-  const [isOrderExpanded , setOrderExpanded] = useState(true);
+  const [isOrderExpanded, setOrderExpanded] = useState(true);
   const locale = useLocale();
 
   const handleOrderExpand = () => {
     setOrderExpanded(!isOrderExpanded);
   }
 
+  const totalPrice = order.products.reduce((acc, product) => {
+    return acc + product.productDetails.price * product.quantity;
+  }, 0);
+
+  const formattedDate = new Date(order.ordertime).toLocaleString("ka-GE", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+
   return (
     <div className="mt-[40px] shadow-md rounded-md p-[25px]">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div className="bg-gray-100 rounded-full flex items-center justify-center p-4 relative">
-          <Inventory2OutlinedIcon className="text-[#1e90ff]" />
+            <Inventory2OutlinedIcon className="text-[#1e90ff]" />
             <div
-              className={`absolute top-2 right-0 h-2 w-2 rounded-full ${
-                order.status === 'მიღებულია' ? 'bg-green-500' : order.status === 'გზაშია' ? 'bg-yellow-500' : 'bg-red'
-              }`}
+              className={`absolute top-2 right-0 h-2 w-2 rounded-full ${order.status === 'მიღებულია' ? 'bg-green-500' : order.status === 'გზაშია' ? 'bg-yellow-500' : 'bg-red'
+                }`}
             />
           </div>
           <div className="ml-4 flex flex-col gap-y-2">
             <div className="text-gray-700 font-semibold text-sm">
-              {locale == "en" ? "Order # " : "შეკვეთის # "}{order.id}
+              {locale == "en" ? "Order #" : "შეკვეთის #"}{order.id}
             </div>
             <div className="text-gray-500 text-sm">
-            {locale == "en" ? "Products: " : "პროდუქტები: "} {order.products}
+              {locale == "en" ? "Products: " : "პროდუქტები: "} {order.products.length}
             </div>
           </div>
         </div>
         <div className="hidden lg:flex text-right flex-col gap-y-2">
           <div className="text-sm font-semibold text-gray-700">
-         {order.price} {locale == "en" ? " GEL" : " ლარი"} 
+            {totalPrice} {locale == "en" ? " GEL" : " ლარი"}
           </div>
-          <div className="text-gray-500 text-sm ">{order.date}</div>
+          <div className="text-gray-500 text-sm ">{formattedDate}</div>
         </div>
         <button className="text-sm font-semibold flex justify-center hover:text-[#8A4E23]" onClick={() => handleOrderExpand()}>
           {isOrderExpanded ? (locale === "en" ? 'Hide' : 'დამალვა') : (locale === "en" ? 'Details' : 'დეტალები')}
-          {isOrderExpanded ? <KeyboardArrowUpIcon className="text-[20px]" />  : <NavigateNextIcon className="text-[20px]" />}
+          {isOrderExpanded ? <KeyboardArrowUpIcon className="text-[20px]" /> : <NavigateNextIcon className="text-[20px]" />}
         </button>
       </div>
-      {isOrderExpanded && (<OrderDetails />)}
+      {isOrderExpanded && (<OrderDetails order={order} />)}
     </div>
   );
 }

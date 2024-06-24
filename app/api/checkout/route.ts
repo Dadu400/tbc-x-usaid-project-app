@@ -31,10 +31,10 @@ const createOrder = async (products: Product[], user: any) => {
     const {
       rows: [order],
     } = await client.query(
-      `INSERT INTO orders (name, surname, phone, address, status)
-       VALUES ($1, $2, $3, $4, $5)
+      `INSERT INTO orders (name, surname, phone, address, status, user_id)
+       VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING id`,
-      [user.name, user.surname, user.phone, user.address, "pending"]
+      [user.name, user.surname, user.phone, user.address, "pending", user.id]
     );
 
     const productQuantityMap = products.reduce(

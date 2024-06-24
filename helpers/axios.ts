@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GetSession } from "../actions";
 
 interface Post {
   title: string;
@@ -48,4 +49,22 @@ export async function getUserCart(id: number) {
 
   const [cart] = carts.carts.rows;
   return cart;
+}
+
+export async function getOrders() {
+  const session = await GetSession();
+  if (!session) {
+    return [];
+  }
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/orders/${session.user.id}`
+  );
+  const orders = await response.data;
+
+  if (orders === undefined || orders.orders === undefined) {
+    return [];
+  }
+
+  return orders.orders;
 }
