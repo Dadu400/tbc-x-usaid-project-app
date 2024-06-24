@@ -48,17 +48,16 @@ function SearchBar({ className }: { className: string }) {
             </div>
             <form onSubmit={(e) => {
                 e.preventDefault();
-                
+
                 const queryStrings = new URLSearchParams();
                 searchParams.forEach((value, key) => {
                     queryStrings.set(key, value);
                 });
                 queryStrings.set('q', encodeURIComponent(query));
-                console.log("Test");
                 router.replace(`/search?${queryStrings.toString()}`);
             }}>
                 <div className="w-full flex bg-[#F9F9FF] dark:bg-[#121B18] gap-3 lg:gap-8 h-[60px] mt-[15px]">
-                    <input placeholder={locale === "en" ? 'Search...' : 'ძებნა...'} 
+                    <input placeholder={locale === "en" ? 'Search...' : 'ძებნა...'}
                         value={query}
                         onChange={(e) => {
                             setQuery(e.target.value);

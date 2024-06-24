@@ -8,7 +8,7 @@ function CategoryFilter() {
     const category = searchParams.get('category') || '';
 
     const activeStyle = "font-semibold text-[#EC6652]"
-    const hoverStyle = "hover:font-semibold hover:text-[#EC6652]" 
+    const hoverStyle = "hover:font-semibold hover:text-[#EC6652]"
 
     const categories: { [key: string]: string } = {
         "": "All",
@@ -20,17 +20,15 @@ function CategoryFilter() {
         "outdoorPlay": "Outdoor play",
         "plushToys": "Plushy"
     }
-    
+
     return (
         <div className="text-sm flex flex-col gap-[5px]">
             {Object.keys(categories).map((key) => (
                 <span key={key} className={`cursor-pointer ml-[10px] ${category === key ? activeStyle : hoverStyle}`} onClick={() => {
                     if (category === key) {
-                        console.log(category, key);
                         return;
                     }
-                    
-                    console.log(category, key);
+
                     const queryStrings = new URLSearchParams();
                     searchParams.forEach((value, key) => {
                         queryStrings.set(key, value);

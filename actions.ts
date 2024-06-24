@@ -43,7 +43,6 @@ export async function Register(formData: any) {
 }
 
 export async function UpdateUser(formData: any) {
-  console.log(formData);
   try {
     const response = await axios.post(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-user",
@@ -51,7 +50,6 @@ export async function UpdateUser(formData: any) {
     );
 
     const cookiesStore = cookies();
-    console.log(response.data.token);
     cookiesStore.set(AUTH_COOKIE_KEY, response.data.token, { httpOnly: true });
   } catch (error) {
     return { ok: false, message: "Failed to update user" };
@@ -127,8 +125,7 @@ export async function SaveProduct(formData: any) {
 }
 
 export async function UpdateProduct(formData: any) {
-  const { productId, title, description, price, category, image, userId } =
-    formData;
+  const { productId, title, description, price, category, image } = formData;
   try {
     await axios.post(
       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-product",
@@ -139,7 +136,6 @@ export async function UpdateProduct(formData: any) {
         price,
         category,
         image,
-        userId,
       }
     );
     return { ok: true };

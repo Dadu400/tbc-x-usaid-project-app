@@ -24,7 +24,6 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   unstable_setRequestLocale(locale);
-  console.log(Icon.src)
   return (
     <html lang={locale}>
       <head>

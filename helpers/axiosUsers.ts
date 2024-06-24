@@ -37,7 +37,6 @@ export async function createUser(
 //       process.env.NEXT_PUBLIC_VERCEL_URL + "/api/upload-image",
 //       image
 //     );
-//     console.log(response);
 //     return response.data.url;
 //   } catch (error) {
 //     console.error("Error uploading image:", error);

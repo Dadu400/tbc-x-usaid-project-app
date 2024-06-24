@@ -3,6 +3,7 @@ import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
 import Card from "./Card";
 import localFont from '@next/font/local'
+import { GetSession } from "../../actions";
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
@@ -17,6 +18,8 @@ export interface Product {
 }
 
 async function ProductList({ icon, title, products, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, products?: Product[], className?: string, colCount?: number, addNewBtn?: boolean }) {
+  const session = await GetSession();
+
   if (!products) {
     products = await getProducts();
   }
@@ -32,10 +35,8 @@ async function ProductList({ icon, title, products, className, colCount = 5, add
         {products?.map((product: Product) => (
           <Card
             key={product.id.toString()}
-            id={product.id.toString()}
-            image={product.image}
-            productName={product.title}
-            price={product.price}
+            product={product}
+            session={session}
           />
         ))}
         {addNewBtn ? (

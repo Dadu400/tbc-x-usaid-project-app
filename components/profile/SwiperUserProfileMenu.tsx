@@ -14,7 +14,7 @@ import SwiperUserMenuSlide from './SwiperUserMenuSlide';
 import 'swiper/css/navigation';
 import 'swiper/css';
 
-function SwiperUserProfileMenu({ selectedItem } : { selectedItem: string}) {
+function SwiperUserProfileMenu({ selectedItem }: { selectedItem: string }) {
     const menuItems = [
         {
             id: "profile",
@@ -59,8 +59,6 @@ function SwiperUserProfileMenu({ selectedItem } : { selectedItem: string}) {
                     nextEl: '.swiper-button-custom-next',
                     prevEl: '.swiper-button-custom-prev'
                 }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
                 className="w-full h-full flex items-center justify-center flex-row gap-[15px]"
             >
                 {menuItems.map((menuItem, index) => (

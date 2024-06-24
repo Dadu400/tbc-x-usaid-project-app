@@ -27,7 +27,12 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
         const fetchProduct = async () => {
             const products = await getProducts();
             const data = products.find((p: Product) => p.id === Number(id));
-            console.log(data);
+
+            if (data.userid !== session.user.id && session.user.admin === false) {
+                router.push('/profile/products');
+                return;
+            }
+
             setProduct(data);
             setProductTitle(data.title);
             setProductDescription(data.description);
@@ -36,9 +41,9 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
         };
 
         fetchProduct();
-    }, []);
+    }, [id, router, session.user.admin, session.user.id]);
 
-    const [productImage, setProductImage] = useState<File | undefined>(undefined);
+    const [newUploadedProductImage, setNewUploadedProductImage] = useState<File | undefined>(undefined);
     const [productTitle, setProductTitle] = useState(product ? product.title : "");
     const [productDescription, setProductDescription] = useState(product ? product.description : "");
     const [productPrice, setProductPrice] = useState(product ? product.price : 0);
@@ -48,31 +53,33 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
     const handleProductImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            setProductImage(file);
+            setNewUploadedProductImage(file);
         }
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
-        console.log("Hello World");
 
-        if (productImage == null && isEdit === false) {
+        if (newUploadedProductImage == null && isEdit === false) {
             setErrorMessage('აირჩიეთ პროდუქტის სურათი');
             return;
         }
 
-        let imageUrl = isEdit && productImage === undefined ? product?.image : undefined;
+        let imageUrl = isEdit && newUploadedProductImage === undefined ? product?.image : undefined;
         if (imageUrl === undefined) {
-            const response = await fetch(`/api/upload?filename=${productImage.name}`, {
+            if (newUploadedProductImage == null) {
+                setErrorMessage('აირჩიეთ პროდუქტის სურათი');
+                return;
+            }
+            const response = await fetch(`/api/upload?filename=${newUploadedProductImage.name}`, {
                 method: 'POST',
-                body: productImage,
+                body: newUploadedProductImage,
             });
-    
+
             const newBlob = (await response.json()) as PutBlobResult;
             imageUrl = newBlob.url;
         }
-        
+
 
         const formData = {
             productId: product?.id,
@@ -81,12 +88,12 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
             price: productPrice,
             category: productCategory,
             image: imageUrl,
-            userId: session.user.id
         };
 
         const saveStatus = isEdit ? await UpdateProduct(formData) : await SaveProduct(formData);
         if (saveStatus.ok) {
             router.push('/profile/products');
+            router.refresh();
         } else {
             if (saveStatus.message) {
                 setErrorMessage(saveStatus.message);
@@ -98,8 +105,8 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
 
     if (isEdit && product == null) {
         return <div className="flex justify-center items-center pt-5">
-            <Image src={SupermanLoader} 
-            unoptimized={true} alt="Loading" width={200} height={200} />
+            <Image src={SupermanLoader}
+                unoptimized={true} alt="Loading" width={200} height={200} />
         </div>;
     }
 
@@ -110,13 +117,22 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     <ArrowBackOutlinedIcon className="text-3xl cursor-pointer" />
                 </Link>
                 <span className="text-xl font-['mtavruli'] font-semibold text-center w-full">
-                  {locale == "en" ? "Product" : "პროდუქტის "}  {product ? (locale == "en" ? "Edit" : "რედაქტირება") : (locale == "en" ? "Add" :  "დამატება")}
+                    {locale == "en" ? "Product" : "პროდუქტის "}  {product ? (locale == "en" ? "Edit" : "რედაქტირება") : (locale == "en" ? "Add" : "დამატება")}
                 </span>
             </div>
 
             <div className='flex flex-col items-center justify-center mt-[30px]'>
                 <span className="text-md text-center w-full mb-[20px]">{locale == "en" ? "Example:" : "ნიმუში:"} </span>
-                <Card image={productImage ? URL.createObjectURL(productImage) : product?.image} productName={productTitle} price={productPrice} id={""} />
+                <Card
+                    product={{
+                        id: 0,
+                        image: newUploadedProductImage ? URL.createObjectURL(newUploadedProductImage) : product?.image,
+                        title: productTitle,
+                        description: productDescription,
+                        price: productPrice,
+                        category: productCategory,
+                        userid: session.user.id
+                    }} session={session} />
             </div>
 
             <form onSubmit={handleSubmit} className='w-[70%] mx-auto mt-[30px] flex flex-col gap-[10px]'>
@@ -189,7 +205,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                     type="submit"
                     className="w-[40%] self-center mt-[25px] px-4 py-3 text-md font-medium text-white bg-red rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
                 >
-                   {locale == "en" ? "Save" : "შენახვა"}
+                    {locale == "en" ? "Save" : "შენახვა"}
                 </button>
             </form>
         </div>
