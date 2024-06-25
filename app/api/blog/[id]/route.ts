@@ -19,3 +19,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  const productId = request.nextUrl.pathname.replace("/api/blog/", "");
+
+  try {
+    await sql`DELETE FROM blogs WHERE id = ${productId}`;
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ success: false }, { status: 500 });
+  }
+}

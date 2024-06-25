@@ -432,3 +432,14 @@ export async function getUsersBlogs(userId: number) {
     return [];
   }
 }
+
+export async function deleteBlog(blogId: number) {
+  try {
+    await axios.delete(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/blog/${blogId}`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}

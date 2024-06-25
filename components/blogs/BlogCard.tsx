@@ -4,6 +4,7 @@ import Image from "next/image";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useRouter } from "next/navigation";
+import { deleteBlog } from "../../actions";
 
 export interface Blog {
   id: number;
@@ -67,8 +68,11 @@ function BlogCard({ blog }: { blog: Blog }) {
             }}>
               <EditIcon fontSize="small" className="text-[#404978]" />
             </div>
-            <div className="flex justify-center items-center border-[1px] border-red rounded-md p-[2px] bg-red cursor-pointer" onClick={() => {
-
+            <div className="flex justify-center items-center border-[1px] border-red rounded-md p-[2px] bg-red cursor-pointer" onClick={async () => {
+              const result = await deleteBlog(blog.id);
+              if (result.ok) {
+                router.refresh();
+              }
             }}>
               <DeleteOutlineIcon fontSize="small" className="text-white" />
             </div>
