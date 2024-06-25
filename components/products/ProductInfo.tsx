@@ -5,20 +5,28 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import SocialShareButtons from './SocialShareButtons';
 import Image from 'next/image';
 import { Product } from './Cart';
+import { Review } from './ProductReviewDetails';
+import Rating from '@mui/material/Rating';
 
 interface ProductInfoProps {
+    reviews: Review[];
     product: Product;
     shareUrl: string;
     title: string;
     imageUrl: string;
 }
 
-function ProductInfo({ product, shareUrl, title, imageUrl }: ProductInfoProps) {
+function ProductInfo({ reviews, product, shareUrl, title, imageUrl }: ProductInfoProps) {
     const formattedDate = new Date(product.added_on).toLocaleDateString('en-GB', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric',
     });
+
+    const reviewsCount = reviews.length;
+    const rating = reviews.reduce((acc, review) => {
+        return acc + Number(review.rating);
+    }, 0) / reviewsCount;
 
     return (
         <div className="flex-[4]">
@@ -47,12 +55,13 @@ function ProductInfo({ product, shareUrl, title, imageUrl }: ProductInfoProps) {
                         </div>
                         <span className="text-lg text-black font-bold mt-[15px]">{product.title}</span>
                         <div className="flex items-center my-[5px]">
-                            <StarOutlinedIcon className="text-[#FFB200]" fontSize="small" />
-                            <StarOutlinedIcon className="text-[#FFB200]" fontSize="small" />
-                            <StarOutlinedIcon className="text-[#FFB200]" fontSize="small" />
-                            <StarOutlinedIcon className="text-[#FFB200]" fontSize="small" />
-                            <StarHalfOutlinedIcon className="text-[#FFB200]" fontSize="small" />
-                            <span className="text-sm ml-[5px] text-gray-500">(250)</span>
+                            <Rating
+                                name="rating-filter"
+                                defaultValue={rating}
+                                precision={0.1}
+                                readOnly
+                            />
+                            <span className="text-sm ml-[5px] text-gray-500">({reviewsCount})</span>
                         </div>
                         <span className="text-sm text-gray-800 font-normal mt-[15px]">
                             {product.description}

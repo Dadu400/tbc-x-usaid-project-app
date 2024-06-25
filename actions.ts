@@ -346,8 +346,7 @@ export async function addReview(
 ) {
   try {
     await axios.post(
-      process.env.NEXT_PUBLIC_VERCEL_URL +
-        `/api/product/${productId}/add-review`,
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/product/${productId}/reviews`,
       {
         userId: userId,
         rating: rating,
@@ -357,5 +356,16 @@ export async function addReview(
     return { ok: true };
   } catch (error) {
     return { ok: false, message: "Failed to add review" };
+  }
+}
+
+export async function getReviews(productId: number) {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/product/${productId}/reviews`
+    );
+    return response.data.reviews;
+  } catch (error) {
+    return [];
   }
 }
