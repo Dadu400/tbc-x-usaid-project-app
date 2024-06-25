@@ -9,11 +9,14 @@ import { useState } from "react";
 import { UpdateUser } from "../../actions";
 import { PutBlobResult } from "@vercel/blob";
 import { useLocale } from "next-intl";
+import localFont from "@next/font/local";
 
 interface Message {
     ok: boolean;
     message: string;
 }
+
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 function UserInformation({ session }: { session: any }) {
     const user = session.user;
@@ -34,19 +37,19 @@ function UserInformation({ session }: { session: any }) {
     const [phoneEnabled, setPhoneEnabled] = useState(false);
 
     return (
-        <div className="w-full flex flex-col border shadow-lg rounded-lg bg-[#FEFEFE] p-8">
-            <h2 className="text-2xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">{locale == "en" ? "My Profile" : "ჩემი პროფილი"}</h2>
-            <Image src={updatedImage !== undefined ? URL.createObjectURL(updatedImage) : user.imageurl} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
+        <div className="w-full flex flex-col border dark:border-[#ffffff1f] shadow-lg rounded-lg bg-[#FEFEFE] dark:bg-[#1D2024] p-8">
+            <h2 className={`text-2xl ${mtavruli.className} uppercase font-semibold mb-[20px] text-center w-full`}>{locale == "en" ? "My Profile" : "ჩემი პროფილი"}</h2>
+            <Image src={updatedImage !== undefined ? URL.createObjectURL(updatedImage) : user.imageurl} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 dark:border-[#ffffff1f] cursor-pointer w-[120px] h-[120px]" />
             <form autoComplete='off' className="flex flex-col space-y-4 mt-[10px]" onSubmit={async (e) => {
                 e.preventDefault();
-                
+
                 let imageUrl = user.imageurl;
                 if (updatedImage) {
                     const response = await fetch(`/api/upload?filename=${updatedImage.name}`, {
                         method: 'POST',
                         body: updatedImage,
                     });
-                
+
                     const newBlob = (await response.json()) as PutBlobResult;
                     imageUrl = newBlob.url;
                 }
@@ -59,7 +62,7 @@ function UserInformation({ session }: { session: any }) {
                     address,
                     phone,
                 });
-                
+
                 if (response.ok) {
                     setMessage({ ok: true, message: "პროფილი შენახულია" });
                 } else {
@@ -69,9 +72,9 @@ function UserInformation({ session }: { session: any }) {
                         setMessage({ ok: false, message: "პროფილის შენახვა ვერ მოხერხდა" });
                     }
                 }
-                
+
             }}>
-                <div className='w-[30%] flex items-center my-2 self-center'>
+                <div className='w-[30%] flex items-center justify-center my-2 self-center'>
                     <input
                         type="file"
                         id="image"
@@ -85,16 +88,16 @@ function UserInformation({ session }: { session: any }) {
                             }
                         }}
                     />
-                    <label htmlFor="image" className="flex items-center cursor-pointer bg-white border border-gray-300 rounded-md shadow-sm px-4 py-3">
-                        <UploadIcon className="text-[#404978] mr-2" />
-                        <span className="block text-md font-medium text-gray-700">{locale == "en" ? "Change Profile Picture" : "შეცვალე სურათი"}</span>
+                    <label htmlFor="image" className="flex items-center cursor-pointer bg-white dark:bg-[#1D2024] border dark:border-[#ffffff1f] border-gray-300 rounded-md shadow-sm px-4 py-3">
+                        <UploadIcon className="text-[#404978] dark:text-white mr-2" />
+                        <span className="block text-md font-medium">{locale == "en" ? "Change Profile Picture" : "შეცვალე სურათი"}</span>
                     </label>
                 </div>
                 {message ? <div className="w-full flex justify-center items-center">
                     <span className={`rounded px-8 py-1 text-white ${message.ok ? 'bg-[#388E3C]' : 'bg-[#EC6652]'}`}>{message.message}</span>
                 </div> : <></>}
-                <div className="h-[2px] bg-gradient-to-r from-white via-red to-white"> </div>
-                <label htmlFor="email" className="block text-md font-medium text-gray-700">{locale == "en" ? "Email" : "ელ.ფოსტა"}</label>
+                <div className="h-[2px] bg-gradient-to-r from-white dark:from-[#1D2024] dark:via-red dark:to-[#1D2024] via-red to-white"> </div>
+                <label htmlFor="email" className="block text-md font-medium">{locale == "en" ? "Email" : "ელ.ფოსტა"}</label>
                 <input
                     type="email"
                     id="email"
@@ -102,11 +105,11 @@ function UserInformation({ session }: { session: any }) {
                     required
                     readOnly
                     value={user.email}
-                    className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+                    className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm"
                 />
                 <div className="flex items-center justify-between">
                     <div className="relative w-[40%]">
-                        <label htmlFor="name" className="block text-md font-medium text-gray-700">{locale == "en" ? "Name" : "სახელი"}</label>
+                        <label htmlFor="name" className="block text-md font-medium">{locale == "en" ? "Name" : "სახელი"}</label>
                         <input
                             type="text"
                             id="name"
@@ -116,17 +119,17 @@ function UserInformation({ session }: { session: any }) {
                             onChange={(e) => {
                                 setName(e.target.value);
                             }}
-                            className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+                            className="mt-2 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                         />
-                        {!nameEnabled ? <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                        {!nameEnabled ? <EditIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                             setNameEnabled(true);
                         }} /> : <></>}
-                        {nameEnabled ? <CheckIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                        {nameEnabled ? <CheckIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                             setNameEnabled(false);
-                        }}/> : <></>}
+                        }} /> : <></>}
                     </div>
                     <div className="relative w-[56%]">
-                        <label htmlFor="surname" className="block text-md font-medium text-gray-700">{locale == "en" ? "Surname" : "გვარი"}</label>
+                        <label htmlFor="surname" className="block text-md font-medium">{locale == "en" ? "Surname" : "გვარი"}</label>
                         <input
                             type="text"
                             id="surname"
@@ -136,18 +139,18 @@ function UserInformation({ session }: { session: any }) {
                             onChange={(e) => {
                                 setSurname(e.target.value);
                             }}
-                            className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+                            className="mt-2 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                         />
-                        {!surnameEnabled ? <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                        {!surnameEnabled ? <EditIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                             setSurnameEnabled(true);
                         }} /> : <></>}
-                        {surnameEnabled ? <CheckIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                        {surnameEnabled ? <CheckIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                             setSurnameEnabled(false);
-                        }}/> : <></>}
+                        }} /> : <></>}
                     </div>
                 </div>
                 <div className="relative">
-                    <label htmlFor="address" className="block text-md font-medium text-gray-700">{locale == "en" ? "Address" : "მისამართი"}</label>
+                    <label htmlFor="address" className="block text-md font-medium">{locale == "en" ? "Address" : "მისამართი"}</label>
                     <input
                         type="text"
                         id="address"
@@ -157,17 +160,17 @@ function UserInformation({ session }: { session: any }) {
                         onChange={(e) => {
                             setAddress(e.target.value);
                         }}
-                        className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+                        className="mt-2 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                     />
-                    {!addressEnabled ? <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                    {!addressEnabled ? <EditIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                         setAddressEnabled(true);
                     }} /> : <></>}
-                    {addressEnabled ? <CheckIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                    {addressEnabled ? <CheckIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                         setAddressEnabled(false);
-                    }}/> : <></>}
+                    }} /> : <></>}
                 </div>
                 <div className="relative">
-                    <label htmlFor="phone" className="block text-md font-medium text-gray-700">{locale == "en" ? "Mobile Number" : "მობილურის ნომერი"}</label>
+                    <label htmlFor="phone" className="block text-md font-medium">{locale == "en" ? "Mobile Number" : "მობილურის ნომერი"}</label>
                     <input
                         type="text"
                         id="phone"
@@ -177,14 +180,14 @@ function UserInformation({ session }: { session: any }) {
                         onChange={(e) => {
                             setPhone(e.target.value);
                         }}
-                        className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+                        className="mt-2 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
                     />
-                    {!phoneEnabled ? <EditIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                    {!phoneEnabled ? <EditIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                         setPhoneEnabled(true);
                     }} /> : <></>}
-                    {phoneEnabled ? <CheckIcon className="absolute right-2 top-10 text-gray-500 cursor-pointer" onClick={() => {
+                    {phoneEnabled ? <CheckIcon className="absolute right-2 top-10 cursor-pointer" onClick={() => {
                         setPhoneEnabled(false);
-                    }}/> : <></>}
+                    }} /> : <></>}
                 </div>
 
                 <button

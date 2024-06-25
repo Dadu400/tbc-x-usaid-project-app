@@ -13,7 +13,7 @@ export interface OrderCardProps {
 }
 
 function OrderCard({ order }: OrderCardProps) {
-  const [isOrderExpanded, setOrderExpanded] = useState(true);
+  const [isOrderExpanded, setOrderExpanded] = useState(false);
   const locale = useLocale();
 
   const handleOrderExpand = () => {
@@ -33,30 +33,30 @@ function OrderCard({ order }: OrderCardProps) {
   });
 
   return (
-    <div className="mt-[40px] shadow-md rounded-md p-[25px]">
+    <div className="mt-[40px] shadow-md dark:shadow-[#ffffff1f] rounded-md p-[25px]">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <div className="bg-gray-100 rounded-full flex items-center justify-center p-4 relative">
-            <Inventory2OutlinedIcon className="text-[#1e90ff]" />
+          <div className="bg-gray-100 dark:bg-[#121B18] dark:border dark:border-[#ffffff1f] rounded-full flex items-center justify-center p-4 relative">
+            <Inventory2OutlinedIcon className="text-[#1e90ff] dark:text-white" />
             <div
-              className={`absolute top-2 right-0 h-2 w-2 rounded-full ${order.status === 'მიღებულია' ? 'bg-green-500' : order.status === 'გზაშია' ? 'bg-yellow-500' : 'bg-red'
+              className={`absolute top-2 right-0 h-2 w-2 rounded-full ${order.status === 'ჩაბარებულია' ? 'bg-green-500' : order.status === 'გზაშია' ? 'bg-yellow-500' : 'bg-red'
                 }`}
             />
           </div>
           <div className="ml-4 flex flex-col gap-y-2">
-            <div className="text-gray-700 font-semibold text-sm">
+            <div className="text-gray-700 dark:text-white font-semibold text-sm">
               {locale == "en" ? "Order #" : "შეკვეთის #"}{order.id}
             </div>
-            <div className="text-gray-500 text-sm">
+            <div className="text-gray-500 dark:text-[#ffffffbf] text-sm">
               {locale == "en" ? "Products: " : "პროდუქტები: "} {order.products.length}
             </div>
           </div>
         </div>
         <div className="hidden lg:flex text-right flex-col gap-y-2">
-          <div className="text-sm font-semibold text-gray-700">
+          <div className="text-sm font-semibold text-gray-700 dark:text-white">
             {totalPrice} {locale == "en" ? " GEL" : " ლარი"}
           </div>
-          <div className="text-gray-500 text-sm ">{formattedDate}</div>
+          <div className="text-gray-500 dark:text-[#ffffffbf] text-sm ">{formattedDate}</div>
         </div>
         <button className="text-sm font-semibold flex justify-center hover:text-[#8A4E23]" onClick={() => handleOrderExpand()}>
           {isOrderExpanded ? (locale === "en" ? 'Hide' : 'დამალვა') : (locale === "en" ? 'Details' : 'დეტალები')}

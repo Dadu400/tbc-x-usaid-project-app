@@ -30,14 +30,14 @@ function ProductCheckoutCart({ session, product }: { session: any, product: Prod
                         <FavoriteBorderOutlinedIcon className="cursor-pointer" />
                     </div>
                 </div>
-                <hr className="my-[5px] mt-[15px]" />
+                <hr className="my-[5px] mt-[15px]" style={{ borderColor: "#ffffff1f" }} />
                 <div className="px-[10px] text-xl flex items-center gap-[10px]">
                     <DeliveryDiningOutlinedIcon />
                     <span className="text-xs">
                         <span className="font-semibold text-[#1e90ff]">უფასო მიწოდება</span> თბილისში
                     </span>
                 </div>
-                <hr className="my-[5px]" />
+                <hr className="my-[5px]" style={{ borderColor: "#ffffff1f" }} />
                 <div className="flex justify-between items-center mt-[10px]">
                     <span className="text-sm font-['mtavruli']">რაოდენობა</span>
                     <div className="flex gap-3">
@@ -75,7 +75,7 @@ function ProductCheckoutCart({ session, product }: { session: any, product: Prod
                             router.push("/cart");
                         }
                     }}>ყიდვა</div>
-                    <div className={`w-[100%] text-center border-[1px] ${canPurchaseOrAddToCart() ? "border-[#1e90ff] text-[#1e90ff] cursor-pointer" : "border-[#86c2fc] text-[#86c2fc]"} rounded-lg p-[9px] `}
+                    <div className={`w-[100%] text-center border-[1px] dark:text-white ${canPurchaseOrAddToCart() ? "border-[#1e90ff] text-[#1e90ff] cursor-pointer" : "border-[#86c2fc] text-[#86c2fc]"} rounded-lg p-[9px] `}
                         onClick={() => {
                             if (canPurchaseOrAddToCart() === false) {
                                 return;

@@ -63,7 +63,8 @@
   },
   "ProductPage": {
     "myproducts": "ჩემი პროდუქტები",
-    "allproducts": "ყველა პროდუქტი"
+    "allproducts": "ყველა პროდუქტი",
+    "newProductAdd": "ახალი პროდუქტი"
   },
   "Blogs": {
     "header": "ბლოგების მენეჯმენტი",
@@ -109,12 +110,12 @@
     "notfound": "პროდუქტი არ მოიძებნა"
   },
   "Categories": {
-    "actionFigures": "აქშენ ფიგურები",
-    "buildingSets": "აშენების ნაკრები",
+    "actionFigures": "ექშენ ფიგურები",
+    "buildingSets": "სამაგიდო თამაშები",
     "dolls": "თოჯინები",
-    "educational": "საგანმანათლებლო",
+    "educational": "შენეცნებითი",
     "puzzles": "ფაზლები",
-    "outdoorPlay": "გარე თამაშები",
+    "outdoorPlay": "ეზოს სათამაშოები",
     "plushToys": "რბილი სათამაშოები"
   },
   "Cart": {

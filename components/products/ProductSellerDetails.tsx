@@ -8,7 +8,7 @@ const mtavruli = localFont({ src: "../../public/fonts/mtavruli.ttf" });
 
 function ProductSellerDetails({ seller }: { seller: any }) {
     return (
-        <div className="bg-[#FEFEFE] mt-[60px] w-[60vw] mx-auto shadow-xl p-[25px] flex flex-col">
+        <div className="bg-[#FEFEFE] dark:bg-[#1D2024] mt-[60px] w-[60vw] mx-auto shadow-xl p-[25px] flex flex-col rounded-lg border dark:border-[#ffffff1f]">
             <span className="font-['mtavruli'] border-b-[#1e90ff] border-b-[2px] flex items-center gap-[8px] pb-[5px] w-[135px]">
                 <PersonIcon className="text-[#1e90ff]" /> გამყიდველი
             </span>
@@ -19,7 +19,7 @@ function ProductSellerDetails({ seller }: { seller: any }) {
                         <span className={`text-lg font-bold ${mtavruli.className}`}>
                             {seller.name} {seller.surname}
                         </span>
-                        <span className={`text-md text-gray-500 ${mtavruli.className}`}>{seller.phone.startsWith('+995') || seller.phone.startsWith('995') ? seller.phone : '+995 ' + seller.phone}</span>
+                        <span className={`text-md text-gray-500 text-[#ffffffbf] ${mtavruli.className}`}>{seller.phone.startsWith('+995') || seller.phone.startsWith('995') ? seller.phone : '+995 ' + seller.phone}</span>
                     </div>
                 </div>
                 <div>

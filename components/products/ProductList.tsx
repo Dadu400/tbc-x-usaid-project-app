@@ -18,13 +18,26 @@ export interface Product {
   added_on: Date;
 }
 
-async function ProductList({ icon, title, products, className, colCount = 5, addNewBtn = false }: { icon?: React.ReactNode, title?: string, products?: Product[], className?: string, colCount?: number, addNewBtn?: boolean }) {
+interface ProductListProps {
+  icon?: JSX.Element;
+  title?: string;
+  products?: Product[];
+  className?: string;
+  addNewBtn?: boolean;
+}
+
+async function ProductList({ icon, title, products, className, addNewBtn = false }: ProductListProps) {
   const session = await GetSession();
 
   if (!products) {
     products = await getProducts();
   }
-  const gridStyle = { gridTemplateColumns: `repeat(${colCount}, 1fr)`, justifyItems: "center" };
+
+  const gridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    justifyContent: "center"
+  };
 
   return (
     <section className={"w-[100%] " + (className ?? "")}>
@@ -32,7 +45,7 @@ async function ProductList({ icon, title, products, className, colCount = 5, add
         {icon != null ? icon : <></>}
         <span className={`text-xl text-[#191C20] dark:text-[#E2E2E9] font-bold ${mtavruli.className}`}>{title}</span>
       </div> : <></>}
-      <div className={`w-[100%] grid my-3 gap-y-[35px] `} style={gridStyle}>
+      <div className={`w-[100%] grid justify-center my-3 gap-x-[15px] gap-y-[30px]`} style={gridStyle}>
         {products?.map((product: Product) => (
           <ProductCard
             key={product.id.toString()}

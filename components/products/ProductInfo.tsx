@@ -4,6 +4,7 @@ import SocialShareButtons from './SocialShareButtons';
 import Image from 'next/image';
 import { Review } from './ProductReviewDetails';
 import Rating from '@mui/material/Rating';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Product } from './ProductList';
 
 interface ProductInfoProps {
@@ -40,7 +41,7 @@ function ProductInfo({ reviews, product, shareUrl, title, imageUrl }: ProductInf
                 </div>
                 <div className="flex-[3]">
                     <div className="flex flex-col mx-[20px] mt-[25px]">
-                        <div className="text-sm text-gray-700 flex justify-between">
+                        <div className="text-sm text-gray-700 dark:text-[#ffffffbf] flex justify-between">
                             <div><span className="text-[#1e90ff] font-semibold mr-[3px]">ID</span>{product.id}</div>
                             <div className="flex gap-[5px]">
                                 <RemoveRedEyeOutlinedIcon fontSize="small" className="text-[#1e90ff] mr-[3px]" />
@@ -51,17 +52,20 @@ function ProductInfo({ reviews, product, shareUrl, title, imageUrl }: ProductInf
                                 <span>{formattedDate}</span>
                             </div>
                         </div>
-                        <span className="text-lg text-black font-bold mt-[15px]">{product.title}</span>
+                        <span className="text-lg font-bold mt-[15px]">{product.title}</span>
                         <div className="flex items-center my-[5px]">
                             <Rating
                                 name="rating-filter"
                                 defaultValue={rating}
                                 precision={0.1}
                                 readOnly
+                                emptyIcon={
+                                    <StarBorderIcon fontSize="inherit" className="dark:text-[#ffffffbf]" />
+                                }
                             />
-                            <span className="text-sm ml-[5px] text-gray-500">({reviewsCount})</span>
+                            <span className="text-sm ml-[5px] text-gray-500 dark:text-[#ffffffbf]">({reviewsCount})</span>
                         </div>
-                        <span className="text-sm text-gray-800 font-normal mt-[15px]">
+                        <span className="text-sm text-gray-800 dark:text-[#ffffffbf] font-normal mt-[15px]">
                             {product.description}
                         </span>
                         <SocialShareButtons shareUrl={shareUrl} title={title} imageUrl={imageUrl} />

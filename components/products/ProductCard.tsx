@@ -26,7 +26,7 @@ function ProductCard({ product, session }: CardProps) {
   const isAdmin = session && session.user && session.user.admin === true;
 
   return (
-    <div className="flex flex-col w-[190px] h-[265px] dark:bg-[#1D2024] shadow-lg justify-between rounded-lg py-[10px] px-[15px] cursor-pointer group relative">
+    <div className="flex flex-col w-[190px] h-[265px] dark:bg-[#121B18] dark:border dark:border-[#ffffff1f] shadow-lg justify-between rounded-lg py-[10px] px-[15px] cursor-pointer group relative mx-auto">
       <Link href={`/product/${product.id}`}>
         <div className="flex items-center justify-center mt-[15px] w-[160px] h-[168px]">
           <Image
@@ -43,17 +43,17 @@ function ProductCard({ product, session }: CardProps) {
       <div className="absolute flex flex-col gap-[5px] justify-center items-center right-1 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {isUserAuthorized && !(isUsersProduct || isAdmin) ? (
           <div
-            className="flex justify-center items-center border-[1px] border-[#404978] rounded-md p-1"
+            className="flex justify-center items-center border-[1px] border-[#404978] dark:border-[#ffffffbf] rounded-md p-1"
             onClick={() => handleAddToCart(product.id.toString())}
           >
-            <ShoppingCartIcon fontSize="small" className="text-[#404978]" />
+            <ShoppingCartIcon fontSize="small" className="text-[#404978] dark:text-[#ffffffbf]" />
           </div>
         ) : <></>}
         {(isUsersProduct || isAdmin) && (
-          <div className="flex justify-center items-center border-[1px] border-[#404978] rounded-md p-1" onClick={() => {
+          <div className="flex justify-center items-center border-[1px] border-[#404978] dark:border-[#ffffffbf] rounded-md p-1" onClick={() => {
             router.push(`/profile/products/edit/${product.id}`);
           }}>
-            <EditIcon fontSize="small" className="text-[#404978]" />
+            <EditIcon fontSize="small" className="text-[#404978] dark:text-[#ffffffbf]" />
           </div>
         )}
         {(isUsersProduct || isAdmin) && (

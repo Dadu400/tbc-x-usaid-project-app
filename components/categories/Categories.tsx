@@ -26,13 +26,13 @@ function Categories() {
   const categories = [
     {
       code: 'actionFigures',
-      name: locale === 'en' ? 'Action Figures' : 'აქშენ ფიგურები',
+      name: locale === 'en' ? 'Action Figures' : 'ექშენ ფიგურები',
       description: locale === 'en' ? 'Description 1' : 'აღწერა 1',
       categoryImg: <Image src={ActionFigure} width={70} alt="Action Figure" className="m-[10px]" />
     },
     {
       code: 'buildingSets',
-      name: locale === 'en' ? 'Building Sets' : 'აშენების ნაკრები',
+      name: locale === 'en' ? 'Table Games' : 'სამაგიდო თამაშები',
       description: locale === 'en' ? 'Description 2' : 'აღწერა 2',
       categoryImg: <Image src={BuildingSets} width={70} alt="Building Sets" className="m-[10px]" />
     },
@@ -44,7 +44,7 @@ function Categories() {
     },
     {
       code: 'educational',
-      name: locale === 'en' ? 'Educational' : 'საგანმანათლებო',
+      name: locale === 'en' ? 'Educational' : 'შემეცნებითი',
       description: locale === 'en' ? 'Description 4' : 'აღწერა 4',
       categoryImg: <Image src={Educational} width={55} alt="Educational" className="m-[10px]" />
     },
@@ -56,7 +56,7 @@ function Categories() {
     },
     {
       code: 'outdoorPlay',
-      name: locale === 'en' ? 'Outdoor Play' : 'გარე თამაშები',
+      name: locale === 'en' ? 'Outdoor Play' : 'ეზოს სათამაშოები',
       description: locale === 'en' ? 'Description 6' : 'აღწერა 6',
       categoryImg: <Image src={Outdoor} width={90} alt="Outdoor Play" className="m-[10px]" />
     },

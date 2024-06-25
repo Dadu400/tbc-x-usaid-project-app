@@ -38,20 +38,20 @@ function OrderDetails({ order }: { order: Order }) {
         {locale == "en" ? "Order Details" : "შეკვეთის დეტალები"}
       </h2>
       <div className="flex flex-col">
-        <div className="w-full border border-[#F5F6F6] rounded-lg py-6 px-0 lg:px-8">
+        <div className="w-full border border-[#F5F6F6] dark:border-[#ffffff1f] rounded-lg py-6 px-0 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-[25px] justify-between">
             <div className="flex flex-col gap-y-2">
-              <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
+              <span className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
                 {locale == "en" ? "Order Details" : "შეკვეთის ნომერი"}
               </span>
               <span className="text-gray-500 text-sm">SUP-312{order.id}</span>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
+              <span className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
                 {locale == "en" ? "Order Status" : "სტატუსი"}
               </span>
               <span
-                className={`text-sm ${order.status === "მიღებულია"
+                className={`text-sm ${order.status === "ჩაბარებულია"
                   ? "text-green-500"
                   : order.status === "გზაშია" ? "text-yellow-500" : "text-red"
                   }`}
@@ -65,7 +65,7 @@ function OrderDetails({ order }: { order: Order }) {
               </span>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
+              <span className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
                 {locale == "en" ? "Purchase Date" : "შეძენის თარიღი"}
               </span>
               <span className="text-gray-500 text-sm">{formattedOrderDate}</span>
@@ -73,7 +73,7 @@ function OrderDetails({ order }: { order: Order }) {
           </div>
         </div>
         <div className="w-full rounded-lg pt-1 pb-5 px-0 lg:px-8 flex flex-col space-y-6">
-          <div className={`text-gray-700 font-semibold text-sm ${mtavruli.className}`}>
+          <div className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
             {locale == "en" ? "Products:" : "პროდუქტები:"}
           </div>
           {order.products.map((product) => (
@@ -97,45 +97,45 @@ function OrderDetails({ order }: { order: Order }) {
           ))}
         </div>
         <div className="w-full rounded-lg py-6 px-0 lg:px-8 flex flex-col space-y-6">
-          <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] pb-6">
-            <div className="bg-[#F5F6F6] p-2 rounded-md">
-              <PersonIcon className="text-[#1e90ff]" />
+          <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] dark:border-[#ffffff1f] pb-6">
+            <div className="bg-[#F5F6F6] dark:bg-[#121B18] dark:border dark:border-[#ffffff1f] p-2 rounded-md">
+              <PersonIcon className="text-[#1e90ff] dark:text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-gray-700 font-bold text-sm">{locale == "en" ? "Receiver" : "მიმღები"}</span>
+              <span className="text-gray-700 dark:text-white font-bold text-sm">{locale == "en" ? "Receiver" : "მიმღები"}</span>
               <div className="flex gap-2 text-center">
-                <span className="text-gray-700 font-medium text-sm">
+                <span className="text-gray-700 dark:text-[#ffffffbf] font-medium text-sm">
                   {" "}
                   {order.name} {order.surname}
                 </span>
-                <span className="text-gray-700 font-medium text-sm">
+                <span className="text-gray-700 dark:text-[#ffffffbf] font-medium text-sm">
                   {" "}
                   {order.phone}
                 </span>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] pb-6">
-            <div className="bg-[#F5F6F6] p-2 rounded-md">
-              <FmdGoodIcon className="text-[#1e90ff]" />
+          <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] dark:border-[#ffffff1f] pb-6">
+            <div className="bg-[#F5F6F6] dark:bg-[#121B18] dark:border dark:border-[#ffffff1f] p-2 rounded-md">
+              <FmdGoodIcon className="text-[#1e90ff] dark:text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-gray-700 font-bold text-sm"> {locale == "en" ? "Address" : "მისამართი"}</span>
-              <span className="text-gray-700 font-medium text-sm">
+              <span className="text-gray-700  dark:text-white font-bold text-sm"> {locale == "en" ? "Address" : "მისამართი"}</span>
+              <span className="text-gray-700 dark:text-[#ffffffbf] font-medium text-sm">
                 {" "}
                 {order.address}
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] pb-6">
-            <div className="bg-[#F5F6F6] p-2 rounded-md">
-              <LocalShippingIcon className="text-[#1e90ff]" />
+          <div className="flex items-center gap-4 border-b-[1px] border-[#F5F6F6] dark:border-[#ffffff1f] pb-6">
+            <div className="bg-[#F5F6F6] dark:bg-[#121B18] dark:border dark:border-[#ffffff1f] p-2 rounded-md">
+              <LocalShippingIcon className="text-[#1e90ff] dark:text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-gray-700 font-bold text-sm">
+              <span className="text-gray-700  dark:text-white font-bold text-sm">
                 {locale == "en" ? "Estimated time of delivery" : "მიტანის სავარაუდო დრო"}
               </span>
-              <span className="text-gray-700 font-medium text-sm">
+              <span className="text-gray-700 dark:text-[#ffffffbf] font-medium text-sm">
                 {" "}
                 {formattedEstimatedDeliveryDate}
               </span>

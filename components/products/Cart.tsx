@@ -52,7 +52,7 @@ async function CartContainer({ session }: any) {
           <h2 className={`text-xl font-bold mt-8 ${mtavruli.className}`}>{t("header", { totalQuantity })}</h2>
           <EmptyCartButton />
           <div className="flex flex-col md:flex-row justify-between">
-            <div className="justify-center border-gray-200 border-[1px] rounded-md p-[24px] flex flex-col gap-4 basis-3/4">
+            <div className="dark:bg-[#1D2024] justify-center border-gray-200 dark:border-[#ffffff1f] border-[1px] rounded-md p-[24px] flex flex-col gap-4 basis-3/4">
               {filteredProducts.map((product: CartProduct) => (
                 <div key={product.id} className="flex items-center justify-start gap-10 px-4">
                   <Image

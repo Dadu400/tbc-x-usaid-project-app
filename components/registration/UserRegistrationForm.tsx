@@ -10,6 +10,9 @@ import { useRouter } from "next/navigation";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useLocale } from "next-intl";
+import localFont from "@next/font/local";
+
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' });
 
 const UserRegistrationForm = () => {
   const router = useRouter();
@@ -25,6 +28,7 @@ const UserRegistrationForm = () => {
   const [selectedImage, setSelectedImage] = useState<File | undefined>(undefined);
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState('');
+
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -71,8 +75,8 @@ const UserRegistrationForm = () => {
   };
 
   return (
-    <div className="px-8 pt-6 pb-8 bg-white rounded shadow-2xl">
-      <h2 className="text-xl font-['mtavruli'] font-semibold mb-[20px] text-center w-full">{locale == "en" ? "Sign Up" : "რეგისტრაცია"}</h2>
+    <div className="px-8 pt-6 pb-8 bg-[#FEFEFE] dark:bg-[#1D2024] border dark:border-[#ffffff1f] rounded shadow-2xl">
+      <h2 className={`text-2xl ${mtavruli.className} uppercase font-semibold mb-[20px] text-center w-full`}>{locale == "en" ? "Sign Up" : "რეგისტრაცია"}</h2>
       <Image src={selectedImage ? URL.createObjectURL(selectedImage) : DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
       <form onSubmit={handleSubmit} className="flex flex-col justify-center space-y-4 mt-[10px]">
         <div className='w-[80%] flex self-center my-2'>
@@ -99,7 +103,7 @@ const UserRegistrationForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
+          className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
         />
         <div className="relative mt-1 block w-full">
           <input
@@ -110,7 +114,7 @@ const UserRegistrationForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
+            className="w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
           />
           <button
             type="button"
@@ -129,7 +133,7 @@ const UserRegistrationForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-[40%] px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
+            className="w-[40%] px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
           />
           <input
             type="text"
@@ -139,7 +143,7 @@ const UserRegistrationForm = () => {
             value={surname}
             onChange={(e) => setSurname(e.target.value)}
             required
-            className="w-[56%] px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
+            className="w-[56%] px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none"
           />
         </div>
         <input

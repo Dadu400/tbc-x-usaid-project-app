@@ -62,7 +62,7 @@ function SearchPage() {
                     {products === undefined && <div>
                     </div>}
                     {products && products.length === 0 && <EmptySearch />}
-                    {products && products.length > 0 && <ProductList products={products} colCount={3} />}
+                    {products && products.length > 0 && <ProductList products={products} />}
                 </div>
             </div>
 

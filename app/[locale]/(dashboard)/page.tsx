@@ -29,8 +29,8 @@ function HomePage() {
         <SearchBar className={"mb-[35px]"} />
         <Categories />
         <Banner bannerEn={FirstBannerEn.src} bannerKa={FirstBanner.src} />
-        <ProductList colCount={5} icon={<RoundedIcon icon={<FiberNewOutlined />} />} title={t("newadd")} className={"mt-[50px]"} />
-        <ProductList colCount={5} icon={<RoundedIcon icon={<StarIcon fontSize="medium" />} bgColor="#F6A330" />} title={t("popular")} className={"mt-[50px]"} />
+        <ProductList icon={<RoundedIcon icon={<FiberNewOutlined />} />} title={t("newadd")} className={"mt-[50px]"} />
+        <ProductList icon={<RoundedIcon icon={<StarIcon fontSize="medium" />} bgColor="#F6A330" />} title={t("popular")} className={"mt-[50px]"} />
       </div>
     </DashboardLayout>
   );

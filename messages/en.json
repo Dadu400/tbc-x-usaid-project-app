@@ -63,7 +63,8 @@
   },
   "ProductPage": {
     "myproducts": "My Products",
-    "allproducts": "All Products"
+    "allproducts": "All Products",
+    "newProductAdd": "New Product"
   },
   "Blogs": {
     "header": "Manage Blogs",
@@ -110,7 +111,7 @@
   },
   "Categories": {
     "actionFigures": "Action Figures",
-    "buildingSets": "Building Sets",
+    "buildingSets": "Table Games",
     "dolls": "Dolls",
     "educational": "Educational",
     "puzzles": "Puzzles",

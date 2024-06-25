@@ -35,15 +35,15 @@ const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 function CartComponent({ totalQuantity, totalAmount, showButton = true, filteredProducts, session }: CartComponentProps) {
     const locale = useLocale();
     return (
-        <div className="w-full flex flex-col items-start gap-y-4 flex-1.5 md:ml-6 border-gray-200 border-[1px] rounded-md p-[24px] h-[260px] basis-1/4">
+        <div className="dark:bg-[#1D2024] w-full flex flex-col items-start gap-y-4 flex-1.5 md:ml-6 border-gray-200 dark:border-[#ffffff1f] border-[1px] rounded-md p-[24px] h-[260px] basis-1/4">
             <h3 className={`text-md font-bold mb-4 ${mtavruli.className}`}>
                 {locale === "en" ? "Order Summary" : "შეკვეთის შეჯამება"}
             </h3>
             <div className="flex justify-between">
-                <span className="text-sm text-[#8A4E23] dark:text-white font-semibold">
+                <span className="text-sm text-[#8A4E23] dark:text-[#ffffffbf] font-semibold">
                     ({totalQuantity}) {locale === "en" ? "Product" : "პროდუქტი"}</span>
             </div>
-            <div className="w-full flex justify-between border-y-[1px] border-gray-200 py-4">
+            <div className="w-full flex justify-between border-y-[1px] border-gray-200 dark:border-[#ffffff1f] py-4">
                 <span className="font-semibold text-sm mr-14">
                     {locale === "en" ? "Total Price" : "ჯამი"}
                 </span>
