@@ -30,3 +30,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error }, { status: 500 });
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  const orderId = request.nextUrl.pathname.replace("/api/orders/", "");
+
+  try {
+    await sql`UPDATE orders SET status = 'უარყოფილია' WHERE id = ${orderId}`;
+    return NextResponse.json({ message: "Order canceled" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
+}

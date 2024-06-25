@@ -34,7 +34,7 @@ const createOrder = async (products: CartProduct[], user: any) => {
       `INSERT INTO orders (name, surname, phone, address, status, user_id)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING id`,
-      [user.name, user.surname, user.phone, user.address, "pending", user.id]
+      [user.name, user.surname, user.phone, user.address, "მიმდინარე", user.id]
     );
 
     const productQuantityMap = products.reduce(
@@ -85,6 +85,7 @@ export const POST = async (request: any) => {
       if (!stripeProduct) {
         await stripe.products.create({
           name: product.title,
+          images: [product.image],
           default_price_data: {
             unit_amount: parseInt((product.price * 100).toFixed(0)),
             currency: "usd",
@@ -111,7 +112,7 @@ export const POST = async (request: any) => {
       line_items: stripeItems,
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/success?orderId=${orderId}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/cancel`,
+      cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/cancel?orderId=${orderId}`,
     });
 
     return NextResponse.json({ url: session.url }, { status: 200 });

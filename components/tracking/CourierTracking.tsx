@@ -1,10 +1,19 @@
 import localFont from "@next/font/local";
 import { useTranslations } from "next-intl";
+import { Order } from "../profile/OrderHistory";
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
-function CourierTracking() {
+function CourierTracking({ order }: { order: Order }) {
     const t = useTranslations("Tracking");
+
+    const formattedDate = new Date(order.ordertime).toLocaleString("ka-GE", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+    });
 
     return (
         <>
@@ -17,7 +26,7 @@ function CourierTracking() {
                         <div className={`font-bold  ${mtavruli.className}`}>
                             {t("orderNumber")} :
                         </div>
-                        <div>ORD-123456</div>
+                        <div>SUP-312{order.id}</div>
                     </div>
                     <div className="flex gap-[15px] text-sm">
                         <div className={`font-bold  ${mtavruli.className}`}>{t("orderStatus")} : </div>
@@ -27,7 +36,7 @@ function CourierTracking() {
                         <div className={`font-bold ${mtavruli.className}`}>
                             {t("orderDate")} :
                         </div>
-                        <div>ნოე. 27 2023, 23:39</div>
+                        <div>{formattedDate}</div>
                     </div>
                 </div>
             </div>

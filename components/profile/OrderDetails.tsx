@@ -5,6 +5,7 @@ import localFont from "@next/font/local";
 import { useLocale } from "next-intl";
 import { Order } from "./OrderHistory";
 import Image from "next/image";
+import Link from "next/link";
 
 
 const mtavruli = localFont({ src: "../../public/fonts/mtavruli.ttf" });
@@ -58,9 +59,9 @@ function OrderDetails({ order }: { order: Order }) {
                 {order.status} {order.status === "მიღებულია" ? "🎉" : ""}
                 {order.status === "გზაშია" ? "🚚" : ""}
                 {order.status === "გზაშია" ? (<br />) : ""}
-                {order.status === "გზაშია" ? (<span className="text-black underline cursor-pointer text-[12px]">
+                {order.status === "გზაშია" ? (<Link href={`/tracking/${order.id}`} className="text-black underline cursor-pointer text-[12px]">
                   {locale == "en" ? "See Location" : "კურიერის ლოკაცია"}
-                </span>) : ""}
+                </Link>) : ""}
               </span>
             </div>
             <div className="flex flex-col gap-y-2">

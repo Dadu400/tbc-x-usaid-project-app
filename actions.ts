@@ -443,3 +443,25 @@ export async function deleteBlog(blogId: number) {
     return { ok: false };
   }
 }
+
+export async function cancelOrder(orderId: string) {
+  try {
+    await axios.delete(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/orders/${orderId}`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function orderMoneyPaid(orderId: string) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/orders/${orderId}/paid`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
