@@ -1,7 +1,7 @@
 import OrderCard from "./OrderCard";
 import { getTranslations } from "next-intl/server";
 import { getOrders } from "../../helpers/axios";
-import { Product } from "../products/Cart";
+import { Product } from "../products/ProductList";
 
 export interface ProductDetails {
   productDetails: Product;

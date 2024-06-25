@@ -33,7 +33,7 @@ function Map() {
                 url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
             />
             <Marker position={[41.700156, 44.8018]} icon={deliveryAddressIcon}>
-                <Popup autoOpen>
+                <Popup>
                     <div className="flex-col">
                         <div><span className='font-bold'>მისამართი: </span>გიორგი ათონელის N31</div>
                         <div><span className='font-bold'>მიმღები: </span>დალი ხუხუნაშვილი</div>

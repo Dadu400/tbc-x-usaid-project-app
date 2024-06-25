@@ -46,7 +46,7 @@ function ProductReview({ productId, review, isNew = false }: { productId: number
                         name="rating-filter"
                         value={Number(rating)}
                         precision={0.5}
-                        onChange={(event, value) => {
+                        onChange={(_event, value) => {
                             setRating(value || 0);
                         }}
                     />

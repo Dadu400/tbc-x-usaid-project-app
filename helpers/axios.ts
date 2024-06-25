@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GetSession } from "../actions";
+import { User } from "./axiosUsers";
 
 interface Post {
   title: string;
@@ -58,7 +59,9 @@ export async function getOrders() {
   }
 
   const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/orders/${session.user.id}`
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/orders/${
+      (session.user as User).id
+    }`
   );
   const orders = await response.data;
 

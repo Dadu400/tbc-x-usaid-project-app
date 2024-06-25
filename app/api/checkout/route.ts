@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-import { Product } from "../../../components/products/Cart";
 import { Client } from "pg";
 import { sql } from "@vercel/postgres";
+import { CartProduct } from "../../../components/products/Cart";
 
 const getActiveProductsInStripe = async () => {
   const checkoutProducts = await stripe.products.list();
@@ -12,7 +12,7 @@ const getActiveProductsInStripe = async () => {
   return availableProducts;
 };
 
-const createOrder = async (products: Product[], user: any) => {
+const createOrder = async (products: CartProduct[], user: any) => {
   const client = new Client({
     user: process.env.POSTGRES_USER,
     host: process.env.POSTGRES_HOST,
@@ -38,7 +38,7 @@ const createOrder = async (products: Product[], user: any) => {
     );
 
     const productQuantityMap = products.reduce(
-      (acc: { [key: string]: number }, product: Product) => {
+      (acc: { [key: string]: number }, product: CartProduct) => {
         acc[product.id] = product.quantity;
         return acc;
       },
@@ -70,7 +70,7 @@ const clearCart = (userId: number) => {
 export const POST = async (request: any) => {
   try {
     const { products, user } = await request.json();
-    const data: Product[] = products;
+    const data: CartProduct[] = products;
 
     const orderId = await createOrder(products, user);
     clearCart(user.id);

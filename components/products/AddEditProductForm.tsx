@@ -127,12 +127,13 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
                 <ProductCard
                     product={{
                         id: 0,
-                        image: newUploadedProductImage ? URL.createObjectURL(newUploadedProductImage) : product?.image,
+                        image: newUploadedProductImage ? URL.createObjectURL(newUploadedProductImage) : product ? product.image : '',
                         title: productTitle,
                         description: productDescription,
                         price: productPrice,
                         category: productCategory,
-                        userid: session.user.id
+                        userid: session.user.id,
+                        added_on: new Date()
                     }} session={session} />
             </div>
 

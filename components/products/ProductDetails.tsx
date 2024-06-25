@@ -1,7 +1,6 @@
-
-import { Product } from "./Cart";
 import ProductCheckoutCart from "./ProductCheckoutCart";
 import ProductInfo from "./ProductInfo";
+import { Product } from "./ProductList";
 import { Review } from "./ProductReviewDetails";
 
 interface ProductDetailsProps {

@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import DashboardLayout from '../../DashboardLayout';
 import { Metadata } from 'next';
-import { Product } from '../../../../../components/products/Cart';
 import { GetSession, getProductSeller, getReviews, getSingleProduct } from '../../../../../actions';
 import ProductDetails from '../../../../../components/products/ProductDetails';
 import ProductSellerDetails from '../../../../../components/products/ProductSellerDetails';
 import ProductReviewDetails, { Review } from '../../../../../components/products/ProductReviewDetails';
+import { Product } from '../../../../../components/products/ProductList';
 
 interface Params {
     id: string;

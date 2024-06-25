@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { getUserCart } from "../../helpers/axios";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { JWTPayload } from "jose";
+import { User } from "../auth/LoginForm";
 
 export interface Cart {
   id: number;
@@ -21,8 +23,8 @@ async function getUserCartCount(userId: number) {
   }, 0);
 }
 
-export default async function CartIcon({ session }) {
-  const totalQuantity = session !== undefined ? getUserCartCount(session.user.id) : 0;
+export default async function CartIcon({ session }: { session: JWTPayload | undefined }) {
+  const totalQuantity = session !== undefined ? getUserCartCount((session.user as User).id) : 0;
 
   return (
     <Link href="/cart" className="relative">

@@ -76,8 +76,8 @@ function OrderDetails({ order }: { order: Order }) {
             {locale == "en" ? "Products:" : "პროდუქტები:"}
           </div>
           {order.products.map((product) => (
-            <div key={product.productDetails.id} className="flex justify-between">
-              <div className="flex gap-5">
+            <div key={product.productDetails.id} className="flex justify-between gap-10">
+              <div className="flex gap-5 flex-1">
                 <Image src={product.productDetails.image} alt={product.productDetails.title} width={100} height={100} className="w-[50px] h-[50px]" />
                 <div className="flex flex-col text-sm">
                   <span className={`font-bold ${mtavruli.className}`}>{product.productDetails.title}</span>

@@ -9,6 +9,17 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' });
 
+export interface User {
+  id: number;
+  name: string;
+  surname: string;
+  email: string;
+  address: string;
+  phone: string;
+  imageUrl: string;
+  admin: boolean;
+}
+
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

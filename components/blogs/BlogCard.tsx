@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import person from "../../public/person.png";
 import EditIcon from '@mui/icons-material/Edit';
-import { useTranslations } from 'next-intl';
+// import { useTranslations } from 'next-intl';
 
 export interface Blog {
   id: number;
@@ -21,7 +20,7 @@ export interface Blog {
 }
 
 function BlogCard({ blog }: { blog: Blog }) {
-  const t = useTranslations("Blogs");
+  // const t = useTranslations("Blogs");
 
   const formatted_post_date = new Date(blog.added_on).toLocaleDateString("en-US", {
     month: "short",

@@ -4,10 +4,10 @@ import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./contants";
 import { revalidateTag } from "next/cache";
 import axios from "axios";
-import { jwtVerify } from "jose";
+import { JWTPayload, jwtVerify } from "jose";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { Review } from "./components/products/ProductReviewDetails";
 import { Blog } from "./components/blogs/BlogCard";
+import { User } from "./components/auth/LoginForm";
 
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
 
@@ -17,7 +17,9 @@ export async function Login(email: string, password: string) {
       email,
       password,
     })
-    .catch((error) => {});
+    .catch((error) => {
+      console.error("Error logging in:", error);
+    });
 
   if (response !== undefined && response.status === 200) {
     const cookiesStore = cookies();
@@ -163,7 +165,7 @@ export async function DeleteProduct(formData: any) {
 export const handleInstantBuy = async (productId: string, quantity: number) => {
   "use server";
 
-  const session = await GetSession();
+  const session: JWTPayload | undefined = await GetSession();
   if (session === undefined) {
     console.error("User is not authenticated");
     return;
@@ -183,7 +185,7 @@ export const handleInstantBuy = async (productId: string, quantity: number) => {
 
 export const handleAddToCart = async (productId: string) => {
   "use server";
-  const session = await GetSession();
+  const session: JWTPayload | undefined = await GetSession();
 
   if (session === undefined) {
     console.error("User is not authenticated");
@@ -197,7 +199,7 @@ export const handleAddToCart = async (productId: string) => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: session.user.id,
+          userId: (session.user as User).id,
           productId: productId,
           quantity: 1,
         }),
@@ -214,7 +216,7 @@ export const handleAddToCart = async (productId: string) => {
 
 export const handleDecrementCart = async (productId: string) => {
   "use server";
-  const session = await GetSession();
+  const session: JWTPayload | undefined = await GetSession();
   if (session === undefined) {
     console.error("User is not authenticated");
     return;
@@ -229,7 +231,7 @@ export const handleDecrementCart = async (productId: string) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: session.user.id,
+          userId: (session.user as User).id,
           productId: productId,
           quantity: 1,
         }),
@@ -261,7 +263,7 @@ export const handleEmptyCart = async () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: session.user.id,
+          userId: (session.user as User).id,
         }),
       }
     );
@@ -293,7 +295,7 @@ export const handleDeleteProduct = async (productId: string) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: session.user.id,
+          userId: (session.user as User).id,
           productId: productId,
         }),
       }

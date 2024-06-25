@@ -85,6 +85,7 @@ function Categories() {
     <div className="flex items-center space-x-4">
       <div>
         <Category
+          code={'allCategories'}
           name={locale === 'en' ? 'All Categories' : 'ყველა კატეგორია'}
           isAllCategory={true}
         />

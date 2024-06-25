@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function OrderHistoryPage() {
     return (
-        <ProfilePageLayout component={<OrderHistory />} selectedMenuItem="history" />
+        <ProfilePageLayout component={<OrderHistory />} selectedMenuItem="orders" />
     )
 }
 

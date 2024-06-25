@@ -41,7 +41,7 @@ function SearchPage() {
     return (
         <div className='w-[62vw] mx-auto bg-[#F9F9FF] dark:bg-[#121B18] px-[1vw] py-[25px]'>
             <SearchBar className={"mb-[35px]"} />
-            <Banner bannerEn={FirstBannerLongEn} bannerKa={FirstBannerLong} />
+            <Banner bannerEn={FirstBannerLongEn.src} bannerKa={FirstBannerLong.src} />
             <div className="w-[100%] mt-[35px] flex justify-between items-center">
                 <div className="text-sm text-[#EC6652] font-semibold">Total Results: {products !== undefined ? products.length : 0}</div>
                 <select id="sortedBy" className="px-[10px] py-[7px] text-sm rounded border-[1.5px] border-[#0000001a] dark:border-[#ffffff26] bg-[#F9F9FF] dark:bg-[#121B18]">
@@ -60,7 +60,7 @@ function SearchPage() {
                 </div>
                 <div className="w-full flex-[4] justify-center items-center flex border rounded p-[15px]">
                     {products === undefined && <div>
-                        </div>}
+                    </div>}
                     {products && products.length === 0 && <EmptySearch />}
                     {products && products.length > 0 && <ProductList products={products} colCount={3} />}
                 </div>

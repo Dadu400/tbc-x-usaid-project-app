@@ -1,12 +1,10 @@
-import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
-import StarHalfOutlinedIcon from '@mui/icons-material/StarHalfOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import SocialShareButtons from './SocialShareButtons';
 import Image from 'next/image';
-import { Product } from './Cart';
 import { Review } from './ProductReviewDetails';
 import Rating from '@mui/material/Rating';
+import { Product } from './ProductList';
 
 interface ProductInfoProps {
     reviews: Review[];

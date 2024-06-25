@@ -17,7 +17,7 @@ async function AddProductPage() {
     const session = await GetSession();
 
     return (
-        <ProfilePageLayout component={<AddEditProductForm product={null} session={session} />} selectedMenuItem="products" />
+        <ProfilePageLayout component={<AddEditProductForm isEdit={false} session={session} />} selectedMenuItem="products" />
     )
 }
 

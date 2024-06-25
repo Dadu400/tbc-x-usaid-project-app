@@ -59,7 +59,7 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
         }
     };
 
-    const onSaveClicked = async (event: React.FormEvent<HTMLFormElement>) => {
+    const onSaveClicked = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
 
         if (updatedImage == null && isNew) {
@@ -109,6 +109,7 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
                 <BlogCard blog={updatedBlog} />
             </div>
             <form className='w-[70%] mx-auto mt-[30px] flex flex-col gap-[10px]'>
+                {errorMessage !== "" && <span className="text-red-500 text-md">{errorMessage}</span>}
                 <div className="flex flex-col">
                     <label htmlFor="title" className="text-md">სათაური</label>
                     <input type="text" id="title" value={updatedBlog.title} onChange={

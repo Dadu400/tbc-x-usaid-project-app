@@ -14,7 +14,7 @@ export interface Product {
   description: string;
   price: number;
   category: string;
-  userid: string;
+  userid: number;
   added_on: Date;
 }
 

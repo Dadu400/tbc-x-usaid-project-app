@@ -7,25 +7,19 @@ import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useLocale } from "next-intl";
+import { JWTPayload } from 'jose';
+import { User } from '../auth/LoginForm';
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' });
 
-interface User {
-  name: string;
-}
-
-interface Session {
-  user: User;
-}
-
 export interface BurgerMenuDialogProps {
   isLoggedIn: boolean;
-  session: Session | null;
+  session: JWTPayload | undefined;
   setMenuOpen: (isOpen: boolean) => void;
 }
 
-function BurgerMenuDialog ({ isLoggedIn, session, setMenuOpen } : BurgerMenuDialogProps) {
-    const locale = useLocale();
+function BurgerMenuDialog({ isLoggedIn, session, setMenuOpen }: BurgerMenuDialogProps) {
+  const locale = useLocale();
 
   return (
     <div className="navbar fixed top-0 right-0 h-screen w-64 p-6 bg-[#F9F9FF] dark:bg-[#121B18] shadow-lg cursor-normal">
@@ -33,7 +27,7 @@ function BurgerMenuDialog ({ isLoggedIn, session, setMenuOpen } : BurgerMenuDial
         <CloseIcon onClick={() => setMenuOpen(false)} />
       </div>
       {isLoggedIn && session ? (
-        <h1>{locale == "en" ? "Hello " : "გამარჯობა "}{session.user.name}! </h1>
+        <h1>{locale == "en" ? "Hello " : "გამარჯობა "}{(session.user as User).name}! </h1>
       ) : (
         <div className="flex gap-[10px] justify-center items-center">
           <Link href="/login" className="text-sm border p-2 rounded-lg">{locale == "en" ? "Sign In" : "ავტორიზაცია"}</Link>
