@@ -19,15 +19,18 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  console.log("RECEIVED REQUEST");
-  const { title, text, imageurl, user, added_on, average_read_time } =
+  let { title, text, imageurl, user, added_on, average_read_time } =
     await request.json();
 
+  if (!title || !text || !imageurl || !user || !added_on) {
+    return new Response("Missing required fields", { status: 400 });
+  }
+
+  average_read_time = Math.ceil(text.split(" ").length / 200);
+
   try {
-    console.log("Inserting blog into database");
     sql`INSERT INTO blogs (title, text, imageurl, user_id, added_on, average_read_time) VALUES (${title}, ${text}, ${imageurl}, ${user.id}, ${added_on}, ${average_read_time})`;
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 

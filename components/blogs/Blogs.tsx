@@ -1,27 +1,9 @@
-import BlogCard from "./BlogCard";
-import axios from "axios";
+import { getBlogs } from "../../actions";
+import BlogCard, { Blog } from "./BlogCard";
 
 
-export interface Blog {
-  id: string | number;
-  title: string;
-  text: string;
-  imageUrl: string,
-}
-
-const getData = async () => {
-  try {
-    const res = await axios.get("https://dummyjson.com/posts");
-    return res.data.posts;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      throw new Error(`Failed to fetch data: ${error.message}`);
-    }
-    throw new Error("Failed to fetch data");
-  }
-}
 export default async function Blogs() {
-  const fetchedBlogs = await getData();
+  const fetchedBlogs: Blog[] = await getBlogs();
 
   return (
     <section className="w-[60vw] m-auto flex flex-col my-[20px]">

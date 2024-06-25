@@ -6,12 +6,13 @@ import BlogCard, { Blog } from "./BlogCard";
 import UploadIcon from '@mui/icons-material/Upload';
 import Link from "next/link";
 import test from "../../public/test.webp";
-import { useRouter } from "next/navigation";
-import { saveBlog, updateBlog } from "../../actions";
+import { useParams, useRouter } from "next/navigation";
+import { getBlogs, saveBlog, updateBlog } from "../../actions";
 import { PutBlobResult } from "@vercel/blob";
 
 function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, isNew: boolean }) {
     const router = useRouter();
+    const { id } = useParams();
 
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [updatedBlog, setUpdatedBlog] = useState(!isNew && blog ? blog : {
@@ -30,6 +31,25 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
         average_read_time: 0
     });
     const [updatedImage, setUpdatedImage] = useState<File | undefined>(undefined);
+
+    useEffect(() => {
+        const fetchBlog = async () => {
+            if (isNew) return;
+
+            const blogs = await getBlogs();
+            const blog = blogs.find((blog: Blog) => {
+                return Number(blog.id) === Number(id);
+            });
+            if (Number(blog.user.id) !== Number(session.user.id) && session.user.admin === false) {
+                router.push('/profile/blogs');
+                return;
+            }
+
+            setUpdatedBlog(blog);
+        };
+
+        fetchBlog();
+    }, [id, router, session.user.admin, session.user.id]);
 
     const handleBlogImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -59,7 +79,6 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
             });
 
             const newBlob = (await response.json()) as PutBlobResult;
-            console.log(newBlob.url);
             imageUrl = newBlob.url;
         }
 
@@ -70,6 +89,10 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
         } else {
             setErrorMessage("შეცდომა ბლოგის შენახვისას");
         }
+    }
+
+    if (!isNew && updatedBlog === undefined) {
+        return <h1>Loading</h1>
     }
 
     return (
