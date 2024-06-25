@@ -92,7 +92,7 @@ function Map({ orderId, orderStatus }: { orderId: string, orderStatus: string })
             }
         }, 250);
         return () => clearInterval(interval);
-    }, [isOrderBeingDelivered, orderId]);
+    }, [isOrderBeingDelivered, orderId, route]);
 
     return (
         <MapContainer

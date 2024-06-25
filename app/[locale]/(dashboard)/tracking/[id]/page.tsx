@@ -11,7 +11,7 @@ interface Params {
     locale: string;
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations("MetaData");
 
     return {

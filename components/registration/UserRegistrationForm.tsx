@@ -79,7 +79,7 @@ const UserRegistrationForm = () => {
       <h2 className={`text-2xl ${mtavruli.className} uppercase font-semibold mb-[20px] text-center w-full`}>{locale == "en" ? "Sign Up" : "რეგისტრაცია"}</h2>
       <Image src={selectedImage ? URL.createObjectURL(selectedImage) : DefaultImage} id="registrationImage" alt="user" width={120} height={30} className="mx-auto rounded-full border-2 cursor-pointer w-[120px] h-[120px]" />
       <form onSubmit={handleSubmit} className="flex flex-col justify-center space-y-4 mt-[10px]">
-        <div className='w-[80%] flex self-center my-2'>
+        <div className='w-[80%] flex justify-center self-center my-2'>
           <input
             type="file"
             id="image"

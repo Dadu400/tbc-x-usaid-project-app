@@ -44,7 +44,7 @@ function ContactForm() {
         required
         value={formData.name}
         onChange={handleChange}
-        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652]"
       />
       <input
         type="email"
@@ -54,7 +54,7 @@ function ContactForm() {
         required
         value={formData.email}
         onChange={handleChange}
-        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652]"
       />
       <input
         type="number"
@@ -64,7 +64,7 @@ function ContactForm() {
         required
         value={formData.phone}
         onChange={handleChange}
-        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
       />
       <textarea
         name="message"
@@ -75,7 +75,7 @@ function ContactForm() {
         required
         value={formData.message}
         onChange={handleChange}
-        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-red focus:border-red focus:outline-none focus:red"
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652]"
       />
       <button
         type="submit"

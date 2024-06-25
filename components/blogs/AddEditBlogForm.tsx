@@ -49,7 +49,7 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
         };
 
         fetchBlog();
-    }, [id, router, session.user.admin, session.user.id]);
+    }, [id, isNew, router, session.user.admin, session.user.id]);
 
     const handleBlogImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];

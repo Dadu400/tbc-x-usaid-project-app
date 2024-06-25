@@ -47,7 +47,7 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
         };
 
         fetchProduct();
-    }, [id, router, session.user.admin, session.user.id]);
+    }, [id, isEdit, router, session.user.admin, session.user.id]);
 
     const [newUploadedProductImage, setNewUploadedProductImage] = useState<File | undefined>(undefined);
     const [productTitle, setProductTitle] = useState(product ? product.title : "");

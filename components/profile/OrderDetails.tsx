@@ -41,13 +41,13 @@ function OrderDetails({ order }: { order: Order }) {
         <div className="w-full border border-[#F5F6F6] dark:border-[#ffffff1f] rounded-lg py-6 px-0 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-[25px] justify-between">
             <div className="flex flex-col gap-y-2">
-              <span className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
+              <span className={`text-gray-700  dark:text-white font-semibold text-sm ${mtavruli.className}`}>
                 {locale == "en" ? "Order Details" : "შეკვეთის ნომერი"}
               </span>
               <span className="text-gray-500 text-sm">SUP-312{order.id}</span>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
+              <span className={`text-gray-700  dark:text-white font-semibold text-sm ${mtavruli.className}`}>
                 {locale == "en" ? "Order Status" : "სტატუსი"}
               </span>
               <span
@@ -65,7 +65,7 @@ function OrderDetails({ order }: { order: Order }) {
               </span>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
+              <span className={`text-gray-700  dark:text-white font-semibold text-sm ${mtavruli.className}`}>
                 {locale == "en" ? "Purchase Date" : "შეძენის თარიღი"}
               </span>
               <span className="text-gray-500 text-sm">{formattedOrderDate}</span>
@@ -73,7 +73,7 @@ function OrderDetails({ order }: { order: Order }) {
           </div>
         </div>
         <div className="w-full rounded-lg pt-1 pb-5 px-0 lg:px-8 flex flex-col space-y-6">
-          <div className={`text-gray-700  dark:text-white dark:text-white font-semibold text-sm ${mtavruli.className}`}>
+          <div className={`text-gray-700  dark:text-white font-semibold text-sm ${mtavruli.className}`}>
             {locale == "en" ? "Products:" : "პროდუქტები:"}
           </div>
           {order.products.map((product) => (

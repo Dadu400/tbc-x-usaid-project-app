@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
 import ProductCard from "./ProductCard";
 import localFont from '@next/font/local';
