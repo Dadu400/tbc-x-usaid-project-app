@@ -106,7 +106,7 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
 
             <div className='flex flex-col items-center justify-center mt-[30px] w-[300px] self-center'>
                 <span className="text-md text-center w-full mb-[20px]">ნიმუში:</span>
-                <BlogCard blog={updatedBlog} />
+                <BlogCard session={session} blog={updatedBlog} />
             </div>
             <form className='w-[70%] mx-auto mt-[30px] flex flex-col gap-[10px]'>
                 {errorMessage !== "" && <span className="text-red-500 text-md">{errorMessage}</span>}

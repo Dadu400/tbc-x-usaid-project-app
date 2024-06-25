@@ -31,7 +31,7 @@ async function BlogsList() {
             <div className={"w-[100%] mx-auto h-full"}>
                 <div className={`grid grid-cols-3 mt-5 gap-[25px] gap-y-[30px] h-full`}>
                     {blogs.map((blog, index) => (
-                        <BlogCard key={index} blog={blog} />
+                        <BlogCard key={index} session={session} blog={blog} />
                     ))}
                 </div>
             </div >
