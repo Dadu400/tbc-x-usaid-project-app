@@ -67,7 +67,7 @@ function AddEditBlogForm({ session, blog, isNew }: { session: any, blog?: Blog, 
             return;
         }
 
-        let imageUrl = !isNew && updatedImage === undefined ? blog?.imageurl : undefined;
+        let imageUrl = !isNew && updatedImage === undefined ? updatedBlog?.imageurl : undefined;
         if (imageUrl === undefined) {
             if (updatedImage == null) {
                 setErrorMessage('აირჩიეთ პროდუქტის სურათი');
