@@ -17,7 +17,7 @@ async function MyProductsList({ session }: { session: JWTPayload | undefined }) 
     return (
         <div className="w-full flex flex-col border dark:border-[#ffffff1f] shadow-lg rounded-lg bg-[#FEFEFE] dark:bg-[#1D2024] p-8">
             <h2 className={`text-2xl ${mtavruli.className} uppercase font-semibold mb-[20px] text-center w-full`}>{(session.user as User).admin ? t("allproducts") : t("myproducts")}</h2>
-            <ProductList products={products} addNewBtn={true} />
+            <ProductList session={session} products={products} addNewBtn={true} />
         </div>
     )
 }

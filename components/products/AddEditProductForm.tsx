@@ -27,6 +27,9 @@ function AddEditProductForm({ isEdit, session }: { isEdit: boolean, session: any
     const { id } = useParams();
 
     useEffect(() => {
+        if (isEdit === false) {
+            return;
+        }
         const fetchProduct = async () => {
             const products = await getProducts();
             const data = products.find((p: Product) => p.id === Number(id));

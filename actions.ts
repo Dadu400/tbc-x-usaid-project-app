@@ -476,3 +476,25 @@ export async function orderDelivered(orderId: string) {
     return { ok: false };
   }
 }
+
+export async function getNewlyAddedProducts() {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/marketing/new"
+    );
+    return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function getPopularProducts() {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/marketing/popular"
+    );
+    return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}
