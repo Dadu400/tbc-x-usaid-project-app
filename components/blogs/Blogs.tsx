@@ -1,4 +1,4 @@
-import Blog from "../blogs/Blog";
+import BlogCard from "./BlogCard";
 import axios from "axios";
 
 
@@ -28,7 +28,7 @@ export default async function Blogs() {
       <div className="text-center text-2xl font-semibold font-['mtavruli'] mb-[25px]">სიახლეები</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 bg-[#FEFEFE]">
         {fetchedBlogs.map((blog: Blog) => (
-          <Blog key={blog.id} blog={blog} />
+          <BlogCard key={blog.id} blog={blog} />
         ))}
       </div>
     </section>

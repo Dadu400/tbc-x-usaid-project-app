@@ -7,6 +7,7 @@ import axios from "axios";
 import { jwtVerify } from "jose";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { Review } from "./components/products/ProductReviewDetails";
+import { Blog } from "./components/blogs/BlogCard";
 
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
 
@@ -376,6 +377,55 @@ export async function getUsersProducts(userId: number) {
       process.env.NEXT_PUBLIC_VERCEL_URL + `/api/user/${userId}/products`
     );
     return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function saveBlog(blog: Blog, imageUrl: string) {
+  try {
+    if (imageUrl) {
+      blog.imageurl = imageUrl;
+    }
+    await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/blog", blog);
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function updateBlog(blog: Blog, imageUrl: string) {
+  try {
+    if (imageUrl) {
+      blog.imageurl = imageUrl;
+    }
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/blog/${blog.id}`,
+      blog
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function getBlogs() {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/blog"
+    );
+    return response.data;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function getUsersBlogs(userId: number) {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/user/${userId}/blogs`
+    );
+    return response.data.blogs;
   } catch (error) {
     return [];
   }
