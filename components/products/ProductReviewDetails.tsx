@@ -20,7 +20,6 @@ async function ProductReviewDetails({ reviews, productId, productOwnerId, sessio
 
     const isUserAuthorized = session && session.user;
     const isUsersProduct = session && session.user && Number(session.user.id) === Number(productOwnerId);
-    console.log(session.user.id, productOwnerId);
     const isAdmin = session && session.user && session.user.admin === true;
 
     return (

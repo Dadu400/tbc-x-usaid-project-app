@@ -2,6 +2,7 @@ import ProfilePageLayout from '../../../../../components/profile/ProfilePageLayo
 import MyProductsList from '../../../../../components/profile/MyProductsList';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from "next";
+import { GetSession } from '../../../../../actions';
 
 export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations("MetaData");
@@ -12,9 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 }
 
-function ProductsPage() {
+async function ProductsPage() {
+    const session = await GetSession();
+
     return (
-        <ProfilePageLayout component={<MyProductsList />} selectedMenuItem="products" />
+        <ProfilePageLayout component={<MyProductsList session={session} />} selectedMenuItem="products" />
     )
 }
 

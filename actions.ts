@@ -369,3 +369,14 @@ export async function getReviews(productId: number) {
     return [];
   }
 }
+
+export async function getUsersProducts(userId: number) {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/user/${userId}/products`
+    );
+    return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}

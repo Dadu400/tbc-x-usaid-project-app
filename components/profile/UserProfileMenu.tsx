@@ -5,14 +5,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { GetSession } from '../../actions';
+import { getTranslations } from 'next-intl/server';
 
 interface UserProfileMenuProps {
   selectedItem: string;
 }
 
-function UserProfileMenu({ selectedItem }: UserProfileMenuProps) {
-  const t = useTranslations("MenuNavbar");
+async function UserProfileMenu({ selectedItem }: UserProfileMenuProps) {
+  const session = await GetSession();
+
+  const t = await getTranslations("MenuNavbar");
   const menuItems = [
     {
       id: "profile",
@@ -35,7 +38,7 @@ function UserProfileMenu({ selectedItem }: UserProfileMenuProps) {
     {
       id: "products",
       icon: <Inventory2OutlinedIcon />,
-      title: t('products'),
+      title: session.user.admin ? t('allProducts') : t('myProducts'),
       route: "/profile/products"
     },
     {

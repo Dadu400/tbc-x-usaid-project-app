@@ -53,7 +53,8 @@
     "profile": "My Profile",
     "password": "Password",
     "orders": "Orders History",
-    "products": "My Products",
+    "myProducts": "My Products",
+    "allProducts": "All Products",
     "blogs": "Blogs",
     "Logout": "Log out"
   },
@@ -61,7 +62,8 @@
     "heading": "Orders History"
   },
   "ProductPage": {
-    "myproducts": "My Products"
+    "myproducts": "My Products",
+    "allproducts": "All Products"
   },
   "Blogs": {
     "header": "Manage Blogs",
