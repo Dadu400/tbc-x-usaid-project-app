@@ -1,8 +1,6 @@
 import { getSingleBlog } from "../../../../../helpers/axios";
 import DashboardLayout from "../../DashboardLayout";
 import { unstable_setRequestLocale } from 'next-intl/server';
-import Dramatic from "../../../../../public/Dramatic.webp";
-import person from "../../../../../public/person.png";
 import Image from 'next/image';
 import { Metadata } from "next";
 

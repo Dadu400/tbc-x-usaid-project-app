@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
     const products = await sql`
             SELECT * FROM products
-            WHERE title ILIKE ${q ? `%${q}%` : "%%"}
+            WHERE hidden = false AND title ILIKE ${q ? `%${q}%` : "%%"}
             AND category ILIKE ${category ? `%${category}%` : "%%"}
         `;
     if (priceFrom) {

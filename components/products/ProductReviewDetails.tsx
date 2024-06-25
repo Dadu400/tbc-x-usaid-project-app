@@ -23,7 +23,7 @@ async function ProductReviewDetails({ reviews, productId, productOwnerId, sessio
     const isAdmin = session && session.user && session.user.admin === true;
 
     return (
-        <div className="bg-[#FEFEFE] dark:bg-[#1D2024] mt-[40px] flex w-[60vw] mx-auto shadow-xl p-[25px] mb-[60px] gap-[10px] flex-col rounded-lg border dark:border-[#ffffff1f]">
+        <div className="bg-[#FEFEFE] dark:bg-[#1D2024] mt-[40px] flex w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto shadow-xl p-[25px] mb-[60px] gap-[10px] flex-col rounded-lg border dark:border-[#ffffff1f]">
             <span className="font-['mtavruli'] border-b-[#1e90ff] border-b-[2px] flex items-center gap-[8px] pb-[5px] w-[135px]">
                 <StarIcon className="text-[#FFB200]" /> შეფასებებები
             </span>

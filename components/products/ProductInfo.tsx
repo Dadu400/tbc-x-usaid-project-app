@@ -29,7 +29,7 @@ function ProductInfo({ reviews, product, shareUrl, title, imageUrl }: ProductInf
 
     return (
         <div className="flex-[4]">
-            <div className="flex">
+            <div className="flex flex-col md:flex-row">
                 <div className="flex-[2] flex justify-center items-center">
                     <Image
                         src={imageUrl}

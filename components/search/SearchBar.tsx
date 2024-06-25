@@ -53,7 +53,7 @@ function SearchBar({ className }: { className: string }) {
                 searchParams.forEach((value, key) => {
                     queryStrings.set(key, value);
                 });
-                queryStrings.set('q', encodeURIComponent(query));
+                queryStrings.set('q', query);
                 router.replace(`/search?${queryStrings.toString()}`);
             }}>
                 <div className="w-full flex bg-[#F9F9FF] dark:bg-[#121B18] gap-3 lg:gap-8 h-[60px] mt-[15px]">

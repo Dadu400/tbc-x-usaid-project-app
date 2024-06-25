@@ -25,7 +25,7 @@ function HomePage() {
   const t = useTranslations("HomePage");
   return (
     <DashboardLayout>
-      <div className="xs:bg-[#019] w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto bg-[#F9F9FF] dark:bg-[#121B18] px-[1vw] py-[25px]">
+      <div className="w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto bg-[#F9F9FF] dark:bg-[#121B18] px-[1vw] py-[25px]">
         <SearchBar className={"mb-[35px]"} />
         <Categories />
         <Banner bannerEn={FirstBannerEn.src} bannerKa={FirstBanner.src} />

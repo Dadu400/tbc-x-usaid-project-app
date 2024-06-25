@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { getProducts } from "../../helpers/axiosProduct";
 import AddNewProductCard from "./AddNewProductCard";
 import ProductCard from "./ProductCard";
-import localFont from '@next/font/local'
-import { GetSession } from "../../actions";
+import localFont from '@next/font/local';
+import { JWTPayload } from "jose";
 
 const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
@@ -19,6 +21,7 @@ export interface Product {
 }
 
 interface ProductListProps {
+  session: JWTPayload | undefined;
   icon?: JSX.Element;
   title?: string;
   products?: Product[];
@@ -26,13 +29,7 @@ interface ProductListProps {
   addNewBtn?: boolean;
 }
 
-async function ProductList({ icon, title, products, className, addNewBtn = false }: ProductListProps) {
-  const session = await GetSession();
-
-  if (!products) {
-    products = await getProducts();
-  }
-
+function ProductList({ session, icon, title, products, className, addNewBtn = false }: ProductListProps) {
   const gridStyle = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
