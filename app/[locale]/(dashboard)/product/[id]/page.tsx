@@ -53,7 +53,7 @@ export default async function singleProduct({ params }: { params: Params }) {
             <DashboardLayout useParticles={false}>
                 <ProductDetails reviews={reviews} session={session} product={product} shareUrl={shareUrl} title={title} imageUrl={imageUrl} />
                 <ProductSellerDetails seller={seller} />
-                <ProductReviewDetails reviews={reviews} productId={product.id} session={session} />
+                <ProductReviewDetails reviews={reviews} productId={product.id} productOwnerId={product.userid} session={session} />
             </DashboardLayout>
         </>
     );
