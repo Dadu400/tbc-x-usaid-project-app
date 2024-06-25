@@ -15,6 +15,9 @@ function CourierTracking({ order }: { order: Order }) {
         minute: "numeric",
     });
 
+    const orderStatusFontColor = order.status === 'გზაშია' ? ('text-yellow-500') : order.status === 'ჩაბარებულია' ? ('text-green-500') : ('text-red-500');
+    const orderStatusText = order.status === 'გზაშია' ? "გზაშია 🚚" : order.status === 'ჩაბარებულია' ? "ჩაბარებულია ✅" : "გაუქმებულია ❌";
+
     return (
         <>
             <div className={`text-lg font-bold ${mtavruli.className} w-full flex justify-center items-center mt-[40px]`}>
@@ -30,7 +33,7 @@ function CourierTracking({ order }: { order: Order }) {
                     </div>
                     <div className="flex gap-[15px] text-sm">
                         <div className={`font-bold  ${mtavruli.className}`}>{t("orderStatus")} : </div>
-                        <div className="text-yellow-500">გზაშია 🚚</div>
+                        <div className={orderStatusFontColor}>{orderStatusText}</div>
                     </div>
                     <div className="flex gap-[15px] text-sm">
                         <div className={`font-bold ${mtavruli.className}`}>

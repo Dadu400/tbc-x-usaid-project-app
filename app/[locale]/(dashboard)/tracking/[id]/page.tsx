@@ -31,7 +31,7 @@ async function CourierTrackingPage({ params }: { params: Params }) {
             {currentOrder ? (
                 <>
                     <CourierTracking order={currentOrder} />
-                    <Map />
+                    <Map orderId={currentOrder.id} orderStatus={currentOrder.status} />
                 </>
             ) : (
                 <div>Order not found</div>

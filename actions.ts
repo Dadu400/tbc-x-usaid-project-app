@@ -465,3 +465,14 @@ export async function orderMoneyPaid(orderId: string) {
     return { ok: false };
   }
 }
+
+export async function orderDelivered(orderId: string) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/orders/${orderId}/delivered`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
