@@ -72,6 +72,7 @@
     "name": "Author"
   },
   "Blog": {
+    "header": "Read Articles",
     "releaseDate": "Release Date",
     "readMore": "Read More"
   },
