@@ -49,8 +49,8 @@ function SwiperUserProfileMenu({ selectedItem }: { selectedItem: string }) {
     ]
 
     return (
-        <div className="flex justify-between items-center bg-white shadow-lg rounded py-5 gap-[20px]">
-            <div className="swiper-button-custom-prev flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowLeftIcon fontSize="large" /></div>
+        <div className="flex justify-between items-center bg-white dark:bg-[#1D2024] shadow-lg rounded py-5 gap-[20px]">
+            <div className="swiper-button-custom-prev flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] dark:text-[#EC6652] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowLeftIcon fontSize="large" /></div>
             <Swiper
                 modules={[Navigation, A11y]}
                 spaceBetween={15}
@@ -72,7 +72,7 @@ function SwiperUserProfileMenu({ selectedItem }: { selectedItem: string }) {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="swiper-button-custom-next flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowRightIcon fontSize="large" /></div>
+            <div className="swiper-button-custom-next flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] dark:text-[#EC6652] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowRightIcon fontSize="large" /></div>
         </div>
     )
 }

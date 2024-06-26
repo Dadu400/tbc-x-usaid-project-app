@@ -24,6 +24,8 @@ export interface Order {
 
 async function OrderHistory() {
   const orders: Order[] = await getOrders();
+  orders.sort((a, b) => new Date(b.ordertime).getTime() - new Date(a.ordertime).getTime());
+
   const t = await getTranslations("Orders");
   return (
     <div className="flex flex-col border dark:border-[#ffffff1f] shadow-lg rounded-lg bg-[#FEFEFE] dark:bg-[#1D2024] p-8">
