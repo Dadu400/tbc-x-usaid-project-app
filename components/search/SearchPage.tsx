@@ -57,7 +57,7 @@ function SearchPage({ session }: { session: JWTPayload | undefined }) {
                     break;
             }
         }
-    }, [sortBy, products])
+    }, [sortBy])
 
     return (
         <div className='w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto bg-[#F9F9FF] dark:bg-[#121B18] px-[1vw] py-[25px]'>
