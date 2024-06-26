@@ -22,8 +22,8 @@ async function CartContainer({ session }: any) {
   const t = await getTranslations("Cart");
   if (session === undefined) {
     return (
-      <div className="text-center mt-8">
-        <h2 className="text-2xl font-bold mb-4">{t("message")}</h2>
+      <div className="text-center my-[326px]">
+        <h2 className={`text-2xl font-bold mb-4 uppercase ${mtavruli.className}`}>{t("message")}</h2>
       </div>
     );
   }
@@ -83,8 +83,8 @@ async function CartContainer({ session }: any) {
           </div>
         </>
       ) : (
-        <div className="text-center mt-8">
-          <h2 className="text-2xl font-bold mb-4">{t("emptyCart")}</h2>
+        <div className="text-center my-[326px]">
+          <h2 className={`text-2xl font-bold mb-4 uppercase ${mtavruli.className}`}>{t("emptyCart")}</h2>
         </div>
       )}
     </div>
