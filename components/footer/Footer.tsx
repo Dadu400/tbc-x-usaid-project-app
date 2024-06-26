@@ -1,100 +1,72 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+"use client";
+
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import FooterBrand from './FooterBrand';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import localFont from '@next/font/local';
+import { useLocale } from 'next-intl';
+import Link from 'next/link';
+
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 function Footer() {
-  const t = useTranslations("Footer");
+  const locale = useLocale();
+
+  const scrollUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#201D48] w-full mt-auto">
-      <div className="flex flex-col px-[40px] py-[30px] gap-[28px]">
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-[20px]">
-            <h3 className="text-white font-bold uppercase">
-              {t("subscribeHeader")}
-            </h3>
-            <div className="relative">
-              <form action="#">
-                <div className="flex items-center justify-center">
-                  <input
-                    type="email"
-                    placeholder={t("emailPlaceholder")}
-                    className="w-full h-[40px] rounded-md px-4 py-2 border border-gray-300 focus:outline-none focus:ring-blue-500"
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-0 top-0 px-4 py-2 bg-[#FD8024] text-white font-bold rounded-md shadow-sm hover:bg-orange-200 focus:outline-none focus:ring-1 focus:ring-opacity-50 focus:ring-blue-500"
-                  >
-                    <FontAwesomeIcon icon={faAngleRight} />
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[20px] mr-4">
-            <h3 className="text-white font-bold uppercase">
-              {t("followUsHeader")}
-            </h3>
-            <div className="flex space-x-4">
-              <Link
-                href="https://www.facebook.com/LEGO/"
-                className="text-white hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faFacebook} className="w-8 h-8" />
-              </Link>
-              <Link
-                href="https://twitter.com/LEGO_Group"
-                className="text-white hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faTwitter} className="w-8 h-8" />
-              </Link>
-              <Link
-                href="https://www.instagram.com/lego"
-                className="text-white hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faInstagram} className="w-8 h-8" />
-              </Link>
-              <Link
-                href="https://www.youtube.com/user/LEGO?app=desktop"
-                className="text-white hover:text-gray-400"
-              >
-                <FontAwesomeIcon icon={faYoutube} className="w-8 h-8" />
-              </Link>
-            </div>
+    <footer className="bg-[#F9F9FF] dark:bg-[#1D2024] w-full mt-auto pb-[20px]">
+      <div className="w-full bg-[#EC6652] flex items-center justify-center cursor-pointer text-white" onClick={() => scrollUp()}>
+        <KeyboardArrowUpIcon />
+      </div>
+      <div className="w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] 2xl:w-[65%] mx-auto my-[20px] bg-[#F9F9FF] dark:bg-[#1D2024] flex gap-[25px] justify-center lg:justify-between">
+        <FooterBrand />
+        <div className="hidden lg:block bg-[#F9F9FF] dark:bg-[#1D2024]">
+          <span className={`font-semibold text-md ${mtavruli.className}`}>{locale == "en" ? "Legal Notice" : "სამართლებრივი"}</span>
+          <div className="flex flex-col gap-[10px] mt-[17px] bg-[#F9F9FF] dark:bg-[#1D2024]">
+            <span className={`cursor-pointer ${mtavruli.className} text-sm`}>{locale == "en" ? "Terms and Conditions" : "წესები და პირობები"}</span>
+            <span className={`cursor-pointer ${mtavruli.className} text-sm`}>{locale == "en" ? "Confidentiality Policy" : "კონფიდენციალურობის პოლიტიკა"}</span>
+            <span className={`cursor-pointer ${mtavruli.className} text-sm`}>{locale == "en" ? "Return Policy" : "დაბრუნების პოლიტიკა"}</span>
           </div>
         </div>
-        <div className="flex">
-          <ul className="flex gap-4">
-            <li className="text-white text-xs">
-              <Link href="https://www.lego.com/en-us/legal/notices-and-policies/privacy-policy">
-                {t("privacyPolicy")}
-              </Link>
-            </li>
-            <li className="text-white text-xs">
-              <Link href="https://www.lego.com/en-us/cookie-policy">
-                {t("cookies")}
-              </Link>
-            </li>
-            <li className="text-white text-xs">
-              <Link href="https://www.lego.com/en-us/legal/notices-and-policies/legal-notice">
-                {t("termsOfUse")}
-              </Link>
-            </li>
-            <li className="text-white text-xs">
-              <Link href="https://www.lego.com/en-us/page/accessibility">
-                {t("accessibility")}
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p className="text-white text-xs">{t("legalDisclaimer")}</p>
+        <Link href={"/contact"}>
+          <div className="hidden lg:block bg-[#F9F9FF] dark:bg-[#1D2024]">
+            <span className={`font-semibold text-md ${mtavruli.className}`}>{locale == "en" ? "Support" : "დახმარება"}</span>
+            <div className="flex flex-col gap-[10px] mt-[17px] bg-[#F9F9FF] dark:bg-[#1D2024]">
+              <span className={`cursor-pointer ${mtavruli.className} text-sm`}>{locale == "en" ? "Contact Us" : "კონტაქტი"}</span>
+              <span className={`cursor-pointer ${mtavruli.className} text-sm flex items-center gap-[5px]`}>
+                <LocalPhoneIcon fontSize='small' />
+                +995 558 63 20 21
+              </span>
+              <span className={`cursor-pointer ${mtavruli.className} text-sm flex items-center gap-[5px]`}>
+                <AlternateEmailIcon fontSize='small' />
+                contact@superweb.com
+              </span>
+            </div>
+          </div>
+        </Link>
+        <div className="hidden lg:block bg-[#F9F9FF] dark:bg-[#1D2024]">
+          <span className={`font-semibold text-md ${mtavruli.className}`}>{locale == "en" ? "Follow Us" : "გამოგვყევით"}</span>
+          <div className="flex flex-col gap-[10px] mt-[17px] bg-[#F9F9FF] dark:bg-[#1D2024]">
+            <span className={`cursor-pointer ${mtavruli.className} text-sm flex items-center gap-[5px]`}>
+              <FacebookIcon fontSize='small' className="text-[#316FF6]" />
+              Facebook
+            </span>
+            <span className={`cursor-pointer ${mtavruli.className} text-sm flex items-center gap-[5px]`}>
+              <InstagramIcon fontSize='small' className="text-[#FE1FA1]" />
+              Instagram
+            </span>
+            <span className={`cursor-pointer ${mtavruli.className} text-sm flex items-center gap-[5px]`}>
+              <YouTubeIcon fontSize='small' className="text-[#FF0000]" />
+              Youtube
+            </span>
+          </div>
         </div>
       </div>
     </footer>

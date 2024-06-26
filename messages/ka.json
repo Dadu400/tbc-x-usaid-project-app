@@ -1,72 +1,75 @@
 {
-  "navigation": {
-    "home": "მთავარი",
-    "blogs": "ბლოგები",
-    "profile": "პროფილი",
-    "contactus": "დაგვიკავშირდით",
-    "admin": "ადმინი",
-    "login": "შესვლა",
-    "superSite": "უპერ საიტი",
-    "search": "მოძებნე..."
+  "MetaData": {
+    "title": "SuperWeb | ონლაინ მაღაზია უახლესი და საუკეთესო სათამაშოებისთვის.",
+    "description": "SuperWeb არის ონლაინ მაღაზია და საუკეთესო ადგილი ყველა ასაკის ადამიანისთვის უახლესი და საუკეთესო სათამაშოების საპოვნელად.",
+    "keywords": "",
+    "blogTitle": "სიახლეები | სტატიები სათამაშოების სამყაროდან",
+    "blogDescription": " სიახლეები და სტატიები სათამაშოების სამყაროდან. გაიგეთ საუკეთესო სათამაშოების შესახებ ახალი ინფორმაციები.",
+    "cartTitle": "კალათა | შენი შეკვეთების ჩამონათვალი",
+    "cartDescription": "შენი შეკვეთების ჩამონათვალი სათამაშოების სამყაროდან. შეარჩიე და შეუკვეთე საუკეთესო სათამაშოები.",
+    "checkoutTitle": "გადახდა | შეკვეთა თითქმის დასრულებულია",
+    "checkoutDescription": "შეკვეთა თითქმის დასრულებულია. გადახდე და მიიღე შეკვეთა სათამაშოების სამყაროდან.",
+    "contactTitle": "კონტაქტი | დაუკავშირდით SuperWeb გუნდს",
+    "contactDescription": "დაუკავშირდით SuperWeb გუნდს.",
+    "profileTitle": "პროფილი | ინფორმაცია შენს შეკვეთებზე და პროდუქტებზე",
+    "profileDescription": "შენს შეკვეთებსადა პროდუქტებზე ინფორმაცია.",
+    "passwordTitle": "პაროლი | შეცვალე შენი პაროლი",
+    "passwordDescription": "შეცვალე შენი პაროლი.",
+    "ordersTitle": "შეკვეთები | შენი შეკვეთების ისტორია",
+    "ordersDescription": "შენი შეკვეთების ისტორია.",
+    "blogManageTitle": "ბლოგები | შენი ბლოგების მენეჯმენტი",
+    "blogManageDescription": "შენი ბლოგების მენეჯმენტი.",
+    "blogCreateTitle": "ბლოგი | შექმენი ახალი ბლოგი",
+    "blogCreateDescription": "შექმენი ახალი ბლოგი.",
+    "myProductsTitle": "პროდუქტები | შენი პროდუქტების მენეჯმენტი",
+    "myProductsDescription": "შენი პროდუქტების მენეჯმენტი.",
+    "addProductTitle": "პროდუქტი | დაამატე ახალი პროდუქტი",
+    "addProductDescription": "დაამატე ახალი პროდუქტი.",
+    "editProductTitle": "პროდუქტი | შეცვალე პროდუქტი",
+    "editProductDescription": "შეცვალე პროდუქტი.",
+    "searchTitle": "ძიება | მოძებნე სათამაშო",
+    "searchDescription": "მოძებნე სათამაშო.",
+    "trackOrderTitle": "შეკვეთა | შეამოწმე შეკვეთის სტატუსი",
+    "trackOrderDescription": "შეამოწმე შეკვეთის სტატუსი."
+  },
+  "HomePage": {
+    "newadd": "ახალი დამატებული",
+    "popular": "ყველაზე პოპულარული"
+  },
+  "SignUp": {
+    "quest": "არ გაქვს ანგარიში?",
+    "suggest": "დარეგისტრირდი"
+  },
+  "SignIn": {
+    "quest": "გაქვს ანგარიში?",
+    "suggest": "გაიარე ავტორიზაცია"
   },
   "ContactInfo": {
-    "header": "დაუკავშირდით ლეგოს ექსპერტს",
-    "callUs": "დაგვირეკეთ",
-    "customerServiceEnglish": "LEGO® მომსახურების სერვისი ინგლისურ ენაზე",
-    "numberEnglish": "1-844-903-5346",
-    "hoursWeekdaysEnglish": "ორშაბათი-პარასკევი 8am - 10pm",
-    "hoursWeekendEnglish": "შაბათ-კვირა 10am - 6pm",
-    "customerServiceSpanish": "LEGO® მომსახურების სერვისი ქართულ ენაზე",
-    "numberSpanish": "1-833-692-5346",
-    "hoursWeekdaysSpanish": "ორშაბათი-პარასკევი 8am - 10pm",
-    "techSupport": "LEGO® ტექნიკური მხარდაჟერა",
-    "numberTechSupport": "1-866-349-5346",
-    "hoursWeekdaysTechSupport": "ორშაბათი-პარასკევი 8am - 10pm",
-    "note": "ჩვენი უფასო ნომერი შესაძლოა დაბლოკოს ზოგიერთმა პროვაიდერმა. შესაძლოა გადასახადი ჩამოგეჭრათ მობილური ტელეფონიდან დარეკვისას. გთხოვთ, დაუკავშირდეთ თქვენს პროვაიდერს დამატებითი ინფორმაციისთვის",
-    "WriteUs": "მოგვწერეთ",
-    "customerServiceHeader": "LEGO® მომსახურების სერვისი",
-    "addressLine1": "PO Box 1138",
-    "addressCity": "Enfield",
-    "addressStateZip": "CT 06083-1138",
-    "addressCountry": "USA",
-    "contactus": "დაგვიკავშირდით",
-    "aboutSophia": "სოფიას შეუძლია დაგეხმაროთ ბევრ საკითხში"
+    "header": "დაგვიკავშირდით",
+    "text": "ყოველთვის გვიხარია თქვენთან კომუნიკაცია! ❤️",
+    "address": "გიორგი ათონელის ქუჩა N31"
   },
-  "ContactForm": {
-    "namePlaceholder": "სახელი",
-    "surnamePlaceholder": "გვარი",
-    "emailPlaceholder": "მეილი",
-    "mobilePlaceholder": "მობილურის ნომერი",
-    "problemPlaceholder": "გაგვიზიარეთ თქვენი პრობლემა",
-    "sendButton": "გაგზავნა"
+  "MenuNavbar": {
+    "profile": "ჩემი პროფილი",
+    "password": "პაროლი",
+    "orders": "შეკვეთების ისტორია",
+    "myProducts": "ჩემი პროდუქტები",
+    "allProducts": "ყველა პროდუქტი",
+    "blogs": "ბლოგები",
+    "Logout": "სისტემიდან გასვლა"
   },
-  "Footer": {
-    "subscribeHeader": "გამოიწერეთ LEGO მაღაზიის მეილი",
-    "emailPlaceholder": "ჩაწერეთ თქვენი მეილი",
-    "followUsHeader": "გამოგვყევით",
-    "privacyPolicy": "უსაფრთხოების პოლიტიკა",
-    "cookies": "ქუქიები",
-    "termsOfUse": "წესები და პირობები",
-    "accessibility": "ხელმისაწვდომობა",
-    "legalDisclaimer": "LEGO სისტემა A/S, DK-7190 ბილუნდი, დანია. ონლაინ შეძენისთვის აუცილებელია იყოთ 18 წელზე მეტის. LEGO და LEGO ლოგო არის ლეგო ჯგუფის სავაჭრო ნიშანი. ©2024 ლეგო ჯგუფი. ყველა უფლება დაცულია. საიტის გამოყენებისას აუცილებელია დაეთანხმოთ გარკვეულ წესებს."
+  "Orders": {
+    "heading": "შეკვეთების ისტორია"
+  },
+  "ProductPage": {
+    "myproducts": "ჩემი პროდუქტები",
+    "allproducts": "ყველა პროდუქტი",
+    "newProductAdd": "ახალი პროდუქტი"
   },
   "Blogs": {
-    "header": "LEGO ოცნებების ასრულება: გაეცანით ლოგოს უახლოეს ბლოგ-პოსტებს"
-  },
-  "Register": {
-    "formLabelUserName": "არსებული სახელი:",
-    "formLabelSurname": "არსებული გვარი:",
-    "formLabelEmail": "მეილი:",
-    "formLabelCreatePassword": "ახალი პაროლი:",
-    "formLabelConfirmPassword": "დაადასტურეთ პაროლი:",
-    "inputPlaceholderUserName": "ჩაწერეთ სახელი",
-    "inputPlaceholderSurname": "ჩაწერეთ გვარი",
-    "inputPlaceholderEmail": "ჩაწერეთ მეილი",
-    "inputPlaceholderPassword": "შექმენით პაროლი",
-    "inputPlaceholderConfirmPassword": "დაადასტურეთ პაროლი",
-    "buttonRegister": "დარეგისტრირება",
-    "errorEmail": "არასწორი პაროლი",
-    "errorConfirmPassword": "პაროლი არ ემთხვევა ერთმანეთს"
+    "header": "ბლოგების მენეჯმენტი",
+    "button": "ახალი ბლოგის დამატება",
+    "name": "ავტორი"
   },
   "Blog": {
     "releaseDate": "გამოშვების თარიღი",
@@ -93,5 +96,37 @@
   "Loading": {
     "loading": "იტვირთება...",
     "loadText": "გთხოვთ დაელოდოთ მონაცემების ჩატვირთვას"
+  },
+  "SearchPage": {
+    "totalResults": "სულ {total} შედეგი",
+    "dateAsc": "თარიღის მატებით",
+    "dateDesc": "თარიღის კლებით",
+    "priceDesc": "ფასის კლებით",
+    "priceAsc": "ფასის მატებით",
+    "filter": "ფილტრი",
+    "category": "კატეგორია",
+    "price": "ფასი",
+    "rating": "რეიტინგი",
+    "notfound": "პროდუქტი არ მოიძებნა"
+  },
+  "Categories": {
+    "actionFigures": "ექშენ ფიგურები",
+    "buildingSets": "სამაგიდო თამაშები",
+    "dolls": "თოჯინები",
+    "educational": "შენეცნებითი",
+    "puzzles": "ფაზლები",
+    "outdoorPlay": "ეზოს სათამაშოები",
+    "plushToys": "რბილი სათამაშოები"
+  },
+  "Cart": {
+    "message": "კალათაში დასამატებლად გთხოვთ გაიაროთ ავტორიზაცია",
+    "emptyCart": "კალათა ცარიელია",
+    "header": "შენს კალათაში {totalQuantity} ნივთია"
+  },
+  "Tracking": {
+    "h1": "კურიერის მდებარეობა",
+    "orderNumber": "შეკვეთის ნომერი",
+    "orderStatus": "შეკვეთის სტატუსი",
+    "orderDate": "შეძენის თარიღი"
   }
 }

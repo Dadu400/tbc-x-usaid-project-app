@@ -1,80 +1,92 @@
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShieldHalved } from "@fortawesome/free-solid-svg-icons";
-import LegoEcho from "../../public/LegoEcho.png";
 import { getUserCart } from "../../helpers/axios";
 import { getProducts } from "../../helpers/axiosProduct";
 import CounterButton from "./CounterButton";
 import EmptyCartButton from "./EmptyCartButton";
 import RemoveProductButton from "./RemoveProductButton";
+import { getTranslations } from "next-intl/server";
+import CartComponent from "../checkout/CartComponent";
+import localFont from "@next/font/local";
+import { Product } from "./ProductList";
 
-const id = 1;
+export interface CartProduct extends Product {
+  quantity: number;
+  totalPrice: number;
+}
+
 export const revalidate = 0;
-async function CartContainer() {
-  const cart = await getUserCart(id);
-  const cartProductsArray = Object.entries(cart?.products);
-  const cartProducts = await getProducts();
+
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
+
+async function CartContainer({ session }: any) {
+  const t = await getTranslations("Cart");
+  if (session === undefined) {
+    return (
+      <div className="text-center mt-8">
+        <h2 className="text-2xl font-bold mb-4">{t("message")}</h2>
+      </div>
+    );
+  }
+
+  const cart = await getUserCart(session.user.id);
+  const cartProductsArray = cart.products === undefined ? [] : Object.entries(cart.products as CartProduct);
+  const cartProducts = await getProducts() as CartProduct[];
 
   const cartProductMap = new Map(cartProductsArray);
 
   const filteredProducts = cartProducts
-    .filter((product: any) => cartProductMap.has(product.id.toString()))
-    .map((product: any) => ({
+    .filter((product: CartProduct) => cartProductMap.has(product.id.toString()))
+    .map((product: CartProduct) => ({
       ...product,
       quantity: cartProductMap.get(product.id.toString()),
+      totalPrice: product.price * cartProductMap.get(product.id.toString())
     }));
 
+  const totalQuantity = filteredProducts.reduce((sum: number, product: CartProduct) => sum + product.quantity, 0);
+  const totalAmount = filteredProducts.reduce((sum: number, product: CartProduct) => sum + product.totalPrice, 0);
+
   return (
-    <div className="container mx-auto p-6 my-12">
-      <h2 className="text-2xl font-bold mb-4">My Bag</h2>
-      <div className="flex flex-col md:flex-row justify-between">
-        <div className="flex-1">
-          <div className="bg-white shadow-md rounded-lg p-4 mb-4">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl text-green-600 font-regular">Available now</h3>
-              <EmptyCartButton />
-            </div>
-            {filteredProducts.map((product: any) => (
-              <div key={product.id} className="flex items-center mb-4">
-                <Image
-                  src={LegoEcho}
-                  alt={product.title}
-                  className="w-32 h-32"
-                />
-                <div className="flex flex-col ml-4 w-full">
-                  <div className="flex justify-between items-center">
+    <div className="w-[60vw] m-auto mt-[20px] mb-[40px]">
+      {totalQuantity > 0 ? (
+        <>
+          <h2 className={`text-xl font-bold mt-8 ${mtavruli.className}`}>{t("header", { totalQuantity })}</h2>
+          <EmptyCartButton />
+          <div className="flex flex-col md:flex-row justify-between">
+            <div className="dark:bg-[#1D2024] justify-center border-gray-200 dark:border-[#ffffff1f] border-[1px] rounded-md p-[24px] flex flex-col gap-4 basis-3/4">
+              {filteredProducts.map((product: CartProduct) => (
+                <div key={product.id} className="flex items-center justify-start gap-10 px-4">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    width={150}
+                    height={150}
+                    className="w-32 h-32"
+                  />
+                  <div className="flex flex-col justify-center items-start gap-y-2 flex-1">
                     <h4 className="text-lg font-bold">{product.title}</h4>
-                    <RemoveProductButton id={product.id} />
+                    <RemoveProductButton id={product.id.toString()} />
                   </div>
-                  <div className="flex items-center mt-4 gap-16">
-                    <p className="text-lg font-regular text-gray-800">${product.price}</p>
-                    <CounterButton id={product.id} />
-                    <span className="px-3 py-1 border-x">{product.quantity}</span>
+                  <div className="flex flex-col justify-center items-start gap-y-1">
+                    <p className="text-lg font-semibold">{product.price} ₾</p>
+                    <CounterButton id={product.id} quantity={product.quantity} />
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex-1.2 md:ml-6">
-          <div className="bg-white shadow-md rounded-lg pt-4 pb-8 px-6">
-            <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
-            <div className="mb-5">
-              <div className="flex justify-between">
-                <span className="font-regular text-green-600">Order value</span>
-              </div>
+              ))}
             </div>
-            <div className="flex justify-between font-bold text-lg">
-              <span>Order Total</span>
-              <span>${cart.total}</span>
-            </div>
-            <button className="mt-4 w-full px-4 py-2 bg-orange-500 text-white font-bold text-sm rounded-md">
-              <FontAwesomeIcon icon={faShieldHalved} className="mr-2" />
-              Checkout Securely
-            </button>
+            <CartComponent
+              totalQuantity={totalQuantity}
+              totalAmount={totalAmount}
+              showButton={true}
+              filteredProducts={filteredProducts}
+              session={session}
+            />
           </div>
+        </>
+      ) : (
+        <div className="text-center mt-8">
+          <h2 className="text-2xl font-bold mb-4">{t("emptyCart")}</h2>
         </div>
-      </div>
+      )}
     </div>
   );
 }

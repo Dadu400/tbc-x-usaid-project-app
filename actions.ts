@@ -2,27 +2,64 @@
 
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./contants";
-import { createUser, deleteUser, updateUser } from "./helpers/axiosUsers";
 import { revalidateTag } from "next/cache";
+import axios from "axios";
+import { JWTPayload, jwtVerify } from "jose";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { Blog } from "./components/blogs/BlogCard";
+import { User } from "./components/auth/LoginForm";
 
-export async function Login(username: string, password: string) {
-  const response = await fetch("https://dummyjson.com/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username,
+const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+export async function Login(email: string, password: string) {
+  const response = await axios
+    .post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/login", {
+      email,
       password,
-    }),
-  });
+    })
+    .catch((error) => {
+      console.error("Error logging in:", error);
+    });
 
-  const user = await response.json();
-
-  if (user.token) {
+  if (response !== undefined && response.status === 200) {
     const cookiesStore = cookies();
-    cookiesStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));
-  } else {
-    throw new Error(user.message);
+    cookiesStore.set(AUTH_COOKIE_KEY, response.data.token, { httpOnly: true });
+    return { ok: true };
   }
+
+  return { ok: false };
+}
+
+export async function Register(formData: any) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/create-user",
+      formData
+    );
+  } catch (error: any) {
+    if (error.response.status === 400) {
+      return { ok: false, message: "User with that email already exists" };
+    }
+    return { ok: false, message: "Failed to register user" };
+  }
+
+  return { ok: true };
+}
+
+export async function UpdateUser(formData: any) {
+  try {
+    const response = await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/update-user",
+      formData
+    );
+
+    const cookiesStore = cookies();
+    cookiesStore.set(AUTH_COOKIE_KEY, response.data.token, { httpOnly: true });
+  } catch (error) {
+    return { ok: false, message: "Failed to update user" };
+  }
+
+  return { ok: true };
 }
 
 export async function Logout() {
@@ -31,30 +68,141 @@ export async function Logout() {
   return { ok: true };
 }
 
-export async function createUserAction(formData: FormData) {
-  const { name, email, age } = Object.fromEntries(formData);
-  createUser(name as string, email as string, age as string);
-  revalidateTag("users_list");
+export async function GetSession() {
+  const cookiesStore = cookies();
+
+  const requestToken: RequestCookie | undefined =
+    cookiesStore.get(AUTH_COOKIE_KEY);
+
+  if (!requestToken || !requestToken.value) {
+    return undefined;
+  }
+
+  const token = String(requestToken.value);
+
+  try {
+    const { payload } = await jwtVerify(token, jwtSecret, {});
+    return payload;
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return undefined;
+  }
 }
 
-export async function deleteUserAction(id: number) {
-  await deleteUser(id);
+export async function HandleChangePassword(
+  email: string | undefined,
+  oldPassword: string | undefined,
+  newPassword: string | undefined,
+  confirmNewPassword: string | undefined
+) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/auth/change-password",
+      {
+        email,
+        oldPassword,
+        newPassword,
+        confirmNewPassword,
+      }
+    );
+    return { ok: true, message: "პაროლი წარმატებით შეიცვალა" };
+  } catch (error) {
+    return { ok: false, message: "პაროლის ცვლილება ვერ მოხერხდა" };
+  }
 }
 
-export async function updateUserAction(formData: FormData) {
-  const { id, name, email, age } = Object.fromEntries(formData);
-  updateUser(id as string, name as string, email as string, age as string)
+export async function SaveProduct(formData: any) {
+  const { title, description, price, category, image, userId } = formData;
+  try {
+    await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/save-product", {
+      title,
+      description,
+      price,
+      category,
+      image,
+      userId,
+    });
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to save product" };
+  }
 }
+
+export async function UpdateProduct(formData: any) {
+  const { productId, title, description, price, category, image } = formData;
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/update-product",
+      {
+        productId,
+        title,
+        description,
+        price,
+        category,
+        image,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to update product" };
+  }
+}
+
+export async function DeleteProduct(formData: any) {
+  try {
+    await axios.delete(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
+      {
+        data: formData,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to delete product" };
+  }
+}
+
+export const handleInstantBuy = async (productId: string, quantity: number) => {
+  "use server";
+
+  const session: JWTPayload | undefined = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
+  try {
+    await handleEmptyCart();
+    for (let i = 0; i < quantity; i++) {
+      await handleAddToCart(productId);
+    }
+    return { ok: true };
+  } catch (error) {
+    console.error("Error instant buying product:", error);
+    return { ok: false };
+  }
+};
 
 export const handleAddToCart = async (productId: string) => {
-  "use server"
+  "use server";
+  const session: JWTPayload | undefined = await GetSession();
+
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/add-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/add-product",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: 1, productId: productId, quantity: 1 }),
+        body: JSON.stringify({
+          userId: (session.user as User).id,
+          productId: productId,
+          quantity: 1,
+        }),
       }
     );
     revalidateTag("cart");
@@ -67,17 +215,23 @@ export const handleAddToCart = async (productId: string) => {
 };
 
 export const handleDecrementCart = async (productId: string) => {
-  "use server"
+  "use server";
+  const session: JWTPayload | undefined = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/decrement-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/decrement-product",
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1,
+          userId: (session.user as User).id,
           productId: productId,
           quantity: 1,
         }),
@@ -93,17 +247,23 @@ export const handleDecrementCart = async (productId: string) => {
 };
 
 export const handleEmptyCart = async () => {
-  "use server"
+  "use server";
+  const session = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/clear-cart",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/clear-cart",
       {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1,
+          userId: (session.user as User).id,
         }),
       }
     );
@@ -119,17 +279,23 @@ export const handleEmptyCart = async () => {
 };
 
 export const handleDeleteProduct = async (productId: string) => {
-  "use server"
+  "use server";
+  const session = await GetSession();
+  if (session === undefined) {
+    console.error("User is not authenticated");
+    return;
+  }
+
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/delete-product",
       {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1,
+          userId: (session.user as User).id,
           productId: productId,
         }),
       }
@@ -144,3 +310,191 @@ export const handleDeleteProduct = async (productId: string) => {
     console.error("Error removing item from cart:", error);
   }
 };
+
+export async function getSingleProduct(id: string) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/get-products/${id}`
+    );
+    const data = await response.json();
+    if (data.products?.rows?.length > 0) {
+      return data.products.rows[0];
+    } else {
+      console.error("Product not found or invalid response format", data);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+}
+
+export async function getProductSeller(id: string) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}/seller`
+    );
+    const data = await response.json();
+    return data.user;
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function addReview(
+  productId: number,
+  userId: number,
+  rating: number,
+  comment: string
+) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/product/${productId}/reviews`,
+      {
+        userId: userId,
+        rating: rating,
+        comment: comment,
+      }
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: "Failed to add review" };
+  }
+}
+
+export async function getReviews(productId: number) {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/product/${productId}/reviews`
+    );
+    return response.data.reviews;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function getUsersProducts(userId: number) {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/user/${userId}/products`
+    );
+    return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function saveBlog(blog: Blog, imageUrl: string) {
+  try {
+    if (imageUrl) {
+      blog.imageurl = imageUrl;
+    }
+    await axios.post(process.env.NEXT_PUBLIC_VERCEL_URL + "/api/blog", blog);
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function updateBlog(blog: Blog, imageUrl: string) {
+  try {
+    if (imageUrl) {
+      blog.imageurl = imageUrl;
+    }
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/blog/${blog.id}`,
+      blog
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function getBlogs() {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/blog"
+    );
+    return response.data;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function getUsersBlogs(userId: number) {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/user/${userId}/blogs`
+    );
+    return response.data.blogs;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function deleteBlog(blogId: number) {
+  try {
+    await axios.delete(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/blog/${blogId}`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function cancelOrder(orderId: string) {
+  try {
+    await axios.delete(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/orders/${orderId}`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function orderMoneyPaid(orderId: string) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/orders/${orderId}/paid`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function orderDelivered(orderId: string) {
+  try {
+    await axios.post(
+      process.env.NEXT_PUBLIC_VERCEL_URL + `/api/orders/${orderId}/delivered`
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false };
+  }
+}
+
+export async function getNewlyAddedProducts() {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/marketing/new"
+    );
+    return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function getPopularProducts() {
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/marketing/popular"
+    );
+    return response.data.products;
+  } catch (error) {
+    return [];
+  }
+}

@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { getUserCart } from "../../helpers/axios";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { JWTPayload } from "jose";
+import { User } from "../auth/LoginForm";
 
 export interface Cart {
   id: number;
@@ -12,19 +14,24 @@ export interface Cart {
   added_on: string;
 }
 
-export default async function CartIcon() {
-  const cart: Cart = await getUserCart(1);
-  // const num = Object.values(cart.products);
-  const totalQuantity = 2;
+async function getUserCartCount(userId: number) {
+  const cart: Cart = await getUserCart(userId);
+  const num = cart.products === undefined ? [] : Object.values(cart.products);
+
+  return num.reduce((total: number, quantity: number) => {
+    return total + quantity;
+  }, 0);
+}
+
+export default async function CartIcon({ session }: { session: JWTPayload | undefined }) {
+  const totalQuantity = session !== undefined ? getUserCartCount((session.user as User).id) : 0;
 
   return (
-    <li className="uppercase relative">
-      <Link href="/cart">
-        <ShoppingCartOutlinedIcon />
-        <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-red w-[15px] h-[15px] text-white">
-          {totalQuantity}
-        </span>
-      </Link>
-    </li>
+    <Link href="/cart" className="relative">
+      <ShoppingCartOutlinedIcon />
+      <span className="absolute bottom-4 left-4 inline-flex items-center justify-center text-[10px] leading-none rounded-full bg-[#EC6652] w-[15px] h-[15px] text-white">
+        {totalQuantity}
+      </span>
+    </Link>
   );
 }

@@ -1,19 +1,22 @@
-@font-face {
-    font-family: 'mtavruli';
-    src: url('../../public/mtavruli.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    @apply transition-colors duration-200 !important;
     z-index: 1;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
-    background-color: #FEFEFE;
+    background-color: #F9F9FF;
+    color: #191C20;
+}
+
+.dark body {
+    background-color: #121B18;
+    color: #E2E2E9 !important;
 }
 
 

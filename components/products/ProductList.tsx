@@ -1,38 +1,61 @@
-import { getProducts } from "../../helpers/axiosProduct";
-import Card from "./Card";
-import { useLocale } from "next-intl";
-import FiberNewOutlinedIcon from '@mui/icons-material/FiberNewOutlined';
+"use client";
 
+import Link from "next/link";
+import AddNewProductCard from "./AddNewProductCard";
+import ProductCard from "./ProductCard";
+import localFont from '@next/font/local';
+import { JWTPayload } from "jose";
+
+const mtavruli = localFont({ src: '../../public/fonts/mtavruli.ttf' })
 
 export interface Product {
-  id: string | number;
+  id: number;
+  image: string;
   title: string;
   description: string;
   price: number;
+  category: string;
+  userid: number;
+  added_on: Date;
 }
 
-async function ProductList() {
-  const products = await getProducts();
+interface ProductListProps {
+  session: JWTPayload | undefined;
+  icon?: JSX.Element;
+  title?: string;
+  products?: Product[];
+  className?: string;
+  addNewBtn?: boolean;
+}
+
+function ProductList({ session, icon, title, products, className, addNewBtn = false }: ProductListProps) {
+  const gridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    justifyContent: "center"
+  };
 
   return (
-    <section className="w-[60vw] mx-auto mt-[50px] min-h-[400px]">
-      <div className="flex items-center gap-[15px]">
-        <div className="bg-[#3C74FF] flex items-center text-2xl px-[3px] py-[5px] rounded-[10px] text-white">
-          <FiberNewOutlinedIcon fontSize="large" />
-        </div>
-        <span className="text-2xl text-black font-bold font-['mtavruli']">ახალი დამატებული</span>
-      </div>
-      <div className="flex flex-wrap gap-6 mt-5">
-        {products.map((product: Product) => (
-          <Card
-            key={product.id}
-            id={product.id}
-            productName={product.title}
-            price={product.price}
+    <section className={"w-[100%] " + (className ?? "")}>
+      {title ? <div className="flex items-center gap-[15px] uppercase" >
+        {icon != null ? icon : <></>}
+        <span className={`text-xl text-[#191C20] dark:text-[#E2E2E9] font-bold ${mtavruli.className}`}>{title}</span>
+      </div> : <></>}
+      <div className={`w-[100%] grid justify-center my-3 gap-x-[15px] gap-y-[30px]`} style={gridStyle}>
+        {products?.map((product: Product) => (
+          <ProductCard
+            key={product.id.toString()}
+            product={product}
+            session={session}
           />
         ))}
+        {addNewBtn ? (
+          <Link href={"/profile/products/create"}>
+            <AddNewProductCard />
+          </Link>
+        ) : <></>}
       </div>
-    </section>
+    </section >
   );
 }
 

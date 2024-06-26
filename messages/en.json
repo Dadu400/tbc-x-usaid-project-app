@@ -1,72 +1,75 @@
 {
-  "navigation": {
-    "home": "home",
-    "blogs": "blogs",
-    "profile": "profile",
-    "contactus": "contact Us",
-    "admin": "admin",
-    "login": "Login",
-    "superSite": "uper Site",
-    "search": "Search..."
+  "MetaData": {
+    "title": "SuperWeb | Your one-stop shop for the latest and greatest toys.",
+    "description": "SuperWeb is the best place to find the latest and greatest toys for kids of all ages. From action figures to building sets, we have everything you need to keep your little ones entertained for hours on end. Shop now and discover the magic of SuperWeb!",
+    "keywords": "toys, action figures, building sets, dolls, educational toys, puzzles, outdoor play, plush toys",
+    "blogTitle": "Blogs | News and updates from the world of toys",
+    "blogDescription": "Stay up to date with the latest news and updates from the world of toys.",
+    "cartTitle": "Cart | Your shopping list",
+    "cartDescription": "Your shopping list",
+    "checkoutTitle": "Checkout | Your order is almost complete",
+    "checkoutDescription": "Your order is almost complete",
+    "contactTitle": "Contact Us | Get in touch with the SuperWeb team",
+    "contactDescription": "Get in touch with the SuperWeb team",
+    "profileTitle": "Profile | Manage your account",
+    "profileDescription": "Manage your account",
+    "passwordTitle": "Password | Change your password",
+    "passwordDescription": "Change your password",
+    "ordersTitle": "Orders | Your order history",
+    "ordersDescription": "Your order history",
+    "blogManageTitle": "Blogs | Manage your blog posts",
+    "blogManageDescription": "Manage your blog posts",
+    "blogCreateTitle": "Blogs | Create a new blog post",
+    "blogCreateDescription": "Create a new blog post",
+    "myProductsTitle": "Products | Manage your products",
+    "myProductsDescription": "Manage your products",
+    "addProductTitle": "Products | Add a new product",
+    "addProductDescription": "Add a new product",
+    "editProductTitle": "Products | Edit product",
+    "editProductDescription": "Edit product",
+    "searchTitle": "Search | Find the perfect toy",
+    "searchDescription": "Find the perfect toy",
+    "trackOrderTitle": "Track Order | Track your order",
+    "trackOrderDescription": "Track your order"
+  },
+  "HomePage": {
+    "newadd": "Recently Added",
+    "popular": "Top Selling Items"
+  },
+  "SignUp": {
+    "quest": "Don't have an account yet?",
+    "suggest": "Sign Up"
+  },
+  "SignIn": {
+    "quest": "Already have an account?",
+    "suggest": "Sign In"
   },
   "ContactInfo": {
-    "header": "Get in touch with a LEGO expert",
-    "callUs": "Call us",
-    "customerServiceEnglish": "LEGO® Customer Service in English",
-    "numberEnglish": "1-844-903-5346",
-    "hoursWeekdaysEnglish": "Monday to Friday 8am - 10pm ET",
-    "hoursWeekendEnglish": "Saturday to Sunday 10am - 6pm ET",
-    "customerServiceSpanish": "LEGO® Customer Service in Spanish",
-    "numberSpanish": "1-833-692-5346",
-    "hoursWeekdaysSpanish": "Monday to Friday 8am - 10pm ET",
-    "techSupport": "LEGO® Education Tech Support",
-    "numberTechSupport": "1-866-349-5346",
-    "hoursWeekdaysTechSupport": "Monday to Friday 8am - 10pm ET",
-    "note": "Our free number might be blocked by some providers. You may be charged when calling from a mobile phone. Please contact your provider for more details.",
-    "WriteUs": "Write to us",
-    "customerServiceHeader": "LEGO® Customer Service",
-    "addressLine1": "PO Box 1138",
-    "addressCity": "Enfield",
-    "addressStateZip": "CT 06083-1138",
-    "addressCountry": "USA",
-    "contactus": "Contact Us",
-    "aboutSophia": "Sophia can help you with lots of topics"
+    "header": "Contact Us",
+    "text": "We are always happy to communicate with you! ❤️",
+    "address": "31 Giorgi Atoneli Street"
   },
-  "ContactForm": {
-    "namePlaceholder": "Name",
-    "surnamePlaceholder": "Surname",
-    "emailPlaceholder": "Email",
-    "mobilePlaceholder": "Mobile",
-    "problemPlaceholder": "Write your problem",
-    "sendButton": "Send"
+  "MenuNavbar": {
+    "profile": "My Profile",
+    "password": "Password",
+    "orders": "Orders History",
+    "myProducts": "My Products",
+    "allProducts": "All Products",
+    "blogs": "Blogs",
+    "Logout": "Log out"
   },
-  "Footer": {
-    "subscribeHeader": "Subscribe to LEGO shop emails",
-    "emailPlaceholder": "Your email address",
-    "followUsHeader": "Follow us",
-    "privacyPolicy": "Privacy Policy",
-    "cookies": "Cookies",
-    "termsOfUse": "Terms of Use",
-    "accessibility": "Accessibility",
-    "legalDisclaimer": "LEGO System A/S, DK-7190 Billund, Denmark. Must be 18 years or older to purchase online. LEGO and the LEGO logo are trademarks of the LEGO Group. ©2024 The LEGO Group. All rights reserved. Use of this site signifies your agreement to the terms of use."
+  "Orders": {
+    "heading": "Orders History"
+  },
+  "ProductPage": {
+    "myproducts": "My Products",
+    "allproducts": "All Products",
+    "newProductAdd": "New Product"
   },
   "Blogs": {
-    "header": "Bringing LEGO Dreams to Life: Explore Our Latest Posts"
-  },
-  "Register": {
-    "formLabelUserName": "Current Username:",
-    "formLabelSurname": "Current Surname:",
-    "formLabelEmail": "Email:",
-    "formLabelCreatePassword": "Create new password:",
-    "formLabelConfirmPassword": "Confirm new Password:",
-    "inputPlaceholderUserName": "Enter your username",
-    "inputPlaceholderSurname": "Enter your surname",
-    "inputPlaceholderEmail": "Enter your email",
-    "inputPlaceholderPassword": "Create a password",
-    "inputPlaceholderConfirmPassword": "Confirm your password",
-    "buttonRegister": "Register",
-    "errorEmail": "Invalid email address",
-    "errorConfirmPassword": "Passwords do not match"
+    "header": "Manage Blogs",
+    "button": "Add New Blog",
+    "name": "Author"
   },
   "Blog": {
     "releaseDate": "Release Date",
@@ -93,5 +96,37 @@
   "Loading": {
     "loading": "Loading...",
     "loadText": "Patiently Waiting for Data"
+  },
+  "SearchPage": {
+    "totalResults": "Total {total} results",
+    "dateAsc": "Date Ascending",
+    "dateDesc": "Date Descending",
+    "priceDesc": "Price Descending",
+    "priceAsc": "Price Ascending",
+    "filter": "Filter",
+    "category": "Category",
+    "price": "Price",
+    "rating": "Rating",
+    "notfound": "No product found"
+  },
+  "Categories": {
+    "actionFigures": "Action Figures",
+    "buildingSets": "Table Games",
+    "dolls": "Dolls",
+    "educational": "Educational",
+    "puzzles": "Puzzles",
+    "outdoorPlay": "Outdoor Play",
+    "plushToys": "Plush Toys"
+  },
+  "Cart": {
+    "message": "Please sign in to add products to cart",
+    "emptyCart": "Your cart is empty",
+    "header": "You have {totalQuantity} items in your cart"
+  },
+  "Tracking": {
+    "h1": "Track courier by tracking number",
+    "orderNumber": "Order Number",
+    "orderStatus": "Order Status",
+    "orderDate": "Order Date"
   }
 }

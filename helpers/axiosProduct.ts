@@ -33,10 +33,26 @@ export async function getProducts() {
   return products?.rows;
 }
 
+export async function QueryProducts(formData: any) {
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_VERCEL_URL + "/api/query-products",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }
+  );
+  const { products } = await response.json();
+  if (products === undefined) {
+    return [];
+  }
+  return products.rows;
+}
+
 export const handleAddToCart = async (productId: string) => {
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/add-product",
+      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/cart/add-product",
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -49,81 +65,5 @@ export const handleAddToCart = async (productId: string) => {
     }
   } catch (error) {
     console.error("Error adding item to cart:", error);
-  }
-};
-
-export const handleDecrementCart = async (productId: string) => {
-  try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/decrement-product",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: 1,
-          productId: productId,
-          quantity: 1,
-        }),
-      }
-    );
-    revalidateTag("cart");
-    if (!response.ok) {
-      throw new Error("Failed to add item to cart");
-    }
-  } catch (error) {
-    console.error("Error adding item to cart:", error);
-  }
-};
-
-export const handleEmptyCart = async () => {
-  try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/clear-cart",
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: 1,
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to clear cart");
-    }
-
-    revalidateTag("cart");
-  } catch (error) {
-    console.error("Error clearing cart:", error);
-  }
-};
-
-export const handleDeleteProduct = async (productId: string) => {
-  try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_VERCEL_URL + "/api/delete-product",
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: 1,
-          productId: productId,
-        }),
-      }
-    );
-
-    revalidateTag("cart");
-
-    if (!response.ok) {
-      throw new Error("Failed to remove item from cart");
-    }
-  } catch (error) {
-    console.error("Error removing item from cart:", error);
   }
 };

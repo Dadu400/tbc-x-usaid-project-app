@@ -1,63 +1,88 @@
-import { useTranslations } from "next-intl";
+'use client';
+
+import { useState } from 'react';
+import { useLocale } from "next-intl";
 
 function ContactForm() {
-  const t = useTranslations("ContactForm");
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { name, email, phone, message } = formData;
+    const subject = `პრობლემის შეტყობინება ${name}-სგან`;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`;
+    const mailtoLink = `mailto:contact@superweb.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+  };
+
+  const locale = useLocale();
 
   return (
-    <div className="flex flex-1 items-center justify-center">
-      <form action="#" className="flex flex-col w-[40%]">
-        <div className="mb-3">
-          <input
-            type="text"
-            placeholder={t("namePlaceholder")}
-            className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            placeholder={t("surnamePlaceholder")}
-            className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="email"
-            placeholder={t("emailPlaceholder")}
-            className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="number"
-            placeholder={t("mobilePlaceholder")}
-            className="focus:outline-none focus:ring w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow outline-none appearance-none"
-            style={{
-              WebkitAppearance: "none",
-              MozAppearance: "textfield",
-            }}
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <textarea
-            rows={5}
-            placeholder={t("problemPlaceholder")}
-            className="focus:outline-none focus:ring w-full px-3 py-4 text-sm text-gray-600 placeholder-gray-400 bg-white border rounded shadow resize-none h-40"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-[40%] py-2 bg-black self-center text-white font-large hover:bg-white hover:text-black rounded"
-        >
-          {t("sendButton")}
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col space-y-4 mt-[10px]">
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder={locale == "en" ? "Name" : "სახელი"}
+        required
+        value={formData.name}
+        onChange={handleChange}
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652]"
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder={locale == "en" ? "Email" : "ელ.ფოსტა"}
+        required
+        value={formData.email}
+        onChange={handleChange}
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652]"
+      />
+      <input
+        type="number"
+        id="phone"
+        name="phone"
+        placeholder={locale == "en" ? "Mobile Number" : "ტელეფონი"}
+        required
+        value={formData.phone}
+        onChange={handleChange}
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+      />
+      <textarea
+        name="message"
+        id="message"
+        rows={5}
+        cols={30}
+        placeholder={locale == "en" ? "Write your problem here" : "ჩაწერე ტექსტი"}
+        required
+        value={formData.message}
+        onChange={handleChange}
+        className="mt-1 block w-full px-3 py-2 bg-white dark:bg-[#1D2024] border border-gray-300 dark:border-[#ffffff1f] rounded-md shadow-sm focus:ring-[#EC6652] focus:border-[#EC6652] focus:outline-none focus:[#EC6652]"
+      />
+      <button
+        type="submit"
+        className="w-full px-4 py-2 text-md font-medium text-white bg-[#404978] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+        {locale == "en" ? "Send" : "გაგზავნა"}
+      </button>
+    </form>
   );
 }
 
