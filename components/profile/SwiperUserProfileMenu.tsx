@@ -13,44 +13,47 @@ import SwiperUserMenuSlide from './SwiperUserMenuSlide';
 
 import 'swiper/css/navigation';
 import 'swiper/css';
+import { useLocale } from 'next-intl';
 
 function SwiperUserProfileMenu({ selectedItem }: { selectedItem: string }) {
+    const locale = useLocale();
+
     const menuItems = [
         {
             id: "profile",
             icon: <PersonOutlineIcon />,
-            title: "პროფილი",
+            title: locale === "ka" ? "პროფილი" : "Profile",
             route: "/profile"
         },
         {
             id: "password",
             icon: <PasswordIcon />,
-            title: "პაროლი",
+            title: locale === "ka" ? "პაროლი" : "Password",
             route: "/profile/password"
         },
         {
             id: "orders",
             icon: <HistoryIcon />,
-            title: "შეკვეთები",
+            title: locale === "ka" ? "შეკვეთები" : "Orders",
             route: "/profile/orders"
         },
         {
             id: "products",
             icon: <Inventory2OutlinedIcon />,
-            title: "პროდუქტები",
+            title: locale === "ka" ? "პროდუქტები" : "Products",
             route: "/profile/products"
         },
         {
             id: "blogs",
             icon: <FeedOutlinedIcon />,
-            title: "ბლოგები",
+            title: locale === "ka" ? "ბლოგები" : "Blogs",
             route: "/profile/blogs"
         },
     ]
 
     return (
-        <div className="flex justify-between items-center bg-white shadow-lg rounded py-5 gap-[20px]">
-            <div className="swiper-button-custom-prev flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowLeftIcon fontSize="large" /></div>
+        <div className="flex justify-between items-center bg-white dark:bg-[#1D2024] shadow-lg rounded py-5 gap-[20px]">
+            <div className="swiper-button-custom-prev flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] dark:text-[#EC6652] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowLeftIcon fontSize="large" /></div>
             <Swiper
                 modules={[Navigation, A11y]}
                 spaceBetween={15}
@@ -72,7 +75,7 @@ function SwiperUserProfileMenu({ selectedItem }: { selectedItem: string }) {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="swiper-button-custom-next flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowRightIcon fontSize="large" /></div>
+            <div className="swiper-button-custom-next flex items-center justify-center w-5 h-5 p-4 text-[#1D90FF] dark:text-[#EC6652] cursor-pointer transition duration-300 hover:bg-red-700"><KeyboardArrowRightIcon fontSize="large" /></div>
         </div>
     )
 }

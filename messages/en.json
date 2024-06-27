@@ -53,13 +53,16 @@
     "profile": "My Profile",
     "password": "Password",
     "orders": "Orders History",
+    "allOrders": "All Orders",
     "myProducts": "My Products",
     "allProducts": "All Products",
     "blogs": "Blogs",
+    "allBlogs": "All Blogs",
     "Logout": "Log out"
   },
   "Orders": {
-    "heading": "Orders History"
+    "heading": "Orders History",
+    "headingAdmin": "All Orders"
   },
   "ProductPage": {
     "myproducts": "My Products",
@@ -72,6 +75,7 @@
     "name": "Author"
   },
   "Blog": {
+    "header": "Read Articles",
     "releaseDate": "Release Date",
     "readMore": "Read More"
   },

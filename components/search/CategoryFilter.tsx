@@ -1,8 +1,11 @@
 "use client";
 
+import { useLocale } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 function CategoryFilter() {
+    const locale = useLocale();
+
     const router = useRouter();
     const searchParams = useSearchParams();
     const category = searchParams.get('category') || '';
@@ -11,14 +14,14 @@ function CategoryFilter() {
     const hoverStyle = "hover:font-semibold hover:text-[#EC6652]"
 
     const categories: { [key: string]: string } = {
-        "": "All",
-        "actionFigures": "Action Figures",
-        "buildingSets": "Building Sets",
-        "dolls": "Dolls",
-        "educational": "Educational",
-        "puzzles": "Puzzles",
-        "outdoorPlay": "Outdoor play",
-        "plushToys": "Plushy"
+        "": locale === 'en' ? "All" : "ყველა",
+        "actionFigures": locale === 'en' ? "Action Figures" : "ექშენ ფიგურები",
+        "buildingSets": locale === 'en' ? "Building Sets" : "სამაგიდო თამაშები",
+        "dolls": locale === 'en' ? "Dolls" : "თოჯინები",
+        "educational": locale === 'en' ? "Educational" : "შემეცნებითი",
+        "puzzles": locale === 'en' ? "Puzzles" : "ფაზლები",
+        "outdoorPlay": locale === 'en' ? "Outdoor Play" : "ეზოს სათამაშოები",
+        "plushToys": locale === 'en' ? "Plush Toys" : "რბილი თოჯინები",
     }
 
     return (

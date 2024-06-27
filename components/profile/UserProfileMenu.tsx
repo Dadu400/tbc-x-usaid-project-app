@@ -41,7 +41,7 @@ async function UserProfileMenu({ selectedItem }: UserProfileMenuProps) {
     {
       id: "orders",
       icon: <HistoryIcon />,
-      title: t('orders'),
+      title: (session.user as User).admin ? t('allOrders') : t('orders'),
       route: "/profile/orders"
     },
     {
@@ -53,7 +53,7 @@ async function UserProfileMenu({ selectedItem }: UserProfileMenuProps) {
     {
       id: "blogs",
       icon: <FeedOutlinedIcon />,
-      title: t('blogs'),
+      title: (session.user as User).admin ? t('allBlogs') : t('blogs'),
       route: "/profile/blogs"
     },
   ];

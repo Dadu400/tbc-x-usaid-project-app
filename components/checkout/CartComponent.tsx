@@ -2,6 +2,7 @@
 
 import localFont from "@next/font/local";
 import { useLocale } from "next-intl";
+import CountUp from 'react-countup';
 
 export interface CartComponentProps {
     totalQuantity: number;
@@ -47,7 +48,15 @@ function CartComponent({ totalQuantity, totalAmount, showButton = true, filtered
                 <span className="font-semibold text-sm mr-14">
                     {locale === "en" ? "Total Price" : "ჯამი"}
                 </span>
-                <span className="font-semibold text-sm">{totalAmount.toFixed(2)} ₾</span>
+                <CountUp
+                    start={0}
+                    end={totalAmount}
+                    decimals={2}
+                    decimal="."
+                    duration={0.5}
+                    suffix={'₾'}
+                    className="font-semibold text-sm"
+                />
             </div>
             {showButton && (
                 <button

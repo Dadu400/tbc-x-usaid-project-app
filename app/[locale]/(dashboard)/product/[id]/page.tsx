@@ -7,6 +7,8 @@ import ProductSellerDetails from '../../../../../components/products/ProductSell
 import ProductReviewDetails, { Review } from '../../../../../components/products/ProductReviewDetails';
 import { Product } from '../../../../../components/products/ProductList';
 
+export const revalidate = 0;
+
 interface Params {
     id: string;
     locale: string;

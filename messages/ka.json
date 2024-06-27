@@ -53,13 +53,16 @@
     "profile": "ჩემი პროფილი",
     "password": "პაროლი",
     "orders": "შეკვეთების ისტორია",
+    "allOrders": "ყველა შეკვეთა",
     "myProducts": "ჩემი პროდუქტები",
     "allProducts": "ყველა პროდუქტი",
     "blogs": "ბლოგები",
+    "allBlogs": "ყველა ბლოგი",
     "Logout": "სისტემიდან გასვლა"
   },
   "Orders": {
-    "heading": "შეკვეთების ისტორია"
+    "heading": "შეკვეთების ისტორია",
+    "headingAdmin": "ყველა შეკვეთა"
   },
   "ProductPage": {
     "myproducts": "ჩემი პროდუქტები",
@@ -72,6 +75,7 @@
     "name": "ავტორი"
   },
   "Blog": {
+    "header": "სიახლეები",
     "releaseDate": "გამოშვების თარიღი",
     "readMore": "წაიკითხე მეტი"
   },
