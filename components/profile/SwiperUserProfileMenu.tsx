@@ -13,37 +13,40 @@ import SwiperUserMenuSlide from './SwiperUserMenuSlide';
 
 import 'swiper/css/navigation';
 import 'swiper/css';
+import { useLocale } from 'next-intl';
 
 function SwiperUserProfileMenu({ selectedItem }: { selectedItem: string }) {
+    const locale = useLocale();
+
     const menuItems = [
         {
             id: "profile",
             icon: <PersonOutlineIcon />,
-            title: "პროფილი",
+            title: locale === "ka" ? "პროფილი" : "Profile",
             route: "/profile"
         },
         {
             id: "password",
             icon: <PasswordIcon />,
-            title: "პაროლი",
+            title: locale === "ka" ? "პაროლი" : "Password",
             route: "/profile/password"
         },
         {
             id: "orders",
             icon: <HistoryIcon />,
-            title: "შეკვეთები",
+            title: locale === "ka" ? "შეკვეთები" : "Orders",
             route: "/profile/orders"
         },
         {
             id: "products",
             icon: <Inventory2OutlinedIcon />,
-            title: "პროდუქტები",
+            title: locale === "ka" ? "პროდუქტები" : "Products",
             route: "/profile/products"
         },
         {
             id: "blogs",
             icon: <FeedOutlinedIcon />,
-            title: "ბლოგები",
+            title: locale === "ka" ? "ბლოგები" : "Blogs",
             route: "/profile/blogs"
         },
     ]

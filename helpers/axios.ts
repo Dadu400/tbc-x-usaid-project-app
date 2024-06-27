@@ -27,6 +27,19 @@ export async function getUserCart(id: number) {
   return cart;
 }
 
+export async function getAllOrders() {
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/orders`
+  );
+  const orders = await response.data;
+
+  if (orders === undefined || orders.orders === undefined) {
+    return [];
+  }
+
+  return orders.orders;
+}
+
 export async function getOrders() {
   const session = await GetSession();
   if (!session) {

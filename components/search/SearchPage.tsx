@@ -11,7 +11,6 @@ import ProductList, { Product } from '../products/ProductList'
 import localFont from '@next/font/local'
 import ExpandableFilter from './ExpandableFilter'
 import PriceFilter from './PriceFilter'
-import RatingFilter from './RatingFilter'
 import CategoryFilter from './CategoryFilter'
 import { useSearchParams } from 'next/navigation';
 import EmptySearch from './EmptySearch';
